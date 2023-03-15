@@ -7,6 +7,7 @@ footer {
     url(/shelter/assets/images/footer-background.png)
   );
 }
+
 .title {
   font-size: 3.5rem;
   line-height: 4.55rem;
@@ -19,10 +20,11 @@ footer {
   @include inner-section(40px 40px 0);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  gap: 13.333333%;
 
   .contacts {
-    // flex: 0 0 279px;
+    flex: 1 0 23.25%;
+    margin-top: 1.6rem;
 
     .title-contacts {
       margin-bottom: 4rem;
@@ -30,6 +32,9 @@ footer {
 
     &__content {
       margin-bottom: 4rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
 
       &-letter {
         display: inline-block;
@@ -51,16 +56,42 @@ footer {
         font-size: 2rem;
         color: $color-primary;
         line-height: $line-height;
-        vertical-align: super;
+        letter-spacing: $letter-spacing;
+        font-family: $font-georgia;
       }
     }
   }
 
   .address {
-    // flex: 0 0 302px;
+    flex: 1 0 25.16%;
+    margin-top: 1.6rem;
 
     .title-address {
-      margin-bottom: 3.2rem;
+      margin-bottom: 3.3rem;
+    }
+
+    &__content {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 3rem;
+
+      &-pin {
+        display: inline-block;
+        width: 2.2rem;
+        height: 3.2rem;
+        background-image: url(/shelter/assets/icons/pin.svg);
+        margin-right: 2rem;
+        background-size: 2.2rem 3.2rem;
+      }
+
+      &-location {
+        font-size: 2rem;
+        color: $color-primary;
+        line-height: $line-height;
+        letter-spacing: $letter-spacing;
+        font-family: $font-georgia;
+      }
     }
   }
 

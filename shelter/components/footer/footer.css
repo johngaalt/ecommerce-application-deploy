@@ -65,13 +65,20 @@ footer {
   padding: 40px 40px 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  gap: 13.333333%;
+}
+.inner .contacts {
+  flex: 1 0 23.25%;
+  margin-top: 1.6rem;
 }
 .inner .contacts .title-contacts {
   margin-bottom: 4rem;
 }
 .inner .contacts__content {
   margin-bottom: 4rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .inner .contacts__content-letter {
   display: inline-block;
@@ -91,10 +98,36 @@ footer {
   font-size: 2rem;
   color: #f1cdb3;
   line-height: 2.3rem;
-  vertical-align: super;
+  letter-spacing: 0.06em;
+  font-family: "Georgia";
+}
+.inner .address {
+  flex: 1 0 25.16%;
+  margin-top: 1.6rem;
 }
 .inner .address .title-address {
-  margin-bottom: 3.2rem;
+  margin-bottom: 3.3rem;
+}
+.inner .address__content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.inner .address__content-pin {
+  display: inline-block;
+  width: 2.2rem;
+  height: 3.2rem;
+  background-image: url(/shelter/assets/icons/pin.svg);
+  margin-right: 2rem;
+  background-size: 2.2rem 3.2rem;
+}
+.inner .address__content-location {
+  font-size: 2rem;
+  color: #f1cdb3;
+  line-height: 2.3rem;
+  letter-spacing: 0.06em;
+  font-family: "Georgia";
 }
 .inner .logo-wrapper .logo {
   display: inline-block;
