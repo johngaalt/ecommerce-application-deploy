@@ -3,9 +3,73 @@
 @import "../../styles/globals";
 
 footer {
-  background: brown;
+  @include background-options(
+    url(/shelter/assets/images/footer-background.png)
+  );
+}
+.title {
+  font-size: 3.5rem;
+  line-height: 4.55rem;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  font-family: Georgia, serif;
 }
 
 .inner {
   @include inner-section(40px 40px 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .contacts {
+    // flex: 0 0 279px;
+
+    .title-contacts {
+      margin-bottom: 4rem;
+    }
+
+    &__content {
+      margin-bottom: 4rem;
+
+      &-letter {
+        display: inline-block;
+        width: 4rem;
+        height: 3.2rem;
+        background-image: url(/shelter/assets/icons/icon-email.svg);
+        margin-right: 2rem;
+      }
+
+      &-phone {
+        display: inline-block;
+        width: 4rem;
+        height: 3.2rem;
+        background-image: url(/shelter/assets/icons/icon-phone.svg);
+        margin-right: 2rem;
+      }
+
+      &-link {
+        font-size: 2rem;
+        color: $color-primary;
+        line-height: $line-height;
+        vertical-align: super;
+      }
+    }
+  }
+
+  .address {
+    // flex: 0 0 302px;
+
+    .title-address {
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  .logo-wrapper {
+    .logo {
+      display: inline-block;
+      background-image: url(/shelter/assets/images/footer-puppy.png);
+      width: 30rem;
+      height: 31rem;
+    }
+  }
 }

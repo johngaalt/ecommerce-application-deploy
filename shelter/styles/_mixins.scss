@@ -25,3 +25,10 @@ $breakpoint-desktop: 1280px; // 1280px
   margin: 0 auto;
   padding: $padding;
 }
+
+@mixin background-options($background-color) {
+  background: $background-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
