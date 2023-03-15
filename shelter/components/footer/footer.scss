@@ -1,0 +1,9 @@
+@import "../../styles/mixins";
+
+footer {
+  background: brown;
+}
+
+.inner {
+  @include inner-section(40px 50px 0);
+}
