@@ -1,7 +1,3 @@
-@import "../../styles/variables";
-@import "../../styles/mixins";
-@import "../../styles/globals";
-
 footer {
   @include background-options(
     url(/shelter/assets/images/footer-background.png)
