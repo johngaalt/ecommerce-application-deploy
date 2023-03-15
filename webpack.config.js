@@ -23,7 +23,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "main.html",
+      filename: "index.html",
       template: "./shelter/pages/main/index.html",
       chunks: ["main"],
     }),
@@ -40,7 +40,7 @@ const config = {
         loader: "babel-loader",
       },
       {
-        test: /\.html$/,
+        test: /\.html$/i,
         loader: "html-loader",
       },
       {
