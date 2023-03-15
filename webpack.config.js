@@ -8,9 +8,13 @@ const isProduction = process.env.NODE_ENV == "production";
 const stylesHandler = "style-loader";
 
 const config = {
-  entry: "./src/index.js",
+  entry: {
+    main: "./shelter/pages/main/js/index.js",
+    pets: "./shelter/pages/pets/js/index.js",
+  },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+    path: __dirname + "/dist",
   },
   devServer: {
     open: true,
@@ -19,17 +23,25 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      filename: "main.html",
+      template: "./shelter/pages/main/index.html",
+      chunks: ["main"],
     }),
-
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+    new HtmlWebpackPlugin({
+      filename: "pets.html",
+      template: "./shelter/pages/pets/index.html",
+      chunks: ["pets"],
+    }),
   ],
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/i,
+        test: /\.(js)$/i,
         loader: "babel-loader",
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader",
       },
       {
         test: /\.css$/i,
