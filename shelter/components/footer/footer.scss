@@ -1,9 +1,11 @@
+@import "../../styles/variables";
 @import "../../styles/mixins";
+@import "../../styles/globals";
 
 footer {
   background: brown;
 }
 
 .inner {
-  @include inner-section(40px 50px 0);
+  @include inner-section(40px 40px 0);
 }
