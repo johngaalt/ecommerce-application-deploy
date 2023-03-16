@@ -50,12 +50,42 @@ img {
   letter-spacing: 0.06em;
   color: #ffffff;
   font-family: Georgia, serif;
+
+  &-start {
+    margin-bottom: 4.2rem;
+    font-size: 4.4rem;
+    line-height: 5.7rem;
+    letter-spacing: 0;
+  }
+
+  &-about {
+    color: $color-card-title;
+    font-size: 3.5rem;
+    line-height: 4.5rem;
+    margin-bottom: 2.5rem;
+  }
 }
 
 .text {
   line-height: 2.4rem;
   font-family: $font-arial;
   color: $color-text;
+
+  &-start {
+    margin-bottom: 4.2rem;
+    color: $color-cdcdcd;
+    font-size: 1.5rem;
+  }
+
+  &-about {
+    font-size: 1.5rem;
+    color: $color-text;
+    margin-bottom: 2.4rem;
+  }
+
+  &-about:last-child {
+    margin-bottom: 0.8rem;
+  }
 }
 
 .card-title {
