@@ -24,15 +24,16 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "./shelter/pages/main/index.html",
       chunks: ["main"],
+      title: "Shelter",
     }),
     new HtmlWebpackPlugin({
       filename: "pets.html",
-      template: "./shelter/pages/pets/index.html",
       chunks: ["pets"],
+      title: "Pets",
     }),
   ],
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
