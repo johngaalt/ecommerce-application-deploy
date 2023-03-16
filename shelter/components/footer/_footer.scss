@@ -4,14 +4,6 @@ footer {
   );
 }
 
-.title {
-  font-size: 3.5rem;
-  line-height: 4.55rem;
-  letter-spacing: 0.06em;
-  color: #ffffff;
-  font-family: Georgia, serif;
-}
-
 .inner {
   @include inner-section(40px 40px 0);
   display: flex;

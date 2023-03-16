@@ -43,3 +43,25 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.title {
+  font-size: 3.5rem;
+  line-height: 4.55rem;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  font-family: Georgia, serif;
+}
+
+.text {
+  line-height: 2.4rem;
+  font-family: $font-arial;
+  color: $color-text;
+}
+
+.card-title {
+  color: $color-card-title;
+  letter-spacing: $letter-spacing;
+  text-align: center;
+  line-height: 2.3rem;
+  font-family: $font-georgia;
+}
