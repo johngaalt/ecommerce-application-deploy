@@ -56,6 +56,11 @@
       .active-link {
         color: $color-fafafa;
         border-bottom: 3px solid $color-primary;
+        transition: 0.5s;
+      }
+
+      .active-link:hover {
+        color: $color-card-title;
       }
     }
   }
