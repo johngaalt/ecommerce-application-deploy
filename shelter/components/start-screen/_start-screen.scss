@@ -1,2 +1,9 @@
-div {
+.start-screen {
+  @include background-options(
+    url(/../johngaalt-JSFE2023Q1/shelter/assets/images/start-screen-background.png)
+  );
+
+  .container {
+    @include inner-section(6.1rem 4rem 0 4rem);
+  }
 }

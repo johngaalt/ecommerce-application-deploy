@@ -1,9 +1,7 @@
 .header {
-  @include background-options(#5c4033); // потом сделать transparent!
   @include inner-section(0);
   display: flex;
   justify-content: space-between;
-  max-width: 1200px; // потом надо убрать!
 
   .title-wrapper {
     display: flex;
@@ -21,6 +19,7 @@
       line-height: 1.5rem;
       letter-spacing: 0.1em;
       color: #fff;
+      margin-left: 0.4rem;
     }
   }
 
