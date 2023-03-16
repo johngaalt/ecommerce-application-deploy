@@ -1,4 +1,56 @@
 .header {
+  @include background-options(#5c4033); // потом сделать transparent!
+  @include inner-section(0);
   display: flex;
+  justify-content: space-between;
   max-width: 1200px; // потом надо убрать!
+
+  .title-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .title-logo {
+      line-height: 3.5rem;
+      color: $color-primary;
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .text-logo {
+      font-size: 1.3rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+    }
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+
+    .list {
+      display: flex;
+      flex-direction: row;
+
+      &__item {
+        font-family: $font-arial;
+        margin-right: 3.5rem;
+        font-size: 1.5rem;
+        line-height: 2.4rem;
+      }
+
+      &__item:last-child {
+        margin-right: 0;
+      }
+
+      .fancy-hover {
+        color: $color-fafafa;
+        transition: 0.5s;
+      }
+
+      .fancy-hover:hover {
+        color: #292929;
+      }
+    }
+  }
 }
