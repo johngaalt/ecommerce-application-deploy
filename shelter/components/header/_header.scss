@@ -2,6 +2,7 @@
   @include inner-section(0);
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5.9rem;
 
   .title-wrapper {
     display: flex;
@@ -49,7 +50,7 @@
       }
 
       .fancy-hover:hover {
-        color: #292929;
+        color: $color-fafafa;
       }
 
       .active-link {
