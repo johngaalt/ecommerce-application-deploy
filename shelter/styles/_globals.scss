@@ -72,6 +72,15 @@ img {
     margin-bottom: 5.7rem;
     line-height: 4.4rem;
   }
+
+  &-card {
+    color: $color-card-title;
+    letter-spacing: $letter-spacing;
+    text-align: center;
+    line-height: 2.3rem;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
 }
 
 .text {
@@ -94,12 +103,4 @@ img {
   &-about:last-child {
     margin-bottom: 0.8rem;
   }
-}
-
-.card-title {
-  color: $color-card-title;
-  letter-spacing: $letter-spacing;
-  text-align: center;
-  line-height: 2.3rem;
-  font-family: $font-georgia;
 }
