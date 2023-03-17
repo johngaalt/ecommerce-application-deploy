@@ -1,0 +1,7 @@
+.help {
+  background-color: #fff;
+
+  .container {
+    @include inner-section(8rem 4rem 10rem 4rem);
+  }
+}

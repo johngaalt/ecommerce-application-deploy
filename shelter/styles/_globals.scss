@@ -81,6 +81,11 @@ img {
     font-size: 2rem;
     margin-bottom: 3rem;
   }
+
+  &-help {
+    color: $color-card-title;
+    text-align: center;
+  }
 }
 
 .text {
