@@ -7,10 +7,15 @@
     align-items: center;
     flex-direction: column;
 
+    .title-wrapper {
+      width: 34%;
+    }
+
     .slider {
       width: 100%;
       height: 43.5rem; //temporary style
       position: relative;
+      margin-bottom: 6rem;
 
       &__arrow {
         position: absolute;
@@ -22,7 +27,7 @@
         align-items: center;
         justify-content: center;
         font-size: 1.4rem;
-
+        transition: 0.5s;
         &-left {
           left: 0px;
           top: 192px;
@@ -32,6 +37,11 @@
           right: 0px;
           top: 192px;
         }
+      }
+
+      &__arrow:hover {
+        background-color: $color-hover-bg;
+        border: none;
       }
 
       &__card {
