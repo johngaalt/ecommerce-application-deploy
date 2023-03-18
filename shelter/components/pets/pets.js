@@ -1,11 +1,13 @@
 import { createPetCard } from "../pet-card/pet-card";
 import pets from "./pets.html";
 import jennifer from "../../assets/images/pets-jennifer.png";
+import katrine from "../../assets/images/pets-katrine.png";
+import woody from "../../assets/images/pets-woody.png";
 
 const petsArr = [
+  { imgSrc: katrine, name: "Katrine" },
   { imgSrc: jennifer, name: "Jennifer" },
-  { imgSrc: jennifer, name: "ohbuib" },
-  { imgSrc: jennifer, name: "iyugiug" },
+  { imgSrc: woody, name: "Woody" },
 ];
 
 const petsElements = petsArr

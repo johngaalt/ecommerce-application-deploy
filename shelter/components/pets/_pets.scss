@@ -13,7 +13,6 @@
 
     .slider {
       width: 100%;
-      height: 43.5rem; //temporary style
       position: relative;
       margin-bottom: 6rem;
 
@@ -46,6 +45,9 @@
 
       &__cards {
         color: black;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0 2rem;
       }
     }
   }
