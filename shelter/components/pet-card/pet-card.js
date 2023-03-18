@@ -1,6 +1,5 @@
-import { createElementFromString } from "../utils/create-element-from-string";
 import card from "./pet-card.html";
 
-const cardElement = createElementFromString(card);
-const elements = cardElement.querySelectorAll("[data-element]");
-console.log(elements);
+export function createPetCard(name, image) {
+  return card.replace("#PET_NAME#", name).replace("#PET_IMAGE#", image);
+}
