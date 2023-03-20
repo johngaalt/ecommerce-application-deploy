@@ -1,0 +1,10 @@
+.donation {
+  background-color: #f6f6f6;
+
+  .container {
+    @include inner-section(8rem 4rem 10rem 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
