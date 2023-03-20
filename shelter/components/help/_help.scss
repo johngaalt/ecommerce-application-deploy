@@ -3,5 +3,31 @@
 
   .container {
     @include inner-section(8rem 4rem 10rem 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title-help {
+      width: 34%;
+    }
+
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-auto-rows: 1fr 1fr;
+      row-gap: 5.5rem;
+      column-gap: 12rem;
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .image-wrapper {
+          margin-bottom: 3rem;
+        }
+      }
+    }
   }
 }
