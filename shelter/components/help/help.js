@@ -16,7 +16,7 @@ const iconArr = [
   { imgSrc: toys, name: "Toys" },
   { imgSrc: bowlAndCups, name: "Bowls and cups" },
   { imgSrc: shampoos, name: "Shampoos" },
-  { imgSrc: vitamines, name: "Vitamines" },
+  { imgSrc: vitamines, name: "Vitamins" },
   { imgSrc: medicines, name: "Medicines" },
   { imgSrc: collarsAndLeashes, name: "Collars / leashes" },
   { imgSrc: sleepingArea, name: "Sleeping areas" },
