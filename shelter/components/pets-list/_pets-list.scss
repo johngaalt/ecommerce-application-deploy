@@ -1,0 +1,27 @@
+.pets {
+  background-color: $color-dark-white;
+
+  .container {
+    @include inner-section(8rem 4rem 10rem);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .title-wrapper {
+      width: 34%;
+    }
+
+    .slider {
+      width: 100%;
+      position: relative;
+      margin-bottom: 4.5rem;
+
+      &__cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr 1fr;
+        gap: 3rem 4rem;
+      }
+    }
+  }
+}
