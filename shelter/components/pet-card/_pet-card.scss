@@ -8,6 +8,7 @@
   padding-bottom: 3rem;
   border-radius: 0.9rem;
   overflow: hidden;
+  transition: transform 0.5s;
 
   .image-wrapper {
     margin-bottom: 3rem;
@@ -19,4 +20,8 @@
       height: 27rem;
     }
   }
+}
+
+.pet-card:hover {
+  transform: scale(1.1);
 }

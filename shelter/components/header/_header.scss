@@ -55,11 +55,12 @@
         color: $color-fafafa;
         border-bottom: 3px solid $color-primary;
         transition: 0.5s;
+        pointer-events: none;
       }
 
-      .active-link:hover {
-        color: $color-card-title;
-      }
+      // .active-link:hover {
+      //   color: $color-card-title;
+      // }
     }
   }
 }
