@@ -1,8 +1,6 @@
 .header {
-  @include inner-section(0);
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5.9rem;
 
   .title-wrapper {
     display: flex;

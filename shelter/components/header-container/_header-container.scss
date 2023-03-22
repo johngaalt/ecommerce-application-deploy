@@ -1,0 +1,16 @@
+.header-container {
+  background-color: #fff;
+  @include inner-section(3rem 4rem);
+
+  .header {
+    .title-wrapper {
+      .title-logo {
+        color: $color-card-title;
+      }
+
+      .text-logo {
+        color: $color-button;
+      }
+    }
+  }
+}
