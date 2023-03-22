@@ -7,8 +7,10 @@ import donation from "../../../components/donation/donation.html";
 import help from "../../../components/help/help.js";
 import startScreen from "../../../components/start-screen/start-screen.js";
 import pets from "../../../components/pets/pets.js";
+import { toggleActiveLinkNavigation } from "../../../components/utils/toggle-active-link-nav";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.innerHTML =
     startScreen + about + pets + help + donation + footer;
+  toggleActiveLinkNavigation();
 });

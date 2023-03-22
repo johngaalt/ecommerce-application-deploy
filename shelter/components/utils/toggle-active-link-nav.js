@@ -1,16 +1,12 @@
-const currentPath = window.location.pathname;
-
-const mainLink = document.querySelector(".main-page");
-const petsLink = document.querySelector(".pets-page");
-
 export function toggleActiveLinkNavigation() {
-  if (currentPath === "./index.html") {
-    mainLink.classList.add("active-link");
-    mainLink.classList.remove("fancy-hover");
-  } else if (currentPath === "./pets.html") {
+  const isPetsPage = window.location.pathname.includes("pets");
+  const petsLink = document.querySelector(".pets-page");
+  const mainLink = document.querySelector(".main-page");
+  if (isPetsPage) {
     petsLink.classList.add("active-link");
     petsLink.classList.remove("fancy-hover");
+  } else {
+    mainLink.classList.add("active-link");
+    mainLink.classList.remove("fancy-hover");
   }
 }
-
-toggleActiveLinkNavigation();

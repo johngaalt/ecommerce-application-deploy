@@ -16,13 +16,36 @@
     .slider {
       width: 100%;
       position: relative;
-      margin-bottom: 4.5rem;
+      margin-bottom: 5.8rem;
 
       &__cards {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: 1fr 1fr;
         gap: 3rem 4rem;
+      }
+    }
+
+    .pagination-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .button-pagination {
+        margin-right: 2rem;
+      }
+
+      .button-pagination:last-child {
+        margin-right: 0;
+      }
+
+      .button-pagination:nth-child(3) {
+        background-color: $color-primary;
+      }
+
+      .button-pagination:disabled,
+      button[disabled] {
+        border: 2px solid $color-cdcdcd;
+        color: $color-cdcdcd;
       }
     }
   }
