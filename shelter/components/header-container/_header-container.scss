@@ -13,4 +13,38 @@
       }
     }
   }
+
+  .nav {
+    .list {
+      &__item {
+        font-family: $font-arial;
+        margin-right: 3.5rem;
+        font-size: 1.5rem;
+        line-height: 2.4rem;
+      }
+
+      &__item:last-child {
+        margin-right: 0;
+      }
+
+      .fancy-hover {
+        color: $color-card-title;
+        transition: 0.5s;
+      }
+
+      .fancy-hover:hover {
+        color: $color-button;
+      }
+
+      .active-link {
+        color: $color-button;
+        border-bottom: 3px solid $color-primary;
+        transition: 0.5s;
+      }
+
+      .active-link:hover {
+        color: $color-card-title;
+      }
+    }
+  }
 }
