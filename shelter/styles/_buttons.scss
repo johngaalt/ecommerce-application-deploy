@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   height: 5.2rem;
+  transition: 0.5s;
 
   &-primary {
     background-color: $color-primary;
@@ -17,9 +18,17 @@
     color: $color-button;
   }
 
+  &-primary:hover {
+    background-color: $color-hover-bg;
+  }
+
   &-secondary {
     background-color: transparent;
     color: $color-button;
+  }
+
+  &-secondary:hover {
+    background-color: $color-hover-bg;
   }
 
   &-pagination {
