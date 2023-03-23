@@ -69,6 +69,11 @@ footer {
 
     &__content a {
       display: flex;
+      align-items: center;
+    }
+
+    &__content:first-child {
+      margin-bottom: 3.3rem;
     }
   }
 

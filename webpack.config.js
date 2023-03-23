@@ -26,11 +26,13 @@ const config = {
       filename: "index.html",
       chunks: ["main"],
       title: "Shelter",
+      favicon: "./shelter/assets/icons/favicon.ico",
     }),
     new HtmlWebpackPlugin({
       filename: "pets.html",
       chunks: ["pets"],
       title: "Pets",
+      favicon: "./shelter/assets/icons/favicon.ico",
     }),
   ],
   devtool: "inline-source-map",
@@ -53,7 +55,7 @@ const config = {
         use: [stylesHandler, "css-loader", "sass-loader"],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|ico)$/i,
         type: "asset",
       },
 
