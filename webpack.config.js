@@ -25,13 +25,13 @@ const config = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       chunks: ["main"],
-      title: "Shelter",
+      template: "./shelter/template/index.html",
       favicon: "./shelter/assets/icons/favicon.ico",
     }),
     new HtmlWebpackPlugin({
       filename: "pets.html",
       chunks: ["pets"],
-      title: "Pets",
+      template: "./shelter/template/index.html",
       favicon: "./shelter/assets/icons/favicon.ico",
     }),
   ],
