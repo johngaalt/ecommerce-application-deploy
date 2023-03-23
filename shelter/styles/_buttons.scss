@@ -41,5 +41,10 @@
     justify-content: center;
     height: 5.2rem;
     width: 5.2rem;
+    transition: 0.5s;
+  }
+
+  &-pagination:not([disabled]):hover {
+    background-color: $color-hover-bg;
   }
 }
