@@ -24,23 +24,13 @@ footer {
       justify-content: flex-start;
       align-items: center;
 
-      &-letter {
-        display: inline-block;
-        width: 4rem;
-        height: 3.2rem;
-        background-image: url(/shelter/assets/icons/icon-email.svg);
-        margin-right: 2rem;
-      }
-
-      &-phone {
-        display: inline-block;
-        width: 4rem;
-        height: 3.2rem;
-        background-image: url(/shelter/assets/icons/icon-phone.svg);
+      &-image {
         margin-right: 2rem;
       }
 
       &-link {
+        display: flex;
+        align-items: center;
         font-size: 2rem;
         color: $color-primary;
         line-height: $line-height;
@@ -65,13 +55,7 @@ footer {
       margin-bottom: 3rem;
 
       &-pin {
-        display: inline-block;
-        width: 2.2rem;
-        height: 3.2rem;
-        background-image: url(/shelter/assets/icons/pin.svg);
         margin-right: 2rem;
-        background-size: 2.2rem 3.2rem;
-        background-repeat: no-repeat;
       }
 
       &-location {
@@ -82,9 +66,13 @@ footer {
         font-family: $font-georgia;
       }
     }
+
+    &__content a {
+      display: flex;
+    }
   }
 
-  .logo-wrapper {
+  .image-wrapper {
     .logo {
       display: inline-block;
       background-image: url(/shelter/assets/images/footer-puppy.png);
