@@ -42,6 +42,12 @@
         margin-right: 0;
       }
 
+      &__item:first-child {
+        @include for-tablet {
+          margin-right: 3.65rem;
+        }
+      }
+
       .fancy-hover {
         color: $color-cdcdcd;
         transition: 0.5s;
