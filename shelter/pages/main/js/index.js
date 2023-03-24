@@ -1,4 +1,4 @@
-alert("ATTENTION! html font-size: 10px");
+// alert("ATTENTION! html font-size: 10px");
 import "../styles/style.scss";
 // html
 import footer from "../../../components/footer/footer.html";
