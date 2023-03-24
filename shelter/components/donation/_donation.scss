@@ -8,13 +8,18 @@
     align-items: center;
     column-gap: 3rem;
 
+    @include for-tablet {
+      @include inner-section(8rem 13.2rem 10rem 13.2rem);
+      flex-direction: column-reverse;
+      column-gap: 0;
+      row-gap: 6rem;
+    }
+
+    .content-wrapper {
+      padding: 0 12.4%;
+    }
+
     .image-wrapper {
-      &__picture {
-        background-image: url(/shelter/assets/images/donation-dog.png);
-        display: inline-block;
-        width: 50.5rem;
-        height: 26.1rem;
-      }
     }
 
     .credit-wrapper {

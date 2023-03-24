@@ -5,75 +5,110 @@ footer {
 }
 
 .inner {
-  @include inner-section(40px 40px 0);
+  @include inner-section(4rem 4rem 0);
   display: flex;
   justify-content: space-between;
   gap: 13.333333%;
 
-  .contacts {
-    flex: 1 0 23.25%;
-    margin-top: 1.6rem;
-
-    .title-contacts {
-      margin-bottom: 4rem;
-    }
-
-    &__content {
-      margin-bottom: 4rem;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-
-      &-image {
-        margin-right: 2rem;
-      }
-
-      &-link {
-        display: flex;
-        align-items: center;
-        font-size: 2rem;
-        color: $color-primary;
-        line-height: $line-height;
-        letter-spacing: $letter-spacing;
-        font-family: $font-georgia;
-      }
-    }
+  @include for-tablet {
+    @include inner-section(3rem 3rem 0);
+    flex-direction: column;
+    align-items: center;
   }
 
-  .address {
-    flex: 1 0 25.16%;
-    margin-top: 1.6rem;
-
-    .title-address {
-      margin-bottom: 3.3rem;
+  .content-wrapper {
+    @include for-tablet {
+      display: flex;
+      margin-bottom: 2.5rem;
     }
 
-    &__content {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      margin-bottom: 3rem;
+    .contacts {
+      flex: 1 0 23.25%;
+      margin-top: 1.6rem;
 
-      &-pin {
-        margin-right: 2rem;
+      @include for-tablet {
+        margin: 0;
+        padding-left: 4.5%;
       }
 
-      &-location {
-        font-size: 2rem;
-        color: $color-primary;
-        line-height: $line-height;
-        letter-spacing: $letter-spacing;
-        font-family: $font-georgia;
+      .title-contacts {
+        margin-bottom: 4rem;
+
+        @include for-tablet {
+          margin-bottom: 3.7rem;
+        }
+      }
+
+      &__content {
+        margin-bottom: 4rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &-image {
+          margin-right: 2rem;
+        }
+
+        &-link {
+          display: flex;
+          align-items: center;
+          font-size: 2rem;
+          color: $color-primary;
+          line-height: $line-height;
+          letter-spacing: $letter-spacing;
+          font-family: $font-georgia;
+        }
       }
     }
 
-    &__content a {
-      display: flex;
-      align-items: center;
-    }
+    .address {
+      flex: 1 0 25.16%;
+      margin-top: 1.6rem;
 
-    &__content:first-child {
-      margin-bottom: 3.3rem;
+      @include for-tablet {
+        margin: 0;
+        padding-left: 3.7%;
+      }
+
+      .title-address {
+        margin-bottom: 3.3rem;
+
+        @include for-tablet {
+          margin-bottom: 2.9rem;
+        }
+      }
+
+      &__content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 3rem;
+
+        @include for-tablet {
+          padding-top: 0.3%;
+        }
+
+        &-pin {
+          margin-right: 2rem;
+        }
+
+        &-location {
+          font-size: 2rem;
+          color: $color-primary;
+          line-height: $line-height;
+          letter-spacing: $letter-spacing;
+          font-family: $font-georgia;
+        }
+      }
+
+      &__content a {
+        display: flex;
+        align-items: center;
+      }
+
+      &__content:first-child {
+        margin-bottom: 3.3rem;
+      }
     }
   }
 
