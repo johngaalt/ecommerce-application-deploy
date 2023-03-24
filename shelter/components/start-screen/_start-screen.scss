@@ -6,12 +6,20 @@
   .container {
     @include inner-section(6.1rem 4rem 0 4rem);
 
+    @include for-tablet {
+      @include inner-section(3rem 3rem 0 3rem);
+    }
+
     display: flex;
     flex-direction: column;
 
     .header {
       @include inner-section(0);
       margin-bottom: 5.9rem;
+
+      @include for-tablet {
+        margin-bottom: 6rem;
+      }
     }
 
     .content-wrapper {
@@ -20,6 +28,10 @@
       flex-direction: row;
       align-items: center;
 
+      @include for-tablet {
+        flex-direction: column;
+      }
+
       .info {
         display: flex;
         justify-content: space-between;
@@ -27,14 +39,17 @@
         flex-direction: column;
         margin-right: 4.2rem;
         margin-bottom: 8rem;
+
+        @include for-tablet {
+          margin: 0;
+          align-items: center;
+        }
       }
 
       .image-container {
-        .image-pup {
-          display: inline-block;
-          width: 69.8rem;
-          height: 72.8rem;
-          background: url(/shelter/assets/images/start-screen-puppy.png);
+        @include for-tablet {
+          margin-top: 10rem;
+          padding-left: 20%;
         }
       }
     }

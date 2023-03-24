@@ -7,8 +7,16 @@
     flex-direction: column;
     align-items: center;
 
+    @include for-tablet {
+      @include inner-section(8rem 6.9rem 10rem 6.9rem);
+    }
+
     .title-help {
       width: 34%;
+
+      @include for-tablet {
+        width: 52%;
+      }
     }
 
     .content-wrapper {
@@ -18,6 +26,13 @@
       row-gap: 5.5rem;
       column-gap: 11rem;
       padding: 0 8.6rem;
+
+      @include for-tablet {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 6.2rem;
+        padding: 0;
+      }
     }
   }
 }

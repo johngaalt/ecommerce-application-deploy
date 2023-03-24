@@ -7,8 +7,16 @@
     align-items: center;
     flex-direction: column;
 
+    @include for-tablet {
+      @include inner-section(8rem 3rem 10rem);
+    }
+
     .title-wrapper {
       width: 34%;
+
+      @include for-tablet {
+        width: 56%;
+      }
     }
 
     .slider {
@@ -48,6 +56,14 @@
         display: flex;
         justify-content: space-evenly;
         padding: 0 2rem;
+      }
+
+      &__cards {
+        @include for-tablet {
+          .pet-card:last-child {
+            display: none;
+          }
+        }
       }
     }
   }
