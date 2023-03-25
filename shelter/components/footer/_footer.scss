@@ -8,7 +8,8 @@ footer {
   @include inner-section(4rem 4rem 0);
   display: flex;
   justify-content: space-between;
-  gap: 13.333333%;
+  flex-direction: row;
+  column-gap: 13.333333%;
 
   @include for-tablet {
     @include inner-section(3rem 3rem 0);
@@ -17,9 +18,12 @@ footer {
   }
 
   .content-wrapper {
+    display: flex;
+    column-gap: 20.33333%;
     @include for-tablet {
       display: flex;
       margin-bottom: 2.5rem;
+      column-gap: 0;
     }
 
     .contacts {

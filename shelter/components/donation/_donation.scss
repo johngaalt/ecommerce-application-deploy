@@ -16,7 +16,9 @@
     }
 
     .content-wrapper {
-      padding: 0 12.4%;
+      @include for-tablet {
+        padding: 0 12.4%;
+      }
     }
 
     .image-wrapper {
