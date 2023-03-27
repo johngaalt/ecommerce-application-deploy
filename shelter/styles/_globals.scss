@@ -147,6 +147,10 @@ img {
   &-donation {
     color: $color-card-title;
     margin-bottom: 2rem;
+
+    @include for-mobile {
+      text-align: center;
+    }
   }
 }
 
@@ -191,6 +195,12 @@ img {
     font-family: $font-georgia;
     margin-bottom: 2rem;
     font-size: 1.5rem;
+
+    @include for-mobile {
+      text-align: center;
+      line-height: 2.4rem;
+      letter-spacing: 0;
+    }
   }
 
   &-credit {
@@ -198,6 +208,10 @@ img {
     line-height: 2.3rem;
     letter-spacing: $letter-spacing;
     font-family: $font-georgia;
+
+    @include for-mobile {
+      font-size: 1.5rem;
+    }
   }
 
   &-info {
@@ -206,5 +220,10 @@ img {
     color: #b2b2b2;
     line-height: 1.8rem;
     font-family: $font-arial;
+
+    @include for-mobile {
+      text-align: justify;
+      margin-bottom: 0;
+    }
   }
 }

@@ -15,9 +15,20 @@
       row-gap: 6rem;
     }
 
+    @include for-mobile {
+      @include inner-section(4.2rem 2rem 4.2rem 2rem);
+      flex-direction: column-reverse;
+      column-gap: 0;
+      row-gap: 4rem;
+    }
+
     .content-wrapper {
       @include for-tablet {
         padding: 0 12.4%;
+      }
+
+      @include for-mobile {
+        padding: 0;
       }
     }
 
@@ -33,6 +44,10 @@
       margin-bottom: 2rem;
       padding: 1rem 1.4rem;
       column-gap: 1.5rem;
+
+      @include for-mobile {
+        width: 100%;
+      }
     }
   }
 }
