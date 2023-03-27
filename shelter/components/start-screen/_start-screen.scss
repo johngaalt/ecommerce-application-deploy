@@ -60,6 +60,11 @@
           margin-top: 10rem;
           padding-left: 20%;
         }
+
+        @include for-mobile {
+          margin-top: 10.5rem;
+          padding-left: 13%;
+        }
       }
     }
   }
