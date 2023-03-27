@@ -103,6 +103,13 @@ img {
     color: $color-card-title;
     margin-bottom: 5.7rem;
     line-height: 4.4rem;
+
+    @include for-mobile {
+      font-size: 2.5rem;
+      line-height: 3.2rem;
+      letter-spacing: $letter-spacing;
+      margin-bottom: 4rem;
+    }
   }
 
   &-card {
@@ -119,6 +126,11 @@ img {
       text-align: center;
       line-height: 2.3rem;
       font-size: 2rem;
+
+      @include for-mobile {
+        line-height: 1.7rem;
+        font-size: 1.5rem;
+      }
     }
   }
 
@@ -126,6 +138,10 @@ img {
     color: $color-card-title;
     text-align: center;
     margin-bottom: 6rem;
+
+    @include for-mobile {
+      margin-bottom: 4.2rem;
+    }
   }
 
   &-donation {
