@@ -13,12 +13,20 @@
       flex-direction: column-reverse;
     }
 
+    @include for-mobile {
+      @include inner-section(4.2rem 2.5rem 4.2rem);
+    }
+
     .image-wrapper {
       margin-right: 12rem;
 
       @include for-tablet {
         margin: 0;
         margin-top: 7.2rem;
+      }
+
+      @include for-mobile {
+        margin-top: 3.2rem;
       }
     }
   }

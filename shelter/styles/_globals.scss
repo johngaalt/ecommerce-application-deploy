@@ -86,6 +86,15 @@ img {
     @include for-tablet {
       margin-bottom: 2.3rem;
     }
+
+    @include for-mobile {
+      font-size: 2.5rem;
+      line-height: 3.2rem;
+      letter-spacing: $letter-spacing;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
   }
 
   &-pets {
@@ -149,6 +158,10 @@ img {
     font-size: 1.5rem;
     color: $color-text;
     margin-bottom: 2.4rem;
+
+    @include for-mobile {
+      text-align: justify;
+    }
   }
 
   &-about:last-child {
