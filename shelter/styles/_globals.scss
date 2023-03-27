@@ -53,6 +53,11 @@ img {
   color: #ffffff;
   font-family: Georgia, serif;
 
+  @include for-mobile {
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+  }
+
   &-start {
     margin-bottom: 4.2rem;
     font-size: 4.4rem;
@@ -61,6 +66,11 @@ img {
 
     @include for-tablet {
       width: 65%;
+    }
+
+    @include for-mobile {
+      font-size: 2.5rem;
+      line-height: 3.2rem;
     }
   }
 

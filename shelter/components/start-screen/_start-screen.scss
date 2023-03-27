@@ -10,6 +10,10 @@
       @include inner-section(3rem 3rem 0 3rem);
     }
 
+    @include for-mobile {
+      @include inner-section(3rem 1rem 0rem 1rem);
+    }
+
     display: flex;
     flex-direction: column;
 
@@ -18,6 +22,11 @@
       margin-bottom: 5.9rem;
 
       @include for-tablet {
+        margin-bottom: 6rem;
+      }
+
+      @include for-mobile {
+        @include inner-section(0 4.3rem 0 0);
         margin-bottom: 6rem;
       }
     }
