@@ -1,6 +1,24 @@
 .pets {
   background-color: $color-dark-white;
 
+  &-grid {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 2rem;
+
+    @include for-tablet {
+      .pet-card:last-child {
+        display: none;
+      }
+    }
+
+    @include for-mobile {
+      .pet-card:not(:first-child) {
+        display: none;
+      }
+    }
+  }
+
   .container {
     @include inner-section(8rem 4rem 10rem);
     display: flex;
@@ -76,23 +94,6 @@
 
       &__cards {
         color: black;
-        display: flex;
-        justify-content: space-evenly;
-        padding: 0 2rem;
-      }
-
-      &__cards {
-        @include for-tablet {
-          .pet-card:last-child {
-            display: none;
-          }
-        }
-
-        @include for-mobile {
-          .pet-card:not(:first-child) {
-            display: none;
-          }
-        }
       }
     }
   }

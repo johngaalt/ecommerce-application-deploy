@@ -2,6 +2,10 @@
   background-color: #fff;
   @include inner-section(3rem 4rem);
 
+  @include for-tablet {
+    @include inner-section(3rem 3rem);
+  }
+
   .header {
     .title-wrapper {
       .title-logo {
@@ -41,10 +45,6 @@
         border-bottom: 3px solid $color-primary;
         transition: 0.5s;
       }
-
-      // .active-link:hover {
-      //   color: $color-card-title;
-      // }
     }
   }
 }

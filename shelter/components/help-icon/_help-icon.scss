@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: transform 0.5s;
+  cursor: pointer;
 
   &__image {
     display: flex;
@@ -22,6 +24,10 @@
       max-height: 5rem;
     }
   }
+}
+
+.item:hover {
+  transform: scale(1.1);
 }
 
 .item:nth-child(6) {

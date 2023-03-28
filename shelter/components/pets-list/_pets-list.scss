@@ -1,5 +1,21 @@
-.pets {
+.pets-list {
   background-color: $color-dark-white;
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 3rem 4rem;
+
+    @include for-tablet {
+      grid-template-columns: repeat(2, 1fr);
+
+      .pet-card:nth-child(7),
+      .pet-card:nth-child(8) {
+        display: none;
+      }
+    }
+  }
 
   .container {
     @include inner-section(8rem 4rem 10rem);
@@ -7,22 +23,36 @@
     align-items: center;
     flex-direction: column;
 
+    @include for-tablet {
+      @include inner-section(8rem 9.4rem 7.6rem 9.4rem);
+    }
+
     .title-wrapper {
       width: 34%;
+
+      @include for-tablet {
+        width: 100%;
+      }
     }
+
     .title-pets {
       margin-bottom: 6rem;
+
+      @include for-tablet {
+        margin-bottom: 3rem;
+      }
     }
+
     .slider {
       width: 100%;
       position: relative;
       margin-bottom: 5.8rem;
 
+      @include for-tablet {
+        margin-bottom: 3.6rem;
+      }
+
       &__cards {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 1fr 1fr;
-        gap: 3rem 4rem;
       }
     }
 
