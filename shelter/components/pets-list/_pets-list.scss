@@ -14,6 +14,10 @@
       .pet-card:nth-child(8) {
         display: none;
       }
+
+      .pet-card .image-wrapper {
+        margin-bottom: 2.9rem;
+      }
     }
   }
 
@@ -49,10 +53,7 @@
       margin-bottom: 5.8rem;
 
       @include for-tablet {
-        margin-bottom: 3.6rem;
-      }
-
-      &__cards {
+        margin-bottom: 3.8rem;
       }
     }
 
