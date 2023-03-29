@@ -4,14 +4,14 @@
   );
 
   .container {
-    @include inner-section(6.1rem 4rem 0 4rem);
+    @include inner-section(3rem 4rem 0 4rem);
 
     display: flex;
     flex-direction: column;
 
     .header {
       @include inner-section(0);
-      margin-bottom: 5.9rem;
+      margin-bottom: 9rem;
     }
 
     .content-wrapper {
