@@ -47,7 +47,7 @@
       @include inner-section(8rem 9.4rem 7.6rem 9.4rem);
     }
 
-    @include for-tablet {
+    @include for-mobile {
       @include inner-section(4.2rem 1rem 0rem 1rem);
     }
 
