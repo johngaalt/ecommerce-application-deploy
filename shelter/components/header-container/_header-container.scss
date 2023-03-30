@@ -6,7 +6,14 @@
     @include inner-section(3rem 3rem);
   }
 
+  @include for-mobile {
+    @include inner-section(3rem 2rem);
+  }
+
   .header {
+    @include for-mobile {
+      padding: 0;
+    }
     .title-wrapper {
       .title-logo {
         color: $color-card-title;
