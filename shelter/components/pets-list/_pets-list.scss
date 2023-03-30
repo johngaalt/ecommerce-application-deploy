@@ -44,7 +44,7 @@
     flex-direction: column;
 
     @include for-tablet {
-      @include inner-section(8rem 9.4rem 7.6rem 9.4rem);
+      @include inner-section(10.5% 12% 8% 12%);
     }
 
     @include for-mobile {
