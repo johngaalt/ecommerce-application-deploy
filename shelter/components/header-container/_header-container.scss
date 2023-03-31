@@ -68,9 +68,17 @@
         }
 
         .active-link {
-          color: $color-primary;
+          color: $color-button;
           border-bottom: 3px solid $color-primary;
           transition: 0.5s;
+
+          @include for-burger {
+            color: $color-primary;
+          }
+
+          @include for-mobile {
+            color: $color-primary;
+          }
         }
       }
     }

@@ -9,7 +9,7 @@
     column-gap: 3rem;
 
     @include for-tablet {
-      @include inner-section(8rem 13.2rem 10rem 13.2rem);
+      @include inner-section(10.3% 17.2% 12.7% 17.2%);
       flex-direction: column-reverse;
       column-gap: 0;
       row-gap: 6rem;

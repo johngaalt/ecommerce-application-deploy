@@ -9,7 +9,7 @@
     align-items: center;
 
     @include for-tablet {
-      @include inner-section(8rem 17rem 10rem 17rem);
+      @include inner-section(10.3% 22% 12.7% 22%);
       flex-direction: column-reverse;
     }
 

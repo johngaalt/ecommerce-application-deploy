@@ -7,7 +7,7 @@
     @include inner-section(3rem 4rem 0 4rem);
 
     @include for-tablet {
-      @include inner-section(3rem 3rem 0 3rem);
+      @include inner-section(4.1% 4% 0 4%);
     }
 
     @include for-mobile {
