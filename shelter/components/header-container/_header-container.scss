@@ -54,4 +54,10 @@
       }
     }
   }
+
+  .burger span {
+    @include for-mobile {
+      background: #000;
+    }
+  }
 }
