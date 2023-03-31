@@ -26,6 +26,7 @@ footer {
   .content-wrapper {
     display: flex;
     column-gap: 20.33333%;
+    flex: 1 0 55%;
 
     @include for-tablet {
       display: flex;
@@ -190,6 +191,7 @@ footer {
   }
 
   .image-wrapper {
+    flex: 1 0 18%;
     .logo {
       display: inline-block;
       background-image: url(/shelter/assets/images/footer-puppy.png);

@@ -2,7 +2,7 @@
   background-color: #ffffff;
 
   .container {
-    @include inner-section(6.3% 17% 7.3% 17%);
+    @include inner-section(6.5% 17% 7.6% 17%);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -19,6 +19,7 @@
 
     .image-wrapper {
       margin-right: 14%;
+      flex: 1 0 35.4%;
 
       @include for-tablet {
         margin: 0;

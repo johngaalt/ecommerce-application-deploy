@@ -42,6 +42,7 @@
       }
 
       .info {
+        flex: 1 0 19.5%;
         display: flex;
         justify-content: space-between;
         align-items: start;
@@ -56,6 +57,7 @@
       }
 
       .image-container {
+        flex: 1 0 39%;
         @include for-tablet {
           margin-top: 10rem;
           padding-left: 20%;
