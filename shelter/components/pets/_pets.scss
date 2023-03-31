@@ -20,7 +20,7 @@
   }
 
   .container {
-    @include inner-section(8rem 4rem 10rem);
+    @include inner-section(6.5% 3.2% 8% 3%);
     display: flex;
     align-items: center;
     flex-direction: column;

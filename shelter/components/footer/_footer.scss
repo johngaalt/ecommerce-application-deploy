@@ -5,7 +5,7 @@ footer {
 }
 
 .inner {
-  @include inner-section(4rem 4rem 0);
+  @include inner-section(3.2% 3% 0 3%);
   display: flex;
   justify-content: space-between;
   flex-direction: row;

@@ -4,7 +4,7 @@
   );
 
   .container {
-    @include inner-section(3rem 4rem 0 4rem);
+    @include inner-section(2.4% 3.3% 0 3%);
 
     @include for-tablet {
       @include inner-section(4.1% 4% 0 4%);
