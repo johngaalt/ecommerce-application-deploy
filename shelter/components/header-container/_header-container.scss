@@ -14,6 +14,7 @@
     @include for-mobile {
       padding: 0;
     }
+
     .title-wrapper {
       .title-logo {
         color: $color-card-title;
@@ -23,41 +24,136 @@
         color: $color-button;
       }
     }
-  }
 
-  .nav {
-    .list {
-      &__item {
-        font-family: $font-arial;
-        margin-right: 3.5rem;
-        font-size: 1.5rem;
-        line-height: 2.4rem;
+    .nav {
+      @include for-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #292929;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.9s ease-in-out;
       }
 
-      &__item:last-child {
-        margin-right: 0;
-      }
+      .list {
+        @include for-mobile {
+          flex-direction: column;
+        }
 
-      .fancy-hover {
-        color: $color-card-title;
-        transition: 0.5s;
-      }
+        &__item {
+          font-family: $font-arial;
+          margin-right: 3.5rem;
+          font-size: 1.5rem;
+          line-height: 2.4rem;
+        }
 
-      .fancy-hover:hover {
-        color: $color-button;
-      }
+        &__item:last-child {
+          margin-right: 0;
+        }
 
-      .active-link {
-        color: $color-button;
-        border-bottom: 3px solid $color-primary;
-        transition: 0.5s;
+        .fancy-hover {
+          color: $color-card-title;
+          transition: 0.5s;
+
+          @include for-mobile {
+            color: $color-primary;
+          }
+        }
+
+        .fancy-hover:hover {
+          color: $color-button;
+        }
+
+        .active-link {
+          color: $color-primary;
+          border-bottom: 3px solid $color-primary;
+          transition: 0.5s;
+        }
       }
     }
-  }
 
-  .burger span {
-    @include for-mobile {
-      background: #000;
+    .nav_active {
+      opacity: 1;
+      pointer-events: all;
+      width: 100%;
+      padding-left: 10%;
+      z-index: 100;
+    }
+
+    .burger {
+      display: none;
+
+      @include for-mobile {
+        z-index: 100;
+        display: block;
+        position: relative;
+        width: 3rem;
+        height: 1.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .burger span {
+      @include for-mobile {
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: $color-button;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: transform 0.5s ease-in;
+        background-color: $color-primary;
+      }
+    }
+
+    .burger span:nth-child(1) {
+      @include for-mobile {
+        top: -0.4rem;
+      }
+    }
+
+    .burger span:nth-child(2) {
+      @include for-mobile {
+        top: 0.6rem;
+      }
+    }
+
+    .burger span:nth-child(3) {
+      @include for-mobile {
+        top: 1.6rem;
+      }
+    }
+
+    .burger_active span:nth-child(1) {
+      @include for-mobile {
+        top: 50%;
+        transform: rotate(90deg) translateY(45%);
+      }
+    }
+
+    .burger_active span:nth-child(2) {
+      @include for-mobile {
+        top: 50%;
+        transform: rotate(90deg) translateY(9px);
+      }
+    }
+
+    .burger_active span:nth-child(3) {
+      @include for-mobile {
+        top: 50%;
+        transform: rotate(-90deg) translateY(7px);
+      }
+    }
+
+    .burger span {
+      @include for-mobile {
+        background: #000;
+      }
     }
   }
 }
