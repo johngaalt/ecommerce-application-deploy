@@ -9,9 +9,12 @@ import help from "../../../components/help/help.js";
 import startScreen from "../../../components/start-screen/start-screen.js";
 import pets from "../../../components/pets/pets.js";
 import { toggleActiveLinkNavigation } from "../../../components/utils/toggle-active-link-nav";
+import { addEventListenerBurgerMenu } from "../../../components/burger-menu/burger-menu";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.innerHTML =
     startScreen + about + pets + help + donation + footer;
+
   toggleActiveLinkNavigation();
+  addEventListenerBurgerMenu();
 });

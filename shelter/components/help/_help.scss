@@ -2,13 +2,29 @@
   background-color: #fff;
 
   .container {
-    @include inner-section(8rem 4rem 10rem 4rem);
+    @include inner-section(6.2% 3% 7.8% 3%);
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    @include for-tablet {
+      @include inner-section(10.5% 6% 13% 6%);
+    }
+
+    @include for-mobile {
+      @include inner-section(14% 4% 12.9% 4%);
+    }
+
     .title-help {
       width: 34%;
+
+      @include for-tablet {
+        width: 52%;
+      }
+
+      @include for-mobile {
+        width: 80%;
+      }
     }
 
     .content-wrapper {
@@ -18,6 +34,18 @@
       row-gap: 5.5rem;
       column-gap: 11rem;
       padding: 0 8.6rem;
+
+      @include for-tablet {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 6.2rem;
+        padding: 0;
+      }
+
+      @include for-mobile {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 3.6rem;
+      }
     }
   }
 }

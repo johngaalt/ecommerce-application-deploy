@@ -10,14 +10,19 @@
   overflow: hidden;
   transition: transform 0.5s;
 
+  @include for-mobile {
+    padding-bottom: 2.9rem;
+  }
+
   .image-wrapper {
     margin-bottom: 3rem;
 
+    @include for-mobile {
+      margin-bottom: 2.8rem;
+    }
+
     &__picture {
       display: inline-block;
-
-      width: 27rem;
-      height: 27rem;
     }
   }
 }

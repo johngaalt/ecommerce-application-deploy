@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: transform 0.5s;
+  cursor: pointer;
 
   &__image {
     display: flex;
@@ -10,13 +12,36 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 3rem;
+
+    @include for-mobile {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__image img {
+    @include for-mobile {
+      max-width: 5rem;
+      max-height: 5rem;
+    }
   }
 }
 
+.item:hover {
+  transform: scale(1.1);
+}
+
 .item:nth-child(6) {
-  margin-left: 8.4rem;
+  margin-left: 8.3%;
+
+  @include for-tablet {
+    margin: 0;
+  }
 }
 
 .item:last-child {
-  margin-right: 8.4rem;
+  margin-right: 8.3%;
+
+  @include for-tablet {
+    margin: 0;
+  }
 }

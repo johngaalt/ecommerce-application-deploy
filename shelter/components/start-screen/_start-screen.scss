@@ -4,7 +4,15 @@
   );
 
   .container {
-    @include inner-section(3rem 4rem 0 4rem);
+    @include inner-section(2.4% 3.3% 0 3%);
+
+    @include for-tablet {
+      @include inner-section(4.1% 4% 0 4%);
+    }
+
+    @include for-mobile {
+      @include inner-section(10% 3% 0rem 3%);
+    }
 
     display: flex;
     flex-direction: column;
@@ -12,6 +20,15 @@
     .header {
       @include inner-section(0);
       margin-bottom: 9rem;
+
+      @include for-tablet {
+        margin-bottom: 6rem;
+      }
+
+      @include for-mobile {
+        @include inner-section(0 4.3rem 0 0);
+        margin-bottom: 6rem;
+      }
     }
 
     .content-wrapper {
@@ -20,21 +37,35 @@
       flex-direction: row;
       align-items: center;
 
+      @include for-tablet {
+        flex-direction: column;
+      }
+
       .info {
+        flex: 1 0 19.5%;
         display: flex;
         justify-content: space-between;
         align-items: start;
         flex-direction: column;
         margin-right: 4.2rem;
         margin-bottom: 8rem;
+
+        @include for-tablet {
+          margin: 0;
+          align-items: center;
+        }
       }
 
       .image-container {
-        .image-pup {
-          display: inline-block;
-          width: 69.8rem;
-          height: 72.8rem;
-          background: url(/shelter/assets/images/start-screen-puppy.png);
+        flex: 1 0 39%;
+        @include for-tablet {
+          margin-top: 10rem;
+          padding-left: 20%;
+        }
+
+        @include for-mobile {
+          margin-top: 10.5rem;
+          padding-left: 13%;
         }
       }
     }

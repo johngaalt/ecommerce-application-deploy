@@ -16,7 +16,20 @@
         </div>
       </div>
       <div class="image-container">
-        <span class="image-pup"></span>
+        <picture>
+          <source
+            srcset="/shelter/assets/images/start-screen-puppy-tablet.png"
+            media="(max-width: 1100px)"
+          />
+          <source
+            srcset="/shelter/assets/images/start-screen-puppy-mobile.png"
+            media="(min-width: 320px) and (max-width: 767px)"
+          />
+          <img
+            src="/shelter/assets/images/start-screen-puppy.png"
+            alt="puppy"
+          />
+        </picture>
       </div>
     </div>
   </div>

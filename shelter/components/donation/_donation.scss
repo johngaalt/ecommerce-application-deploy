@@ -2,19 +2,38 @@
   background-color: #f6f6f6;
 
   .container {
-    @include inner-section(8rem 18.3rem 10rem 18.3rem);
+    @include inner-section(6.3% 14.3% 7.76% 14.3%);
     display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 3rem;
 
-    .image-wrapper {
-      &__picture {
-        background-image: url(/shelter/assets/images/donation-dog.png);
-        display: inline-block;
-        width: 50.5rem;
-        height: 26.1rem;
+    @include for-tablet {
+      @include inner-section(10.3% 17.2% 12.7% 17.2%);
+      flex-direction: column-reverse;
+      column-gap: 0;
+      row-gap: 6rem;
+    }
+
+    @include for-mobile {
+      @include inner-section(13% 6% 12.6% 6%);
+      flex-direction: column-reverse;
+      column-gap: 0;
+      row-gap: 4rem;
+    }
+
+    .content-wrapper {
+      @include for-tablet {
+        padding: 0 12.4%;
       }
+
+      @include for-mobile {
+        padding: 0;
+      }
+    }
+
+    .image-wrapper {
+      flex: 1 0 55.3%;
     }
 
     .credit-wrapper {
@@ -26,6 +45,10 @@
       margin-bottom: 2rem;
       padding: 1rem 1.4rem;
       column-gap: 1.5rem;
+
+      @include for-mobile {
+        width: 100%;
+      }
     }
   }
 }

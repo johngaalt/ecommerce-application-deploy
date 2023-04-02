@@ -1,5 +1,41 @@
-.pets {
+.pets-list {
   background-color: $color-dark-white;
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 3rem 4rem;
+
+    @include for-tablet {
+      grid-template-columns: repeat(2, 1fr);
+
+      .pet-card:nth-child(7),
+      .pet-card:nth-child(8) {
+        display: none;
+      }
+
+      .pet-card .image-wrapper {
+        margin-bottom: 2.9rem;
+      }
+    }
+
+    @include for-mobile {
+      // grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .pet-card:nth-child(4),
+      .pet-card:nth-child(5),
+      .pet-card:nth-child(6),
+      .pet-card:nth-child(7),
+      .pet-card:nth-child(8) {
+        display: none;
+      }
+    }
+  }
 
   .container {
     @include inner-section(8rem 4rem 10rem);
@@ -7,22 +43,41 @@
     align-items: center;
     flex-direction: column;
 
+    @include for-tablet {
+      @include inner-section(10.5% 12% 9.7% 12%);
+    }
+
+    @include for-mobile {
+      @include inner-section(4.2rem 1rem 0rem 1rem);
+    }
+
     .title-wrapper {
       width: 34%;
+
+      @include for-tablet {
+        width: 100%;
+      }
     }
+
     .title-pets {
       margin-bottom: 6rem;
+
+      @include for-tablet {
+        margin-bottom: 3rem;
+      }
+
+      @include for-mobile {
+        margin-bottom: 4rem;
+      }
     }
+
     .slider {
       width: 100%;
       position: relative;
       margin-bottom: 5.8rem;
 
-      &__cards {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 1fr 1fr;
-        gap: 3rem 4rem;
+      @include for-tablet {
+        margin-bottom: 3.8rem;
       }
     }
 
@@ -30,8 +85,16 @@
       display: flex;
       justify-content: space-between;
 
+      @include for-mobile {
+        margin-bottom: 4.6rem;
+      }
+
       .button-pagination {
         margin-right: 2rem;
+
+        @include for-mobile {
+          margin-right: 1rem;
+        }
       }
 
       .button-pagination:last-child {

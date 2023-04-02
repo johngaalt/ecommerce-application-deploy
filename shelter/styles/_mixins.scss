@@ -1,9 +1,16 @@
-$breakpoint-mobile: 420px; // 320px
-$breakpoint-tablet: 820px; // 768px
+$breakpoint-mobile: 500px; // 320px
+$breakpoint-tablet: 860px; // 768px
 $breakpoint-desktop: 1280px; // 1280px
+$breakpoint-burger: 767px; // 768px
 
 @mixin for-mobile {
   @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin for-burger {
+  @media (max-width: $breakpoint-burger) {
     @content;
   }
 }
