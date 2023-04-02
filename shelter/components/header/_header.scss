@@ -2,6 +2,10 @@
   display: flex;
   justify-content: space-between;
 
+  @include for-burger {
+    align-items: center;
+  }
+
   @include for-mobile {
     align-items: center;
     padding-right: 4.3rem;
@@ -30,6 +34,18 @@
   .nav {
     display: flex;
     align-items: center;
+
+    @include for-burger {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $color-button;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.9s ease-in-out;
+    }
 
     @include for-mobile {
       position: fixed;
@@ -108,6 +124,15 @@
   .burger {
     display: none;
 
+    @include for-burger {
+      z-index: 100;
+      display: block;
+      position: relative;
+      width: 3rem;
+      height: 1.5rem;
+      cursor: pointer;
+    }
+
     @include for-mobile {
       z-index: 100;
       display: block;
@@ -119,6 +144,19 @@
   }
 
   .burger span {
+    @include for-burger {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: $color-button;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: transform 0.5s ease-in;
+      background-color: $color-primary;
+    }
+
     @include for-mobile {
       display: block;
       position: absolute;
@@ -134,24 +172,41 @@
   }
 
   .burger span:nth-child(1) {
+    @include for-burger {
+      top: -0.4rem;
+    }
+
     @include for-mobile {
       top: -0.4rem;
     }
   }
 
   .burger span:nth-child(2) {
+    @include for-burger {
+      top: 0.6rem;
+    }
+
     @include for-mobile {
       top: 0.6rem;
     }
   }
 
   .burger span:nth-child(3) {
+    @include for-burger {
+      top: 1.6rem;
+    }
+
     @include for-mobile {
       top: 1.6rem;
     }
   }
 
   .burger_active span:nth-child(1) {
+    @include for-burger {
+      top: 50%;
+      transform: rotate(90deg) translateY(45%);
+    }
+
     @include for-mobile {
       top: 50%;
       transform: rotate(90deg) translateY(45%);
@@ -159,6 +214,11 @@
   }
 
   .burger_active span:nth-child(2) {
+    @include for-burger {
+      top: 50%;
+      transform: rotate(90deg) translateY(9px);
+    }
+
     @include for-mobile {
       top: 50%;
       transform: rotate(90deg) translateY(9px);
@@ -166,6 +226,11 @@
   }
 
   .burger_active span:nth-child(3) {
+    @include for-burger {
+      top: 50%;
+      transform: rotate(-90deg) translateY(7px);
+    }
+
     @include for-mobile {
       top: 50%;
       transform: rotate(-90deg) translateY(7px);
