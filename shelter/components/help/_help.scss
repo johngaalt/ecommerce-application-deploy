@@ -12,7 +12,7 @@
     }
 
     @include for-mobile {
-      @include inner-section(4.2rem 1.5rem 4.2rem 1.5rem);
+      @include inner-section(14% 4% 12.9% 4%);
     }
 
     .title-help {

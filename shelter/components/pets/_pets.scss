@@ -30,7 +30,7 @@
     }
 
     @include for-mobile {
-      @include inner-section(4.2rem 1rem 4.2rem);
+      @include inner-section(14% 1.9% 13%);
     }
 
     .title-wrapper {

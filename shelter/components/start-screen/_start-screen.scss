@@ -11,7 +11,7 @@
     }
 
     @include for-mobile {
-      @include inner-section(3rem 1rem 0rem 1rem);
+      @include inner-section(10% 3% 0rem 3%);
     }
 
     display: flex;

@@ -9,12 +9,12 @@
     align-items: center;
 
     @include for-tablet {
-      @include inner-section(10.3% 22% 12.7% 22%);
+      @include inner-section(10.7% 22% 12.7% 22%);
       flex-direction: column-reverse;
     }
 
     @include for-mobile {
-      @include inner-section(4.2rem 2.5rem 4.2rem);
+      @include inner-section(12.2% 8% 12%);
     }
 
     .image-wrapper {

@@ -18,7 +18,7 @@ footer {
   }
 
   @include for-mobile {
-    @include inner-section(3rem 1rem 0);
+    @include inner-section(10% 3% 0);
     flex-direction: column;
     align-items: center;
   }
