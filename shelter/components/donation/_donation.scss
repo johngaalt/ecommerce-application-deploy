@@ -16,7 +16,7 @@
     }
 
     @include for-mobile {
-      @include inner-section(13% 6% 12.6% 6%);
+      @include inner-section(13% 6% 12% 6%);
       flex-direction: column-reverse;
       column-gap: 0;
       row-gap: 4rem;
