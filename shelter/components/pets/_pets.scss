@@ -4,9 +4,11 @@
   &-grid {
     display: flex;
     justify-content: space-evenly;
-    padding: 0 2rem;
+    gap: 9rem;
 
     @include for-tablet {
+      gap: 4rem;
+
       .pet-card:last-child {
         display: none;
       }
@@ -53,15 +55,19 @@
       width: 100%;
       position: relative;
       margin-bottom: 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       @include for-mobile {
         margin-bottom: 11.5rem;
+        justify-content: center;
       }
 
       &__arrow {
-        position: absolute;
-        width: 52px;
-        height: 52px;
+        min-width: 5.2rem;
+        width: 5.2rem;
+        height: 5.2rem;
         border: 2px solid $color-primary;
         border-radius: 50%;
         display: flex;
@@ -70,9 +76,13 @@
         font-size: 1.4rem;
         transition: 0.5s;
 
+        @include for-mobile {
+          position: absolute;
+        }
+
         &-left {
-          left: 0px;
-          top: 192px;
+          // left: 0px;
+          // top: 192px;
 
           @include for-mobile {
             left: 5.8rem;
@@ -81,8 +91,8 @@
         }
 
         &-right {
-          right: 0px;
-          top: 192px;
+          // right: 0px;
+          // top: 192px;
 
           @include for-mobile {
             right: 5.8rem;
