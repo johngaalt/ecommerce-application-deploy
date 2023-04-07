@@ -33,36 +33,46 @@
   .nav {
     display: flex;
     align-items: center;
+    transform: translateX(32rem);
+    transition: transform 0.5s ease-in-out;
 
     @include for-burger {
       position: fixed;
       top: 0;
-      left: 0;
-      width: 100%;
+      right: 0;
+      width: 32rem;
       height: 100%;
       background: $color-button;
       opacity: 0;
       pointer-events: none;
-      transform: translateY(-100%);
+      transform: translateX(32rem);
       transition: transform 0.5s ease-in-out;
+      padding: 0 3.8rem;
+      overflow: hidden;
     }
 
     @include for-mobile {
       position: fixed;
       top: 0;
-      left: 0;
+      right: 0;
       width: 100%;
       height: 100%;
       background: $color-button;
       opacity: 0;
       pointer-events: none;
-      transition: all 0.9s ease-in-out;
+      transform: translateX(32rem);
+      transition: transform 0.5s ease-in-out;
+      padding: 0 3.8rem;
     }
 
     .list {
       display: flex;
       flex-direction: row;
       padding-bottom: 0.4rem;
+
+      @include for-burger {
+        flex-direction: column;
+      }
 
       @include for-mobile {
         flex-direction: column;
@@ -73,6 +83,16 @@
         margin-right: 3.5rem;
         font-size: 1.5rem;
         line-height: 2.4rem;
+
+        @include for-burger {
+          margin-bottom: 4.3rem;
+          margin-right: 0;
+        }
+
+        @include for-mobile {
+          margin-bottom: 4.3rem;
+          margin-right: 0;
+        }
       }
 
       &__item:last-child {
@@ -83,11 +103,29 @@
         @include for-tablet {
           margin-right: 3.65rem;
         }
+
+        @include for-burger {
+          margin-right: 0;
+        }
+
+        @include for-mobile {
+          margin-right: 0;
+        }
       }
 
       .fancy-hover {
         color: $color-cdcdcd;
         transition: 0.5s;
+
+        @include for-burger {
+          font-size: 3.2rem;
+          line-height: 5.1rem;
+        }
+
+        @include for-mobile {
+          font-size: 3.2rem;
+          line-height: 5.1rem;
+        }
       }
 
       .fancy-hover:hover {
@@ -99,6 +137,16 @@
         color: $color-fafafa;
         transition: 0.5s;
         pointer-events: none;
+
+        @include for-burger {
+          font-size: 3.2rem;
+          line-height: 5.1rem;
+        }
+
+        @include for-mobile {
+          font-size: 3.2rem;
+          line-height: 5.1rem;
+        }
       }
 
       .active-link::after {
@@ -116,16 +164,16 @@
   .nav_active {
     opacity: 1;
     pointer-events: all;
-    width: 100%;
-    padding-left: 10%;
+    width: 320px;
     z-index: 100;
+    transition: transform 0.5s ease-in-out;
 
     @include for-burger {
-      transform: translateY(0);
+      transform: translateX(0);
     }
 
     @include for-mobile {
-      transform: translateX(0%);
+      transform: translateX(0);
     }
   }
 
