@@ -68,6 +68,14 @@
           margin-right: 3.5rem;
           font-size: 1.5rem;
           line-height: 2.4rem;
+
+          @include for-burger {
+            margin-right: 0;
+          }
+
+          @include for-mobile {
+            margin-right: 0;
+          }
         }
 
         &__item:last-child {
