@@ -33,25 +33,29 @@
       @include for-burger {
         position: fixed;
         top: 0;
-        left: 0;
-        width: 100%;
+        right: -100%;
+        width: 32rem;
         height: 100%;
-        background: #292929;
+        background: $color-fafafa;
         opacity: 0;
         pointer-events: none;
-        transition: all 0.9s ease-in-out;
+        transition: right 0.5s ease-in-out 0.2s;
+        padding: 0 3.8rem;
+        overflow: auto;
       }
 
       @include for-mobile {
         position: fixed;
         top: 0;
-        left: 0;
-        width: 100%;
+        right: -100%;
+        width: 32rem;
         height: 100%;
-        background: #292929;
+        background: $color-fafafa;
         opacity: 0;
         pointer-events: none;
-        transition: all 0.9s ease-in-out;
+        transition: right 0.5s ease-in-out 0.2s;
+        padding: 0 3.8rem;
+        overflow: auto;
       }
 
       .list {
@@ -73,10 +77,6 @@
         .fancy-hover {
           color: $color-card-title;
           transition: 0.5s;
-
-          @include for-mobile {
-            color: $color-primary;
-          }
         }
 
         .fancy-hover:hover {
@@ -87,10 +87,6 @@
           color: $color-button;
           border-bottom: 3px solid $color-primary;
           transition: 0.5s;
-
-          @include for-mobile {
-            color: $color-primary;
-          }
         }
       }
     }
@@ -98,9 +94,15 @@
     .nav_active {
       opacity: 1;
       pointer-events: all;
-      width: 100%;
-      padding-left: 10%;
       z-index: 100;
+
+      @include for-burger {
+        right: 0;
+      }
+
+      @include for-mobile {
+        right: 0;
+      }
     }
 
     .burger {
