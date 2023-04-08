@@ -1,26 +1,6 @@
 .pets {
   background-color: $color-dark-white;
 
-  &-grid {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 9rem;
-
-    @include for-tablet {
-      gap: 4rem;
-
-      .pet-card:last-child {
-        display: none;
-      }
-    }
-
-    @include for-mobile {
-      .pet-card:not(:first-child) {
-        display: none;
-      }
-    }
-  }
-
   .container {
     @include inner-section(6.1% 3.2% 8% 3.2%);
     display: flex;
@@ -75,6 +55,7 @@
         justify-content: center;
         font-size: 1.4rem;
         transition: 0.5s;
+        cursor: pointer;
 
         @include for-mobile {
           position: absolute;
@@ -108,6 +89,31 @@
 
       &__cards {
         color: black;
+        overflow: hidden;
+        display: flex;
+        width: 100%;
+        max-width: 1160px; // TODO: fix to correct one
+      }
+
+      &__card {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 9rem;
+        flex: 1 0 100%;
+
+        @include for-tablet {
+          gap: 4rem;
+
+          .pet-card:last-child {
+            display: none;
+          }
+        }
+
+        @include for-mobile {
+          .pet-card:not(:first-child) {
+            display: none;
+          }
+        }
       }
     }
   }
