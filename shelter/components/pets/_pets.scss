@@ -38,16 +38,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 5.3rem;
-
-      @include for-tablet {
-        gap: 1.2rem;
-      }
 
       @include for-mobile {
         margin-bottom: 11.5rem;
         justify-content: center;
-        gap: 0;
       }
 
       &__arrow {
@@ -94,34 +88,27 @@
       }
 
       &__cards {
-        color: black;
-        overflow: hidden;
         display: flex;
         width: 100%;
-        position: relative;
-        height: 43.5rem;
+        overflow: hidden;
       }
 
       &__card {
-        display: flex;
-        justify-content: space-evenly;
-        gap: 9rem;
-        flex: 1 0 100%;
+        padding: 0 4.5rem;
         transition: transform 1s ease;
-        position: absolute;
+        width: calc(100% / 3);
+        flex-shrink: 0;
 
         @include for-tablet {
-          gap: 4rem;
-
-          .pet-card:last-child {
-            display: none;
-          }
+          width: calc(100% / 2);
+          padding: 0 2rem;
         }
 
         @include for-mobile {
-          .pet-card:not(:first-child) {
-            display: none;
-          }
+          width: calc(100% / 1);
+          padding: 0;
+          display: flex;
+          justify-content: center;
         }
       }
     }

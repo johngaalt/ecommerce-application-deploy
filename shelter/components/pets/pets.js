@@ -30,41 +30,14 @@ const petsArr = [
 
 const petsElements = petsArr
   .map((elem) => createPetCard(elem.name, elem.imgSrc))
-  .sort(() => 0.5 - Math.random());
+  .map((elem) => createSlide(elem))
+  .sort(() => 0.5 - Math.random())
+  .join("");
 
-function getImagePerSlide() {
-  const screenWidth = document.body.clientWidth;
-  switch (true) {
-    case screenWidth <= 500:
-      return 1;
-    case screenWidth <= 860:
-      return 2;
-    default:
-      return 3;
-  }
+function createSlide(card) {
+  return `<div class="slider__card" data-target="slider-card">${card}</div>`;
 }
 
-function createSlide(cards) {
-  return `<div class="slider__card" data-target="slider-card">${cards}</div>`;
-}
-
-const generateSlides = (cards) => {
-  let imgPerSlide = getImagePerSlide();
-
-  const slides = [];
-
-  let i = 0;
-  while (i < cards.length) {
-    const cardsPartial = cards.slice(i, i + imgPerSlide).join("");
-    const sliderCard = createSlide(cardsPartial);
-    slides.push(sliderCard);
-
-    i += imgPerSlide;
-  }
-
-  return slides.join("");
-};
-const slides = generateSlides(petsElements);
-const petsWithCards = pets.replace("#PETS_CARDS#", slides);
+const petsWithCards = pets.replace("#PETS_CARDS#", petsElements);
 
 export default petsWithCards;

@@ -1,36 +1,33 @@
+let currentPosition = 0;
+
 export function runSlider() {
-  const slides = document.querySelectorAll("[data-target='slider-card']");
-
-  slides.forEach((slide, indx) => {
-    slide.style.transform = `translateX(${indx * 100}%)`;
-  });
-
-  let curSlide = 0;
-  const maxSlide = slides.length - 1;
   const rightArrow = document.querySelector("[data-target='arrow-right']");
   const leftArrow = document.querySelector("[data-target='arrow-left']");
 
   rightArrow.addEventListener("click", () => {
-    if (curSlide === maxSlide) {
-      curSlide = 0;
-    } else {
-      curSlide++;
-    }
-
-    slides.forEach((slide, indx) => {
-      slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
-    });
+    setPosition(currentPosition - 100);
   });
 
   leftArrow.addEventListener("click", () => {
-    if (curSlide === 0) {
-      curSlide = maxSlide;
-    } else {
-      curSlide--;
-    }
-
-    slides.forEach((slide, indx) => {
-      slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
-    });
+    setPosition(currentPosition + 100);
   });
+}
+
+function setPosition(position) {
+  const slides = document.querySelectorAll("[data-target='slider-card']");
+  const slidesLength = slides.length - 1;
+
+  if (position > 0) {
+    return false;
+  }
+
+  if (position < -slidesLength * 100) {
+    return false;
+  }
+
+  currentPosition = position;
+  slides.forEach(
+    (slide) => (slide.style.transform = `translateX(${position}%)`)
+  );
+  return currentPosition;
 }
