@@ -32,11 +32,11 @@ function setPosition(position) {
   const slidesLength = slides.length - 1;
 
   if (position > 0) {
-    return false;
+    position = -slidesLength * 100;
   }
 
   if (position < -slidesLength * 100) {
-    return false;
+    position = 0;
   }
 
   currentPosition = position;
