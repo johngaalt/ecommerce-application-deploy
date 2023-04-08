@@ -38,10 +38,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 5.3rem;
+
+      @include for-tablet {
+        gap: 1.2rem;
+      }
 
       @include for-mobile {
         margin-bottom: 11.5rem;
         justify-content: center;
+        gap: 0;
       }
 
       &__arrow {
@@ -92,7 +98,8 @@
         overflow: hidden;
         display: flex;
         width: 100%;
-        max-width: 1160px; // TODO: fix to correct one
+        position: relative;
+        height: 43.5rem;
       }
 
       &__card {
@@ -100,6 +107,8 @@
         justify-content: space-evenly;
         gap: 9rem;
         flex: 1 0 100%;
+        transition: transform 1s ease;
+        position: absolute;
 
         @include for-tablet {
           gap: 4rem;
