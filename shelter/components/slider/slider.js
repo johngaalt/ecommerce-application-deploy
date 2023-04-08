@@ -5,12 +5,26 @@ export function runSlider() {
   const leftArrow = document.querySelector("[data-target='arrow-left']");
 
   rightArrow.addEventListener("click", () => {
-    setPosition(currentPosition - 100);
+    setPosition(currentPosition - getOffsetByScreenWidth());
   });
 
   leftArrow.addEventListener("click", () => {
-    setPosition(currentPosition + 100);
+    setPosition(currentPosition + getOffsetByScreenWidth());
   });
+}
+
+function getOffsetByScreenWidth() {
+  const screenWidth = document.body.clientWidth;
+
+  if (screenWidth <= 500) {
+    return 100;
+  }
+
+  if (screenWidth <= 860) {
+    return 200;
+  }
+
+  return 300;
 }
 
 function setPosition(position) {
