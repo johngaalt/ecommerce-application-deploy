@@ -4,6 +4,7 @@ import "../styles/style.scss";
 import footer from "../../../components/footer/footer.html";
 import about from "../../../components/about/about.html";
 import donation from "../../../components/donation/donation.html";
+import popUp from "../../../components/pop-up/pop-up.html";
 //  js
 import help from "../../../components/help/help.js";
 import startScreen from "../../../components/start-screen/start-screen.js";
@@ -14,7 +15,7 @@ import { runSlider } from "../../../components/slider/slider";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.innerHTML =
-    startScreen + about + pets + help + donation + footer;
+    startScreen + about + pets + help + donation + popUp + footer;
 
   toggleActiveLinkNavigation();
   addEventListenerBurgerMenu();
