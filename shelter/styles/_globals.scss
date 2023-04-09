@@ -178,10 +178,19 @@ img {
   &-modal {
     color: #000;
     line-height: 4.5rem;
+
+    @include for-mobile {
+      text-align: center;
+    }
+
     &__sub {
       font-size: 2rem;
       line-height: 2.3rem;
       color: #000;
+
+      @include for-mobile {
+        text-align: center;
+      }
     }
   }
 }

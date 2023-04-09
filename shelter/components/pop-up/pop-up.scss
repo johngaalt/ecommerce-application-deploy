@@ -1,19 +1,30 @@
 .container-modal {
   max-width: 95.2rem;
   position: relative;
-  padding: 5.2rem 5.2rem 0 0;
+  // padding: 5.2rem 5.2rem 0 0;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   transition: opacity 0.5s;
   margin: 0 auto;
   display: flex;
   align-items: center;
   background-color: transparent;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+  @include for-tablet {
+    max-width: 68.2rem;
+  }
+
+  @include for-mobile {
+    max-width: 27rem;
+    padding: 5.2rem 3rem 0 0;
+  }
 
   &__cross {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    // position: absolute;
     width: 5.2rem;
     height: 5.2rem;
     left: 890px;
@@ -23,6 +34,19 @@
     color: black;
     transition: transform 0.35s ease-in;
     background-color: transparent;
+    align-self: baseline;
+    margin-right: 1rem;
+    min-width: 5.2rem;
+
+    @include for-tablet {
+      left: 62.1rem;
+    }
+
+    @include for-mobile {
+      margin-right: 0;
+      position: absolute;
+      left: 21.8rem;
+    }
   }
 
   &__cross:hover {
@@ -36,9 +60,38 @@
     justify-content: flex-start;
     background-color: $color-fafafa;
     border-radius: 0.9rem;
+    margin: 5.2rem 5.2rem 0 0;
+
+    @include for-mobile {
+      margin: 0;
+      justify-content: center;
+    }
+
+    .image-wrapper {
+      &__image {
+        @include for-tablet {
+          width: 35rem;
+          height: 35rem;
+        }
+
+        @include for-mobile {
+          display: none;
+        }
+      }
+    }
 
     .information-wrapper {
-      padding: 5rem 2rem 2.8rem;
+      padding: 5rem 2rem 8.8rem 2.9rem;
+
+      p {
+        @include for-mobile {
+          text-align: justify;
+        }
+      }
+
+      @include for-tablet {
+        padding: 1rem 0.9rem 3.7rem 1.1rem;
+      }
 
       .title-modal {
         margin-bottom: 1rem;
