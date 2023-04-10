@@ -1,7 +1,9 @@
 .container-modal {
-  max-width: 95.2rem;
-  position: relative;
-  // padding: 5.2rem 5.2rem 0 0;
+  max-width: 90rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   transition: opacity 0.5s;
   margin: 0 auto;
@@ -10,6 +12,8 @@
   background-color: transparent;
   flex-direction: row-reverse;
   justify-content: space-between;
+  z-index: 100;
+  width: 100%;
 
   @include for-tablet {
     max-width: 68.2rem;
@@ -21,31 +25,24 @@
   }
 
   &__cross {
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    // position: absolute;
     width: 5.2rem;
     height: 5.2rem;
-    left: 890px;
-    top: 0px;
+    right: -5.2rem;
+    top: -5.2rem;
     border: 2px solid #f1cdb3;
     border-radius: 10rem;
     color: black;
     transition: transform 0.35s ease-in;
     background-color: transparent;
     align-self: baseline;
-    margin-right: 1rem;
     min-width: 5.2rem;
 
-    @include for-tablet {
-      left: 62.1rem;
-    }
-
     @include for-mobile {
-      margin-right: 0;
-      position: absolute;
-      left: 21.8rem;
+      right: -3.2rem;
     }
   }
 
@@ -56,11 +53,11 @@
   }
 
   &__content {
+    position: relative;
     display: flex;
     justify-content: flex-start;
     background-color: $color-fafafa;
     border-radius: 0.9rem;
-    margin: 5.2rem 5.2rem 0 0;
 
     @include for-mobile {
       margin: 0;
@@ -69,14 +66,15 @@
 
     .image-wrapper {
       flex: 1 0 50%;
+
+      @include for-mobile {
+        display: none;
+      }
+
       &__image {
         @include for-tablet {
           width: 35rem;
           height: 35rem;
-        }
-
-        @include for-mobile {
-          display: none;
         }
       }
     }

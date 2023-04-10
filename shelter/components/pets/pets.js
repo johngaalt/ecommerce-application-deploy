@@ -10,6 +10,7 @@ import charley from "../../assets/images/pets-charly.png";
 import scarlett from "../../assets/images/pets-scarlet.png";
 import freddie from "../../assets/images/pets-freddie.png";
 import { createElementFromString } from "../utils/create-element-from-string";
+import { appendOverlay } from "../overlay/overlay";
 
 const petsArr = [
   {
@@ -122,15 +123,15 @@ function createSlide(card) {
 
 export function addEventListenerPets() {
   const pets = document.getElementById("pets");
+
   pets.addEventListener("click", (event) => {
     const targetPetCard = event.target.closest("[data-name]");
     if (targetPetCard) {
       const { name } = targetPetCard.dataset;
       const selectedPet = petsArr.find((element) => element.name === name);
       if (selectedPet) {
+        appendOverlay();
         const targetedCard = createPetCardModal(selectedPet);
-        let overlay = document.querySelector(".overlay");
-        // overlay.classList.add("overlay_active");
         document.body.appendChild(createElementFromString(targetedCard));
       }
     }
