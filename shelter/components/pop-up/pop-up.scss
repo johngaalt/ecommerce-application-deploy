@@ -131,14 +131,14 @@
         &__item {
           color: #000;
           margin-bottom: 1rem;
+          letter-spacing: $letter-spacing;
+          line-height: 1.7rem;
+          font-weight: normal;
+          font-family: $font-georgia;
+          font-size: 1.5rem;
 
           @include for-tablet {
             margin-bottom: 0.5rem;
-            letter-spacing: $letter-spacing;
-            line-height: 1.7rem;
-            font-weight: normal;
-            font-family: $font-georgia;
-            font-size: 1.5rem;
           }
         }
 

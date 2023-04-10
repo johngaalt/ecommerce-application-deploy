@@ -18,8 +18,8 @@ function createSlide(card) {
   return `<div class="slider__card" data-target="slider-card">${card}</div>`;
 }
 
-export function addEventListenerPets() {
-  const pets = document.getElementById("pets");
+export function addEventListenerPets(elementId = "pets") {
+  const pets = document.getElementById(elementId);
 
   pets.addEventListener("click", (event) => {
     const targetPetCard = event.target.closest("[data-name]");
