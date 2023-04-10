@@ -23,6 +23,8 @@ export function hideOverlay() {
   overlay.classList.add("overlay_active");
 
   setTimeout(() => {
-    document.body.removeChild(overlay);
+    if (overlay) {
+      overlay.remove();
+    }
   }, 500);
 }

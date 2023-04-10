@@ -39,9 +39,10 @@
         background: $color-fafafa;
         opacity: 0;
         pointer-events: none;
-        transition: right 0.5s ease-in-out 0.2s;
+        transition: all 0.5s ease-in-out;
         padding: 0 3.8rem;
         overflow: auto;
+        z-index: 100;
       }
 
       @include for-mobile {
@@ -53,9 +54,23 @@
         background: $color-fafafa;
         opacity: 0;
         pointer-events: none;
-        transition: right 0.5s ease-in-out 0.2s;
+        transition: all 0.5s ease-in-out;
         padding: 0 3.8rem;
         overflow: auto;
+      }
+
+      &_active {
+        @include for-burger {
+          opacity: 1;
+          pointer-events: all;
+          transition: all 0.5s ease-in-out;
+
+          right: 0;
+        }
+
+        @include for-mobile {
+          right: 0;
+        }
       }
 
       .list {
@@ -95,21 +110,11 @@
           color: $color-button;
           border-bottom: 3px solid $color-primary;
           transition: 0.5s;
+
+          @include for-burger {
+            pointer-events: all;
+          }
         }
-      }
-    }
-
-    .nav_active {
-      opacity: 1;
-      pointer-events: all;
-      z-index: 100;
-
-      @include for-burger {
-        right: 0;
-      }
-
-      @include for-mobile {
-        right: 0;
       }
     }
 
