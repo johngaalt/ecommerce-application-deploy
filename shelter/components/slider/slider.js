@@ -32,7 +32,8 @@ function setPosition(position) {
   const slidesLength = slides.length - 1;
 
   if (position > 0) {
-    position = -slidesLength * 100;
+    const leftPosition = (slidesLength * 100) % getOffsetByScreenWidth();
+    position = -slidesLength * 100 + leftPosition;
   }
 
   if (position < -slidesLength * 100) {
