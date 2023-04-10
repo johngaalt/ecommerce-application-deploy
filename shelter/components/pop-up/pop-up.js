@@ -1,5 +1,6 @@
 import popUp from "./pop-up.html";
 import { createElementFromString } from "../../utils/create-element-from-string";
+import { hideOverlay } from "../overlay/overlay";
 
 export function createPetCardModal(pet) {
   const {
@@ -26,14 +27,14 @@ export function createPetCardModal(pet) {
 }
 
 export function closeModal() {
-  const overlay = document.getElementById("overlay");
   const modalWindow = document.getElementById("container-modal");
 
-  if (overlay && modalWindow) {
+  hideOverlay();
+
+  if (modalWindow) {
     modalWindow.classList.add("modal_active");
 
     setTimeout(() => {
-      document.body.removeChild(overlay);
       document.body.removeChild(modalWindow);
       document.body.classList.remove("body_hidden");
     }, 500);

@@ -2,11 +2,12 @@ import { appendOverlay } from "../overlay/overlay";
 
 export function addEventListenerBurgerMenu() {
   const burger = document.querySelector(".burger");
+  burger.addEventListener("click", toggleMenu);
 
   function toggleMenu() {
     if (burger) {
       const nav = document.querySelector(".nav");
-      const links = document.querySelectorAll(".list__item");
+      const links = nav.querySelectorAll(".list__item");
       const body = document.body;
       let overlay = document.getElementById("overlay");
 
@@ -19,7 +20,6 @@ export function addEventListenerBurgerMenu() {
         document.addEventListener("click", handleOutsideClick);
       } else if (overlay) {
         body.removeChild(overlay);
-        overlay.classList.remove("overlay_active");
         document.removeEventListener("click", handleOutsideClick);
       }
 
@@ -30,9 +30,9 @@ export function addEventListenerBurgerMenu() {
             burger.classList.remove("burger_active");
             body.classList.remove("body_hidden");
             overlay = document.querySelector(".overlay");
+
             if (overlay) {
               body.removeChild(overlay);
-              overlay.classList.remove("overlay_active");
               document.removeEventListener("click", handleOutsideClick);
             }
           }
@@ -44,6 +44,7 @@ export function addEventListenerBurgerMenu() {
   function handleOutsideClick(event) {
     const nav = document.querySelector(".nav");
     const burger = document.querySelector(".burger");
+    const overlay = document.getElementById("overlay");
 
     if (
       !event.target.closest(".nav") &&
@@ -53,14 +54,10 @@ export function addEventListenerBurgerMenu() {
       nav.classList.remove("nav_active");
       burger.classList.remove("burger_active");
       document.body.classList.remove("body_hidden");
-      const overlay = document.querySelector(".overlay");
       if (overlay) {
         document.body.removeChild(overlay);
-        overlay.classList.remove("overlay_active");
       }
       document.removeEventListener("click", handleOutsideClick);
     }
   }
-
-  burger.addEventListener("click", toggleMenu);
 }

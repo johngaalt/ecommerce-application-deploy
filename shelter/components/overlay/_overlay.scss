@@ -1,6 +1,5 @@
 .overlay {
-  opacity: 0;
-  pointer-events: none;
+  pointer-events: all;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,6 +11,6 @@
 }
 
 .overlay_active {
-  opacity: 1;
-  pointer-events: all;
+  opacity: 0;
+  pointer-events: none;
 }
