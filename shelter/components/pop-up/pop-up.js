@@ -16,10 +16,11 @@ export function createPetCardModal(pet) {
   return popUp
     .replace("#NAME#", name)
     .replace("#IMAGE#", imgSrc)
-    .replace("#TYPE#", breed)
+    .replace("#TYPE#", type)
+    .replace("#BREED#", breed)
     .replace("#DESCRIPTION#", description)
     .replace("#AGE#", age)
-    .replace("#INOCULATIONS#", inoculations)
+    .replace("#INOCUL#", inoculations)
     .replace("#DISEASES#", diseases)
     .replace("#PARASITES#", parasites);
 }
