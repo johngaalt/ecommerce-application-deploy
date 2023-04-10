@@ -12,6 +12,8 @@ import pets, { addEventListenerPets } from "../../../components/pets/pets.js";
 import { toggleActiveLinkNavigation } from "../../../components/utils/toggle-active-link-nav";
 import { addEventListenerBurgerMenu } from "../../../components/burger-menu/burger-menu";
 import { runSlider } from "../../../components/slider/slider";
+import { addEventListenerOverlay } from "../../../components/overlay/overlay";
+import { addEventListenerCloseButton } from "../../../components/pop-up/pop-up";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.innerHTML =

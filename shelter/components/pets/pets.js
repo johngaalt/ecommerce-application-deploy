@@ -1,5 +1,8 @@
 import { createPetCard } from "../pet-card/pet-card";
-import { createPetCardModal } from "../pop-up/pop-up";
+import {
+  addEventListenerCloseButton,
+  createPetCardModal,
+} from "../pop-up/pop-up";
 import pets from "./pets.html";
 import jennifer from "../../assets/images/pets-jennifer.png";
 import katrine from "../../assets/images/pets-katrine.png";
@@ -133,6 +136,7 @@ export function addEventListenerPets() {
         appendOverlay();
         const targetedCard = createPetCardModal(selectedPet);
         document.body.appendChild(createElementFromString(targetedCard));
+        addEventListenerCloseButton();
       }
     }
   });

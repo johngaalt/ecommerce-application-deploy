@@ -22,3 +22,15 @@ export function createPetCardModal(pet) {
     .replace("#DISEASES#", diseases)
     .replace("#PARASITES#", parasites);
 }
+
+export function closeModal() {
+  const overlay = document.getElementById("overlay");
+  const modalWindow = document.getElementById("container-modal");
+  document.body.removeChild(overlay);
+  document.body.removeChild(modalWindow);
+}
+
+export function addEventListenerCloseButton() {
+  const closeButton = document.querySelector(".container-modal__cross");
+  closeButton.addEventListener("click", closeModal);
+}
