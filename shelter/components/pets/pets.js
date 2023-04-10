@@ -1,4 +1,5 @@
 import { createPetCard } from "../pet-card/pet-card";
+import { createPetCardModal } from "../pop-up/pop-up";
 import pets from "./pets.html";
 import jennifer from "../../assets/images/pets-jennifer.png";
 import katrine from "../../assets/images/pets-katrine.png";
@@ -73,7 +74,6 @@ const petsArr = [
   {
     imgSrc: charley,
     name: "Charly",
-    img: "../../assets/images/charly.png",
     type: "Dog",
     breed: "Jack Russell Terrier",
     description:
@@ -98,7 +98,6 @@ const petsArr = [
   {
     imgSrc: freddie,
     name: "Freddie",
-    img: "../../assets/images/freddie.png",
     type: "Cat",
     breed: "British Shorthair",
     description:
@@ -120,6 +119,20 @@ function createSlide(card) {
   return `<div class="slider__card" data-target="slider-card">${card}</div>`;
 }
 
-const petsWithCards = pets.replace("#PETS_CARDS#", petsElements);
+export function addEventListenerPets() {
+  const pets = document.getElementById("pets");
+  pets.addEventListener("click", (event) => {
+    const targetPetCard = event.target.closest("[data-name]");
+    if (targetPetCard) {
+      const { name } = targetPetCard.dataset;
+      const selectedPet = petsArr.find((element) => element.name === name);
+      if (selectedPet) {
+        const targetedCard = createPetCardModal(selectedPet);
+        console.log(targetedCard);
+      }
+    }
+  });
+}
 
+const petsWithCards = pets.replace("#PETS_CARDS#", petsElements);
 export default petsWithCards;
