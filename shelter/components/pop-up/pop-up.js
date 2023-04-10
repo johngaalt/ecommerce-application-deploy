@@ -1,5 +1,5 @@
 import popUp from "./pop-up.html";
-import { createElementFromString } from "../utils/create-element-from-string";
+import { createElementFromString } from "../../utils/create-element-from-string";
 
 export function createPetCardModal(pet) {
   const {
