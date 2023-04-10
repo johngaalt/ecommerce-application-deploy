@@ -1,3 +1,5 @@
+import { appendOverlay } from "../overlay/overlay";
+
 export function addEventListenerBurgerMenu() {
   const burger = document.querySelector(".burger");
 
@@ -6,17 +8,14 @@ export function addEventListenerBurgerMenu() {
       const nav = document.querySelector(".nav");
       const links = document.querySelectorAll(".list__item");
       const body = document.body;
-      let overlay = document.querySelector(".overlay");
+      const overlay = document.getElementById("overlay");
 
       nav.classList.toggle("nav_active");
       burger.classList.toggle("burger_active");
       body.classList.toggle("body_hidden");
 
       if (nav.classList.contains("nav_active")) {
-        overlay = document.createElement("div");
-        overlay.classList.add("overlay");
-        body.appendChild(overlay);
-        overlay.classList.add("overlay_active");
+        appendOverlay();
         document.addEventListener("click", handleOutsideClick);
       } else if (overlay) {
         body.removeChild(overlay);

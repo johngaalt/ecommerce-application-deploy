@@ -9,6 +9,7 @@ import timmy from "../../assets/images/pets-timmy.png";
 import charley from "../../assets/images/pets-charly.png";
 import scarlett from "../../assets/images/pets-scarlet.png";
 import freddie from "../../assets/images/pets-freddie.png";
+import { createElementFromString } from "../utils/create-element-from-string";
 
 const petsArr = [
   {
@@ -128,7 +129,9 @@ export function addEventListenerPets() {
       const selectedPet = petsArr.find((element) => element.name === name);
       if (selectedPet) {
         const targetedCard = createPetCardModal(selectedPet);
-        console.log(targetedCard);
+        let overlay = document.querySelector(".overlay");
+        // overlay.classList.add("overlay_active");
+        document.body.appendChild(createElementFromString(targetedCard));
       }
     }
   });
