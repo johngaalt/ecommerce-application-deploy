@@ -1,6 +1,7 @@
 import { createPetCard } from "../pet-card/pet-card";
 import {
   addEventListenerCloseButton,
+  appendPetCardModal,
   createPetCardModal,
 } from "../pop-up/pop-up";
 import pets from "./pets.html";
@@ -12,7 +13,6 @@ import timmy from "../../assets/images/pets-timmy.png";
 import charley from "../../assets/images/pets-charly.png";
 import scarlett from "../../assets/images/pets-scarlet.png";
 import freddie from "../../assets/images/pets-freddie.png";
-import { createElementFromString } from "../utils/create-element-from-string";
 import { appendOverlay } from "../overlay/overlay";
 
 const petsArr = [
@@ -134,8 +134,7 @@ export function addEventListenerPets() {
       const selectedPet = petsArr.find((element) => element.name === name);
       if (selectedPet) {
         appendOverlay();
-        const targetedCard = createPetCardModal(selectedPet);
-        document.body.appendChild(createElementFromString(targetedCard));
+        appendPetCardModal(selectedPet);
         addEventListenerCloseButton();
       }
     }

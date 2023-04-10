@@ -5,7 +5,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-  transition: opacity 0.5s;
+  transition: opacity 0.75s;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -72,10 +72,11 @@
       }
 
       &__image {
-        @include for-tablet {
-          width: 35rem;
-          height: 35rem;
-        }
+        max-width: 100%;
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+        border-radius: 9px 0 0 9px;
       }
     }
 
@@ -127,4 +128,8 @@
       }
     }
   }
+}
+
+.modal_active {
+  opacity: 0;
 }

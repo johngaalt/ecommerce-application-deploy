@@ -8,7 +8,7 @@ export function addEventListenerBurgerMenu() {
       const nav = document.querySelector(".nav");
       const links = document.querySelectorAll(".list__item");
       const body = document.body;
-      const overlay = document.getElementById("overlay");
+      let overlay = document.getElementById("overlay");
 
       nav.classList.toggle("nav_active");
       burger.classList.toggle("burger_active");

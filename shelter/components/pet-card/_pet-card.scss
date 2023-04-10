@@ -28,9 +28,9 @@
 }
 
 .pet-card:hover {
-  transform: scale(1.1);
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   cursor: pointer;
+  background-color: #fff;
 }
 
 .pet-card:hover .button-secondary {
