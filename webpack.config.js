@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const stylesHandler = 'style-loader';
 
 const config = {
-  entry: '../src/js/index.js',
+  entry: './src/js/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
@@ -29,7 +29,7 @@ const config = {
         loader: 'babel-loader',
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(sass|scss|css)$/i,
         use: [stylesHandler, 'css-loader', 'sass-loader'],
       },
       {
