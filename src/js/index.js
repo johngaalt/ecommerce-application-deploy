@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './button';
 
 const MIN_ROWS_COUNT = 10;
