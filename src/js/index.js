@@ -1,28 +1,40 @@
-import './button';
+import '../styles/styles.scss';
 
 const MIN_ROWS_COUNT = 10;
 const MIN_COLUMNS_COUNT = 10;
+const total = MIN_ROWS_COUNT * MIN_COLUMNS_COUNT;
 
-const rows = new Array(MIN_ROWS_COUNT).fill(null).map(() => {
-  const row = document.createElement('div');
-  row.classList.add('row', 'g-5');
-
-  const columns = new Array(MIN_COLUMNS_COUNT).fill(null).map(() => {
-    const column = document.createElement('div');
-    column.classList.add('col');
-    const button = document.createElement('button');
-    button.classList.add('btn', 'btn-primary');
-    button.textContent = 'MINE';
-    column.appendChild(button);
-    return column;
-  });
-
-  row.append(...columns);
-  return row;
+const cells = new Array(total).fill(null).map(() => {
+  const cell = document.createElement('div');
+  cell.classList.add('row');
+  return cell;
 });
+
+const header = document.createElement('header');
+header.classList.add('header');
+
+const score = document.createElement('div');
+score.classList.add('header__score');
+score.textContent = 'score';
+
+const buttonFirst = document.createElement('button');
+buttonFirst.textContent = 'easy';
+const buttonSecond = document.createElement('button');
+buttonSecond.textContent = 'medium';
+const buttonThird = document.createElement('button');
+buttonThird.textContent = 'hard';
+
+buttonFirst.classList.add('button', 'button--first');
+buttonSecond.classList.add('button', 'button--second');
+buttonThird.classList.add('button', 'button--third');
+
+const difficulty = document.createElement('div');
+difficulty.classList.add('header__difficulty');
+difficulty.append(buttonFirst, buttonSecond, buttonThird);
 
 const container = document.createElement('main');
 container.classList.add('container');
-container.append(...rows);
+container.append(...cells);
+header.append(score, difficulty);
 
-document.body.append(container);
+document.body.append(header, container);
