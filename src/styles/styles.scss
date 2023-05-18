@@ -47,6 +47,14 @@ ul {
   &__score {
     padding-right: 2vw;
   }
+
+  .button {
+    margin-right: 0.5vw;
+  }
+
+  .button:first-child {
+    margin-right: 2vh;
+  }
 }
 
 main {

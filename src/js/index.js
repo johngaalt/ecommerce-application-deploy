@@ -1,14 +1,5 @@
 import '../styles/styles.scss';
-
-const MIN_ROWS_COUNT = 10;
-const MIN_COLUMNS_COUNT = 10;
-const total = MIN_ROWS_COUNT * MIN_COLUMNS_COUNT;
-
-const cells = new Array(total).fill(null).map(() => {
-  const cell = document.createElement('div');
-  cell.classList.add('cell');
-  return cell;
-});
+import Minesweeper from './gameboard';
 
 const header = document.createElement('header');
 header.classList.add('header');
@@ -29,15 +20,20 @@ buttonFourth.textContent = 'reset';
 buttonFirst.classList.add('button', 'button--first');
 buttonSecond.classList.add('button', 'button--second');
 buttonThird.classList.add('button', 'button--third');
-buttonThird.classList.add('button', 'button--fourth');
+buttonFourth.classList.add('button', 'button--fourth');
 
 const difficulty = document.createElement('div');
 difficulty.classList.add('header__difficulty');
-difficulty.append(buttonFirst, buttonSecond, buttonThird, buttonFourth);
+difficulty.append(buttonFourth, buttonFirst, buttonSecond, buttonThird);
 
-const container = document.createElement('main');
-container.classList.add('container');
-container.append(...cells);
+const main = document.createElement('main');
+main.classList.add('container');
+main.id = 'board';
+
 header.append(score, difficulty);
 
-document.body.append(header, container);
+document.body.append(header, main);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const minesweeper = new Minesweeper();
+});
