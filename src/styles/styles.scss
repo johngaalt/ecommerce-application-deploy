@@ -50,6 +50,7 @@ ul {
 
   .button {
     margin-right: 0.5vw;
+    cursor: pointer;
   }
 
   .button:first-child {
@@ -57,40 +58,54 @@ ul {
   }
 }
 
-main {
+.container {
   display: grid;
-  grid-template-columns: repeat(10, 40px);
-  grid-template-rows: repeat(10, 40px);
+  grid-template-columns: repeat(10, 25px);
+  grid-template-rows: repeat(10, 25px);
+  gap: 2px;
+  max-width: 290px;
   margin: 0 auto;
-  justify-content: center;
-  gap: 0.3vh;
+  padding: 10px;
+  background-color: grey;
+  opacity: 0.7;
+}
 
-  .cell {
-    background-color: silver;
-    border: 1px solid darkgray;
-    cursor: pointer;
-    text-align: center;
-    font-size: 16px;
-    box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.3),
-        0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.2),
-        1px 0 0 rgba(255, 255, 255, 0.3), -1px 0 0 rgba(0, 0, 0, 0.2);
-      z-index: -2;
+.container-medium {
+  display: grid;
+  grid-template-columns: repeat(15, 25px);
+  grid-template-rows: repeat(15, 25px);
+  gap: 2px;
+  max-width: 425px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: grey;
+  opacity: 0.7;
+}
 
-    &--revealed {
-      background-color: #ccc;
-    }
+.container-hard {
+  display: grid;
+  grid-template-columns: repeat(25, 25px);
+  grid-template-rows: repeat(25, 25px);
+  gap: 2px;
+  max-width: 695px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: grey;
+  opacity: 0.7;
+}
 
-    &--mine {
-      background-color: #c00;
-      color: #fff;
-    }
+.row {
+  display: grid;
+}
 
-    &--flagged {
-      background-color: #ff0;
-    }
+.cell {
+  background-color: lightgray;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
 
-    &:active {
-      box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.5);
-    }
-  }
+.cell:hover {
+  background-color: grey;
 }

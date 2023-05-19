@@ -17,11 +17,25 @@ class Minesweeper {
 
   createBoard() {
     const boardContainer = document.getElementById('board');
-    boardContainer.innerHTML = ''; // Clear previous board
+    boardContainer.innerHTML = '';
 
     for (let row = 0; row < this.boardSize; row++) {
       const rowElement = document.createElement('div');
       rowElement.classList.add('row');
+
+      if (this.boardSize === 15) {
+        boardContainer.classList.add('container-medium');
+        boardContainer.classList.remove('container');
+        boardContainer.classList.remove('container-hard');
+      } else if (this.boardSize === 25) {
+        boardContainer.classList.add('container-hard');
+        boardContainer.classList.remove('container');
+        boardContainer.classList.remove('container-medium');
+      } else {
+        boardContainer.classList.add('container');
+        boardContainer.classList.remove('container-hard');
+        boardContainer.classList.remove('container-medium');
+      }
 
       this.board[row] = [];
       for (let col = 0; col < this.boardSize; col++) {
@@ -41,6 +55,25 @@ class Minesweeper {
       }
 
       boardContainer.appendChild(rowElement);
+    }
+
+    this.calculateNeighborMines();
+    this.displayNeighborMines();
+  }
+
+  displayNeighborMines() {
+    const boardContainer = document.getElementById('board');
+    const cellElements = boardContainer.getElementsByClassName('cell');
+
+    for (let row = 0; row < this.boardSize; row++) {
+      for (let col = 0; col < this.boardSize; col++) {
+        const cell = this.board[row][col];
+        const cellElement = cellElements[row * this.boardSize + col];
+
+        if (!cell.isMine && cell.neighborMines > 0) {
+          cellElement.textContent = cell.neighborMines;
+        }
+      }
     }
   }
 
@@ -94,6 +127,24 @@ class Minesweeper {
     return neighbors;
   }
 
+  handleCellClick(row, col) {
+    if (this.isGameOver) return;
+
+    const cell = this.board[row][col];
+    if (cell.revealed) return;
+
+    cell.revealed = true;
+
+    if (cell.isMine) {
+      this.gameOver(false);
+    } else if (cell.neighborMines === 0) {
+      const neighborCells = this.getNeighborCells(row, col);
+      neighborCells.forEach((neighbor) => {
+        this.handleCellClick(neighbor.row, neighbor.col);
+      });
+    }
+  }
+
   revealCell(row, col) {
     if (this.isGameOver) return;
     const cell = this.board[row][col];
@@ -124,6 +175,15 @@ class Minesweeper {
 document.addEventListener('DOMContentLoaded', () => {
   const minesweeper = new Minesweeper();
   minesweeper.createBoard();
+
+  const boardContainer = document.getElementById('board');
+  boardContainer.addEventListener('click', (event) => {
+    const cellElement = event.target;
+    const row = parseInt(cellElement.dataset.row);
+    const col = parseInt(cellElement.dataset.col);
+    minesweeper.handleCellClick(row, col);
+  });
+
   minesweeper.placeMines();
   minesweeper.calculateNeighborMines();
   console.log(minesweeper.board);
