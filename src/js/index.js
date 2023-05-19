@@ -1,5 +1,5 @@
 import '../styles/styles.scss';
-import Minesweeper from './gameboard';
+import './gameboard';
 
 const header = document.createElement('header');
 header.classList.add('header');
@@ -31,9 +31,4 @@ main.classList.add('container');
 main.id = 'board';
 
 header.append(score, difficulty);
-
 document.body.append(header, main);
-
-document.addEventListener('DOMContentLoaded', () => {
-  const minesweeper = new Minesweeper();
-});
