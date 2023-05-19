@@ -4,9 +4,13 @@ import './gameboard';
 const header = document.createElement('header');
 header.classList.add('header');
 
-const score = document.createElement('div');
-score.classList.add('header__score');
-score.textContent = 'score';
+const timer = document.createElement('div');
+timer.classList.add('timer');
+timer.textContent = 0;
+
+const movesCounter = document.createElement('div');
+movesCounter.classList.add('moves-counter');
+movesCounter.textContent = 0;
 
 const buttonFirst = document.createElement('button');
 buttonFirst.textContent = 'easy';
@@ -30,5 +34,5 @@ const main = document.createElement('main');
 main.classList.add('container');
 main.id = 'board';
 
-header.append(score, difficulty);
+header.append(timer, movesCounter, difficulty);
 document.body.append(header, main);

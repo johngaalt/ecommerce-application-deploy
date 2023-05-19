@@ -7,6 +7,10 @@ class Minesweeper {
     this.numOfMines = this.gameType.numMines;
     this.board = [];
     this.isGameOver = false;
+    this.timer = null;
+    this.seconds = 0;
+    this.movesCount = 0;
+    this.movesCounterElement = document.querySelector('.moves-counter');
   }
 
   setGameType(gameType) {
@@ -135,6 +139,13 @@ class Minesweeper {
 
     cell.revealed = true;
 
+    if (!this.timer) {
+      this.startTimer();
+    }
+
+    this.movesCount++;
+    this.movesCounterElement.textContent = this.movesCount;
+
     if (cell.isMine) {
       this.gameOver(false);
     } else if (cell.neighborMines === 0) {
@@ -143,6 +154,21 @@ class Minesweeper {
         this.handleCellClick(neighbor.row, neighbor.col);
       });
     }
+  }
+
+  startTimer() {
+    this.timer = setInterval(() => {
+      this.seconds++;
+      const timerElement = document.querySelector('.timer');
+      timerElement.textContent = this.seconds;
+    }, 1000);
+  }
+
+  resetTimer() {
+    clearInterval(this.timer);
+    this.seconds = 0;
+    const timerElement = document.querySelector('.timer');
+    timerElement.textContent = this.seconds;
   }
 
   revealCell(row, col) {
@@ -169,6 +195,7 @@ class Minesweeper {
     } else {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.LOSE);
     }
+    clearInterval(this.timer);
   }
 }
 
@@ -194,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   easyButton.addEventListener('click', () => {
     minesweeper.setGameType(GAME_TYPES.EASY);
+    minesweeper.resetTimer();
     minesweeper.createBoard();
     minesweeper.placeMines();
     minesweeper.calculateNeighborMines();
@@ -202,6 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   mediumButton.addEventListener('click', () => {
     minesweeper.setGameType(GAME_TYPES.MEDIUM);
+    minesweeper.resetTimer();
     minesweeper.createBoard();
     minesweeper.placeMines();
     minesweeper.calculateNeighborMines();
@@ -210,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   hardButton.addEventListener('click', () => {
     minesweeper.setGameType(GAME_TYPES.HARD);
+    minesweeper.resetTimer();
     minesweeper.createBoard();
     minesweeper.placeMines();
     minesweeper.calculateNeighborMines();
