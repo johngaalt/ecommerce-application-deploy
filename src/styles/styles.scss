@@ -41,7 +41,9 @@ ul {
 
 .header {
   display: flex;
-  justify-content: center;
+  max-width: 300px;
+  margin: 0 auto;
+  justify-content: space-around;
   margin-bottom: 1vh;
 
   &__score {
@@ -57,6 +59,11 @@ ul {
     margin-right: 2vh;
   }
 }
+
+.timer {
+  margin-right: 10px;
+}
+
 
 .container {
   display: grid;

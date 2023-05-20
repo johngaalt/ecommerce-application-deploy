@@ -38,5 +38,5 @@ const footer = document.createElement('footer');
 footer.classList.add('footer');
 footer.id = 'footer';
 
-header.append(timer, movesCounter, difficulty);
+header.append(timer, difficulty, movesCounter);
 document.body.append(header, main, footer);

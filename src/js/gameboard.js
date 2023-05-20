@@ -29,6 +29,9 @@ class Minesweeper {
     boardContainer.innerHTML = '';
     boardContainer.classList.remove(GAME_OVER_CLASSES.WIN, GAME_OVER_CLASSES.LOSE);
     this.isGameOver = false;
+    this.movesCount = 0;
+    this.seconds = 0;
+    this.timer = null;
   }
 
   createBoard() {
@@ -141,6 +144,11 @@ class Minesweeper {
     return neighbors;
   }
 
+  countMoves() {
+    this.movesCount++;
+    this.movesCounterElement.textContent = this.movesCount;
+  }
+
   handleCellClick(rowCell, colCell) {
     const row = parseInt(rowCell, 10);
     const col = parseInt(colCell, 10);
@@ -156,9 +164,6 @@ class Minesweeper {
     if (!this.timer) {
       this.startTimer();
     }
-
-    this.movesCount++;
-    this.movesCounterElement.textContent = this.movesCount;
 
     if (cell.isMine) {
       this.finishGame(false);
@@ -235,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
   boardContainer.addEventListener('click', (event) => {
     const cellElement = event.target.closest('.cell');
     if (cellElement) {
+      minesweeper.countMoves();
       minesweeper.handleCellClick(cellElement.dataset.row, cellElement.dataset.col);
     }
   });
