@@ -1,5 +1,6 @@
 import '../styles/styles.scss';
 import './gameboard';
+import sound from './sound';
 
 const header = document.createElement('header');
 header.classList.add('header');
@@ -34,9 +35,18 @@ const main = document.createElement('main');
 main.classList.add('container');
 main.id = 'board';
 
+header.append(timer, difficulty, movesCounter);
+
 const footer = document.createElement('footer');
 footer.classList.add('footer');
 footer.id = 'footer';
 
-header.append(timer, difficulty, movesCounter);
+const message = document.createElement('div');
+message.classList.add('message');
+message.id = 'message';
+
+const soundSwitcher = sound.createElement();
+
+footer.append(soundSwitcher, message);
+
 document.body.append(header, main, footer);

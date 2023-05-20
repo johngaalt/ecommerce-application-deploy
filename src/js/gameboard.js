@@ -22,8 +22,8 @@ class Minesweeper {
   }
 
   resetBoard() {
-    const footer = document.getElementById('footer');
-    footer.innerHTML = '';
+    const message = document.getElementById('message');
+    message.innerHTML = '';
     const boardContainer = document.getElementById('board');
     boardContainer.innerHTML = '';
     boardContainer.classList.remove(
@@ -206,12 +206,12 @@ class Minesweeper {
     if (isWin) {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.WIN);
       document.getElementById(
-        'footer',
+        'message',
       ).innerHTML = `Hooray! You found all mines in ${this.seconds} seconds and ${this.movesCount} moves! 🤩`;
       sound.playWinSound();
     } else {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.LOSE);
-      document.getElementById('footer').innerHTML = 'Game over. Try again ☹️';
+      document.getElementById('message').innerHTML = 'Game over. Try again ☹️';
       this.revealAllMines();
       sound.playLoseSound();
     }
@@ -298,6 +298,10 @@ document.addEventListener('DOMContentLoaded', () => {
     minesweeper.setGameType(GAME_TYPES.HARD);
     minesweeper.resetTimer();
     minesweeper.createBoard();
+  });
+
+  document.getElementById('sound-switcher').addEventListener('click', () => {
+    sound.toggleSound();
   });
 });
 

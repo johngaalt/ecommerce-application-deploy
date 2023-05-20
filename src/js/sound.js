@@ -6,6 +6,8 @@ import startSound from '../../assets/sounds/start.wav';
 class Sound {
   isEnabled = true;
 
+  soundElement = null;
+
   playClickSound() {
     if (!this.isEnabled) return;
 
@@ -32,6 +34,19 @@ class Sound {
 
     const audio = new Audio(startSound);
     audio.play();
+  }
+
+  toggleSound() {
+    this.isEnabled = !this.isEnabled;
+    this.soundElement.textContent = this.isEnabled ? '🔊' : '🔇';
+  }
+
+  createElement() {
+    this.soundElement = document.createElement('button');
+    this.soundElement.classList.add('sound-switcher');
+    this.soundElement.id = 'sound-switcher';
+    this.soundElement.textContent = '🔊';
+    return this.soundElement;
   }
 }
 
