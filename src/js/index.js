@@ -1,4 +1,5 @@
 import '../styles/styles.scss';
+import GameResult from './game-result';
 import './gameboard';
 import sound from './sound';
 
@@ -46,7 +47,8 @@ message.classList.add('message');
 message.id = 'message';
 
 const soundSwitcher = sound.createElement();
+const showResults = new GameResult().createElement();
 
-footer.append(soundSwitcher, message);
+footer.append(soundSwitcher, showResults, message);
 
 document.body.append(header, main, footer);

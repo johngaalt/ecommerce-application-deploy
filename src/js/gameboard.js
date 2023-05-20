@@ -1,6 +1,7 @@
 import Cell from './cell';
 import { GAME_TYPES, GAME_OVER_CLASSES } from '../constants/game-types';
 import sound from './sound';
+import GameResult from './game-result';
 
 class Minesweeper {
   constructor() {
@@ -216,6 +217,8 @@ class Minesweeper {
       sound.playLoseSound();
     }
     clearInterval(this.timer);
+    const gameResult = new GameResult(isWin, this.movesCount, this.seconds);
+    GameResult.saveResult(gameResult);
   }
 
   revealAllMines() {
@@ -302,6 +305,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('sound-switcher').addEventListener('click', () => {
     sound.toggleSound();
+  });
+
+  document.getElementById('show-results').addEventListener('click', () => {
+    GameResult.displayGameResults();
   });
 });
 
