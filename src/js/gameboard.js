@@ -137,6 +137,19 @@ class Minesweeper {
     this.movesCounterElement.textContent = this.movesCount;
   }
 
+  countRevealedNonMineCells() {
+    let count = 0;
+    for (let row = 0; row < this.boardSize; row++) {
+      for (let col = 0; col < this.boardSize; col++) {
+        const cell = this.board[row][col];
+        if (cell.revealed && !cell.isMine) {
+          count++;
+        }
+      }
+    }
+    return count;
+  }
+
   handleCellClick(rowCell, colCell) {
     const row = parseInt(rowCell, 10);
     const col = parseInt(colCell, 10);
@@ -161,6 +174,13 @@ class Minesweeper {
       neighborCells.forEach((neighbor) => {
         this.handleCellClick(neighbor.row, neighbor.col);
       });
+    } else {
+      const totalNonMineCells = this.boardSize * this.boardSize - this.numOfMines;
+      const revealedNonMineCells = this.countRevealedNonMineCells();
+
+      if (revealedNonMineCells === totalNonMineCells) {
+        this.finishGame(true);
+      }
     }
   }
 
@@ -186,7 +206,7 @@ class Minesweeper {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.WIN);
       document.getElementById(
         'footer',
-      ).innerHTML = `Hooray! You found all mines in ${this.timer} seconds and ${this.movesCount} moves! 🤩`;
+      ).innerHTML = `Hooray! You found all mines in ${this.seconds} seconds and ${this.movesCount} moves! 🤩`;
     } else {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.LOSE);
       document.getElementById('footer').innerHTML = 'Game over. Try again ☹️';
