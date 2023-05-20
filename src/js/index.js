@@ -20,7 +20,6 @@ const buttonThird = document.createElement('button');
 buttonThird.textContent = 'hard';
 const buttonFourth = document.createElement('button');
 buttonFourth.textContent = 'reset';
-buttonFourth.id = 'reset';
 
 buttonFirst.classList.add('button', 'button--first');
 buttonSecond.classList.add('button', 'button--second');
@@ -35,5 +34,9 @@ const main = document.createElement('main');
 main.classList.add('container');
 main.id = 'board';
 
+const footer = document.createElement('footer');
+footer.classList.add('footer');
+footer.id = 'footer';
+
 header.append(timer, movesCounter, difficulty);
-document.body.append(header, main);
+document.body.append(header, main, footer);

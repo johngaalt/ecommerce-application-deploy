@@ -17,6 +17,6 @@ export const GAME_TYPES = {
 };
 
 export const GAME_OVER_CLASSES = {
-  WIN: 'victory',
+  WIN: 'win',
   LOSE: 'fail',
 };

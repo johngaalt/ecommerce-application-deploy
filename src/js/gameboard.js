@@ -22,9 +22,18 @@ class Minesweeper {
     this.numOfMines = this.gameType.numMines;
   }
 
-  createBoard() {
+  resetBoard() {
+    const footer = document.getElementById('footer');
+    footer.innerHTML = '';
     const boardContainer = document.getElementById('board');
     boardContainer.innerHTML = '';
+    boardContainer.classList.remove(GAME_OVER_CLASSES.WIN, GAME_OVER_CLASSES.LOSE);
+    this.isGameOver = false;
+  }
+
+  createBoard() {
+    this.resetBoard();
+    const boardContainer = document.getElementById('board');
 
     this.board = [];
 
@@ -132,7 +141,10 @@ class Minesweeper {
     return neighbors;
   }
 
-  handleCellClick(row, col) {
+  handleCellClick(rowCell, colCell) {
+    const row = parseInt(rowCell, 10);
+    const col = parseInt(colCell, 10);
+
     if (this.isGameOver) return;
 
     const cell = this.board[row][col];
@@ -177,9 +189,10 @@ class Minesweeper {
     this.isGameOver = true;
     if (isWin) {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.WIN);
+      document.getElementById('footer').innerHTML = `Hooray! You found all mines in ${this.timer} seconds and ${this.movesCount} moves! 🤩`;
     } else {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.LOSE);
-      document.getElementById('reset').innerHTML = '☹️';
+      document.getElementById('footer').innerHTML = 'Game over. Try again ☹️';
       this.revealAllMines();
     }
     clearInterval(this.timer);
@@ -220,10 +233,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const boardContainer = document.getElementById('board');
   boardContainer.addEventListener('click', (event) => {
-    const cellElement = event.target;
-    const row = Number(cellElement.dataset.row);
-    const col = Number(cellElement.dataset.col);
-    minesweeper.handleCellClick(row, col);
+    const cellElement = event.target.closest('.cell');
+    if (cellElement) {
+      minesweeper.handleCellClick(cellElement.dataset.row, cellElement.dataset.col);
+    }
   });
 
   minesweeper.placeMines();
