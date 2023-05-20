@@ -20,6 +20,7 @@ const buttonThird = document.createElement('button');
 buttonThird.textContent = 'hard';
 const buttonFourth = document.createElement('button');
 buttonFourth.textContent = 'reset';
+buttonFourth.id = 'reset';
 
 buttonFirst.classList.add('button', 'button--first');
 buttonSecond.classList.add('button', 'button--second');

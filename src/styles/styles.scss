@@ -122,4 +122,8 @@ ul {
   &.mine {
     background-color: red;
   }
+
+  .fail & {
+    cursor: not-allowed;
+  }
 }

@@ -149,7 +149,7 @@ class Minesweeper {
     this.movesCounterElement.textContent = this.movesCount;
 
     if (cell.isMine) {
-      this.gameOver(false);
+      this.finishGame(false);
     } else if (cell.neighborMines === 0) {
       const neighborCells = this.getNeighborCells(row, col);
       neighborCells.forEach((neighbor) => {
@@ -173,13 +173,14 @@ class Minesweeper {
     timerElement.textContent = this.seconds;
   }
 
-  gameOver(isWin) {
+  finishGame(isWin) {
     this.isGameOver = true;
-    console.log('Game Over!');
     if (isWin) {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.WIN);
     } else {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.LOSE);
+      document.getElementById('reset').innerHTML = '☹️';
+      this.revealAllMines();
     }
     clearInterval(this.timer);
   }
@@ -194,7 +195,6 @@ class Minesweeper {
     if (cell.isMine) {
       cellElement.classList.add('mine');
       cellElement.innerHTML = MINE;
-      this.revealAllMines();
     } else {
       cellElement.innerHTML = cell.neighborMines || '';
     }
