@@ -1,6 +1,8 @@
 import Cell from './cell';
 import { GAME_TYPES, GAME_OVER_CLASSES } from '../constants/game-types';
 
+const MINE = '💣';
+
 class Minesweeper {
   constructor() {
     this.gameType = GAME_TYPES.EASY;
@@ -191,8 +193,23 @@ class Minesweeper {
 
     if (cell.isMine) {
       cellElement.classList.add('mine');
+      cellElement.innerHTML = MINE;
+      this.revealAllMines();
     } else {
       cellElement.innerHTML = cell.neighborMines || '';
+    }
+  }
+
+  revealAllMines() {
+    for (let row = 0; row < this.boardSize; row++) {
+      for (let col = 0; col < this.boardSize; col++) {
+        if (this.board[row][col].isMine) {
+          const cellElement = document.querySelector(
+            `[data-row="${row}"][data-col="${col}"]`,
+          );
+          cellElement.innerHTML = MINE;
+        }
+      }
     }
   }
 }
@@ -211,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   minesweeper.placeMines();
   minesweeper.calculateNeighborMines();
-  console.log(minesweeper.board);
+  console.log('BOARD', minesweeper.board);
 
   const easyButton = document.querySelector('.button--first');
   const mediumButton = document.querySelector('.button--second');
@@ -223,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     minesweeper.createBoard();
     minesweeper.placeMines();
     minesweeper.calculateNeighborMines();
-    console.log(minesweeper.board);
+    console.log('BOARD', minesweeper.board);
   });
 
   mediumButton.addEventListener('click', () => {
@@ -232,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     minesweeper.createBoard();
     minesweeper.placeMines();
     minesweeper.calculateNeighborMines();
-    console.log(minesweeper.board);
+    console.log('BOARD', minesweeper.board);
   });
 
   hardButton.addEventListener('click', () => {
@@ -241,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     minesweeper.createBoard();
     minesweeper.placeMines();
     minesweeper.calculateNeighborMines();
-    console.log(minesweeper.board);
+    console.log('BOARD', minesweeper.board);
   });
 });
 
