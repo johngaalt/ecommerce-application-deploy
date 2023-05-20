@@ -22,6 +22,8 @@ class Cell {
   }
 
   reveal() {
+    this.revealed = true;
+
     this.cellElement.classList.add('revealed');
 
     if (this.isMine) {
@@ -34,6 +36,8 @@ class Cell {
   }
 
   updateFlag() {
+    this.flagged = !this.flagged;
+
     this.cellElement.innerHTML = this.flagged ? FLAG : '';
     this.cellElement.classList.toggle('flagged', this.flagged);
   }

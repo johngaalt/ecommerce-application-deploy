@@ -146,7 +146,6 @@ class Minesweeper {
     const cell = this.board[row][col];
     if (cell.revealed) return;
 
-    cell.revealed = true;
     cell.reveal();
 
     if (!this.timer) {
@@ -213,7 +212,6 @@ class Minesweeper {
     const cell = this.board[row][col];
     if (cell.revealed) return;
 
-    cell.flagged = !cell.flagged;
     cell.updateFlag();
   }
 }
