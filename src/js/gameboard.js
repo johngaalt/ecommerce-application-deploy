@@ -28,7 +28,10 @@ class Minesweeper {
     footer.innerHTML = '';
     const boardContainer = document.getElementById('board');
     boardContainer.innerHTML = '';
-    boardContainer.classList.remove(GAME_OVER_CLASSES.WIN, GAME_OVER_CLASSES.LOSE);
+    boardContainer.classList.remove(
+      GAME_OVER_CLASSES.WIN,
+      GAME_OVER_CLASSES.LOSE,
+    );
     this.isGameOver = false;
     this.movesCount = 0;
     this.movesCounterElement.innerHTML = this.movesCount;
@@ -94,13 +97,21 @@ class Minesweeper {
     }
   }
 
-  placeMines() {
+  placeMinesAfterFirstMove(firstRow, firstCol) {
+    const excludedCells = this.getNeighborCells(firstRow, firstCol);
+    excludedCells.push({ row: firstRow, col: firstCol });
+
     let minesCount = 0;
     while (minesCount < this.numOfMines) {
       const randomRow = Math.floor(Math.random() * this.boardSize);
       const randomCol = Math.floor(Math.random() * this.boardSize);
 
-      if (!this.board[randomRow][randomCol].isMine) {
+      if (
+        !this.board[randomRow][randomCol].isMine
+        && !excludedCells.some(
+          (cell) => cell.row === randomRow && cell.col === randomCol,
+        )
+      ) {
         this.board[randomRow][randomCol].isMine = true;
         minesCount++;
       }
@@ -162,6 +173,8 @@ class Minesweeper {
     this.revealCell(row, col, cell);
 
     if (!this.timer) {
+      this.placeMinesAfterFirstMove(row, col);
+      this.calculateNeighborMines();
       this.startTimer();
     }
 
@@ -185,6 +198,7 @@ class Minesweeper {
 
   resetTimer() {
     clearInterval(this.timer);
+    this.timer = null;
     this.seconds = 0;
     const timerElement = document.querySelector('.timer');
     timerElement.textContent = this.seconds;
@@ -194,7 +208,9 @@ class Minesweeper {
     this.isGameOver = true;
     if (isWin) {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.WIN);
-      document.getElementById('footer').innerHTML = `Hooray! You found all mines in ${this.timer} seconds and ${this.movesCount} moves! 🤩`;
+      document.getElementById(
+        'footer',
+      ).innerHTML = `Hooray! You found all mines in ${this.timer} seconds and ${this.movesCount} moves! 🤩`;
     } else {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.LOSE);
       document.getElementById('footer').innerHTML = 'Game over. Try again ☹️';
@@ -243,7 +259,9 @@ class Minesweeper {
   }
 
   updateCellFlag(row, col, flagged) {
-    const cellElement = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+    const cellElement = document.querySelector(
+      `[data-row="${row}"][data-col="${col}"]`,
+    );
     cellElement.innerHTML = flagged ? FLAG : '';
     cellElement.classList.toggle('flagged', flagged);
   }
@@ -258,7 +276,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const cellElement = event.target.closest('.cell');
     if (cellElement) {
       minesweeper.countMoves();
-      minesweeper.handleCellClick(cellElement.dataset.row, cellElement.dataset.col);
+      minesweeper.handleCellClick(
+        cellElement.dataset.row,
+        cellElement.dataset.col,
+      );
     }
   });
 
@@ -272,10 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  minesweeper.placeMines();
-  minesweeper.calculateNeighborMines();
-  console.log('BOARD', minesweeper.board);
-
   const easyButton = document.querySelector('.button--first');
   const mediumButton = document.querySelector('.button--second');
   const hardButton = document.querySelector('.button--third');
@@ -284,35 +301,24 @@ document.addEventListener('DOMContentLoaded', () => {
   resetButton.addEventListener('click', () => {
     minesweeper.resetTimer();
     minesweeper.createBoard();
-    minesweeper.placeMines();
-    minesweeper.calculateNeighborMines();
   });
 
   easyButton.addEventListener('click', () => {
     minesweeper.setGameType(GAME_TYPES.EASY);
     minesweeper.resetTimer();
     minesweeper.createBoard();
-    minesweeper.placeMines();
-    minesweeper.calculateNeighborMines();
-    console.log('BOARD', minesweeper.board);
   });
 
   mediumButton.addEventListener('click', () => {
     minesweeper.setGameType(GAME_TYPES.MEDIUM);
     minesweeper.resetTimer();
     minesweeper.createBoard();
-    minesweeper.placeMines();
-    minesweeper.calculateNeighborMines();
-    console.log('BOARD', minesweeper.board);
   });
 
   hardButton.addEventListener('click', () => {
     minesweeper.setGameType(GAME_TYPES.HARD);
     minesweeper.resetTimer();
     minesweeper.createBoard();
-    minesweeper.placeMines();
-    minesweeper.calculateNeighborMines();
-    console.log('BOARD', minesweeper.board);
   });
 });
 
