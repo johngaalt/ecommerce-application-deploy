@@ -2,6 +2,7 @@ import Cell from './cell';
 import { GAME_TYPES, GAME_OVER_CLASSES } from '../constants/game-types';
 
 const MINE = '💣';
+const FLAG = '🚩';
 
 class Minesweeper {
   constructor() {
@@ -230,6 +231,22 @@ class Minesweeper {
       }
     }
   }
+
+  handleCellRightClick(row, col) {
+    if (this.isGameOver) return;
+
+    const cell = this.board[row][col];
+    if (cell.revealed) return;
+
+    cell.flagged = !cell.flagged;
+    this.updateCellFlag(row, col, cell.flagged);
+  }
+
+  updateCellFlag(row, col, flagged) {
+    const cellElement = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+    cellElement.innerHTML = flagged ? FLAG : '';
+    cellElement.classList.toggle('flagged', flagged);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -242,6 +259,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cellElement) {
       minesweeper.countMoves();
       minesweeper.handleCellClick(cellElement.dataset.row, cellElement.dataset.col);
+    }
+  });
+
+  boardContainer.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    const cellElement = event.target.closest('.cell');
+    if (cellElement) {
+      const row = Number(cellElement.dataset.row);
+      const col = Number(cellElement.dataset.col);
+      minesweeper.handleCellRightClick(row, col);
     }
   });
 
