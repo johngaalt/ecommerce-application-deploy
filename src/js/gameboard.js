@@ -31,8 +31,7 @@ class Minesweeper {
     boardContainer.classList.remove(GAME_OVER_CLASSES.WIN, GAME_OVER_CLASSES.LOSE);
     this.isGameOver = false;
     this.movesCount = 0;
-    this.seconds = 0;
-    this.timer = null;
+    this.movesCounterElement.innerHTML = this.movesCount;
   }
 
   createBoard() {
@@ -280,6 +279,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const easyButton = document.querySelector('.button--first');
   const mediumButton = document.querySelector('.button--second');
   const hardButton = document.querySelector('.button--third');
+  const resetButton = document.querySelector('.button--fourth');
+
+  resetButton.addEventListener('click', () => {
+    minesweeper.resetTimer();
+    minesweeper.createBoard();
+    minesweeper.placeMines();
+    minesweeper.calculateNeighborMines();
+  });
 
   easyButton.addEventListener('click', () => {
     minesweeper.setGameType(GAME_TYPES.EASY);
