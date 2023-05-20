@@ -24,6 +24,8 @@ class Minesweeper {
     const boardContainer = document.getElementById('board');
     boardContainer.innerHTML = '';
 
+    this.board = [];
+
     for (let row = 0; row < this.boardSize; row++) {
       const rowElement = document.createElement('div');
       rowElement.classList.add('row');
