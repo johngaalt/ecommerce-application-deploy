@@ -64,7 +64,6 @@ ul {
   margin-right: 10px;
 }
 
-
 .container {
   display: grid;
   grid-template-columns: repeat(10, 25px);
@@ -116,7 +115,8 @@ ul {
   justify-content: center;
   box-shadow: inset -2px -2px 2px 0px rgba(0, 0, 0, 0.75),
     inset -2px 2px 2px 0px rgba(255, 255, 255, 1);
-    font-weight: 800;
+  font-weight: 800;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: grey;
