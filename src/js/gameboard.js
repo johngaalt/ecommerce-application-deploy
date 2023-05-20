@@ -1,5 +1,6 @@
 import Cell from './cell';
 import { GAME_TYPES, GAME_OVER_CLASSES } from '../constants/game-types';
+import sound from './sound';
 
 class Minesweeper {
   constructor() {
@@ -207,10 +208,12 @@ class Minesweeper {
       document.getElementById(
         'footer',
       ).innerHTML = `Hooray! You found all mines in ${this.seconds} seconds and ${this.movesCount} moves! 🤩`;
+      sound.playWinSound();
     } else {
       document.getElementById('board').classList.add(GAME_OVER_CLASSES.LOSE);
       document.getElementById('footer').innerHTML = 'Game over. Try again ☹️';
       this.revealAllMines();
+      sound.playLoseSound();
     }
     clearInterval(this.timer);
   }
@@ -232,11 +235,13 @@ class Minesweeper {
     const cell = this.board[row][col];
     if (cell.revealed) return;
 
+    sound.playClickSound();
     cell.updateFlag();
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  sound.playStartSound();
   const minesweeper = new Minesweeper();
   minesweeper.createBoard();
 
@@ -244,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
   boardContainer.addEventListener('click', (event) => {
     const cellElement = event.target.closest('.cell');
     if (cellElement) {
+      sound.playClickSound();
       minesweeper.countMoves();
       minesweeper.handleCellClick(
         cellElement.dataset.row,
@@ -268,23 +274,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const resetButton = document.querySelector('.button--fourth');
 
   resetButton.addEventListener('click', () => {
+    sound.playStartSound();
     minesweeper.resetTimer();
     minesweeper.createBoard();
   });
 
   easyButton.addEventListener('click', () => {
+    sound.playStartSound();
     minesweeper.setGameType(GAME_TYPES.EASY);
     minesweeper.resetTimer();
     minesweeper.createBoard();
   });
 
   mediumButton.addEventListener('click', () => {
+    sound.playStartSound();
     minesweeper.setGameType(GAME_TYPES.MEDIUM);
     minesweeper.resetTimer();
     minesweeper.createBoard();
   });
 
   hardButton.addEventListener('click', () => {
+    sound.playStartSound();
     minesweeper.setGameType(GAME_TYPES.HARD);
     minesweeper.resetTimer();
     minesweeper.createBoard();
