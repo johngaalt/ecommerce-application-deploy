@@ -78,23 +78,6 @@ class Minesweeper {
     }
 
     this.calculateNeighborMines();
-    this.displayNeighborMines();
-  }
-
-  displayNeighborMines() {
-    const boardContainer = document.getElementById('board');
-    const cellElements = boardContainer.getElementsByClassName('cell');
-
-    for (let row = 0; row < this.boardSize; row++) {
-      for (let col = 0; col < this.boardSize; col++) {
-        const cell = this.board[row][col];
-        const cellElement = cellElements[row * this.boardSize + col];
-
-        if (!cell.isMine && cell.neighborMines > 0) {
-          cellElement.textContent = cell.neighborMines;
-        }
-      }
-    }
   }
 
   placeMinesAfterFirstMove(firstRow, firstCol) {
