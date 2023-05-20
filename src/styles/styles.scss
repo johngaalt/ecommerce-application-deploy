@@ -116,6 +116,7 @@ ul {
   justify-content: center;
   box-shadow: inset -2px -2px 2px 0px rgba(0, 0, 0, 0.75),
     inset -2px 2px 2px 0px rgba(255, 255, 255, 1);
+    font-weight: 800;
 
   &:hover {
     background-color: grey;
@@ -132,6 +133,22 @@ ul {
 
   .fail & {
     cursor: not-allowed;
+  }
+
+  &[data-neighbor-mines="1"] {
+    color: blue;
+  }
+
+  &[data-neighbor-mines="2"] {
+    color: green;
+  }
+
+  &[data-neighbor-mines="3"] {
+    color: red;
+  }
+
+  &[data-neighbor-mines="4"] {
+    color: pink;
   }
 }
 

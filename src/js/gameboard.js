@@ -216,6 +216,7 @@ class Minesweeper {
       cellElement.innerHTML = MINE;
     } else {
       cellElement.innerHTML = cell.neighborMines || '';
+      cellElement.dataset.neighborMines = cell.neighborMines;
     }
   }
 
