@@ -1,9 +1,6 @@
 import Cell from './cell';
 import { GAME_TYPES, GAME_OVER_CLASSES } from '../constants/game-types';
 
-const MINE = '💣';
-const FLAG = '🚩';
-
 class Minesweeper {
   constructor() {
     this.gameType = GAME_TYPES.EASY;
@@ -63,14 +60,10 @@ class Minesweeper {
 
       this.board[row] = [];
       for (let col = 0; col < this.boardSize; col++) {
-        const cell = new Cell(false, false, 0);
+        const cell = new Cell();
         this.board[row][col] = cell;
 
-        const cellElement = document.createElement('div');
-        cellElement.classList.add('cell');
-        cellElement.dataset.row = row;
-        cellElement.dataset.col = col;
-
+        const cellElement = cell.createCellElement(row, col);
         rowElement.appendChild(cellElement);
       }
 
@@ -104,15 +97,16 @@ class Minesweeper {
   calculateNeighborMines() {
     for (let row = 0; row < this.boardSize; row++) {
       for (let col = 0; col < this.boardSize; col++) {
-        if (!this.board[row][col].isMine) {
+        const cell = this.board[row][col];
+        if (!cell.isMine) {
           const neighborCells = this.getNeighborCells(row, col);
           let neighborMines = 0;
-          neighborCells.forEach((cell) => {
-            if (this.board[cell.row][cell.col].isMine) {
+          neighborCells.forEach((c) => {
+            if (this.board[c.row][c.col].isMine) {
               neighborMines++;
             }
           });
-          this.board[row][col].neighborMines = neighborMines;
+          cell.neighborMines = neighborMines;
         }
       }
     }
@@ -153,7 +147,7 @@ class Minesweeper {
     if (cell.revealed) return;
 
     cell.revealed = true;
-    this.revealCell(row, col, cell);
+    cell.reveal();
 
     if (!this.timer) {
       this.placeMinesAfterFirstMove(row, col);
@@ -202,30 +196,12 @@ class Minesweeper {
     clearInterval(this.timer);
   }
 
-  revealCell(row, col, cell) {
-    const cellElement = document.querySelector(
-      `[data-row="${row}"][data-col="${col}"]`,
-    );
-
-    cellElement.classList.add('revealed');
-
-    if (cell.isMine) {
-      cellElement.classList.add('mine');
-      cellElement.innerHTML = MINE;
-    } else {
-      cellElement.innerHTML = cell.neighborMines || '';
-      cellElement.dataset.neighborMines = cell.neighborMines;
-    }
-  }
-
   revealAllMines() {
     for (let row = 0; row < this.boardSize; row++) {
       for (let col = 0; col < this.boardSize; col++) {
-        if (this.board[row][col].isMine) {
-          const cellElement = document.querySelector(
-            `[data-row="${row}"][data-col="${col}"]`,
-          );
-          cellElement.innerHTML = MINE;
+        const cell = this.board[row][col];
+        if (cell.isMine) {
+          cell.displayMine();
         }
       }
     }
@@ -238,15 +214,7 @@ class Minesweeper {
     if (cell.revealed) return;
 
     cell.flagged = !cell.flagged;
-    this.updateCellFlag(row, col, cell.flagged);
-  }
-
-  updateCellFlag(row, col, flagged) {
-    const cellElement = document.querySelector(
-      `[data-row="${row}"][data-col="${col}"]`,
-    );
-    cellElement.innerHTML = flagged ? FLAG : '';
-    cellElement.classList.toggle('flagged', flagged);
+    cell.updateFlag();
   }
 }
 
