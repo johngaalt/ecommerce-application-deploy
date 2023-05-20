@@ -104,8 +104,19 @@ ul {
   height: 25px;
   margin-bottom: 2px;
   cursor: pointer;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.cell:hover {
-  background-color: grey;
+  &:hover {
+    background-color: grey;
+  }
+
+  &.revealed {
+    background-color: darkgray;
+  }
+
+  &.mine {
+    background-color: red;
+  }
 }

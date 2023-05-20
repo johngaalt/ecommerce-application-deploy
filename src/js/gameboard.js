@@ -1,3 +1,4 @@
+import Cell from './cell';
 import { GAME_TYPES, GAME_OVER_CLASSES } from '../constants/game-types';
 
 class Minesweeper {
@@ -43,11 +44,7 @@ class Minesweeper {
 
       this.board[row] = [];
       for (let col = 0; col < this.boardSize; col++) {
-        const cell = {
-          isMine: false,
-          revealed: false,
-          neighborMines: 0,
-        };
+        const cell = new Cell(false, false, 0);
         this.board[row][col] = cell;
 
         const cellElement = document.createElement('div');
@@ -138,6 +135,7 @@ class Minesweeper {
     if (cell.revealed) return;
 
     cell.revealed = true;
+    this.revealCell(row, col, cell);
 
     if (!this.timer) {
       this.startTimer();
@@ -171,22 +169,6 @@ class Minesweeper {
     timerElement.textContent = this.seconds;
   }
 
-  revealCell(row, col) {
-    if (this.isGameOver) return;
-    const cell = this.board[row][col];
-    if (cell.revealed) return;
-
-    cell.revealed = true;
-    if (cell.isMine) {
-      this.gameOver();
-    } else if (cell.neighborMines === 0) {
-      const neighborCells = this.getNeighborCells(row, col);
-      neighborCells.forEach((neighbor) => {
-        this.revealCell(neighbor.row, neighbor.col);
-      });
-    }
-  }
-
   gameOver(isWin) {
     this.isGameOver = true;
     console.log('Game Over!');
@@ -197,6 +179,20 @@ class Minesweeper {
     }
     clearInterval(this.timer);
   }
+
+  revealCell(row, col, cell) {
+    const cellElement = document.querySelector(
+      `[data-row="${row}"][data-col="${col}"]`,
+    );
+
+    cellElement.classList.add('revealed');
+
+    if (cell.isMine) {
+      cellElement.classList.add('mine');
+    } else {
+      cellElement.innerHTML = cell.neighborMines || '';
+    }
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -206,8 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const boardContainer = document.getElementById('board');
   boardContainer.addEventListener('click', (event) => {
     const cellElement = event.target;
-    const row = parseInt(cellElement.dataset.row);
-    const col = parseInt(cellElement.dataset.col);
+    const row = Number(cellElement.dataset.row);
+    const col = Number(cellElement.dataset.col);
     minesweeper.handleCellClick(row, col);
   });
 
