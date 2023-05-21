@@ -26,6 +26,14 @@ body {
   box-sizing: inherit;
 }
 
+button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+
+
 h1,
 h2,
 h3,
@@ -173,6 +181,12 @@ ul {
     height: 21px;
   }
 
+  .dark-theme-active {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+  }
+
   .wrapper {
     display: flex;
     justify-content: space-between;
@@ -223,5 +237,38 @@ li {
 }
 
 li:nth-child(5n) {
- margin-bottom: 30px;
+  margin-bottom: 30px;
 }
+
+.dark-theme-active {
+  background: rgb(63, 61, 61) ;
+}
+
+.dark-theme-active .cell {
+  background-color: wheat;
+}
+
+.dark-theme-active .row {
+  background-color: whitesmoke;
+}
+
+.dark-theme-active .container {
+  background-color: whitesmoke;
+}
+
+.dark-theme-active .message {
+  color: #f5f5f5;
+}
+
+.dark-theme-active .moves-counter {
+  color: #f5f5f5;
+}
+
+.dark-theme-active .timer {
+  color: #f5f5f5;
+}
+
+.dark-theme-active .cell.revealed.mine {
+  background-color: red;
+}
+

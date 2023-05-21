@@ -310,6 +310,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('show-results').addEventListener('click', () => {
     GameResult.displayGameResults();
   });
+
+  const darkThemeButton = document.querySelector('.dark-theme');
+  darkThemeButton.addEventListener('click', () => {
+    const body = document.querySelector('body');
+    body.classList.toggle('dark-theme-active');
+  });
 });
 
 export default Minesweeper;

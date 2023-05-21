@@ -49,9 +49,13 @@ message.id = 'message';
 const wrapper = document.createElement('div');
 wrapper.classList.add('wrapper');
 
+const darkTheme = document.createElement('button');
+darkTheme.classList.add('dark-theme');
+darkTheme.textContent = 'dark theme';
+
 const soundSwitcher = sound.createElement();
 const showResults = new GameResult().createElement();
-wrapper.append(soundSwitcher, showResults);
+wrapper.append(soundSwitcher, showResults, darkTheme);
 footer.append(wrapper, message);
 
 document.body.append(header, main, footer);
