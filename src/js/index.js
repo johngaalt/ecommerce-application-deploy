@@ -46,9 +46,12 @@ const message = document.createElement('div');
 message.classList.add('message');
 message.id = 'message';
 
+const wrapper = document.createElement('div');
+wrapper.classList.add('wrapper');
+
 const soundSwitcher = sound.createElement();
 const showResults = new GameResult().createElement();
-
-footer.append(soundSwitcher, showResults, message);
+wrapper.append(soundSwitcher, showResults);
+footer.append(wrapper, message);
 
 document.body.append(header, main, footer);
