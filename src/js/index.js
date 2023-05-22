@@ -51,7 +51,7 @@ wrapper.classList.add('wrapper');
 
 const darkTheme = document.createElement('button');
 darkTheme.classList.add('dark-theme');
-darkTheme.textContent = 'dark theme';
+darkTheme.textContent = 'theme';
 
 const soundSwitcher = sound.createElement();
 const showResults = new GameResult().createElement();
