@@ -14,12 +14,19 @@ class Minesweeper {
     this.seconds = 0;
     this.movesCount = 0;
     this.movesCounterElement = document.querySelector('.moves-counter');
+    this.minesButton = document.querySelector('.mines-quantity');
+    this.updateMinesButton();
+  }
+
+  updateMinesButton() {
+    this.minesButton.textContent = `Mines: ${this.numOfMines}`;
   }
 
   setGameType(gameType) {
     this.gameType = gameType;
     this.boardSize = this.gameType.numRows;
     this.numOfMines = this.gameType.numMines;
+    this.updateMinesButton();
   }
 
   resetBoard() {

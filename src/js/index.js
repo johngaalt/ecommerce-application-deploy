@@ -53,9 +53,12 @@ const darkTheme = document.createElement('button');
 darkTheme.classList.add('dark-theme');
 darkTheme.textContent = 'theme';
 
+const minesQuantity = document.createElement('button');
+minesQuantity.classList.add('mines-quantity');
+
 const soundSwitcher = sound.createElement();
 const showResults = new GameResult().createElement();
-wrapper.append(soundSwitcher, showResults, darkTheme);
+wrapper.append(soundSwitcher, showResults, darkTheme, minesQuantity);
 footer.append(wrapper, message);
 
 document.body.append(header, main, footer);
