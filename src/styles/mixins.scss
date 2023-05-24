@@ -1,0 +1,7 @@
+$breakpoint-mobile: 750px; // 500px
+
+@mixin for-mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}

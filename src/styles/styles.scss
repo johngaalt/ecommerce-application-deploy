@@ -1,3 +1,5 @@
+@import "./mixins.scss";
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -31,8 +33,6 @@ button {
   border: 1px solid black;
   border-radius: 3px;
 }
-
-
 
 h1,
 h2,
@@ -107,6 +107,16 @@ ul {
   padding: 10px;
   background-color: grey;
   opacity: 0.7;
+
+  @include for-mobile {
+    border-left: 1px solid darkgrey;
+    border-top: 1px solid darkgray;
+    max-width: 475px;
+    padding: 0;
+    grid-template-rows: repeat(25, 19px);
+    grid-template-columns: repeat(25, 19px);
+    gap: 0;
+  }
 }
 
 .row {
@@ -126,6 +136,14 @@ ul {
     inset -2px 2px 2px 0px rgba(255, 255, 255, 1);
   font-weight: 800;
   transition: background-color 0.3s;
+
+  .container-hard & {
+    @include for-mobile {
+      width: 19px;
+      height: 19px;
+      margin-bottom: 0;
+    }
+  }
 
   &:hover {
     background-color: grey;
@@ -181,8 +199,6 @@ ul {
     height: 21px;
   }
 
-  
-
   .wrapper {
     display: flex;
     justify-content: space-between;
@@ -237,7 +253,7 @@ li:nth-child(5n) {
 }
 
 .dark-theme-active {
-  background: rgb(63, 61, 61) ;
+  background: rgb(63, 61, 61);
 }
 
 .dark-theme-active .cell {
@@ -267,4 +283,3 @@ li:nth-child(5n) {
 .dark-theme-active .cell.revealed.mine {
   background-color: red;
 }
-
