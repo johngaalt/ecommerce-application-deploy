@@ -4,7 +4,7 @@
   "description": "Clone of CSS Diner",
   "scripts": {
     "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
-    "build": "webpack --config ./webpack.config.js --env mode=prod",
+    "build": "webpack --mode=production",
     "lint": "eslint . --ext .ts",
     "fix": "eslint --fix",
     "watch": "webpack --watch",
@@ -12,6 +12,11 @@
     "deploy": "gh-pages -d dist -e rs-css",
     "dev": "webpack-dev-server --hot"
   },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  
   "author": "johngaalt",
   "license": "ISC",
   "devDependencies": {
