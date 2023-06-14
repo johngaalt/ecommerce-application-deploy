@@ -1,20 +1,17 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "es2020",
+    "module": "CommonJS",
     "strict": true,
+    "allowJs": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "skipLibCheck": true,
+    "outDir": "./dist",
     "baseUrl": "./src",
-    "paths": {
-      "@/*": ["*"]
-    }
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  }
 }
