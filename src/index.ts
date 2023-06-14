@@ -1,1 +1,1 @@
-console.log('HELLO WORLD!');
+import 'bootstrap/dist/css/bootstrap.min.css';
