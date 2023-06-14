@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
     "build": "webpack --mode=production",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint . --ext .ts",
     "fix": "eslint --fix",
     "watch": "webpack --watch",
@@ -16,7 +17,6 @@
     "type": "git",
     "url": ""
   },
-  
   "author": "johngaalt",
   "license": "ISC",
   "devDependencies": {
@@ -32,6 +32,7 @@
     "eslint-webpack-plugin": "^4.0.1",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.5.3",
+    "prettier": "^2.8.8",
     "sass": "^1.42.1",
     "sass-loader": "^12.3.0",
     "style-loader": "^3.3.0",
