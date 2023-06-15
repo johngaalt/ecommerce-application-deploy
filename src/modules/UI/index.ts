@@ -1,9 +1,17 @@
-import { createHeader } from './components/Header/Header';
+import { Header } from './components/Header/Header';
 import { createGameWrapper } from './components/GameWrapper/GameWrapper';
 
-export function initApp() {
-  const header = createHeader();
-  const gameWrapper = createGameWrapper();
+export class UI {
+  decorate() {
+    document.body.classList.add('text-bg-dark');
+    document.body.dataset.bsTheme = 'dark';
+  }
 
-  document.body.innerHTML = header + gameWrapper;
+  initRender() {
+    const header = new Header();
+    const gameWrapper = createGameWrapper();
+
+    this.decorate();
+    document.body.innerHTML = header.render() + gameWrapper;
+  }
 }

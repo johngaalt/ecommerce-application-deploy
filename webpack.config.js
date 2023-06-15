@@ -20,12 +20,12 @@ const config = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: 'asset',
-      },
-      {
         test: /\.html$/i,
         loader: 'html-loader',
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: 'asset',
       },
     ],
   },
@@ -44,12 +44,14 @@ const config = {
     new CleanWebpackPlugin(),
     new ESLintPlugin({
       extensions: ['js', 'ts'],
+      emitWarning: false,
     }),
   ],
   devServer: {
     open: true,
     host: 'localhost',
     hot: true,
+    watchFiles: ['src/**/*.html'],
   },
 };
 

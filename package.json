@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Clone of CSS Diner",
   "scripts": {
-    "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
+    "start": "webpack serve",
     "build": "webpack --mode=production",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint . --ext .ts",
@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.0"
+    "bootstrap": "^5.3.0",
+    "bootstrap-icons": "^1.10.5"
   }
 }
