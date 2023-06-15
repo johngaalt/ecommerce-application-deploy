@@ -30,7 +30,7 @@ const config = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.html'],
   },
   devtool: 'inline-source-map',
   output: {
@@ -46,6 +46,11 @@ const config = {
       extensions: ['js', 'ts'],
     }),
   ],
+  devServer: {
+    open: true,
+    host: 'localhost',
+    hot: true,
+  },
 };
 
 module.exports = () => {

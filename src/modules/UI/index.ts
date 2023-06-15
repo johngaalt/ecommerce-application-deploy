@@ -1,5 +1,9 @@
 import { createHeader } from './components/Header/Header';
+import { createGameWrapper } from './components/GameWrapper/GameWrapper';
 
-const header = createHeader();
+export function initApp() {
+  const header = createHeader();
+  const gameWrapper = createGameWrapper();
 
-document.body.append(header);
+  document.body.innerHTML = header + gameWrapper;
+}
