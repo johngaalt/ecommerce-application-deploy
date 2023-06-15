@@ -1,17 +1,18 @@
-import { Header } from './components/Header/Header';
-import { createGameWrapper } from './components/GameWrapper/GameWrapper';
+import { App } from './components/App/App';
 
 export class UI {
+  private app: App;
+
+  constructor() {
+    this.app = new App();
+  }
   decorate() {
     document.body.classList.add('text-bg-dark');
     document.body.dataset.bsTheme = 'dark';
   }
 
   initRender() {
-    const header = new Header();
-    const gameWrapper = createGameWrapper();
-
     this.decorate();
-    document.body.innerHTML = header.render() + gameWrapper;
+    document.body.innerHTML = this.app.render();
   }
 }
