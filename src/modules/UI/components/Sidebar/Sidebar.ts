@@ -6,8 +6,7 @@ export class Sidebar {
   private levelDescription: LevelDescription;
   private levelList: LevelList;
   private BURGER_ID = 'burger';
-  private HELP_ID = 'help';
-  private LEVELS_ID = 'levels';
+  private HELP_ID = 'level-description';
   private CROSS_ID = 'cross';
 
   constructor() {
@@ -17,17 +16,19 @@ export class Sidebar {
 
   showLevelsMenuListener() {
     const burgerEl = document.getElementById(this.BURGER_ID);
+
     burgerEl?.addEventListener('click', () => {
       this.hideHelp();
-      this.showLevels();
+      this.levelList.show();
     });
   }
 
   closeLevelsMenuListener() {
     const crossEl = document.getElementById(this.CROSS_ID);
+
     crossEl?.addEventListener('click', () => {
       this.showHelp();
-      this.hideLevels();
+      this.levelList.hide();
     });
   }
 
@@ -39,16 +40,6 @@ export class Sidebar {
   hideHelp() {
     const helpEl = document.getElementById(this.HELP_ID);
     helpEl?.classList.add('d-none');
-  }
-
-  showLevels() {
-    const levelsEl = document.getElementById(this.LEVELS_ID);
-    levelsEl?.classList.remove('d-none');
-  }
-
-  hideLevels() {
-    const levelsEl = document.getElementById(this.LEVELS_ID);
-    levelsEl?.classList.add('d-none');
   }
 
   render() {
