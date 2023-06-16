@@ -11,6 +11,10 @@ export class UI {
     document.body.dataset.bsTheme = 'dark';
   }
 
+  initListeners() {
+    this.app.attachListeners();
+  }
+
   initRender() {
     this.decorate();
     document.body.innerHTML = this.app.render();

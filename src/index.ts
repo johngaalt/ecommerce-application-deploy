@@ -5,6 +5,8 @@ import './styles/main.scss';
 
 import { UI } from './modules/UI';
 
-const ui = new UI();
-
-ui.initRender();
+document.addEventListener('DOMContentLoaded', () => {
+  const ui = new UI();
+  ui.initRender();
+  ui.initListeners();
+});
