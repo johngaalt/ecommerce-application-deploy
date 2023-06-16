@@ -1,7 +1,5 @@
-import { DisplayHelp } from '../DisplayHelp/DisplayHelp';
 import { GameWrapper } from '../GameWrapper/GameWrapper';
 import { Header } from '../Header/Header';
-import { LevelDescription } from '../LevelDescription/LevelDescription';
 import { Sidebar } from '../Sidebar/Sidebar';
 import app from './App.html';
 

@@ -1,18 +1,18 @@
-import { DisplayHelp } from '../DisplayHelp/DisplayHelp';
 import { LevelDescription } from '../LevelDescription/LevelDescription';
+import { LevelList } from '../LevelList/LevelList';
 import sidebar from './Sidebar.html';
 
 export class Sidebar {
-  private displayHelp: DisplayHelp;
   private levelDescription: LevelDescription;
+  private levelList: LevelList;
   private BURGER_ID = 'burger';
   private HELP_ID = 'help';
   private LEVELS_ID = 'levels';
   private CROSS_ID = 'cross';
 
   constructor() {
-    this.displayHelp = new DisplayHelp();
     this.levelDescription = new LevelDescription();
+    this.levelList = new LevelList();
   }
 
   showLevelsMenuListener() {
@@ -53,7 +53,7 @@ export class Sidebar {
 
   render() {
     return sidebar
-      .replace('#DISPLAYHELP#', this.displayHelp.render())
-      .replace('#LEVELDESCRIPTION#', this.levelDescription.render());
+      .replace('#DISPLAYHELP#', this.levelDescription.render())
+      .replace('#LEVELDESCRIPTION#', this.levelList.render());
   }
 }
