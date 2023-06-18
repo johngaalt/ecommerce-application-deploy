@@ -4,6 +4,11 @@ import levelList from './LevelList.html';
 export class LevelList {
   private LEVELS_ID = 'level-list';
   private levels: LevelListItem[] = [];
+  private levelListItem: LevelListItem;
+
+  constructor() {
+    this.levelListItem = new LevelListItem();
+  }
 
   show() {
     const levelsEl = document.getElementById(this.LEVELS_ID);
@@ -16,6 +21,6 @@ export class LevelList {
   }
 
   render() {
-    return levelList;
+    return levelList.replace('#LEVELLISTITEMS#', this.levelListItem.render());
   }
 }
