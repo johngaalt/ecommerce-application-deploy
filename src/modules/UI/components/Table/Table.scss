@@ -1,0 +1,32 @@
+.table-wrapper {
+  margin-top: 10px;
+  transform: rotateX(20deg);
+  min-height: 142px;
+  transform-origin: bottom;
+  z-index: 9999;
+  position: relative;
+  margin: 10px auto 0 auto;
+
+
+  .table-surface {
+    box-shadow: 0px 40px 10px rgba(0,0,0,.2);
+    background: #dd992d;
+    background: linear-gradient(#dd992d,#cd8c26);
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .table {
+    transform-style: preserve-3d;
+    outline: solid 1px transparent;
+    margin: 0px auto 0px auto;
+    min-height: 142px;
+    padding: 15px 15px 22px 15px;
+    display: inline-block;
+    z-index: 999;
+    position: relative;
+    white-space: nowrap;
+  }
+}
