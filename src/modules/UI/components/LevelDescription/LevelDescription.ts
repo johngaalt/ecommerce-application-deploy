@@ -1,7 +1,23 @@
+import { ILevel } from '../../../../modules/GameState/types/ILevel';
 import levelDescription from './LevelDescription.html';
+import { getGame } from '../../../../modules/GameState';
+import { LEVELS } from '../../../../modules/GameState/constants/levels';
+
+const e = '<div class="expample fs-6 border-bottom pb-3"></div>';
 
 export class LevelDescription {
   private LEVEL_DESCRIPTION_ID = 'level-description';
+
+  getCurrentLevel(): ILevel {
+    const { currentLevelId } = getGame().getState();
+    const currentLevel = LEVELS.find((level) => level.id === currentLevelId);
+
+    if (!currentLevel) {
+      throw new Error(`Level with id ${currentLevelId} was not found!`);
+    }
+
+    return currentLevel;
+  }
 
   show() {
     const levelDescriptionEl = document.getElementById(
@@ -16,7 +32,24 @@ export class LevelDescription {
     );
     levelDescriptionEl?.classList.add('d-none');
   }
+
   render() {
-    return levelDescription;
+    const level = this.getCurrentLevel();
+    return levelDescription
+      .replace('#ID#', String(level.id))
+      .replace('#TOTAL#', String(LEVELS.length))
+      .replace('#SELECTORNAME#', level.selectorName ?? '')
+      .replace('#HELPTITLE#', level.helpTitle ?? '')
+      .replace('#SYNTAX#', level.syntax)
+      .replace('#HELP#', level.help ?? '')
+      .replace(
+        '#EXAMPLES#',
+        level.examples
+          ?.map(
+            (example) =>
+              `<div class="expample fs-6 border-bottom pb-3">${example}</div>`
+          )
+          .join('') ?? ''
+      );
   }
 }
