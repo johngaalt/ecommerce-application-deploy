@@ -1,3 +1,4 @@
+@import 'bootstrap/scss/bootstrap.scss';
 
 * {
   box-sizing: border-box;
@@ -9,4 +10,19 @@ body {
   padding: 0;
   overflow-y: hidden;
   height: 100%;
+}
+
+strong,
+tag {
+  @extend .font-monospace;
+  @extend .py-1;
+  @extend .px-2;
+}
+
+strong {
+  @extend .bg-light-subtle;
+}
+
+tag {
+  @extend .bg-dark-subtle;
 }
