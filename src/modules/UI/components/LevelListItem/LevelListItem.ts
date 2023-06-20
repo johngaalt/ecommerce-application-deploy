@@ -1,7 +1,12 @@
-import { GameState } from '../../../../modules/GameState';
+import gameState from '../../../../modules/GameState';
 import levelListItem from './LevelListItem.html';
 
 export class LevelListItem {
+  static dataIdSelector = '[data-id]';
+  static activeSelector = '[data-id].active';
+
+  element: HTMLElement | null = null;
+
   id: number;
   syntax: string;
 
@@ -10,8 +15,15 @@ export class LevelListItem {
     this.syntax = syntax;
   }
 
+  attachEventListener() {
+    this.element = document.querySelector('[data-id]');
+    this.element?.addEventListener('click', () => {
+      return;
+    });
+  }
+
   checkCurrentLevel() {
-    const state = GameState.getInstance().getState();
+    const state = gameState.getState();
     return state.currentLevelId;
   }
 
