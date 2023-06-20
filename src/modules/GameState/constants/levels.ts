@@ -2,6 +2,7 @@ import { ILevel } from '../types/ILevel';
 
 export const LEVELS: Readonly<ILevel[]> = Object.freeze([
   {
+    id: 1,
     helpTitle: 'Select elements by their type',
     selectorName: 'Type Selector',
     doThis: 'Select the plates',
@@ -12,12 +13,10 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>div</strong> selects all <tag>div</tag> elements.',
       '<strong>p</strong> selects all <tag>p</tag> elements.',
     ],
-    boardMarkup: `
-    <plate/>
-    <plate/>
-    `,
+    boardMarkup: '\n    <plate/>\n    <plate/>\n    ',
   },
   {
+    id: 2,
     doThis: 'Select the bento boxes',
     selector: 'bento',
     syntax: 'A',
@@ -28,13 +27,10 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>div</strong> selects all <tag>div</tag> elements.',
       '<strong>p</strong> selects all <tag>p</tag> elements.',
     ],
-    boardMarkup: `
-    <bento/>
-    <plate/>
-    <bento/>
-    `,
+    boardMarkup: '\n    <bento/>\n    <plate/>\n    <bento/>\n    ',
   },
   {
+    id: 3,
     doThis: 'Select the fancy plate',
     selector: '#fancy',
     selectorName: 'ID Selector',
@@ -45,13 +41,10 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>#cool</strong> selects any element with <strong>id="cool"</strong>',
       '<strong>ul#long</strong> selects <tag>ul id="long"</tag>',
     ],
-    boardMarkup: `
-    <plate id="fancy"/>
-    <plate/>
-    <bento/>
-    `,
+    boardMarkup: '\n    <plate id="fancy"/>\n    <plate/>\n    <bento/>\n    ',
   },
   {
+    id: 4,
     helpTitle: 'Select an element inside another element',
     selectorName: 'Descendant Selector',
     doThis: 'Select the apple on the plate',
@@ -62,15 +55,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>p&nbsp;&nbsp;strong</strong> selects all <tag>strong</tag> elements that are inside of any <tag>p</tag>',
       '<strong>#fancy&nbsp;&nbsp;span</strong> selects any <tag>span</tag> elements that are inside of the element with <strong>id="fancy"</strong>',
     ],
-    boardMarkup: `
-    <bento/>
-    <plate>
-      <apple/>
-    </plate>
-    <apple/>
-    `,
+    boardMarkup:
+      '\n    <bento/>\n    <plate>\n      <apple/>\n    </plate>\n    <apple/>\n    ',
   },
   {
+    id: 5,
     doThis: 'Select the pickle on the fancy plate',
     selector: '#fancy pickle',
     helpTitle: 'Combine the Descendant & ID Selectors',
@@ -79,19 +68,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>#cool&nbsp;span</strong> selects all <tag>span</tag> elements that are inside of elements with <strong>id="cool"</strong>',
     ],
-    boardMarkup: `
-    <bento>
-    <orange/>
-    </bento>
-    <plate id="fancy">
-      <pickle/>
-    </plate>
-    <plate>
-      <pickle/>
-    </plate>
-    `,
+    boardMarkup:
+      '\n    <bento>\n    <orange/>\n    </bento>\n    <plate id="fancy">\n      <pickle/>\n    </plate>\n    <plate>\n      <pickle/>\n    </plate>\n    ',
   },
   {
+    id: 6,
     doThis: 'Select the small apples',
     selector: '.small',
     selectorName: 'Class Selector',
@@ -101,16 +82,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>.neato</strong> selects all elements with <strong>class="neato"</strong>',
     ],
-    boardMarkup: `
-    <apple/>
-    <apple class="small"/>
-    <plate>
-      <apple class="small"/>
-    </plate>
-    <plate/>
-    `,
+    boardMarkup:
+      '\n    <apple/>\n    <apple class="small"/>\n    <plate>\n      <apple class="small"/>\n    </plate>\n    <plate/>\n    ',
   },
   {
+    id: 7,
     doThis: 'Select the small oranges',
     selector: 'orange.small',
     helpTitle: 'Combine the Class Selector',
@@ -120,42 +96,21 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>ul.important</strong> selects all <tag>ul</tag> elements that have <strong>class="important"</strong>',
       '<strong>#big.wide</strong> selects all elements with <strong>id="big"</strong> that also have <strong>class="wide"</strong>',
     ],
-    boardMarkup: `
-    <apple/>
-    <apple class="small"/>
-    <bento>
-      <orange class="small"/>
-    </bento>
-    <plate>
-      <orange/>
-    </plate>
-    <plate>
-      <orange class="small"/>
-    </plate>`,
+    boardMarkup:
+      '\n    <apple/>\n    <apple class="small"/>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    <plate>\n      <orange/>\n    </plate>\n    <plate>\n      <orange class="small"/>\n    </plate>',
   },
   {
+    id: 8,
     doThis: 'Select the small oranges in the bentos',
     selector: 'bento orange.small',
     syntax: 'Put your back into it!',
     helpTitle: 'You can do it...',
     help: 'Combine what you learned in the last few levels to solve this one!',
-    boardMarkup: `
-    <bento>
-      <orange/>
-    </bento>
-    <orange class="small"/>
-    <bento>
-      <orange class="small"/>
-    </bento>
-    <bento>
-      <apple class="small"/>
-    </bento>
-    <bento>
-      <orange class="small"/>
-    </bento>
-    `,
+    boardMarkup:
+      '\n    <bento>\n      <orange/>\n    </bento>\n    <orange class="small"/>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    <bento>\n      <apple class="small"/>\n    </bento>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    ',
   },
   {
+    id: 9,
     doThis: 'Select all the plates and bentos',
     selector: 'plate,bento',
     selectorName: 'Comma Combinator',
@@ -166,23 +121,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>p, .fun</strong> selects all <tag>p</tag> elements as well as all elements with <strong>class="fun"</strong>',
       '<strong>a, p, div</strong> selects all <tag>a</tag>, <tag>p</tag> and <tag>div</tag> elements',
     ],
-    boardMarkup: `
-    <pickle class="small"/>
-    <pickle/>
-    <plate>
-      <pickle/>
-    </plate>
-    <bento>
-      <pickle/>
-    </bento>
-    <plate>
-      <pickle/>
-    </plate>
-    <pickle/>
-    <pickle class="small"/>
-    `,
+    boardMarkup:
+      '\n    <pickle class="small"/>\n    <pickle/>\n    <plate>\n      <pickle/>\n    </plate>\n    <bento>\n      <pickle/>\n    </bento>\n    <plate>\n      <pickle/>\n    </plate>\n    <pickle/>\n    <pickle class="small"/>\n    ',
   },
   {
+    id: 10,
     doThis: 'Select all the things!',
     selector: '*',
     selectorName: 'The Universal Selector',
@@ -192,19 +135,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>p *</strong> selects any element inside all <tag>p</tag> elements.',
     ],
-    boardMarkup: `
-    <apple/>
-    <plate>
-      <orange class="small" />
-    </plate>
-    <bento/>
-    <bento>
-      <orange/>
-    </bento>
-    <plate id="fancy"/>
-    `,
+    boardMarkup:
+      '\n    <apple/>\n    <plate>\n      <orange class="small" />\n    </plate>\n    <bento/>\n    <bento>\n      <orange/>\n    </bento>\n    <plate id="fancy"/>\n    ',
   },
   {
+    id: 11,
     doThis: 'Select everything on a plate',
     selector: 'plate *',
     syntax: 'A&nbsp;&nbsp;*',
@@ -214,19 +149,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>p *</strong> selects every element inside all <tag>p</tag> elements.',
       '<strong>ul.fancy *</strong> selects every element inside all <tag>ul class="fancy"</tag> elements.',
     ],
-    boardMarkup: `
-    <plate id="fancy">
-      <orange class="small"/>
-    </plate>
-    <plate>
-      <pickle/>
-    </plate>
-    <apple class="small"/>
-    <plate>
-      <apple/>
-    </plate>`,
+    boardMarkup:
+      '\n    <plate id="fancy">\n      <orange class="small"/>\n    </plate>\n    <plate>\n      <pickle/>\n    </plate>\n    <apple class="small"/>\n    <plate>\n      <apple/>\n    </plate>',
   },
   {
+    id: 12,
     doThis: "Select every apple that's next to a plate",
     selector: 'plate + apple',
     helpTitle: 'Select an element that directly follows another element',
@@ -237,19 +164,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>p + .intro</strong> selects every element with <strong>class="intro"</strong> that directly follows a <tag>p</tag>',
       '<strong>div + a</strong> selects every <tag>a</tag> element that directly follows a <tag>div</tag>',
     ],
-    boardMarkup: `
-    <bento>
-      <apple class="small"/>
-    </bento>
-    <plate />
-    <apple class="small"/>
-    <plate />
-    <apple/>
-    <apple class="small"/>
-    <apple class="small"/>
-    `,
+    boardMarkup:
+      '\n    <bento>\n      <apple class="small"/>\n    </bento>\n    <plate />\n    <apple class="small"/>\n    <plate />\n    <apple/>\n    <apple class="small"/>\n    <apple class="small"/>\n    ',
   },
   {
+    id: 13,
     selectorName: 'General Sibling Selector',
     helpTitle: 'Select elements that follows another element',
     syntax: 'A ~ B',
@@ -259,22 +178,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>A ~ B</strong> selects all <strong>B</strong> that follow a <strong>A</strong>',
     ],
-    boardMarkup: `
-    <pickle/>
-    <bento>
-      <orange class="small"/>
-    </bento>
-    <pickle class="small"/>
-    <pickle/>
-    <plate>
-      <pickle/>
-    </plate>
-    <plate>
-      <pickle class="small"/>
-    </plate>
-    `,
+    boardMarkup:
+      '\n    <pickle/>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    <pickle class="small"/>\n    <pickle/>\n    <plate>\n      <pickle/>\n    </plate>\n    <plate>\n      <pickle class="small"/>\n    </plate>\n    ',
   },
   {
+    id: 14,
     selectorName: 'Child Selector',
     syntax: 'A > B&nbsp;',
     doThis: 'Select the apple directly on a plate',
@@ -284,45 +192,27 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>A > B</strong> selects all <strong>B</strong> that are a direct children <strong>A</strong>',
     ],
-    boardMarkup: `
-    <plate>
-      <bento>
-        <apple/>
-      </bento>
-    </plate>
-    <plate>
-      <apple/>
-    </plate>
-    <plate/>
-    <apple/>
-    <apple class="small"/>
-    `,
+    boardMarkup:
+      '\n    <plate>\n      <bento>\n        <apple/>\n      </bento>\n    </plate>\n    <plate>\n      <apple/>\n    </plate>\n    <plate/>\n    <apple/>\n    <apple class="small"/>\n    ',
   },
   {
+    id: 15,
     selectorName: 'First Child Pseudo-selector',
     helpTitle: 'Select a first child element inside of another element',
     doThis: 'Select the top orange',
     selector: 'plate :first-child',
     syntax: ':first-child',
-
     help: 'You can select the first child element. A child element is any element that is directly nested in another element. You can combine this pseudo-selector with other selectors.',
     examples: [
       '<strong>:first-child</strong> selects all first child elements.',
       '<strong>p:first-child</strong> selects all first child <tag>p</tag> elements.',
       '<strong>div p:first-child</strong> selects all first child <tag>p</tag> elements that are in a <tag>div</tag>.',
     ],
-    boardMarkup: `
-    <bento/>
-    <plate />
-    <plate>
-      <orange />
-      <orange />
-      <orange />
-    </plate>
-    <pickle class="small" />
-    `,
+    boardMarkup:
+      '\n    <bento/>\n    <plate />\n    <plate>\n      <orange />\n      <orange />\n      <orange />\n    </plate>\n    <pickle class="small" />\n    ',
   },
   {
+    id: 16,
     selectorName: 'Only Child Pseudo-selector',
     helpTitle:
       'Select an element that are the only element inside of another one.',
@@ -334,24 +224,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>span:only-child</strong> selects the <tag>span</tag> elements that are the only child of some other element.',
       '<strong>ul li:only-child</strong> selects the only <tag>li</tag> element that are in a <tag>ul</tag>.',
     ],
-    boardMarkup: `
-    <plate>
-      <apple/>
-    </plate>
-    <plate>
-      <pickle />
-    </plate>
-    <bento>
-      <pickle />
-    </bento>
-    <plate>
-      <orange class="small"/>
-      <orange/>
-    </plate>
-    <pickle class="small"/>
-    `,
+    boardMarkup:
+      '\n    <plate>\n      <apple/>\n    </plate>\n    <plate>\n      <pickle />\n    </plate>\n    <bento>\n      <pickle />\n    </bento>\n    <plate>\n      <orange class="small"/>\n      <orange/>\n    </plate>\n    <pickle class="small"/>\n    ',
   },
   {
+    id: 17,
     selectorName: 'Last Child Pseudo-selector',
     helpTitle: 'Select the last element inside of another element',
     doThis: 'Select the small apple and the pickle',
@@ -363,18 +240,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>span:last-child</strong> selects all last-child <tag>span</tag> elements.',
       '<strong>ul li:last-child</strong> selects the last <tag>li</tag> elements inside of any <tag>ul</tag>.',
     ],
-    boardMarkup: `
-    <plate id="fancy">
-      <apple class="small"/>
-    </plate>
-    <plate/>
-    <plate>
-      <orange class="small"/>
-      <orange>
-    </plate>
-    <pickle class="small"/>`,
+    boardMarkup:
+      '\n    <plate id="fancy">\n      <apple class="small"/>\n    </plate>\n    <plate/>\n    <plate>\n      <orange class="small"/>\n      <orange>\n    </plate>\n    <pickle class="small"/>',
   },
   {
+    id: 18,
     selectorName: 'Nth Child Pseudo-selector',
     helpTitle: 'Select an element by its order in another element',
     doThis: 'Select the 3rd plate',
@@ -385,14 +255,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>:nth-child(8)</strong> selects every element that is the 8th child of another element.',
       '<strong>div p:nth-child(2)</strong> selects the second <strong>p</strong> in every <strong>div</strong>',
     ],
-    boardMarkup: `
-    <plate/>
-    <plate/>
-    <plate/>
-    <plate id="fancy"/>
-    `,
+    boardMarkup:
+      '\n    <plate/>\n    <plate/>\n    <plate/>\n    <plate id="fancy"/>\n    ',
   },
   {
+    id: 19,
     selectorName: 'Nth Last Child Selector',
     helpTitle:
       'Select an element by its order in another element, counting from the back',
@@ -403,18 +270,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>:nth-last-child(2)</strong> selects all second-to-last child elements.',
     ],
-    boardMarkup: `
-    <plate/>
-    <bento/>
-    <plate>
-      <orange/>
-      <orange/>
-      <orange/>
-    </plate>
-    <bento/>
-    `,
+    boardMarkup:
+      '\n    <plate/>\n    <bento/>\n    <plate>\n      <orange/>\n      <orange/>\n      <orange/>\n    </plate>\n    <bento/>\n    ',
   },
   {
+    id: 20,
     selectorName: 'First of Type Selector',
     helpTitle: 'Select the first element of a specific type',
     doThis: 'Select first apple',
@@ -424,19 +284,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>span:first-of-type</strong> selects the first <tag>span</tag> in any element.',
     ],
-    boardMarkup: `
-    <orange class="small"/>
-    <apple/>
-    <apple class="small"/>
-    <apple/>
-    <apple class="small"/>
-    <plate>
-      <orange class="small"/>
-      <orange/>
-    </plate>
-    `,
+    boardMarkup:
+      '\n    <orange class="small"/>\n    <apple/>\n    <apple class="small"/>\n    <apple/>\n    <apple class="small"/>\n    <plate>\n      <orange class="small"/>\n      <orange/>\n    </plate>\n    ',
   },
   {
+    id: 21,
     selectorName: 'Nth of Type Selector',
     doThis: 'Select all even plates',
     selector: 'plate:nth-of-type(even)',
@@ -446,16 +298,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>div:nth-of-type(2)</strong> selects the second instance of a div.',
       '<strong>.example:nth-of-type(odd)</strong> selects all odd instances of a the example class.',
     ],
-    boardMarkup: `
-    <plate/>
-    <plate/>
-    <plate/>
-    <plate/>
-    <plate id="fancy"/>
-    <plate/>
-    `,
+    boardMarkup:
+      '\n    <plate/>\n    <plate/>\n    <plate/>\n    <plate/>\n    <plate id="fancy"/>\n    <plate/>\n    ',
   },
   {
+    id: 22,
     selectorName: 'Nth-of-type Selector with Formula',
     doThis: 'Select every 2nd plate, starting from the 3rd',
     selector: 'plate:nth-of-type(2n+3)',
@@ -464,22 +311,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>span:nth-of-type(6n+2)</strong> selects every 6th instance of a <tag>span</tag>, starting from (and including) the second instance.',
     ],
-    boardMarkup: `
-    <plate/>
-    <plate>
-      <pickle class="small" />
-    </plate>
-    <plate>
-      <apple class="small" />
-    </plate>
-    <plate/>
-    <plate>
-      <apple />
-    </plate>
-    <plate/>
-    `,
+    boardMarkup:
+      '\n    <plate/>\n    <plate>\n      <pickle class="small" />\n    </plate>\n    <plate>\n      <apple class="small" />\n    </plate>\n    <plate/>\n    <plate>\n      <apple />\n    </plate>\n    <plate/>\n    ',
   },
   {
+    id: 23,
     selectorName: 'Only of Type Selector',
     helpTitle:
       'Select elements that are the only ones of their type within of their parent element',
@@ -490,20 +326,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>p span:only-of-type</strong> selects a <tag>span</tag> within any <tag>p</tag> if it is the only <tag>span</tag> in there.',
     ],
-    boardMarkup: `
-    <plate id="fancy">
-      <apple class="small" />
-      <apple />
-    </plate>
-    <plate>
-      <apple class="small" />
-    </plate>
-    <plate>
-      <pickle />
-    </plate>
-    `,
+    boardMarkup:
+      '\n    <plate id="fancy">\n      <apple class="small" />\n      <apple />\n    </plate>\n    <plate>\n      <apple class="small" />\n    </plate>\n    <plate>\n      <pickle />\n    </plate>\n    ',
   },
   {
+    id: 24,
     selectorName: 'Last of Type Selector',
     helpTitle: 'Select the last element of a specific type',
     doThis: 'Select the last apple and orange',
@@ -514,16 +341,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>div:last-of-type</strong> selects the last <tag>div</tag> in every element.',
       '<strong>p span:last-of-type</strong> selects the last <tag>span</tag> in every <tag>p</tag>.',
     ],
-    boardMarkup: `
-    <orange class="small"/>
-    <orange class="small" />
-    <pickle />
-    <pickle />
-    <apple class="small" />
-    <apple class="small" />
-    `,
+    boardMarkup:
+      '\n    <orange class="small"/>\n    <orange class="small" />\n    <pickle />\n    <pickle />\n    <apple class="small" />\n    <apple class="small" />\n    ',
   },
   {
+    id: 25,
     selectorName: 'Empty Selector',
     helpTitle: "Select elements that don't have children",
     doThis: 'Select the empty bentos',
@@ -533,15 +355,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>div:empty</strong> selects all empty <tag>div</tag> elements.',
     ],
-    boardMarkup: `
-    <bento/>
-    <bento>
-      <pickle class="small"/>
-    </bento>
-    <plate/>
-    <bento/>`,
+    boardMarkup:
+      '\n    <bento/>\n    <bento>\n      <pickle class="small"/>\n    </bento>\n    <plate/>\n    <bento/>',
   },
   {
+    id: 26,
     selectorName: 'Negation Pseudo-class',
     helpTitle: "Select all elements that don't match the negation selector",
     doThis: 'Select the big apples',
@@ -553,21 +371,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>div:not(:first-child)</strong> selects every <tag>div</tag> that is not a first child.',
       '<strong>:not(.big, .medium)</strong> selects all elements that do not have <strong>class="big"</strong> or <strong>class="medium"</strong>.',
     ],
-    boardMarkup: `
-    <plate id="fancy">
-      <apple class="small" />
-    </plate>
-    <plate>
-      <apple />
-    </plate>
-    <apple />
-    <plate>
-      <orange class="small" />
-    </plate>
-    <pickle class="small" />
-    `,
+    boardMarkup:
+      '\n    <plate id="fancy">\n      <apple class="small" />\n    </plate>\n    <plate>\n      <apple />\n    </plate>\n    <apple />\n    <plate>\n      <orange class="small" />\n    </plate>\n    <pickle class="small" />\n    ',
   },
   {
+    id: 27,
     selectorName: 'Attribute Selector',
     helpTitle: 'Select all elements that have a specific attribute',
     doThis: 'Select the items for someone',
@@ -578,14 +386,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>a[href]</strong> selects all <tag>a</tag> elements that have a <strong>href="anything"</strong> attribute.',
       '<strong>[type]</strong> selects all elements that have a <strong>type="anything"</strong>. attribute',
     ],
-    boardMarkup: `
-    <bento><apple class="small"/></bento>
-    <apple for="Ethan"/>
-    <plate for="Alice"><pickle/></plate>
-    <bento for="Clara"><orange/></bento>
-    <pickle/>`,
+    boardMarkup:
+      '\n    <bento><apple class="small"/></bento>\n    <apple for="Ethan"/>\n    <plate for="Alice"><pickle/></plate>\n    <bento for="Clara"><orange/></bento>\n    <pickle/>',
   },
   {
+    id: 28,
     selectorName: 'Attribute Selector',
     helpTitle: 'Select all elements that have a specific attribute',
     doThis: 'Select the plates for someone',
@@ -597,14 +402,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>a[href]</strong> selects all <tag>a</tag> elements that have a <strong>href="anything"</strong> attribute.',
       '<strong>input[disabled]</strong> selects all <tag>input</tag> elements with the <strong>disabled</strong> attribute',
     ],
-    boardMarkup: `
-    <plate for="Sarah"><pickle/></plate>
-    <plate for="Luke"><apple/></plate>
-    <plate/>
-    <bento for="Steve"><orange/></bento>
-    `,
+    boardMarkup:
+      '\n    <plate for="Sarah"><pickle/></plate>\n    <plate for="Luke"><apple/></plate>\n    <plate/>\n    <bento for="Steve"><orange/></bento>\n    ',
   },
   {
+    id: 29,
     selectorName: 'Attribute Value Selector',
     helpTitle: 'Select all elements that have a specific attribute value',
     doThis: "Select Vitaly's meal",
@@ -614,31 +416,25 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>input[type="checkbox"]</strong> selects all checkbox input elements.',
     ],
-    boardMarkup: `
-    <apple for="Alexei" />
-    <bento for="Albina"><apple /></bento>
-    <bento for="Vitaly"><orange/></bento>
-    <pickle/>
-    `,
+    boardMarkup:
+      '\n    <apple for="Alexei" />\n    <bento for="Albina"><apple /></bento>\n    <bento for="Vitaly"><orange/></bento>\n    <pickle/>\n    ',
   },
   {
+    id: 30,
     selectorName: 'Attribute Starts With Selector',
     helpTitle:
       'Select all elements with an attribute value that starts with specific characters',
     doThis: "Select the items for names that start with 'Sa'",
     selector: '[for^="Sa"]',
     syntax: '[attribute^="value"]',
-    // help : "You can use quotes around the value in the selector, or not&mdash;it's optional!",
     examples: [
       '<strong>.toy[category^="Swim"]</strong> selects elements with class <strong>toy</strong> and either <strong>category="Swimwear</strong> or <strong>category="Swimming"</strong>.',
     ],
-    boardMarkup: `
-    <plate for="Sam"><pickle/></plate>
-    <bento for="Sarah"><apple class="small"/></bento>
-    <bento for="Mary"><orange/></bento>
-    `,
+    boardMarkup:
+      '\n    <plate for="Sam"><pickle/></plate>\n    <bento for="Sarah"><apple class="small"/></bento>\n    <bento for="Mary"><orange/></bento>\n    ',
   },
   {
+    id: 31,
     selectorName: 'Attribute Ends With Selector',
     helpTitle:
       'Select all elements with an attribute value that ends with specific characters',
@@ -649,15 +445,11 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>img[src$=".jpg"]</strong> selects all images display a <strong>.jpg</strong> image.',
     ],
-    boardMarkup: `
-    <apple class="small"/>
-    <bento for="Hayato"><pickle/></bento>
-    <apple for="Ryota"></apple>
-    <plate for="Minato"><orange/></plate>
-    <pickle class="small"/>
-    `,
+    boardMarkup:
+      '\n    <apple class="small"/>\n    <bento for="Hayato"><pickle/></bento>\n    <apple for="Ryota"></apple>\n    <plate for="Minato"><orange/></plate>\n    <pickle class="small"/>\n    ',
   },
   {
+    id: 32,
     selectorName: 'Attribute Wildcard Selector',
     helpTitle:
       'Select all elements with an attribute value that contains specific characters anywhere',
@@ -669,10 +461,7 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>img[src*="/thumbnails/"]</strong> selects all image elements that show images from the "thumbnails" folder.',
       '<strong>[class*="heading"]</strong> selects all elements with "heading" in their class, like <strong>class="main-heading"</strong> and <strong>class="sub-heading"</strong>',
     ],
-    boardMarkup: `
-    <bento for="Robbie"><apple /></bento>
-    <bento for="Timmy"><pickle /></bento>
-    <bento for="Bobby"><orange /></bento>
-    `,
+    boardMarkup:
+      '\n    <bento for="Robbie"><apple /></bento>\n    <bento for="Timmy"><pickle /></bento>\n    <bento for="Bobby"><orange /></bento>\n    ',
   },
 ]);

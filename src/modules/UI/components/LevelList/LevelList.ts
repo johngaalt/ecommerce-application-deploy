@@ -1,13 +1,15 @@
+import { LEVELS } from '../../../../modules/GameState/constants/levels';
 import { LevelListItem } from '../LevelListItem/LevelListItem';
 import levelList from './LevelList.html';
 
 export class LevelList {
   private LEVELS_ID = 'level-list';
-  private levels: LevelListItem[] = [];
-  private levelListItem: LevelListItem;
+  private levelsElements: string[] = [];
 
   constructor() {
-    this.levelListItem = new LevelListItem();
+    this.levelsElements = LEVELS.map((level) =>
+      new LevelListItem(level.id, level.syntax).render()
+    );
   }
 
   show() {
@@ -21,6 +23,6 @@ export class LevelList {
   }
 
   render() {
-    return levelList.replace('#LEVELLISTITEMS#', this.levelListItem.render());
+    return levelList.replace('#LEVELLISTITEMS#', this.levelsElements.join(''));
   }
 }

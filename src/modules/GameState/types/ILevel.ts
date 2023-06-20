@@ -7,4 +7,5 @@ export interface ILevel {
   help?: string;
   examples?: string[];
   boardMarkup: string;
+  id: number;
 }
