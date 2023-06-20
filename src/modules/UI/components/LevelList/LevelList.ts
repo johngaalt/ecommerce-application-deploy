@@ -1,4 +1,4 @@
-import { getGame } from '../../../../modules/GameState';
+import { GameState } from '../../../../modules/GameState';
 import { LEVELS } from '../../../../modules/GameState/constants/levels';
 import { Guards } from '../../../../modules/Utils/Guards';
 import { LevelListItem } from '../LevelListItem/LevelListItem';
@@ -31,7 +31,7 @@ export class LevelList {
         if (Guards.isHTMLElement(targetListItem)) {
           targetListItem.classList.add('active');
 
-          getGame().saveGameState({
+          GameState.getInstance().saveGameState({
             currentLevelId: Number(targetListItem.dataset.id),
           });
         }

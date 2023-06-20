@@ -1,4 +1,4 @@
-import { getGame } from '../../../../modules/GameState';
+import { GameState } from '../../../../modules/GameState';
 import levelListItem from './LevelListItem.html';
 
 export class LevelListItem {
@@ -11,7 +11,7 @@ export class LevelListItem {
   }
 
   checkCurrentLevel() {
-    const state = getGame().getState();
+    const state = GameState.getInstance().getState();
     return state.currentLevelId;
   }
 

@@ -1,13 +1,13 @@
 import { ILevel } from '../../../../modules/GameState/types/ILevel';
 import levelDescription from './LevelDescription.html';
-import { getGame } from '../../../../modules/GameState';
+import { GameState } from '../../../../modules/GameState';
 import { LEVELS } from '../../../../modules/GameState/constants/levels';
 
 export class LevelDescription {
   private LEVEL_DESCRIPTION_ID = 'level-description';
 
   getCurrentLevel(): ILevel {
-    const { currentLevelId } = getGame().getState();
+    const { currentLevelId } = GameState.getInstance().getState();
     const currentLevel = LEVELS.find((level) => level.id === currentLevelId);
 
     if (!currentLevel) {

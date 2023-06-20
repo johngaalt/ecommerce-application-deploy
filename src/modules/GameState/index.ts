@@ -1,11 +1,21 @@
 interface IGameState {
   currentLevelId: number;
 }
-class GameState {
+
+export class GameState {
+  private static instance: GameState;
+
   currentLevelId: number;
 
   constructor() {
     this.currentLevelId = 1;
+  }
+
+  static getInstance(): GameState {
+    if (!GameState.instance) {
+      GameState.instance = new GameState();
+    }
+    return GameState.instance;
   }
 
   saveGameState(state: IGameState) {
@@ -26,15 +36,4 @@ class GameState {
     console.log('STATE', this);
     return this;
   }
-}
-
-let gameState: GameState;
-
-export function getGame() {
-  if (gameState) {
-    return gameState;
-  }
-
-  gameState = new GameState();
-  return gameState;
 }
