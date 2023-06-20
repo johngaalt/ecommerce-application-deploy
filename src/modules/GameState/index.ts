@@ -24,7 +24,6 @@ class GameState {
       this.currentLevelId = state.currentLevelId;
     }
 
-    console.log('STATE', this);
     return this;
   }
 }

@@ -1,3 +1,5 @@
+import { EventTypes } from '../../../../modules/EventBus/EventTypes';
+import eventBus from '../../../../modules/EventBus';
 import gameState from '../../../../modules/GameState';
 import { LEVELS } from '../../../../modules/GameState/constants/levels';
 import { DOMGuards } from '../../../../modules/Utils/Guards';
@@ -28,6 +30,8 @@ export class LevelList {
         const targetListItem = target?.closest('[data-id]');
 
         if (DOMGuards.isHTMLElement(targetListItem)) {
+          eventBus.publish(EventTypes.selectLevelListItem, { dummyData: 1 });
+
           targetListItem.classList.add('active');
 
           gameState.saveGameState({

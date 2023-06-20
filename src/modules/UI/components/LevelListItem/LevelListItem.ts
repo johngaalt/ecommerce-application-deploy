@@ -17,6 +17,7 @@ export class LevelListItem {
 
   attachEventListener() {
     this.element = document.querySelector('[data-id]');
+
     this.element?.addEventListener('click', () => {
       return;
     });

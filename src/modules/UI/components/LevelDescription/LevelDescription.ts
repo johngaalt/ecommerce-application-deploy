@@ -1,10 +1,27 @@
 import { ILevel } from '../../../../modules/GameState/types/ILevel';
-import levelDescription from './LevelDescription.html';
 import gameState from '../../../../modules/GameState';
 import { LEVELS } from '../../../../modules/GameState/constants/levels';
+import eventBus from '../../../../modules/EventBus';
+import levelDescription from './LevelDescription.html';
+import { EventTypes } from '../../../../modules/EventBus/EventTypes';
+import { ObjectGuards } from '../../../../modules/Utils/Guards';
 
 export class LevelDescription {
   private LEVEL_DESCRIPTION_ID = 'level-description';
+
+  constructor() {
+    eventBus.subscribe(EventTypes.showLevelMenu, this.toggle.bind(this));
+  }
+
+  toggle(data: unknown) {
+    if (ObjectGuards.hasProp(data, 'isShown')) {
+      if (data.isShown) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    }
+  }
 
   getCurrentLevel(): ILevel {
     const { currentLevelId } = gameState.getState();

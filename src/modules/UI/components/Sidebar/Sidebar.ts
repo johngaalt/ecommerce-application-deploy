@@ -1,6 +1,8 @@
+import eventBus from '../../../../modules/EventBus';
 import { LevelDescription } from '../LevelDescription/LevelDescription';
 import { LevelList } from '../LevelList/LevelList';
 import sidebar from './Sidebar.html';
+import { EventTypes } from '../../../../modules/EventBus/EventTypes';
 
 export class Sidebar {
   private levelDescription: LevelDescription;
@@ -17,7 +19,7 @@ export class Sidebar {
     const burgerEl = document.getElementById(this.BURGER_ID);
 
     burgerEl?.addEventListener('click', () => {
-      this.levelDescription.hide();
+      eventBus.publish(EventTypes.showLevelMenu, { isShown: true });
       this.levelList.show();
     });
   }
@@ -26,7 +28,7 @@ export class Sidebar {
     const crossEl = document.getElementById(this.CROSS_ID);
 
     crossEl?.addEventListener('click', () => {
-      this.levelDescription.show();
+      eventBus.publish(EventTypes.showLevelMenu, { isShown: false });
       this.levelList.hide();
     });
   }
