@@ -3,8 +3,6 @@ import levelDescription from './LevelDescription.html';
 import { getGame } from '../../../../modules/GameState';
 import { LEVELS } from '../../../../modules/GameState/constants/levels';
 
-const e = '<div class="expample fs-6 border-bottom pb-3"></div>';
-
 export class LevelDescription {
   private LEVEL_DESCRIPTION_ID = 'level-description';
 
@@ -47,7 +45,7 @@ export class LevelDescription {
         level.examples
           ?.map(
             (example) =>
-              `<div class="expample fs-6 border-bottom pb-3">${example}</div>`
+              `<div class="example fs-6 border-bottom pb-3 mt-3">${example}</div>`
           )
           .join('') ?? ''
       );
