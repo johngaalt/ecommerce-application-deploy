@@ -1,6 +1,6 @@
 import { GameState } from '../../../../modules/GameState';
 import { LEVELS } from '../../../../modules/GameState/constants/levels';
-import { Guards } from '../../../../modules/Utils/Guards';
+import { DOMGuards } from '../../../../modules/Utils/Guards';
 import { LevelListItem } from '../LevelListItem/LevelListItem';
 import levelList from './LevelList.html';
 
@@ -20,15 +20,14 @@ export class LevelList {
 
     levelsListEl?.addEventListener('click', (event) => {
       const target = event.target;
-      const isHTMLElement = Guards.isHTMLElement(target);
 
-      if (isHTMLElement) {
+      if (DOMGuards.isHTMLElement(target)) {
         const currentListItem = document.querySelector('[data-id].active');
         currentListItem?.classList.remove('active');
 
         const targetListItem = target?.closest('[data-id]');
 
-        if (Guards.isHTMLElement(targetListItem)) {
+        if (DOMGuards.isHTMLElement(targetListItem)) {
           targetListItem.classList.add('active');
 
           GameState.getInstance().saveGameState({
