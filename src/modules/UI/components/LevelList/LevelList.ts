@@ -1,3 +1,4 @@
+import { getGame } from '../../../../modules/GameState';
 import { LEVELS } from '../../../../modules/GameState/constants/levels';
 import { Guards } from '../../../../modules/Utils/Guards';
 import { LevelListItem } from '../LevelListItem/LevelListItem';
@@ -10,7 +11,7 @@ export class LevelList {
 
   constructor() {
     this.levelsElements = LEVELS.map((level) =>
-      new LevelListItem(level.id, level.syntax).render()
+      new LevelListItem(level.id, level.syntax).render(level.id)
     );
   }
 
@@ -26,7 +27,14 @@ export class LevelList {
         currentListItem?.classList.remove('active');
 
         const targetListItem = target?.closest('[data-id]');
-        targetListItem?.classList.add('active');
+
+        if (Guards.isHTMLElement(targetListItem)) {
+          targetListItem.classList.add('active');
+
+          getGame().saveGameState({
+            currentLevelId: Number(targetListItem.dataset.id),
+          });
+        }
       }
     });
   }

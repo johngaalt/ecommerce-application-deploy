@@ -1,3 +1,4 @@
+import { getGame } from '../../../../modules/GameState';
 import levelListItem from './LevelListItem.html';
 
 export class LevelListItem {
@@ -9,9 +10,18 @@ export class LevelListItem {
     this.syntax = syntax;
   }
 
-  render() {
+  checkCurrentLevel() {
+    const state = getGame().getState();
+    return state.currentLevelId;
+  }
+
+  render(id: number) {
+    const currentLevelId = this.checkCurrentLevel();
+    const isLevelActive = id === currentLevelId;
+
     return levelListItem
       .replace('#SYNTAX#', this.syntax)
+      .replace('#ACTIVECLASS#', isLevelActive ? 'active' : '')
       .replaceAll('#ID#', String(this.id));
   }
 }
