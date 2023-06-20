@@ -6,15 +6,15 @@
   z-index: 9999;
   position: relative;
   margin: 10px auto 0 auto;
-
+  max-width: 420px;
 
   .table-surface {
-    box-shadow: 0px 40px 10px rgba(0,0,0,.2);
+    box-shadow: 0px 40px 10px rgba(0, 0, 0, 0.2);
     background: #dd992d;
-    background: linear-gradient(#dd992d,#cd8c26);
+    background: linear-gradient(#dd992d, #cd8c26);
     position: absolute;
     height: 100%;
-    bottom: 0;
+    bottom: 4px;
     width: 100%;
   }
 
@@ -28,5 +28,32 @@
     z-index: 999;
     position: relative;
     white-space: nowrap;
+  }
+
+  .table-edge {
+    width: 420px;
+    margin: 0 auto 10px auto;
+    background: #ac741c;
+    height: 15px;
+    transform: rotateX(-40deg);
+    transform-origin: top;
+    z-index: 2;
+
+    .table-leg:first-child {
+      left: 20px;
+    }
+
+    .table-leg:last-child {
+      right: 20px;
+    }
+
+    .table-leg {
+      width: 24px;
+      height: 10px;
+      background: #84570f;
+      position: absolute;
+      top: 15px;
+    }
+  
   }
 }
