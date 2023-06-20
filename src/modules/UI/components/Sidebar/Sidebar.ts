@@ -31,6 +31,10 @@ export class Sidebar {
     });
   }
 
+  attachListeners() {
+    this.levelList.selectLevelListener();
+  }
+
   render() {
     return sidebar
       .replace('#LEVELDESCRIPTION#', this.levelDescription.render())

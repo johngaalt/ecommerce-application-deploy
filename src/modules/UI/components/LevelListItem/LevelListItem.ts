@@ -12,6 +12,6 @@ export class LevelListItem {
   render() {
     return levelListItem
       .replace('#SYNTAX#', this.syntax)
-      .replace('#ID#', String(this.id));
+      .replaceAll('#ID#', String(this.id));
   }
 }
