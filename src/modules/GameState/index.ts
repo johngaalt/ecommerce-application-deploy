@@ -11,21 +11,24 @@ class GameState {
 
   saveGameState(state: IGameState) {
     this.currentLevelId = state.currentLevelId;
+  }
 
+  saveToLocalStorage() {
     const stateStringified = JSON.stringify(this);
     localStorage.setItem('state', stateStringified);
   }
 
   getState() {
+    return this;
+  }
+
+  getFromLocalStorage() {
     const stateStringified = localStorage.getItem('state');
-    console.log('STATE', stateStringified);
 
     if (stateStringified) {
       const state = JSON.parse(stateStringified);
       this.currentLevelId = state.currentLevelId;
     }
-
-    return this;
   }
 }
 
