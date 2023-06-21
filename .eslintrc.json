@@ -20,7 +20,7 @@
   "rules": {
     "no-debugger": "off",
     "no-unused-vars": "off",
-    "no-console": 0,
+    "no-console": "warn",
     "class-methods-use-this": "off",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-var-requires": "off"

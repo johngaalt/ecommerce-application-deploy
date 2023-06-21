@@ -9,6 +9,7 @@ import { Utils } from '../../../../modules/Utils';
 
 export class LevelDescription {
   private LEVEL_DESCRIPTION_ID = 'level-description';
+  private static BURGER_ID = 'burger';
 
   constructor() {
     eventBus.subscribe(EventTypes.showLevelMenu, this.toggle.bind(this));
@@ -25,7 +26,9 @@ export class LevelDescription {
     const newLevelDescriptionEl = Utils.convertStringToNode(this.render());
 
     if (newLevelDescriptionEl) {
+      // remove event listener
       levelDescriptionEl?.replaceWith(newLevelDescriptionEl);
+      LevelDescription.showLevelsMenuListener();
     }
   }
 
@@ -41,7 +44,6 @@ export class LevelDescription {
 
   getCurrentLevel(): ILevel {
     const { currentLevelId } = gameState.getState();
-    console.log(currentLevelId);
     const currentLevel = LEVELS.find((level) => level.id === currentLevelId);
 
     if (!currentLevel) {
@@ -65,9 +67,16 @@ export class LevelDescription {
     levelDescriptionEl?.classList.add('d-none');
   }
 
+  static showLevelsMenuListener() {
+    const burgerEl = document.getElementById(this.BURGER_ID);
+
+    burgerEl?.addEventListener('click', () => {
+      eventBus.publish(EventTypes.showLevelMenu, { isShown: true });
+    });
+  }
+
   render() {
     const level = this.getCurrentLevel();
-    console.log(level);
     return levelDescription
       .replace('#ID#', String(level.id))
       .replace('#TOTAL#', String(LEVELS.length))

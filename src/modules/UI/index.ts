@@ -1,4 +1,5 @@
 import { App } from './components/App/App';
+import { LevelDescription } from './components/LevelDescription/LevelDescription';
 
 export class UI {
   private app: App;
@@ -13,6 +14,8 @@ export class UI {
 
   initListeners() {
     this.app.attachListeners();
+
+    LevelDescription.showLevelsMenuListener();
   }
 
   initRender() {

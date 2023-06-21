@@ -8,7 +8,7 @@ import levelList from './LevelList.html';
 
 export class LevelList {
   private LEVELS_ID = 'level-list';
-  private LEVEL_LIST = 'levels-list';
+  private LEVEL_LIST_ID = 'levels-list';
   private levelsElements: string[] = [];
 
   constructor() {
@@ -20,7 +20,7 @@ export class LevelList {
   }
 
   selectLevelListener() {
-    const levelsListEl = document.getElementById(this.LEVEL_LIST);
+    const levelsListEl = document.getElementById(this.LEVEL_LIST_ID);
 
     levelsListEl?.addEventListener('click', (event) => {
       const target = event.target;

@@ -7,7 +7,7 @@ import gameState from './modules/GameState';
 
 document.addEventListener('DOMContentLoaded', () => {
   gameState.getFromLocalStorage();
-  console.log(gameState);
+
   const ui = new UI();
   ui.initRender();
   ui.initListeners();

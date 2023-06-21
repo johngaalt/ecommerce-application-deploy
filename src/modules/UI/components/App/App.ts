@@ -15,7 +15,6 @@ export class App {
   }
 
   attachListeners() {
-    this.sidebar.showLevelsMenuListener();
     this.sidebar.closeLevelsMenuListener();
     this.sidebar.attachListeners();
   }

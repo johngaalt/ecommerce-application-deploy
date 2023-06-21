@@ -7,7 +7,6 @@ import { EventTypes } from '../../../../modules/EventBus/EventTypes';
 export class Sidebar {
   private levelDescription: LevelDescription;
   private levelList: LevelList;
-  private BURGER_ID = 'burger';
   private CROSS_ID = 'cross';
 
   constructor() {
@@ -18,14 +17,6 @@ export class Sidebar {
       EventTypes.selectLevelListItem,
       this.publishCloseLevelsMenu
     );
-  }
-
-  showLevelsMenuListener() {
-    const burgerEl = document.getElementById(this.BURGER_ID);
-
-    burgerEl?.addEventListener('click', () => {
-      eventBus.publish(EventTypes.showLevelMenu, { isShown: true });
-    });
   }
 
   closeLevelsMenuListener() {
