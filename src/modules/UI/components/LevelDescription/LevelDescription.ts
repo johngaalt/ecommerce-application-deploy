@@ -15,11 +15,11 @@ export class LevelDescription {
     eventBus.subscribe(EventTypes.showLevelMenu, this.toggle.bind(this));
     eventBus.subscribe(
       EventTypes.selectLevelListItem,
-      this.publishCloseLevelsMenu.bind(this)
+      this.updateLevelDescription.bind(this)
     );
   }
 
-  publishCloseLevelsMenu(data: unknown) {
+  updateLevelDescription() {
     const levelDescriptionEl = document.getElementById(
       this.LEVEL_DESCRIPTION_ID
     );
@@ -43,7 +43,7 @@ export class LevelDescription {
   }
 
   getCurrentLevel(): ILevel {
-    const { currentLevelId } = gameState.getState();
+    const { currentLevelId } = gameState.get();
     const currentLevel = LEVELS.find((level) => level.id === currentLevelId);
 
     if (!currentLevel) {

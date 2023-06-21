@@ -9,7 +9,7 @@ class GameState {
     this.currentLevelId = 1;
   }
 
-  saveGameState(state: IGameState) {
+  save(state: IGameState) {
     this.currentLevelId = state.currentLevelId;
   }
 
@@ -18,7 +18,7 @@ class GameState {
     localStorage.setItem('state', stateStringified);
   }
 
-  getState() {
+  get() {
     return this;
   }
 

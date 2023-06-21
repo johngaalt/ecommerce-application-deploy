@@ -5,9 +5,6 @@ import { EventTypes } from '../../../../modules/EventBus/EventTypes';
 import { ObjectGuards } from '../../../../modules/Utils/Guards';
 
 export class LevelListItem {
-  static dataIdSelector = '[data-id]';
-  static activeSelector = '[data-id].active';
-
   element: HTMLElement | null = null;
 
   id: number;
@@ -36,7 +33,7 @@ export class LevelListItem {
   }
 
   checkCurrentLevel() {
-    const state = gameState.getState();
+    const state = gameState.get();
     return state.currentLevelId;
   }
 
