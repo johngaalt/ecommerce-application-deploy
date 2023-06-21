@@ -26,18 +26,14 @@ export class LevelList {
       const target = event.target;
 
       if (DOMGuards.isHTMLElement(target)) {
-        const currentListItem = document.querySelector('[data-id].active');
-        currentListItem?.classList.remove('active');
-
         const targetListItem = target?.closest('[data-id]');
 
         if (DOMGuards.isHTMLElement(targetListItem)) {
-          eventBus.publish(EventTypes.selectLevelListItem, { dummyData: 1 });
-
-          targetListItem.classList.add('active');
+          const levelId = Number(targetListItem.dataset.id);
+          eventBus.publish(EventTypes.selectLevelListItem, { levelId });
 
           gameState.saveGameState({
-            currentLevelId: Number(targetListItem.dataset.id),
+            currentLevelId: levelId,
           });
         }
       }

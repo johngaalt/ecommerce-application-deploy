@@ -1,5 +1,8 @@
+import eventBus from '../../../../modules/EventBus';
 import gameState from '../../../../modules/GameState';
 import levelListItem from './LevelListItem.html';
+import { EventTypes } from '../../../../modules/EventBus/EventTypes';
+import { ObjectGuards } from '../../../../modules/Utils/Guards';
 
 export class LevelListItem {
   static dataIdSelector = '[data-id]';
@@ -13,14 +16,23 @@ export class LevelListItem {
   constructor(id: number, syntax: string) {
     this.id = id;
     this.syntax = syntax;
+
+    eventBus.subscribe(
+      EventTypes.selectLevelListItem,
+      this.setActiveClass.bind(this)
+    );
   }
 
-  attachEventListener() {
-    this.element = document.querySelector('[data-id]');
+  setActiveClass(data: unknown) {
+    const currentListItem = document.querySelector('[data-id].active');
+    currentListItem?.classList.remove('active');
 
-    this.element?.addEventListener('click', () => {
-      return;
-    });
+    if (ObjectGuards.hasProp(data, 'levelId')) {
+      const targetListItem = document.querySelector(
+        `[data-id="${data.levelId}"]`
+      );
+      targetListItem?.classList.add('active');
+    }
   }
 
   checkCurrentLevel() {
