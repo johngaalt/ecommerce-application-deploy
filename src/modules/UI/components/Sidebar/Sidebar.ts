@@ -20,7 +20,6 @@ export class Sidebar {
 
     burgerEl?.addEventListener('click', () => {
       eventBus.publish(EventTypes.showLevelMenu, { isShown: true });
-      this.levelList.show();
     });
   }
 
@@ -29,7 +28,6 @@ export class Sidebar {
 
     crossEl?.addEventListener('click', () => {
       eventBus.publish(EventTypes.showLevelMenu, { isShown: false });
-      this.levelList.hide();
     });
   }
 

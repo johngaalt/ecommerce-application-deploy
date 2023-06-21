@@ -2,7 +2,7 @@ import { EventTypes } from '../../../../modules/EventBus/EventTypes';
 import eventBus from '../../../../modules/EventBus';
 import gameState from '../../../../modules/GameState';
 import { LEVELS } from '../../../../modules/GameState/constants/levels';
-import { DOMGuards } from '../../../../modules/Utils/Guards';
+import { DOMGuards, ObjectGuards } from '../../../../modules/Utils/Guards';
 import { LevelListItem } from '../LevelListItem/LevelListItem';
 import levelList from './LevelList.html';
 
@@ -12,6 +12,8 @@ export class LevelList {
   private levelsElements: string[] = [];
 
   constructor() {
+    eventBus.subscribe(EventTypes.showLevelMenu, this.toggle.bind(this));
+
     this.levelsElements = LEVELS.map((level) =>
       new LevelListItem(level.id, level.syntax).render(level.id)
     );
@@ -40,6 +42,16 @@ export class LevelList {
         }
       }
     });
+  }
+
+  toggle(data: unknown) {
+    if (ObjectGuards.hasProp(data, 'isShown')) {
+      if (data.isShown) {
+        this.show();
+      } else {
+        this.hide();
+      }
+    }
   }
 
   show() {
