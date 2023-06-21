@@ -14,8 +14,6 @@ export class UI {
 
   initListeners() {
     this.app.attachListeners();
-
-    LevelDescription.showLevelsMenuListener();
   }
 
   initRender() {

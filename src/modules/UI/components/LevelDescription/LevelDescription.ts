@@ -10,6 +10,8 @@ import { Utils } from '../../../../modules/Utils';
 export class LevelDescription {
   private LEVEL_DESCRIPTION_ID = 'level-description';
   private static BURGER_ID = 'burger';
+  private static ARROW_LEFT_ID = 'left-arrow';
+  private static ARROW_RIGHT_ID = 'right-arrow';
 
   constructor() {
     eventBus.subscribe(EventTypes.showLevelMenu, this.toggle.bind(this));
@@ -75,12 +77,27 @@ export class LevelDescription {
     });
   }
 
+  static showPreviousLevelListener() {
+    const leftArrow = document.getElementById(this.ARROW_LEFT_ID);
+
+    leftArrow?.addEventListener('click', () => {
+      const { currentLevelId } = gameState.get();
+      const previousLevelId = currentLevelId - 1;
+
+      gameState.save({
+        currentLevelId: previousLevelId,
+      });
+
+      eventBus.publish(EventTypes.selectLevelListItem, {
+        levelId: previousLevelId,
+      });
+    });
+  }
+
   render() {
     const level = this.getCurrentLevel();
-    console.log(level, level.id);
     const totalLevels = LEVELS.length;
     const progress = (level.id / totalLevels) * 100;
-    console.log(progress);
 
     return levelDescription
       .replace('100', String(progress))
