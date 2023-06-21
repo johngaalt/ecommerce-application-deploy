@@ -77,9 +77,15 @@ export class LevelDescription {
 
   render() {
     const level = this.getCurrentLevel();
+    console.log(level, level.id);
+    const totalLevels = LEVELS.length;
+    const progress = (level.id / totalLevels) * 100;
+    console.log(progress);
+
     return levelDescription
+      .replace('100', String(progress))
       .replace('#ID#', String(level.id))
-      .replace('#TOTAL#', String(LEVELS.length))
+      .replace('#TOTAL#', String(totalLevels))
       .replace('#SELECTORNAME#', level.selectorName ?? '')
       .replace('#HELPTITLE#', level.helpTitle ?? '')
       .replace('#SYNTAX#', level.syntax)
