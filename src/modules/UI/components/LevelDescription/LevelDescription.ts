@@ -5,12 +5,28 @@ import eventBus from '../../../../modules/EventBus';
 import levelDescription from './LevelDescription.html';
 import { EventTypes } from '../../../../modules/EventBus/EventTypes';
 import { ObjectGuards } from '../../../../modules/Utils/Guards';
+import { Utils } from '../../../../modules/Utils';
 
 export class LevelDescription {
   private LEVEL_DESCRIPTION_ID = 'level-description';
 
   constructor() {
     eventBus.subscribe(EventTypes.showLevelMenu, this.toggle.bind(this));
+    eventBus.subscribe(
+      EventTypes.selectLevelListItem,
+      this.publishCloseLevelsMenu.bind(this)
+    );
+  }
+
+  publishCloseLevelsMenu(data: unknown) {
+    const levelDescriptionEl = document.getElementById(
+      this.LEVEL_DESCRIPTION_ID
+    );
+    const newLevelDescriptionEl = Utils.convertStringToNode(this.render());
+
+    if (newLevelDescriptionEl) {
+      levelDescriptionEl?.replaceWith(newLevelDescriptionEl);
+    }
   }
 
   toggle(data: unknown) {
@@ -25,6 +41,7 @@ export class LevelDescription {
 
   getCurrentLevel(): ILevel {
     const { currentLevelId } = gameState.getState();
+    console.log(currentLevelId);
     const currentLevel = LEVELS.find((level) => level.id === currentLevelId);
 
     if (!currentLevel) {
@@ -50,6 +67,7 @@ export class LevelDescription {
 
   render() {
     const level = this.getCurrentLevel();
+    console.log(level);
     return levelDescription
       .replace('#ID#', String(level.id))
       .replace('#TOTAL#', String(LEVELS.length))

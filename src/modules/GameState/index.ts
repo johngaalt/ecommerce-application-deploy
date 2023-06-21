@@ -18,6 +18,7 @@ class GameState {
 
   getState() {
     const stateStringified = localStorage.getItem('state');
+    console.log('STATE', stateStringified);
 
     if (stateStringified) {
       const state = JSON.parse(stateStringified);

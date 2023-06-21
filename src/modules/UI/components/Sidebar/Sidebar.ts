@@ -13,6 +13,11 @@ export class Sidebar {
   constructor() {
     this.levelDescription = new LevelDescription();
     this.levelList = new LevelList();
+
+    eventBus.subscribe(
+      EventTypes.selectLevelListItem,
+      this.publishCloseLevelsMenu
+    );
   }
 
   showLevelsMenuListener() {
@@ -27,8 +32,12 @@ export class Sidebar {
     const crossEl = document.getElementById(this.CROSS_ID);
 
     crossEl?.addEventListener('click', () => {
-      eventBus.publish(EventTypes.showLevelMenu, { isShown: false });
+      this.publishCloseLevelsMenu();
     });
+  }
+
+  private publishCloseLevelsMenu() {
+    eventBus.publish(EventTypes.showLevelMenu, { isShown: false });
   }
 
   attachListeners() {
