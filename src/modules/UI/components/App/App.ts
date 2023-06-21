@@ -20,6 +20,7 @@ export class App {
     this.sidebar.attachListeners();
     LevelDescription.showPreviousLevelListener();
     LevelDescription.showLevelsMenuListener();
+    LevelDescription.showNextLevelListener();
   }
 
   render() {

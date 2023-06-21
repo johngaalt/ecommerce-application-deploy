@@ -31,6 +31,8 @@ export class LevelDescription {
       // remove event listener
       levelDescriptionEl?.replaceWith(newLevelDescriptionEl);
       LevelDescription.showLevelsMenuListener();
+      LevelDescription.showPreviousLevelListener();
+      LevelDescription.showNextLevelListener();
     }
   }
 
@@ -83,6 +85,23 @@ export class LevelDescription {
     leftArrow?.addEventListener('click', () => {
       const { currentLevelId } = gameState.get();
       const previousLevelId = currentLevelId - 1;
+
+      gameState.save({
+        currentLevelId: previousLevelId,
+      });
+
+      eventBus.publish(EventTypes.selectLevelListItem, {
+        levelId: previousLevelId,
+      });
+    });
+  }
+
+  static showNextLevelListener() {
+    const rightArrow = document.getElementById(this.ARROW_RIGHT_ID);
+
+    rightArrow?.addEventListener('click', () => {
+      const { currentLevelId } = gameState.get();
+      const previousLevelId = currentLevelId + 1;
 
       gameState.save({
         currentLevelId: previousLevelId,
