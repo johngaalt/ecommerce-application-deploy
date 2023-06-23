@@ -1,5 +1,5 @@
 {
-  "plugins": ["prettier", "import", "@typescript-eslint"],
+  "plugins": ["prettier", "import", "@typescript-eslint", "sort-class-members"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -23,6 +23,21 @@
     "no-console": "warn",
     "class-methods-use-this": "off",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "sort-class-members/sort-class-members": [
+      "warn",
+      {
+        "order": [
+          "[static-properties]",
+          "[properties]",
+          "[static-methods]",
+          "[conventional-private-properties]",
+          "constructor",
+          "[methods]",
+          "[conventional-private-methods]"
+        ],
+        "accessorPairPositioning": "getThenSet"
+      }
+    ]
   }
 }

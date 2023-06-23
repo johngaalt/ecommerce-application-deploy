@@ -30,6 +30,7 @@
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-sort-class-members": "^1.18.0",
     "eslint-webpack-plugin": "^4.0.1",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.5.3",
