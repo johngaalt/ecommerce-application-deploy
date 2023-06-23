@@ -13,5 +13,13 @@
     "skipLibCheck": true,
     "outDir": "./dist",
     "baseUrl": "./src",
-  }
+    "paths": {
+      "components/*": ["modules/UI/components/*"],
+      "gameState/*": ["modules/GameState/*"],
+      "eventBus/*": ["modules/EventBus/*"],
+      "utils/*": ["modules/Utils/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

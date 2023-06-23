@@ -31,6 +31,12 @@ const config = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.html'],
+    alias: {
+      components: path.resolve(__dirname, 'src/modules/UI/components'),
+      gameState: path.resolve(__dirname, 'src/modules/GameState'),
+      eventBus: path.resolve(__dirname, 'src/modules/EventBus'),
+      utils: path.resolve(__dirname, 'src/modules/Utils'),
+    },
   },
   devtool: 'inline-source-map',
   output: {
