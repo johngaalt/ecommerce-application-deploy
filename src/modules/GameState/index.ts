@@ -1,3 +1,5 @@
+import { allLevels } from './Level';
+
 interface IGameState {
   currentLevelId: number;
 }
@@ -10,7 +12,14 @@ class GameState {
   }
 
   save(state: IGameState) {
-    this.currentLevelId = state.currentLevelId;
+    if (
+      state.currentLevelId <= 1 ||
+      state.currentLevelId >= allLevels.getTotalCount()
+    ) {
+      this.currentLevelId = 1;
+    } else {
+      this.currentLevelId = state.currentLevelId;
+    }
   }
 
   saveToLocalStorage() {
