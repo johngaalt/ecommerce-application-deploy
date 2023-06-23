@@ -5,6 +5,7 @@ import { LEVELS } from '../../../../modules/GameState/constants/levels';
 import { DOMGuards, ObjectGuards } from '../../../../modules/Utils/Guards';
 import { LevelListItem } from '../LevelListItem/LevelListItem';
 import levelList from './LevelList.html';
+import { allLevels } from 'gameState/Level';
 
 export class LevelList {
   private LEVELS_ID = 'level-list';
@@ -14,9 +15,11 @@ export class LevelList {
   constructor() {
     eventBus.subscribe(EventTypes.showLevelMenu, this.toggle.bind(this));
 
-    this.levelsElements = LEVELS.map((level) =>
-      new LevelListItem(level.id, level.syntax).render(level.id)
-    );
+    this.levelsElements = allLevels
+      .getItems()
+      .map((level) =>
+        new LevelListItem(level.id, level.syntax).render(level.id)
+      );
   }
 
   selectLevelListener() {

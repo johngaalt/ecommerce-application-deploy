@@ -5,6 +5,7 @@ import { DOMGuards, ObjectGuards } from 'utils/Guards';
 import { LEVELS } from 'gameState/constants/levels';
 import gameState from 'gameState/index';
 import { ILevel } from 'gameState/types/ILevel';
+import { allLevels } from 'gameState/Level';
 
 export class LevelHeader {
   private LEVEL_HEADER_ID = 'level-header';
@@ -30,7 +31,7 @@ export class LevelHeader {
 
   getCurrentLevel(): ILevel {
     const { currentLevelId } = gameState.get();
-    const currentLevel = LEVELS.find((level) => level.id === currentLevelId);
+    const currentLevel = allLevels.getCurrentLevel(currentLevelId);
 
     if (!currentLevel) {
       throw new Error(`Level with id ${currentLevelId} was not found!`);

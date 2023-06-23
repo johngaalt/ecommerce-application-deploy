@@ -6,6 +6,7 @@ import levelDescription from './LevelDescription.html';
 import { EventTypes } from '../../../../modules/EventBus/EventTypes';
 import { ObjectGuards } from '../../../../modules/Utils/Guards';
 import { Utils } from '../../../../modules/Utils';
+import { allLevels } from 'gameState/Level';
 
 export class LevelDescription {
   private LEVEL_DESCRIPTION_ID = 'level-description';
@@ -48,7 +49,7 @@ export class LevelDescription {
 
   getCurrentLevel(): ILevel {
     const { currentLevelId } = gameState.get();
-    const currentLevel = LEVELS.find((level) => level.id === currentLevelId);
+    const currentLevel = allLevels.getCurrentLevel(currentLevelId);
 
     if (!currentLevel) {
       throw new Error(`Level with id ${currentLevelId} was not found!`);
@@ -115,7 +116,7 @@ export class LevelDescription {
 
   render() {
     const level = this.getCurrentLevel();
-    const totalLevels = LEVELS.length;
+    const totalLevels = allLevels.getTotalCount();
     const progress = (level.id / totalLevels) * 100;
 
     return levelDescription
