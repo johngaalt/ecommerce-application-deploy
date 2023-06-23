@@ -14,7 +14,7 @@ export class LevelDescription {
 
   private LEVEL_DESCRIPTION_ID = 'level-description';
 
-  static triggerShowLevelMenuEvent() {
+  private static triggerShowLevelMenuEvent() {
     eventBus.publish(EventTypes.showLevelMenu, { isShown: true });
   }
 
@@ -39,35 +39,63 @@ export class LevelDescription {
   static showPreviousLevelListener() {
     const leftArrow = document.getElementById(this.ARROW_LEFT_ID);
 
-    leftArrow?.addEventListener('click', () => {
-      const { currentLevelId } = gameState.get();
-      const previousLevelId = currentLevelId - 1;
+    leftArrow?.addEventListener(
+      'click',
+      LevelDescription.triggerSelectPreviousLevelEvent
+    );
+  }
 
-      gameState.save({
-        currentLevelId: previousLevelId,
-      });
+  static removeShowPreviousLevelListener() {
+    const leftArrow = document.getElementById(this.ARROW_LEFT_ID);
 
-      eventBus.publish(EventTypes.selectLevelListItem, {
-        levelId: previousLevelId,
-      });
+    leftArrow?.removeEventListener(
+      'click',
+      LevelDescription.triggerSelectPreviousLevelEvent
+    );
+  }
+
+  private static triggerSelectPreviousLevelEvent() {
+    const { currentLevelId } = gameState.get();
+    const previousLevelId = currentLevelId - 1;
+
+    gameState.save({
+      currentLevelId: previousLevelId,
+    });
+
+    eventBus.publish(EventTypes.selectLevelListItem, {
+      levelId: previousLevelId,
     });
   }
 
   static showNextLevelListener() {
     const rightArrow = document.getElementById(this.ARROW_RIGHT_ID);
 
-    rightArrow?.addEventListener('click', () => {
-      const { currentLevelId } = gameState.get();
-      const previousLevelId = currentLevelId + 1;
+    rightArrow?.addEventListener(
+      'click',
+      LevelDescription.triggerSelectNextLevelEvent
+    );
+  }
 
-      gameState.save({
-        currentLevelId: previousLevelId,
-      });
+  private static triggerSelectNextLevelEvent() {
+    const { currentLevelId } = gameState.get();
+    const previousLevelId = currentLevelId + 1;
 
-      eventBus.publish(EventTypes.selectLevelListItem, {
-        levelId: previousLevelId,
-      });
+    gameState.save({
+      currentLevelId: previousLevelId,
     });
+
+    eventBus.publish(EventTypes.selectLevelListItem, {
+      levelId: previousLevelId,
+    });
+  }
+
+  static removeShowNextLevelListener() {
+    const rightArrow = document.getElementById(this.ARROW_RIGHT_ID);
+
+    rightArrow?.removeEventListener(
+      'click',
+      LevelDescription.triggerSelectNextLevelEvent
+    );
   }
 
   constructor() {
@@ -86,6 +114,8 @@ export class LevelDescription {
 
     if (newLevelDescriptionEl) {
       LevelDescription.removeShowLevelsMenuListener();
+      LevelDescription.removeShowPreviousLevelListener();
+      LevelDescription.removeShowNextLevelListener();
 
       levelDescriptionEl?.replaceWith(newLevelDescriptionEl);
 
