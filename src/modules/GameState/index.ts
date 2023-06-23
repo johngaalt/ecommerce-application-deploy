@@ -12,10 +12,9 @@ class GameState {
   }
 
   save(state: IGameState) {
-    if (
-      state.currentLevelId <= 1 ||
-      state.currentLevelId >= allLevels.getTotalCount()
-    ) {
+    if (state.currentLevelId < 1) {
+      this.currentLevelId = allLevels.getTotalCount();
+    } else if (state.currentLevelId > allLevels.getTotalCount()) {
       this.currentLevelId = 1;
     } else {
       this.currentLevelId = state.currentLevelId;

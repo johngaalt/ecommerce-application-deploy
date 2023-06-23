@@ -55,14 +55,8 @@ export class LevelDescription {
   }
 
   private static triggerSelectPreviousLevelEvent() {
-    let previousLevelId;
     const { currentLevelId } = gameState.get();
-
-    if (currentLevelId <= 1) {
-      previousLevelId = allLevels.getTotalCount();
-    } else {
-      previousLevelId = currentLevelId - 1;
-    }
+    const previousLevelId = currentLevelId - 1;
 
     gameState.save({
       currentLevelId: previousLevelId,
@@ -84,13 +78,7 @@ export class LevelDescription {
 
   private static triggerSelectNextLevelEvent() {
     const { currentLevelId } = gameState.get();
-    let nextLevelId;
-
-    if (currentLevelId >= allLevels.getTotalCount()) {
-      nextLevelId = 1;
-    } else {
-      nextLevelId = currentLevelId - 1;
-    }
+    const nextLevelId = currentLevelId + 1;
 
     gameState.save({
       currentLevelId: nextLevelId,
