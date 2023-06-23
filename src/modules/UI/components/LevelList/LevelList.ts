@@ -1,4 +1,4 @@
-import { EventTypes } from '../../../../modules/EventBus/EventTypes';
+import { EventTypes } from 'eventBus/EventTypes';
 import eventBus from '../../../../modules/EventBus';
 import gameState from '../../../../modules/GameState';
 import { LEVELS } from '../../../../modules/GameState/constants/levels';
