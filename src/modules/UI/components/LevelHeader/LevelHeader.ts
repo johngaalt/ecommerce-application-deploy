@@ -2,7 +2,6 @@ import eventBus from 'eventBus/index';
 import levelHeader from './LevelHeader.html';
 import { EventTypes } from 'eventBus/EventTypes';
 import { DOMGuards, ObjectGuards } from 'utils/Guards';
-import { LEVELS } from 'gameState/constants/levels';
 import gameState from 'gameState/index';
 import { ILevel } from 'gameState/types/ILevel';
 import { allLevels } from 'gameState/Level';

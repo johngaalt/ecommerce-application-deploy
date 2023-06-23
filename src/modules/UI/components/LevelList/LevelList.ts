@@ -1,7 +1,6 @@
 import { EventTypes } from 'eventBus/EventTypes';
 import eventBus from '../../../../modules/EventBus';
 import gameState from '../../../../modules/GameState';
-import { LEVELS } from '../../../../modules/GameState/constants/levels';
 import { DOMGuards, ObjectGuards } from '../../../../modules/Utils/Guards';
 import { LevelListItem } from '../LevelListItem/LevelListItem';
 import levelList from './LevelList.html';

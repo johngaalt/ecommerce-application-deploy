@@ -1,6 +1,5 @@
 import { ILevel } from '../../../../modules/GameState/types/ILevel';
 import gameState from '../../../../modules/GameState';
-import { LEVELS } from '../../../../modules/GameState/constants/levels';
 import eventBus from '../../../../modules/EventBus';
 import levelDescription from './LevelDescription.html';
 import { EventTypes } from '../../../../modules/EventBus/EventTypes';
