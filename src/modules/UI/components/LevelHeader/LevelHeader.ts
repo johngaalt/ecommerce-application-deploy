@@ -30,13 +30,7 @@ export class LevelHeader {
 
   getCurrentLevel(): ILevel {
     const { currentLevelId } = gameState.get();
-    const currentLevel = allLevels.getCurrentLevel(currentLevelId);
-
-    if (!currentLevel) {
-      throw new Error(`Level with id ${currentLevelId} was not found!`);
-    }
-
-    return currentLevel;
+    return allLevels.getCurrentLevel(currentLevelId);
   }
 
   render() {

@@ -1,15 +1,15 @@
-import { Table } from '../Table/Table';
+import { Desk } from '../Table/Desk';
 import { LevelHeader } from '../LevelHeader/LevelHeader';
 import gameWrapper from './GameWrapper.html';
 import './GameWrapper.scss';
 
 export class GameWrapper {
   levelHeader: LevelHeader;
-  table: Table;
+  table: Desk;
 
   constructor() {
     this.levelHeader = new LevelHeader();
-    this.table = new Table();
+    this.table = new Desk();
   }
 
   render() {
