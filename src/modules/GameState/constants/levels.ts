@@ -43,7 +43,7 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>ul#long</strong> selects <tag>ul id="long"</tag>',
     ],
     boardMarkup:
-      '\n    <plate></plate id="fancy">\n    <plate></plate>\n    <bento></bento>\n    ',
+      '\n    <plate id="fancy"></plate >\n    <plate></plate>\n    <bento></bento>\n    ',
   },
   {
     id: 4,

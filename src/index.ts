@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const ui = new UI();
   ui.initRender();
+  // anime mate
   ui.initListeners();
 });
 
