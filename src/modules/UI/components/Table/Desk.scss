@@ -63,6 +63,19 @@
     border-radius: 100px;
   }
 
+  #fancy:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: calc(50% - 49px);
+    top: calc(50% - 43px);
+    height: 88px;
+    width: 98px;
+    border-radius: 60px;
+    border: solid 10px #009ff2;
+    opacity: 0.4;
+  }
+
   plate:before {
     content: '';
     display: block;
@@ -191,6 +204,14 @@
     animation-delay: 0s, 0.5s;
   }
 
+  orange.small,
+  apple.small {
+    height: 30px;
+    width: 30px;
+    border-width: 2px 4px 8px 4px;
+    margin: 30px 10px;
+  }
+
   @keyframes strobeStart {
     0% {
       transform: skew(0deg, 0deg) scaleY(1);
@@ -207,19 +228,19 @@
 
   @keyframes strobe {
     0% {
-      transform: skew(4deg,0deg) scaleX(1);
-  }
-  10% {
-      transform: skew(1deg,0deg) scaleY(.9);
-  }
-  50% {
-      transform: skew(-4deg,0deg) scaleX(1);
-  }
-  60% {
-      transform: skew(-1deg,0deg) scaleY(.9);
-  }
-  100% {
-      transform: skew(4deg,0deg) scaleX(1);
-  }
+      transform: skew(4deg, 0deg) scaleX(1);
+    }
+    10% {
+      transform: skew(1deg, 0deg) scaleY(0.9);
+    }
+    50% {
+      transform: skew(-4deg, 0deg) scaleX(1);
+    }
+    60% {
+      transform: skew(-1deg, 0deg) scaleY(0.9);
+    }
+    100% {
+      transform: skew(4deg, 0deg) scaleX(1);
+    }
   }
 }

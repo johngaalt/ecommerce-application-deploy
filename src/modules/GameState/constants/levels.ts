@@ -27,7 +27,8 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>div</strong> selects all <tag>div</tag> elements.',
       '<strong>p</strong> selects all <tag>p</tag> elements.',
     ],
-    boardMarkup: '\n    <bento/>\n    <plate/>\n    <bento/>\n    ',
+    boardMarkup:
+      '\n    <bento></bento>\n    <plate></plate>\n    <bento></bento>\n    ',
   },
   {
     id: 3,
@@ -41,7 +42,8 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>#cool</strong> selects any element with <strong>id="cool"</strong>',
       '<strong>ul#long</strong> selects <tag>ul id="long"</tag>',
     ],
-    boardMarkup: '\n    <plate id="fancy"/>\n    <plate/>\n    <bento/>\n    ',
+    boardMarkup:
+      '\n    <plate></plate id="fancy">\n    <plate></plate>\n    <bento></bento>\n    ',
   },
   {
     id: 4,
@@ -56,7 +58,7 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>#fancy&nbsp;&nbsp;span</strong> selects any <tag>span</tag> elements that are inside of the element with <strong>id="fancy"</strong>',
     ],
     boardMarkup:
-      '\n    <bento/>\n    <plate>\n      <apple/>\n    </plate>\n    <apple/>\n    ',
+      '\n    <bento></bento>\n    <plate>\n      <apple/>\n    </plate>\n    <apple/>\n    ',
   },
   {
     id: 5,
@@ -83,7 +85,7 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>.neato</strong> selects all elements with <strong>class="neato"</strong>',
     ],
     boardMarkup:
-      '\n    <apple/>\n    <apple class="small"/>\n    <plate>\n      <apple class="small"/>\n    </plate>\n    <plate/>\n    ',
+      '\n    <apple></apple>\n    <apple class="small"></apple>\n    <plate>\n      <apple class="small"></apple>\n    </plate>\n    <plate></plate>\n    ',
   },
   {
     id: 7,
