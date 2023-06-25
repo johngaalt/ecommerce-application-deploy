@@ -3,12 +3,15 @@ import eventBus from 'eventBus/index';
 import { App } from './components/App/App';
 import gameState from 'gameState/index';
 import { allLevels } from 'gameState/Level';
+import { Editor } from 'components/Editor/Editor';
 
 export class UI {
   private app: App;
+  private editor: Editor;
 
   constructor() {
     this.app = new App();
+    this.editor = new Editor();
 
     eventBus.subscribe(EventTypes.selectLevelListItem, this.animate.bind(this));
   }
@@ -33,5 +36,10 @@ export class UI {
     this.decorate();
     document.body.innerHTML = this.app.render();
     this.animate();
+  }
+
+  initEditors() {
+    this.editor.initCSSEditor();
+    this.editor.initHTMLEditor();
   }
 }

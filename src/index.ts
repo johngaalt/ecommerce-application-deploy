@@ -1,5 +1,7 @@
-import './styles/main.scss';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
+import './styles/main.scss';
 import 'bootstrap-icons/font/bootstrap-icons.scss';
 
 import { UI } from './modules/UI';
@@ -10,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const ui = new UI();
   ui.initRender();
-  // anime mate
+  ui.initEditors();
   ui.initListeners();
 });
 
