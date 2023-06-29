@@ -8,6 +8,7 @@ import { allLevels } from 'gameState/Level';
 
 export class LevelList {
   private LEVELS_ID = 'level-list';
+  private TITLE_CHECK_ID = 'title-check';
   private LEVEL_LIST_ID = 'levels-list';
   private levelsElements: string[] = [];
 
@@ -34,6 +35,11 @@ export class LevelList {
       );
       currentCheckIcon?.classList.add('text-success');
     });
+
+    const titleCheck = document.getElementById(this.TITLE_CHECK_ID);
+    if (titleCheck) {
+      titleCheck.classList.add('text-success');
+    }
   }
 
   selectLevelListener() {

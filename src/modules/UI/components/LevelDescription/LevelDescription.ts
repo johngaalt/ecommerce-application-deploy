@@ -160,12 +160,15 @@ export class LevelDescription {
     const level = this.getCurrentLevel();
     const totalLevels = allLevels.getTotalCount();
     const progress = (level.id / totalLevels) * 100;
+    const { finishedLevels } = gameState.get();
+    const isFinishedLevel = finishedLevels.has(level.id);
 
     return levelDescription
       .replace('100', String(progress))
       .replace('#ID#', String(level.id))
       .replace('#TOTAL#', String(totalLevels))
       .replace('#SELECTORNAME#', level.selectorName ?? '')
+      .replace('#FINISHEDCLASS#', isFinishedLevel ? 'text-success' : '')
       .replace('#HELPTITLE#', level.helpTitle ?? '')
       .replace('#SYNTAX#', level.syntax)
       .replace('#HELP#', level.help ?? '')
