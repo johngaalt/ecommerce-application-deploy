@@ -13,11 +13,11 @@ export class Desk {
   constructor() {
     eventBus.subscribe(
       EventTypes.selectLevelListItem,
-      this.getCurrentLevelHeader.bind(this)
+      this.getCurrentLevelMarkup.bind(this)
     );
   }
 
-  getCurrentLevelHeader(data: unknown) {
+  getCurrentLevelMarkup(data: unknown) {
     if (ObjectGuards.hasProp(data, 'levelId')) {
       const { boardMarkup } = this.getCurrentLevel();
 
