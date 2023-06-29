@@ -13,12 +13,27 @@ export class LevelList {
 
   constructor() {
     eventBus.subscribe(EventTypes.showLevelMenu, this.toggle.bind(this));
+    eventBus.subscribe(
+      EventTypes.finishLevel,
+      this.markCheckAsFinished.bind(this)
+    );
 
     this.levelsElements = allLevels
       .getItems()
       .map((level) =>
         new LevelListItem(level.id, level.syntax).render(level.id)
       );
+  }
+
+  markCheckAsFinished() {
+    const { finishedLevels } = gameState.get();
+
+    Array.from(finishedLevels).forEach((levelId) => {
+      const currentCheckIcon = document.querySelector(
+        `[data-id="${levelId}"] > .bi-check-lg`
+      );
+      currentCheckIcon?.classList.add('text-success');
+    });
   }
 
   selectLevelListener() {

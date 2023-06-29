@@ -20,19 +20,6 @@ export class LevelListItem {
     );
   }
 
-  markCheckAsFinished() {
-    const { finishedLevels } = gameState.get();
-
-    Array.from(finishedLevels).forEach((levelId) => {
-      const currentCheckIcon = document.querySelector(
-        `[data-id="${levelId}"] .bi-check`
-      );
-
-      console.log(currentCheckIcon);
-      currentCheckIcon?.classList.add('text-success');
-    });
-  }
-
   setActiveClass(data: unknown) {
     const currentListItem = document.querySelector('[data-id].active');
     currentListItem?.classList.remove('active');
@@ -47,16 +34,18 @@ export class LevelListItem {
 
   checkCurrentLevel() {
     const state = gameState.get();
-    return state.currentLevelId;
+    return state;
   }
 
   render(id: number) {
-    const currentLevelId = this.checkCurrentLevel();
+    const { currentLevelId, finishedLevels } = this.checkCurrentLevel();
+    const isFinishedLevel = finishedLevels.has(id);
     const isLevelActive = id === currentLevelId;
 
     return levelListItem
       .replace('#SYNTAX#', this.syntax)
       .replace('#ACTIVECLASS#', isLevelActive ? 'active' : '')
+      .replace('#FINISHEDCLASS#', isFinishedLevel ? 'text-success' : '')
       .replaceAll('#ID#', String(this.id));
   }
 }

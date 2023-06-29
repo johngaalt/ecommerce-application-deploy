@@ -61,6 +61,7 @@ export class Editor {
       eventBus.publish(EventTypes.selectLevelListItem, {
         levelId: nextLevelId,
       });
+      eventBus.publish(EventTypes.finishLevel, undefined);
     } else {
       editor?.classList.add('shake');
       setTimeout(() => {
