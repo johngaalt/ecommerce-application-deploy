@@ -4,4 +4,13 @@ export class Utils {
     element.innerHTML = string;
     return element.firstChild;
   }
+
+  static parseMarkup(htmlAsString: string) {
+    return htmlAsString
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 }

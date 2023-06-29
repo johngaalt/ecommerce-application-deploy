@@ -12,6 +12,7 @@ import { ILevel } from 'gameState/types/ILevel';
 import { DOMGuards } from 'utils/Guards';
 import { EventTypes } from 'eventBus/EventTypes';
 import eventBus from 'eventBus/index';
+import { Utils } from 'utils/index';
 
 export class Editor {
   static EDITOR_ID = 'editor';
@@ -79,7 +80,7 @@ export class Editor {
   initCSSEditor() {
     const codeEditor = document.getElementById(this.CSS_EDITOR_ID);
     if (codeEditor) {
-      codeEditor.innerHTML = `<pre class="line-numbers"><code class="language-css">{
+      codeEditor.innerHTML = `<pre class="line-numbers language-css"><code>{
 /* Styles would go here. */
 }
 
@@ -96,7 +97,8 @@ Ex → "5" for level 5
     const { boardMarkup } = this.getCurrentLevel();
     const codeEditor = document.getElementById(this.HTML_EDITOR_ID);
     if (codeEditor) {
-      codeEditor.innerHTML = `<pre><code class="language-markup line-numbers">${boardMarkup}</code></pre>`;
+      const parsedMarkup = Utils.parseMarkup(boardMarkup);
+      codeEditor.innerHTML = `<pre class="language-markup line-numbers"><code>${parsedMarkup}</code></pre>`;
       Prism.highlightAllUnder(codeEditor);
     }
   }
