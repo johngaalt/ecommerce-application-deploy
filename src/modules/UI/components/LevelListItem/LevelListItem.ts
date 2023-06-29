@@ -22,12 +22,13 @@ export class LevelListItem {
 
   markCheckAsFinished() {
     const { finishedLevels } = gameState.get();
-    let icons: HTMLElement[];
+
     Array.from(finishedLevels).forEach((levelId) => {
       const currentCheckIcon = document.querySelector(
         `[data-id="${levelId}"] .bi-check`
       );
 
+      console.log(currentCheckIcon);
       currentCheckIcon?.classList.add('text-success');
     });
   }

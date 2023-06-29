@@ -16,6 +16,7 @@ import eventBus from 'eventBus/index';
 export class Editor {
   static EDITOR_ID = 'editor';
   static SELECTOR_INPUT_ID = 'selector-input';
+  static BUTTON_ID = 'input-button';
 
   CSS_EDITOR_ID = 'css-editor';
   HTML_EDITOR_ID = 'html-editor';
@@ -26,27 +27,45 @@ export class Editor {
     input?.addEventListener('change', Editor.changeInputValue);
   }
 
-  static changeInputValue(event: Event) {
-    const editor = document.getElementById(Editor.EDITOR_ID);
+  static compareAnswerButtonListener() {
+    const button = document.getElementById(this.BUTTON_ID);
+    button?.addEventListener('click', this.clickButton);
+  }
 
+  static clickButton() {
+    const input = document.getElementById(this.SELECTOR_INPUT_ID);
+    if (DOMGuards.isHTMLInputElement(input)) {
+      const value = input.value;
+      if (value) {
+        this.checkAnswer(value);
+      }
+    }
+  }
+
+  static changeInputValue(event: Event) {
     if (DOMGuards.isHTMLInputElement(event.target)) {
       const value = event.target.value;
-      const { currentLevelId } = gameState.get();
-      const { selector } = allLevels.getCurrentLevel(currentLevelId);
+      Editor.checkAnswer(value);
+    }
+  }
 
-      if (value === selector) {
-        gameState.saveFinishedLevel(currentLevelId);
-        const nextLevelId = currentLevelId + 1;
-        gameState.saveCurrentLevelId(nextLevelId);
-        eventBus.publish(EventTypes.selectLevelListItem, {
-          levelId: nextLevelId,
-        });
-      } else {
-        editor?.classList.add('shake');
-        setTimeout(() => {
-          editor?.classList.remove('shake');
-        }, 500);
-      }
+  private static checkAnswer(value: string) {
+    const editor = document.getElementById(Editor.EDITOR_ID);
+    const { currentLevelId } = gameState.get();
+    const { selector } = allLevels.getCurrentLevel(currentLevelId);
+
+    if (value === selector) {
+      gameState.saveFinishedLevel(currentLevelId);
+      const nextLevelId = currentLevelId + 1;
+      gameState.saveCurrentLevelId(nextLevelId);
+      eventBus.publish(EventTypes.selectLevelListItem, {
+        levelId: nextLevelId,
+      });
+    } else {
+      editor?.classList.add('shake');
+      setTimeout(() => {
+        editor?.classList.remove('shake');
+      }, 500);
     }
   }
 

@@ -23,6 +23,7 @@ export class App {
     LevelDescription.showLevelsMenuListener();
     LevelDescription.showNextLevelListener();
     Editor.changeInputValueListener();
+    Editor.compareAnswerButtonListener();
   }
 
   render() {
