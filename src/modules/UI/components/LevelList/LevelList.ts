@@ -33,9 +33,7 @@ export class LevelList {
         if (DOMGuards.isHTMLElement(targetListItem)) {
           const levelId = Number(targetListItem.dataset.id);
 
-          gameState.save({
-            currentLevelId: levelId,
-          });
+          gameState.saveCurrentLevelId(levelId);
 
           eventBus.publish(EventTypes.selectLevelListItem, { levelId });
         }

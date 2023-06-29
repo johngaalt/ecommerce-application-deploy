@@ -2,27 +2,38 @@ import { allLevels } from './Level';
 
 interface IGameState {
   currentLevelId: number;
+  finishedLevels: Set<number>;
 }
 
 class GameState {
   currentLevelId: number;
+  finishedLevels: Set<number>;
 
   constructor() {
     this.currentLevelId = 1;
+    this.finishedLevels = new Set();
   }
 
-  save(state: IGameState) {
-    if (state.currentLevelId < 1) {
+  saveCurrentLevelId(currentLevelId: number) {
+    if (currentLevelId < 1) {
       this.currentLevelId = allLevels.getTotalCount();
-    } else if (state.currentLevelId > allLevels.getTotalCount()) {
+    } else if (currentLevelId > allLevels.getTotalCount()) {
       this.currentLevelId = 1;
     } else {
-      this.currentLevelId = state.currentLevelId;
+      this.currentLevelId = currentLevelId;
     }
   }
 
+  saveFinishedLevel(levelId: number) {
+    this.finishedLevels.add(levelId);
+  }
+
   saveToLocalStorage() {
-    const stateStringified = JSON.stringify(this);
+    const state = {
+      currentLevelId: this.currentLevelId,
+      finishedLevels: Array.from(this.finishedLevels),
+    };
+    const stateStringified = JSON.stringify(state);
     localStorage.setItem('state', stateStringified);
   }
 
@@ -36,6 +47,7 @@ class GameState {
     if (stateStringified) {
       const state = JSON.parse(stateStringified);
       this.currentLevelId = state.currentLevelId;
+      this.finishedLevels = new Set(state.finishedLevels);
     }
   }
 }

@@ -58,9 +58,7 @@ export class LevelDescription {
     const { currentLevelId } = gameState.get();
     const previousLevelId = currentLevelId - 1;
 
-    gameState.save({
-      currentLevelId: previousLevelId,
-    });
+    gameState.saveCurrentLevelId(previousLevelId);
 
     eventBus.publish(EventTypes.selectLevelListItem, {
       levelId: previousLevelId,
@@ -80,9 +78,7 @@ export class LevelDescription {
     const { currentLevelId } = gameState.get();
     const nextLevelId = currentLevelId + 1;
 
-    gameState.save({
-      currentLevelId: nextLevelId,
-    });
+    gameState.saveCurrentLevelId(nextLevelId);
 
     eventBus.publish(EventTypes.selectLevelListItem, {
       levelId: nextLevelId,

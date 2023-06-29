@@ -33,7 +33,7 @@ export class Editor {
       const { selector } = allLevels.getCurrentLevel(currentLevelId);
 
       if (value === selector) {
-        console.log('true');
+        gameState.saveFinishedLevel(currentLevelId);
       } else {
         editor?.classList.add('shake');
         setTimeout(() => {
