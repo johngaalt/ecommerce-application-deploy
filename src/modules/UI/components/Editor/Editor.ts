@@ -58,8 +58,7 @@ export class Editor {
   initCSSEditor() {
     const codeEditor = document.getElementById(this.CSS_EDITOR_ID);
     if (codeEditor) {
-      codeEditor.innerHTML = `<pre class="line-numbers" data-start="2"><code class="language-css">
-  {
+      codeEditor.innerHTML = `<pre class="line-numbers"><code class="language-css">  {
   /* Styles would go here. */
   }
 

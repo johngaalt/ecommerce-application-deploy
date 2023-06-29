@@ -20,6 +20,18 @@ export class LevelListItem {
     );
   }
 
+  markCheckAsFinished() {
+    const { finishedLevels } = gameState.get();
+    let icons: HTMLElement[];
+    Array.from(finishedLevels).forEach((levelId) => {
+      const currentCheckIcon = document.querySelector(
+        `[data-id="${levelId}"] .bi-check`
+      );
+
+      currentCheckIcon?.classList.add('text-success');
+    });
+  }
+
   setActiveClass(data: unknown) {
     const currentListItem = document.querySelector('[data-id].active');
     currentListItem?.classList.remove('active');
