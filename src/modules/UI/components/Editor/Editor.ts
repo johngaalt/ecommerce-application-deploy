@@ -10,6 +10,8 @@ import { allLevels } from 'gameState/Level';
 import gameState from 'gameState/index';
 import { ILevel } from 'gameState/types/ILevel';
 import { DOMGuards } from 'utils/Guards';
+import { EventTypes } from 'eventBus/EventTypes';
+import eventBus from 'eventBus/index';
 
 export class Editor {
   static EDITOR_ID = 'editor';
@@ -34,6 +36,11 @@ export class Editor {
 
       if (value === selector) {
         gameState.saveFinishedLevel(currentLevelId);
+        const nextLevelId = currentLevelId + 1;
+        gameState.saveCurrentLevelId(nextLevelId);
+        eventBus.publish(EventTypes.selectLevelListItem, {
+          levelId: nextLevelId,
+        });
       } else {
         editor?.classList.add('shake');
         setTimeout(() => {
