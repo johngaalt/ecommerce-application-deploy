@@ -29,15 +29,16 @@ export class Editor {
 
   static compareAnswerButtonListener() {
     const button = document.getElementById(this.BUTTON_ID);
-    button?.addEventListener('click', this.clickButton);
+
+    button?.addEventListener('click', Editor.clickButton);
   }
 
   static clickButton() {
-    const input = document.getElementById(this.SELECTOR_INPUT_ID);
+    const input = document.getElementById(Editor.SELECTOR_INPUT_ID);
     if (DOMGuards.isHTMLInputElement(input)) {
       const value = input.value;
       if (value) {
-        this.checkAnswer(value);
+        Editor.checkAnswer(value);
       }
     }
   }
@@ -78,15 +79,15 @@ export class Editor {
   initCSSEditor() {
     const codeEditor = document.getElementById(this.CSS_EDITOR_ID);
     if (codeEditor) {
-      codeEditor.innerHTML = `<pre class="line-numbers"><code class="language-css">  {
-  /* Styles would go here. */
-  }
+      codeEditor.innerHTML = `<pre class="line-numbers"><code class="language-css">{
+/* Styles would go here. */
+}
 
-  /*
-  Type a number to skip to a level.
-  Ex → "5" for level 5
-  */
-         </code></pre>`;
+/*
+Type a number to skip to a level.
+Ex → "5" for level 5
+*/
+</code></pre>`;
       Prism.highlightAllUnder(codeEditor);
     }
   }
