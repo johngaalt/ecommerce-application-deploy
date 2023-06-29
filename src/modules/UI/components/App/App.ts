@@ -1,3 +1,4 @@
+import { Editor } from 'components/Editor/Editor';
 import { GameWrapper } from '../GameWrapper/GameWrapper';
 import { Header } from '../Header/Header';
 import { LevelDescription } from '../LevelDescription/LevelDescription';
@@ -21,6 +22,7 @@ export class App {
     LevelDescription.showPreviousLevelListener();
     LevelDescription.showLevelsMenuListener();
     LevelDescription.showNextLevelListener();
+    Editor.changeInputValueListener();
   }
 
   render() {

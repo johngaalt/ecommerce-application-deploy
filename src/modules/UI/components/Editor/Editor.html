@@ -17,8 +17,15 @@
     </div>
   </div>
   <div class="d-flex">
-    <div id="css-editor" class="w-50 p-1">
-      <pre><code class="language-css"> p { color: red } </code></pre>
+    <div class="w-50 p-1">
+      <input
+        type="text"
+        name="selector"
+        placeholder="Type in a CSS selector"
+        id="selector-input"
+      />
+      <button type="button">enter</button>
+      <div id="css-editor"></div>
     </div>
     <div id="html-editor" class="w-50 p-1"></div>
   </div>
