@@ -27,11 +27,13 @@ export class Editor {
 
     input?.addEventListener('change', Editor.changeInputValue);
   }
+
   static compareAnswerButtonListener() {
     const button = document.getElementById(this.BUTTON_ID);
 
     button?.addEventListener('click', Editor.clickButton);
   }
+
   static clickButton() {
     const input = document.getElementById(Editor.SELECTOR_INPUT_ID);
     if (DOMGuards.isHTMLInputElement(input)) {
@@ -41,12 +43,14 @@ export class Editor {
       }
     }
   }
+
   static changeInputValue(event: Event) {
     if (DOMGuards.isHTMLInputElement(event.target)) {
       const value = event.target.value;
       Editor.checkAnswer(value);
     }
   }
+
   private static checkAnswer(value: string) {
     const editor = document.getElementById(Editor.EDITOR_ID);
     const { currentLevelId } = gameState.get();
@@ -77,6 +81,10 @@ export class Editor {
 
   updateHtmlEditorContent() {
     this.initHTMLEditor();
+    const input = document.getElementById(Editor.SELECTOR_INPUT_ID);
+    if (DOMGuards.isHTMLInputElement(input)) {
+      input.value = '';
+    }
   }
 
   getCurrentLevel(): ILevel {

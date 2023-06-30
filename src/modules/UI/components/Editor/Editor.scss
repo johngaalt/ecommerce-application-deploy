@@ -1,10 +1,29 @@
 .shake {
-  animation: shake .1s 5;
+  animation: shake 0.1s 5;
 }
 
 @keyframes shake {
-  0%   { transform: translateX(0); }
-  25% {  transform: translateX(-5px); }
-  50% {  transform: translateX(0); }
-  75% {  transform: translateX(5px); }
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+.input-animation {
+  animation: typing 1s linear;
+  animation-fill-mode: forwards;
 }

@@ -26,6 +26,7 @@ export class App {
     LevelDescription.showPreviousLevelListener();
     LevelDescription.showLevelsMenuListener();
     LevelDescription.showNextLevelListener();
+    LevelDescription.helpButtonListener();
     Editor.changeInputValueListener();
     Editor.compareAnswerButtonListener();
     LevelList.resetGameListener();

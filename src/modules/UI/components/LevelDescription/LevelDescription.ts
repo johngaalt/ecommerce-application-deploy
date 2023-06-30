@@ -3,19 +3,52 @@ import gameState from '../../../../modules/GameState';
 import eventBus from '../../../../modules/EventBus';
 import levelDescription from './LevelDescription.html';
 import { EventTypes } from '../../../../modules/EventBus/EventTypes';
-import { ObjectGuards } from '../../../../modules/Utils/Guards';
+import { DOMGuards, ObjectGuards } from '../../../../modules/Utils/Guards';
 import { Utils } from '../../../../modules/Utils';
 import { allLevels } from 'gameState/Level';
+import { Editor } from 'components/Editor/Editor';
 
 export class LevelDescription {
   private static BURGER_ID = 'burger';
   private static ARROW_LEFT_ID = 'left-arrow';
   private static ARROW_RIGHT_ID = 'right-arrow';
+  private static HELP_ID = 'help-button';
 
   private LEVEL_DESCRIPTION_ID = 'level-description';
 
   private static triggerShowLevelMenuEvent() {
     eventBus.publish(EventTypes.showLevelMenu, { isShown: true });
+  }
+
+  static helpButtonListener() {
+    const helpButton = document.getElementById(this.HELP_ID);
+
+    helpButton?.addEventListener('click', LevelDescription.typeAnswer);
+  }
+
+  static typeAnswer() {
+    const input = document.getElementById(Editor.SELECTOR_INPUT_ID);
+    const { currentLevelId } = gameState.get();
+    const { selector } = allLevels.getCurrentLevel(currentLevelId);
+
+    if (DOMGuards.isHTMLInputElement(input)) {
+      input.value = '';
+    }
+
+    let index = 0;
+
+    function typeNextCharacter() {
+      if (index < selector.length) {
+        const char = selector.charAt(index);
+        if (DOMGuards.isHTMLInputElement(input)) {
+          input.value += char;
+        }
+        index++;
+        setTimeout(typeNextCharacter, 100); // Delay between typing each character
+      }
+    }
+
+    typeNextCharacter();
   }
 
   static showLevelsMenuListener() {
@@ -118,6 +151,7 @@ export class LevelDescription {
       LevelDescription.showLevelsMenuListener();
       LevelDescription.showPreviousLevelListener();
       LevelDescription.showNextLevelListener();
+      LevelDescription.helpButtonListener();
     }
   }
 
@@ -133,13 +167,7 @@ export class LevelDescription {
 
   getCurrentLevel(): ILevel {
     const { currentLevelId } = gameState.get();
-    const currentLevel = allLevels.getCurrentLevel(currentLevelId);
-
-    if (!currentLevel) {
-      throw new Error(`Level with id ${currentLevelId} was not found!`);
-    }
-
-    return currentLevel;
+    return allLevels.getCurrentLevel(currentLevelId);
   }
 
   show() {
