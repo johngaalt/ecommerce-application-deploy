@@ -14,6 +14,13 @@ export class UI {
     this.editor = new Editor();
 
     eventBus.subscribe(EventTypes.selectLevelListItem, this.animate.bind(this));
+    eventBus.subscribe(EventTypes.resetProgress, this.update.bind(this));
+  }
+
+  update() {
+    this.initRender();
+    this.initEditors();
+    this.initListeners();
   }
 
   decorate() {

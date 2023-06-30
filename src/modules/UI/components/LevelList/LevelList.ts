@@ -7,10 +7,23 @@ import levelList from './LevelList.html';
 import { allLevels } from 'gameState/Level';
 
 export class LevelList {
+  private static RESET_ID = 'reset-button';
   private LEVELS_ID = 'level-list';
   private TITLE_CHECK_ID = 'title-check';
   private LEVEL_LIST_ID = 'levels-list';
+
   private levelsElements: string[] = [];
+
+  static resetGameListener() {
+    const resetButton = document.getElementById(LevelList.RESET_ID);
+
+    resetButton?.addEventListener('click', LevelList.resetProgress);
+  }
+
+  static resetProgress() {
+    gameState.reset();
+    eventBus.publish(EventTypes.resetProgress, undefined);
+  }
 
   constructor() {
     eventBus.subscribe(EventTypes.showLevelMenu, this.toggle.bind(this));

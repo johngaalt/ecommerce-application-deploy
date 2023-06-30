@@ -14,6 +14,11 @@ class GameState {
     this.finishedLevels = new Set();
   }
 
+  reset() {
+    this.currentLevelId = 1;
+    this.finishedLevels = new Set();
+  }
+
   saveCurrentLevelId(currentLevelId: number) {
     if (currentLevelId < 1) {
       this.currentLevelId = allLevels.getTotalCount();
