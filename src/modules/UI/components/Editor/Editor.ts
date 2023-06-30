@@ -27,13 +27,11 @@ export class Editor {
 
     input?.addEventListener('change', Editor.changeInputValue);
   }
-
   static compareAnswerButtonListener() {
     const button = document.getElementById(this.BUTTON_ID);
 
     button?.addEventListener('click', Editor.clickButton);
   }
-
   static clickButton() {
     const input = document.getElementById(Editor.SELECTOR_INPUT_ID);
     if (DOMGuards.isHTMLInputElement(input)) {
@@ -43,14 +41,12 @@ export class Editor {
       }
     }
   }
-
   static changeInputValue(event: Event) {
     if (DOMGuards.isHTMLInputElement(event.target)) {
       const value = event.target.value;
       Editor.checkAnswer(value);
     }
   }
-
   private static checkAnswer(value: string) {
     const editor = document.getElementById(Editor.EDITOR_ID);
     const { currentLevelId } = gameState.get();
@@ -72,6 +68,17 @@ export class Editor {
     }
   }
 
+  constructor() {
+    eventBus.subscribe(
+      EventTypes.selectLevelListItem,
+      this.updateHtmlEditorContent.bind(this)
+    );
+  }
+
+  updateHtmlEditorContent() {
+    this.initHTMLEditor();
+  }
+
   getCurrentLevel(): ILevel {
     const { currentLevelId } = gameState.get();
     return allLevels.getCurrentLevel(currentLevelId);
@@ -83,11 +90,6 @@ export class Editor {
       codeEditor.innerHTML = `<pre class="line-numbers language-css"><code>{
 /* Styles would go here. */
 }
-
-/*
-Type a number to skip to a level.
-Ex → "5" for level 5
-*/
 </code></pre>`;
       Prism.highlightAllUnder(codeEditor);
     }
@@ -97,7 +99,7 @@ Ex → "5" for level 5
     const { boardMarkup } = this.getCurrentLevel();
     const codeEditor = document.getElementById(this.HTML_EDITOR_ID);
     if (codeEditor) {
-      const parsedMarkup = Utils.parseMarkup(boardMarkup);
+      const parsedMarkup = Utils.parseMarkup(boardMarkup.trim());
       codeEditor.innerHTML = `<pre class="language-markup line-numbers"><code>${parsedMarkup}</code></pre>`;
       Prism.highlightAllUnder(codeEditor);
     }
