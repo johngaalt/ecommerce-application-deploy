@@ -57,12 +57,13 @@ export class Editor {
     const { selector } = allLevels.getCurrentLevel(currentLevelId);
 
     if (value === selector) {
-      gameState.saveFinishedLevel(currentLevelId);
       const nextLevelId = currentLevelId + 1;
       gameState.saveCurrentLevelId(nextLevelId);
       eventBus.publish(EventTypes.selectLevelListItem, {
         levelId: nextLevelId,
       });
+
+      gameState.saveFinishedLevel(currentLevelId);
       eventBus.publish(EventTypes.finishLevel, undefined);
     } else {
       editor?.classList.add('shake');
