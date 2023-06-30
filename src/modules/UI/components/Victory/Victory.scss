@@ -1,3 +1,5 @@
+$animate-x: -50%;
+
 body {
   overflow: hidden;
 }
@@ -5,24 +7,24 @@ body {
 @keyframes bounce {
   0% {
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translate($animate-x, -100%);
   }
   20% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate($animate-x, 50vh);
   }
   40% {
-    transform: translateY(30px);
+    transform: translate($animate-x, 25vh);
   }
   60% {
-    transform: translateY(0);
+    transform: translate($animate-x, 50vh);
   }
   80% {
-    transform: translateY(15px);
+    transform: translate($animate-x, 25vh);
   }
   100% {
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translate($animate-x, -100%);
   }
 }
 
@@ -30,9 +32,10 @@ body {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate($animate-x, -100%);
   font-size: 256px;
   animation: bounce 3s ease-in-out;
+  color: #FF4162;
 }
 
 .confetti-container {

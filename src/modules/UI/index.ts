@@ -24,7 +24,7 @@ export class UI {
   }
 
   decorate() {
-    document.body.classList.add('text-bg-dark', 'h-100');
+    document.body.classList.add('text-bg-dark', 'h-100', 'position-relative');
     document.body.dataset.bsTheme = 'dark';
   }
 
