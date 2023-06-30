@@ -1,10 +1,5 @@
 import { allLevels } from './Level';
 
-interface IGameState {
-  currentLevelId: number;
-  finishedLevels: Set<number>;
-}
-
 class GameState {
   currentLevelId: number;
   finishedLevels: Set<number>;

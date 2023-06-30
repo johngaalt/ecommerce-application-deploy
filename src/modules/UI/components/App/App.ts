@@ -6,8 +6,6 @@ import { Sidebar } from '../Sidebar/Sidebar';
 import app from './App.html';
 import { Footer } from 'components/Footer/Footer';
 import { LevelList } from 'components/LevelList/LevelList';
-import eventBus from 'eventBus/index';
-import { EventTypes } from 'eventBus/EventTypes';
 
 export class App {
   private header: Header;
