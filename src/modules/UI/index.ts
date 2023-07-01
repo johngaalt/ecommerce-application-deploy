@@ -35,8 +35,12 @@ export class UI {
   animate() {
     const { currentLevelId } = gameState.get();
     const { selector } = allLevels.getCurrentLevel(currentLevelId);
-    const targetElements = document.querySelectorAll(selector);
-    targetElements?.forEach((element) => element.classList.add('strobe'));
+    const desk = document.getElementById('desk');
+
+    if (desk) {
+      const targetElements = desk.querySelectorAll(selector);
+      targetElements?.forEach((element) => element.classList.add('strobe'));
+    }
   }
 
   initRender() {
