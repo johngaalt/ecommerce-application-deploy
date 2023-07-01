@@ -26,7 +26,6 @@ class GameState {
   }
 
   saveTippedLevel(data: unknown) {
-    console.log('saveTippedLevel', data);
     if (ObjectGuards.hasProp(data, 'levelId')) {
       this.tippedLevels.add(Number(data.levelId));
     }
@@ -53,15 +52,9 @@ class GameState {
   }
 
   saveFinishedLevel(levelId: number) {
-    // const hasLevel = this.finishedLevels[levelId];
-    // if (hasLevel) {
-
-    // } else {
     this._finishedLevels[levelId] = {
       withTip: this.tippedLevels.has(levelId),
     };
-    // }
-    console.log('saveFinishedLevel', this._finishedLevels);
   }
 
   saveToLocalStorage() {
@@ -73,7 +66,6 @@ class GameState {
       },
       this._finishedLevels
     );
-    console.log('saveToLocalStorage', finishedLevels);
     const state = {
       currentLevelId: this.currentLevelId,
       finishedLevels: finishedLevels,
@@ -108,7 +100,6 @@ class GameState {
       } else {
         this._finishedLevels = state.finishedLevels;
       }
-      console.log('getFromLocalStorage', this);
     }
   }
 }
