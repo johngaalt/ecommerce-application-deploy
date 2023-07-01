@@ -9,10 +9,7 @@ import { allLevels } from 'gameState/Level';
 export class LevelList {
   private static RESET_ID = 'reset-button';
   private LEVELS_ID = 'level-list';
-  private TITLE_CHECK_ID = 'title-check';
   private LEVEL_LIST_ID = 'levels-list';
-
-  private levelsElements: string[] = [];
 
   static resetGameListener() {
     const resetButton = document.getElementById(LevelList.RESET_ID);
@@ -31,12 +28,15 @@ export class LevelList {
       EventTypes.finishLevel,
       this.markCheckAsFinished.bind(this)
     );
+  }
 
-    this.levelsElements = allLevels
+  private renderListItems() {
+    return allLevels
       .getItems()
       .map((level) =>
         new LevelListItem(level.id, level.syntax).render(level.id)
-      );
+      )
+      .join('');
   }
 
   markCheckAsFinished() {
@@ -102,6 +102,6 @@ export class LevelList {
   }
 
   render() {
-    return levelList.replace('#LEVELLISTITEMS#', this.levelsElements.join(''));
+    return levelList.replace('#LEVELLISTITEMS#', this.renderListItems());
   }
 }
