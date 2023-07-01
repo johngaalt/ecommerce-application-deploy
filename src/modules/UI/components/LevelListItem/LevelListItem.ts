@@ -32,13 +32,8 @@ export class LevelListItem {
     }
   }
 
-  checkCurrentLevel() {
-    const state = gameState.get();
-    return state;
-  }
-
   render(id: number) {
-    const { currentLevelId, finishedLevels } = this.checkCurrentLevel();
+    const { currentLevelId, finishedLevels } = gameState.get();
     const isLevelActive = id === currentLevelId;
 
     const isFinishedLevel = finishedLevels[id];

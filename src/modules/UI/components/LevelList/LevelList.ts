@@ -42,17 +42,23 @@ export class LevelList {
   markCheckAsFinished() {
     const { finishedLevels } = gameState.get();
 
-    Object.values(finishedLevels).forEach((levelId) => {
+    Object.keys(finishedLevels).forEach((levelId) => {
+      const isFinishedLevel = finishedLevels[Number(levelId)];
+      const isFinishedLevelWithTip = isFinishedLevel?.withTip;
+
+      let checkMarkClassName = '';
+      if (isFinishedLevel && isFinishedLevelWithTip) {
+        checkMarkClassName = 'text-warning';
+      } else if (isFinishedLevel) {
+        checkMarkClassName = 'text-success';
+      } else {
+        checkMarkClassName = '';
+      }
       const currentCheckIcon = document.querySelector(
         `[data-id="${levelId}"] > .bi-check-lg`
       );
-      currentCheckIcon?.classList.add('text-success');
+      currentCheckIcon?.classList.add(checkMarkClassName);
     });
-
-    const titleCheck = document.getElementById(this.TITLE_CHECK_ID);
-    if (titleCheck) {
-      titleCheck.classList.add('text-success');
-    }
   }
 
   selectLevelListener() {
