@@ -42,7 +42,7 @@ export class LevelList {
   markCheckAsFinished() {
     const { finishedLevels } = gameState.get();
 
-    Array.from(finishedLevels).forEach((levelId) => {
+    Object.values(finishedLevels).forEach((levelId) => {
       const currentCheckIcon = document.querySelector(
         `[data-id="${levelId}"] > .bi-check-lg`
       );

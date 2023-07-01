@@ -49,6 +49,10 @@ export class LevelDescription {
     }
 
     typeNextCharacter();
+
+    eventBus.publish(EventTypes.solvedWithTipLevel, {
+      levelId: currentLevelId,
+    });
   }
 
   static showLevelsMenuListener() {
@@ -189,14 +193,24 @@ export class LevelDescription {
     const totalLevels = allLevels.getTotalCount();
     const progress = (level.id / totalLevels) * 100;
     const { finishedLevels } = gameState.get();
-    const isFinishedLevel = finishedLevels.has(level.id);
+    const isFinishedLevel = finishedLevels[level.id];
+    const isFinishedLevelWithTip = isFinishedLevel?.withTip;
+
+    let checkMarkClassName = '';
+    if (isFinishedLevel && isFinishedLevelWithTip) {
+      checkMarkClassName = 'text-warning';
+    } else if (isFinishedLevel) {
+      checkMarkClassName = 'text-success';
+    } else {
+      checkMarkClassName = '';
+    }
 
     return levelDescription
       .replace('100', String(progress))
       .replace('#ID#', String(level.id))
       .replace('#TOTAL#', String(totalLevels))
       .replace('#SELECTORNAME#', level.selectorName ?? '')
-      .replace('#FINISHEDCLASS#', isFinishedLevel ? 'text-success' : '')
+      .replace('#FINISHEDCLASS#', checkMarkClassName)
       .replace('#HELPTITLE#', level.helpTitle ?? '')
       .replace('#SYNTAX#', level.syntax)
       .replace('#HELP#', level.help ?? '')

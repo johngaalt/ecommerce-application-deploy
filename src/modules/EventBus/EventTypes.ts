@@ -3,4 +3,5 @@ export enum EventTypes {
   showLevelMenu = 'showLevelMenu',
   finishLevel = 'finishLevel',
   resetProgress = 'resetProgress',
+  solvedWithTipLevel = 'solvedWithTipLevel',
 }

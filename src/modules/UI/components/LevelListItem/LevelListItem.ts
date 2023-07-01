@@ -39,13 +39,24 @@ export class LevelListItem {
 
   render(id: number) {
     const { currentLevelId, finishedLevels } = this.checkCurrentLevel();
-    const isFinishedLevel = finishedLevels.has(id);
     const isLevelActive = id === currentLevelId;
+
+    const isFinishedLevel = finishedLevels[id];
+    const isFinishedLevelWithTip = isFinishedLevel?.withTip;
+
+    let checkMarkClassName = '';
+    if (isFinishedLevel && isFinishedLevelWithTip) {
+      checkMarkClassName = 'text-warning';
+    } else if (isFinishedLevel) {
+      checkMarkClassName = 'text-success';
+    } else {
+      checkMarkClassName = '';
+    }
 
     return levelListItem
       .replace('#SYNTAX#', this.syntax)
       .replace('#ACTIVECLASS#', isLevelActive ? 'active' : '')
-      .replace('#FINISHEDCLASS#', isFinishedLevel ? 'text-success' : '')
+      .replace('#FINISHEDCLASS#', checkMarkClassName)
       .replaceAll('#ID#', String(this.id));
   }
 }

@@ -1,17 +1,45 @@
+import eventBus from 'eventBus/index';
 import { allLevels } from './Level';
+import { EventTypes } from 'eventBus/EventTypes';
+import { ObjectGuards } from 'utils/Guards';
+
+type FinishedLevels = Record<
+  number,
+  {
+    withTip: boolean;
+  }
+>;
 
 class GameState {
   currentLevelId: number;
-  finishedLevels: Set<number>;
+  tippedLevels: Set<number>;
+  private _finishedLevels: FinishedLevels;
 
   constructor() {
     this.currentLevelId = 1;
-    this.finishedLevels = new Set();
+    this._finishedLevels = {};
+    this.tippedLevels = new Set();
+    eventBus.subscribe(
+      EventTypes.solvedWithTipLevel,
+      this.saveTippedLevel.bind(this)
+    );
+  }
+
+  saveTippedLevel(data: unknown) {
+    console.log('saveTippedLevel', data);
+    if (ObjectGuards.hasProp(data, 'levelId')) {
+      this.tippedLevels.add(Number(data.levelId));
+    }
+  }
+
+  get finishedLevels() {
+    return this._finishedLevels;
   }
 
   reset() {
     this.currentLevelId = 1;
-    this.finishedLevels = new Set();
+    this._finishedLevels = {};
+    this.tippedLevels = new Set();
   }
 
   saveCurrentLevelId(currentLevelId: number) {
@@ -25,13 +53,31 @@ class GameState {
   }
 
   saveFinishedLevel(levelId: number) {
-    this.finishedLevels.add(levelId);
+    // const hasLevel = this.finishedLevels[levelId];
+    // if (hasLevel) {
+
+    // } else {
+    this._finishedLevels[levelId] = {
+      withTip: this.tippedLevels.has(levelId),
+    };
+    // }
+    console.log('saveFinishedLevel', this._finishedLevels);
   }
 
   saveToLocalStorage() {
+    const finishedLevels = Array.from(this.tippedLevels).reduce(
+      (acc: FinishedLevels, curr: number) => {
+        const tippedLevel = acc[curr];
+        acc[curr] = tippedLevel ? { withTip: true } : { withTip: false };
+        return acc;
+      },
+      this._finishedLevels
+    );
+    console.log('saveToLocalStorage', finishedLevels);
     const state = {
       currentLevelId: this.currentLevelId,
-      finishedLevels: Array.from(this.finishedLevels),
+      finishedLevels: finishedLevels,
+      tippedLevels: Array.from(this.tippedLevels),
     };
     const stateStringified = JSON.stringify(state);
     localStorage.setItem('state', stateStringified);
@@ -47,7 +93,22 @@ class GameState {
     if (stateStringified) {
       const state = JSON.parse(stateStringified);
       this.currentLevelId = state.currentLevelId;
-      this.finishedLevels = new Set(state.finishedLevels);
+
+      this.tippedLevels = new Set(state.tippedLevels);
+
+      if (Array.isArray(state.finishedLevels)) {
+        this._finishedLevels = state.finishedLevels.reduce(
+          (acc: FinishedLevels, curr: number) => {
+            const isTipped = this.tippedLevels.has(curr);
+            acc[curr] = { withTip: isTipped };
+            return acc;
+          },
+          {}
+        );
+      } else {
+        this._finishedLevels = state.finishedLevels;
+      }
+      console.log('getFromLocalStorage', this);
     }
   }
 }

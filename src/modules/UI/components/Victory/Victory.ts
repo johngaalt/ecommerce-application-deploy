@@ -18,7 +18,8 @@ export class Victory {
 
   showVictoryAnimation() {
     const { finishedLevels } = gameState.get();
-    if (finishedLevels.size === allLevels.getTotalCount()) {
+    const finishedLevelsLength = Object.values(finishedLevels).length;
+    if (finishedLevelsLength === allLevels.getTotalCount()) {
       const victoryEl = document.getElementById(this.VICTORY_ID);
       const confettiContainer = document.getElementById(this.CONFETTI_ID);
 
