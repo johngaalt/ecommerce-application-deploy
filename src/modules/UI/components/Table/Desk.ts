@@ -19,12 +19,12 @@ export class Desk {
 
   getCurrentLevelMarkup(data: unknown) {
     if (ObjectGuards.hasProp(data, 'levelId')) {
-      const { boardMarkup } = this.getCurrentLevel();
+      const { htmlMarkup: boardMarkup } = this.getCurrentLevel();
 
       const deskEl = document.getElementById(this.DESK_ID);
 
       if (DOMGuards.isHTMLElement(deskEl)) {
-        deskEl.innerHTML = boardMarkup;
+        deskEl.innerHTML = boardMarkup || '';
       }
     }
   }
@@ -35,7 +35,7 @@ export class Desk {
   }
 
   render() {
-    const { boardMarkup } = this.getCurrentLevel();
-    return desk.replace('#DESK#', boardMarkup);
+    const { htmlMarkup: boardMarkup } = this.getCurrentLevel();
+    return desk.replace('#DESK#', boardMarkup || '');
   }
 }

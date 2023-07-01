@@ -6,6 +6,7 @@ export interface ILevel {
   syntax: string;
   help?: string;
   examples?: string[];
-  boardMarkup: string;
+  editorMarkup: string;
+  htmlMarkup?: string;
   id: number;
 }

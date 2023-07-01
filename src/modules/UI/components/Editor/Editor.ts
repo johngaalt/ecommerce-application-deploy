@@ -105,10 +105,10 @@ export class Editor {
   }
 
   initHTMLEditor() {
-    const { boardMarkup } = this.getCurrentLevel();
+    const { editorMarkup: boardMarkup } = this.getCurrentLevel();
     const codeEditor = document.getElementById(this.HTML_EDITOR_ID);
     if (codeEditor) {
-      const parsedMarkup = Utils.parseMarkup(boardMarkup.trim());
+      const parsedMarkup = Utils.parseMarkup(boardMarkup);
       codeEditor.innerHTML = `<pre class="language-markup line-numbers"><code>${parsedMarkup}</code></pre>`;
       Prism.highlightAllUnder(codeEditor);
     }

@@ -6,7 +6,8 @@ export class Utils {
   }
 
   static parseMarkup(htmlAsString: string) {
-    return htmlAsString
+    const wrapper = `<div class="table">\n  ${htmlAsString}\n</div>`;
+    return wrapper
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')

@@ -13,7 +13,8 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>div</strong> selects all <tag>div</tag> elements.',
       '<strong>p</strong> selects all <tag>p</tag> elements.',
     ],
-    boardMarkup: '\n    <plate />\n   <plate />\n    ',
+    editorMarkup: '<plate />\n  <plate />',
+    htmlMarkup: '  <plate></plate><plate></plate>',
   },
   {
     id: 2,
@@ -27,8 +28,8 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>div</strong> selects all <tag>div</tag> elements.',
       '<strong>p</strong> selects all <tag>p</tag> elements.',
     ],
-    boardMarkup:
-      '\n    <bento></bento>\n    <plate></plate>\n    <bento></bento>\n    ',
+    editorMarkup: '<bento />\n  <plate />\n  <bento />',
+    htmlMarkup: '  <bento></bento>\n  <plate></plate>\n  <bento></bento>\n    ',
   },
   {
     id: 3,
@@ -42,7 +43,8 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>#cool</strong> selects any element with <strong>id="cool"</strong>',
       '<strong>ul#long</strong> selects <tag>ul id="long"</tag>',
     ],
-    boardMarkup:
+    editorMarkup: '<plate id="fancy" />\n  <plate />\n  <bento />',
+    htmlMarkup:
       '\n    <plate id="fancy"></plate >\n    <plate></plate>\n    <bento></bento>\n    ',
   },
   {
@@ -57,8 +59,9 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>p&nbsp;&nbsp;strong</strong> selects all <tag>strong</tag> elements that are inside of any <tag>p</tag>',
       '<strong>#fancy&nbsp;&nbsp;span</strong> selects any <tag>span</tag> elements that are inside of the element with <strong>id="fancy"</strong>',
     ],
-    boardMarkup:
-      '\n    <bento></bento>\n    <plate>\n      <apple/>\n    </plate>\n    <apple/>\n    ',
+    editorMarkup: '<bento />\n  <plate>\n    <apple/>\n  </plate>\n  <apple/>',
+    htmlMarkup:
+      '\n    <bento></bento>\n    <plate>\n      <apple/>\n    </plate>\n    <apple></apple>\n    ',
   },
   {
     id: 5,
@@ -70,7 +73,9 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>#cool&nbsp;span</strong> selects all <tag>span</tag> elements that are inside of elements with <strong>id="cool"</strong>',
     ],
-    boardMarkup:
+    editorMarkup:
+      '<bento>\n    <orange/>\n  </bento>\n  <plate id="fancy">\n    <pickle/>\n  </plate>\n  <plate>\n    <pickle/>\n  </plate>',
+    htmlMarkup:
       '\n    <bento>\n    <orange/>\n    </bento>\n    <plate id="fancy">\n      <pickle/>\n    </plate>\n    <plate>\n      <pickle/>\n    </plate>\n    ',
   },
   {
@@ -84,7 +89,9 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>.neato</strong> selects all elements with <strong>class="neato"</strong>',
     ],
-    boardMarkup:
+    editorMarkup:
+      '<apple />\n  <apple class="small" />\n  <plate>\n    <apple class="small" />\n  </plate>\n  <plate />',
+    htmlMarkup:
       '\n    <apple></apple>\n    <apple class="small"></apple>\n    <plate>\n      <apple class="small"></apple>\n    </plate>\n    <plate></plate>\n    ',
   },
   {
@@ -98,7 +105,9 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>ul.important</strong> selects all <tag>ul</tag> elements that have <strong>class="important"</strong>',
       '<strong>#big.wide</strong> selects all elements with <strong>id="big"</strong> that also have <strong>class="wide"</strong>',
     ],
-    boardMarkup:
+    editorMarkup:
+      '<apple/>\n  <apple class="small"/>\n  <bento>\n    <orange class="small"/>\n  </bento>\n  <plate>\n    <orange/>\n  </plate>\n  <plate>\n    <orange class="small"/>\n  </plate>',
+    htmlMarkup:
       '\n    <apple/>\n    <apple class="small"/>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    <plate>\n      <orange/>\n    </plate>\n    <plate>\n      <orange class="small"/>\n    </plate>',
   },
   {
@@ -108,7 +117,9 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     syntax: 'Put your back into it!',
     helpTitle: 'You can do it...',
     help: 'Combine what you learned in the last few levels to solve this one!',
-    boardMarkup:
+    editorMarkup:
+      '<bento>\n    <orange/>\n  </bento>\n  <orange class="small"/>\n  <bento>\n    <orange class="small"/>\n  </bento>\n  <bento>\n    <apple class="small"/>\n  </bento>\n  <bento>\n    <orange class="small"/>\n  </bento>\n    ',
+    htmlMarkup:
       '\n    <bento>\n      <orange/>\n    </bento>\n    <orange class="small"/>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    <bento>\n      <apple class="small"/>\n    </bento>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    ',
   },
   {
@@ -123,7 +134,9 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
       '<strong>p, .fun</strong> selects all <tag>p</tag> elements as well as all elements with <strong>class="fun"</strong>',
       '<strong>a, p, div</strong> selects all <tag>a</tag>, <tag>p</tag> and <tag>div</tag> elements',
     ],
-    boardMarkup:
+    editorMarkup:
+      '<pickle class="small"/>\n  <pickle/>\n  <plate>\n    <pickle/>\n  </plate>\n  <bento>\n    <pickle/>\n  </bento>\n  <plate>\n    <pickle/>\n  </plate>\n  <pickle/>\n  <pickle class="small"/>',
+    htmlMarkup:
       '\n    <pickle class="small"/>\n    <pickle/>\n    <plate>\n      <pickle/>\n    </plate>\n    <bento>\n      <pickle/>\n    </bento>\n    <plate>\n      <pickle/>\n    </plate>\n    <pickle/>\n    <pickle class="small"/>\n    ',
   },
   {
@@ -137,7 +150,9 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     examples: [
       '<strong>p *</strong> selects any element inside all <tag>p</tag> elements.',
     ],
-    boardMarkup:
+    editorMarkup:
+      '<apple/>\n  <plate>\n    <orange class="small" />\n  </plate>\n  <bento/>\n  <bento>\n    <orange/>\n  </bento>\n  <plate id="fancy"/>',
+    htmlMarkup:
       '\n    <apple/>\n    <plate>\n      <orange class="small" />\n    </plate>\n    <bento/>\n    <bento>\n      <orange/>\n    </bento>\n    <plate id="fancy"/>\n    ',
   },
 ]);
