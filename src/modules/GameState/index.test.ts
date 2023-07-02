@@ -64,4 +64,19 @@ describe('GameState', () => {
       });
     });
   });
+
+  describe('saveFinishedLevel', () => {
+    it('should save passed level id as finished', () => {
+      const gameState = new GameState();
+
+      gameState.saveFinishedLevel(2);
+
+      const { finishedLevels } = gameState.get();
+      expect(finishedLevels).toEqual({
+        2: {
+          withTip: expect.any(Boolean),
+        },
+      });
+    });
+  });
 });
