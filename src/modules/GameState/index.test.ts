@@ -101,4 +101,15 @@ describe('GameState', () => {
       expect(setItemSpy).toHaveBeenCalledWith('state', expect.any(String));
     });
   });
+
+  describe('getFromLocalStorage', () => {
+    it('should get game state from local storage', () => {
+      const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
+      const gameState = new GameState();
+
+      gameState.getFromLocalStorage();
+
+      expect(getItemSpy).toHaveBeenCalledWith('state');
+    });
+  });
 });
