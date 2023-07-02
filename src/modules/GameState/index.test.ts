@@ -79,4 +79,15 @@ describe('GameState', () => {
       });
     });
   });
+
+  describe('saveTippedLevel', () => {
+    it('should save passed level id as tipped', () => {
+      const gameState = new GameState();
+
+      gameState.saveTippedLevel({ levelId: 5 });
+
+      const { tippedLevels } = gameState.get();
+      expect(tippedLevels).toContain(5);
+    });
+  });
 });
