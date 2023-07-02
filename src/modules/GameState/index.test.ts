@@ -19,4 +19,33 @@ describe('GameState', () => {
 
     expect(subscribeSpy).toHaveBeenCalled();
   });
+
+  describe('saveCurrentLevelId', () => {
+    it('should save currentLevelId ', () => {
+      const gameState = new GameState();
+
+      gameState.saveCurrentLevelId(5);
+
+      const { currentLevelId } = gameState.get();
+      expect(currentLevelId).toBe(5);
+    });
+
+    it('should save currentLevelId as 10 when negative levelId has been passed', () => {
+      const gameState = new GameState();
+
+      gameState.saveCurrentLevelId(-1);
+
+      const { currentLevelId } = gameState.get();
+      expect(currentLevelId).toBe(10);
+    });
+
+    it('should save currentLevelId as 1 when levelId bigger then all levels count', () => {
+      const gameState = new GameState();
+
+      gameState.saveCurrentLevelId(100);
+
+      const { currentLevelId } = gameState.get();
+      expect(currentLevelId).toBe(1);
+    });
+  });
 });
