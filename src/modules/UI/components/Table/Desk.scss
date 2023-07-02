@@ -202,6 +202,7 @@
     transform-origin: bottom;
     animation: strobeStart 0.5s ease-out, strobe 1s infinite;
     animation-delay: 0s, 0.5s;
+    animation-direction: reverse;
   }
 
   orange.small,
@@ -218,7 +219,7 @@
       animation-timing-function: ease-in;
     }
     40% {
-      transform: skew(0deg, 0deg) scaleY(0.9);
+      transform: skew(0deg, 0deg) scaleY(0.8);
       animation-timing-function: ease-out;
     }
     100% {
@@ -228,19 +229,20 @@
 
   @keyframes strobe {
     0% {
-      transform: skew(4deg, 0deg) scaleX(1);
+      transform: skew(5deg, 0deg) scaleX(1);
     }
     10% {
-      transform: skew(1deg, 0deg) scaleY(0.9);
+      transform: skew(10deg, 0deg) scaleY(0.8);
     }
     50% {
-      transform: skew(-4deg, 0deg) scaleX(1);
+      transform: skew(-10deg, 0deg) scaleX(1);
     }
     60% {
-      transform: skew(-1deg, 0deg) scaleY(0.9);
+      transform: skew(-5deg, 0deg) scaleY(0.8);
     }
     100% {
-      transform: skew(4deg, 0deg) scaleX(1);
+      transform: skew(5deg, 0deg) scaleX(1);
     }
   }
+  
 }

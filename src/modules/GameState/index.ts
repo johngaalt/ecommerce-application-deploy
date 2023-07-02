@@ -10,7 +10,7 @@ type FinishedLevels = Record<
   }
 >;
 
-class GameState {
+export class GameState {
   currentLevelId: number;
   tippedLevels: Set<number>;
   private _finishedLevels: FinishedLevels;
