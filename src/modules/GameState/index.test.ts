@@ -90,4 +90,15 @@ describe('GameState', () => {
       expect(tippedLevels).toContain(5);
     });
   });
+
+  describe('saveToLocalStorage', () => {
+    it('should save game state to local storage', () => {
+      const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
+      const gameState = new GameState();
+
+      gameState.saveToLocalStorage();
+
+      expect(setItemSpy).toHaveBeenCalledWith('state', expect.any(String));
+    });
+  });
 });
