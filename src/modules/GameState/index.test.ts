@@ -48,4 +48,20 @@ describe('GameState', () => {
       expect(currentLevelId).toBe(1);
     });
   });
+
+  describe('reset', () => {
+    it('should check that game state has default value', () => {
+      const gameState = new GameState();
+      gameState.saveCurrentLevelId(100);
+
+      gameState.reset();
+
+      const resetGameState = gameState.get();
+      expect(resetGameState).toEqual({
+        currentLevelId: 1,
+        tippedLevels: new Set(),
+        finishedLevels: {},
+      });
+    });
+  });
 });
