@@ -8,7 +8,7 @@ describe('GameState', () => {
     expect(gameState).toEqual({
       currentLevelId: 1,
       tippedLevels: new Set(),
-      _finishedLevels: {},
+      finishedLevels: {},
     });
   });
 

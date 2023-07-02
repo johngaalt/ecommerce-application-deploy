@@ -13,11 +13,11 @@ type FinishedLevels = Record<
 export class GameState {
   currentLevelId: number;
   tippedLevels: Set<number>;
-  private _finishedLevels: FinishedLevels;
+  finishedLevels: FinishedLevels;
 
   constructor() {
     this.currentLevelId = 1;
-    this._finishedLevels = {};
+    this.finishedLevels = {};
     this.tippedLevels = new Set();
     eventBus.subscribe(
       EventTypes.solvedWithTipLevel,
@@ -31,13 +31,9 @@ export class GameState {
     }
   }
 
-  get finishedLevels() {
-    return this._finishedLevels;
-  }
-
   reset() {
     this.currentLevelId = 1;
-    this._finishedLevels = {};
+    this.finishedLevels = {};
     this.tippedLevels = new Set();
   }
 
@@ -52,7 +48,7 @@ export class GameState {
   }
 
   saveFinishedLevel(levelId: number) {
-    this._finishedLevels[levelId] = {
+    this.finishedLevels[levelId] = {
       withTip: this.tippedLevels.has(levelId),
     };
   }
@@ -64,7 +60,7 @@ export class GameState {
         acc[curr] = tippedLevel ? { withTip: true } : { withTip: false };
         return acc;
       },
-      this._finishedLevels
+      this.finishedLevels
     );
     const state = {
       currentLevelId: this.currentLevelId,
@@ -89,7 +85,7 @@ export class GameState {
       this.tippedLevels = new Set(state.tippedLevels);
 
       if (Array.isArray(state.finishedLevels)) {
-        this._finishedLevels = state.finishedLevels.reduce(
+        this.finishedLevels = state.finishedLevels.reduce(
           (acc: FinishedLevels, curr: number) => {
             const isTipped = this.tippedLevels.has(curr);
             acc[curr] = { withTip: isTipped };
@@ -98,7 +94,7 @@ export class GameState {
           {}
         );
       } else {
-        this._finishedLevels = state.finishedLevels;
+        this.finishedLevels = state.finishedLevels;
       }
     }
   }
