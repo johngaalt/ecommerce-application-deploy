@@ -1,4 +1,4 @@
-import { Desk } from '../Table/Desk';
+import { Desk } from '../Desk/Desk';
 import { LevelHeader } from '../LevelHeader/LevelHeader';
 import gameWrapper from './GameWrapper.html';
 import './GameWrapper.scss';
