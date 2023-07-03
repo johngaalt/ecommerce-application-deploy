@@ -39,7 +39,8 @@ export class App {
     return app
       .replace('#HEADER#', this.header.render())
       .replace('#GAMEWRAPPER#', this.gameWrapper.render())
-      .replace('#FOOTER#', this.footer.render())
+      .replace('#FOOTER#', this.footer.render('d-none d-lg-block'))
+      .replace('#FOOTERSM#', this.footer.render('d-lg-none'))
       .replace('#VICTORY#', this.victory.render())
       .replace('#SIDEBAR#', this.sidebar.render());
   }

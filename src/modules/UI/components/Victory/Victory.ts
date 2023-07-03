@@ -24,17 +24,17 @@ export class Victory {
       const confettiContainer = document.getElementById(this.CONFETTI_ID);
 
       if (victoryEl && confettiContainer) {
-        victoryEl.classList.remove('hidden', 'h-0');
+        victoryEl.classList.remove('invisible', 'h-0');
         victoryEl.classList.add('active-animation');
-        confettiContainer.classList.remove('hidden', 'h-0');
+        confettiContainer.classList.remove('invisible', 'h-0');
         confettiContainer.classList.add('confetti-container');
         this.createConfetti();
 
         setTimeout(() => {
           victoryEl.classList.remove('active-animation');
-          victoryEl.classList.add('hidden', 'h-0');
+          victoryEl.classList.add('invisible', 'h-0');
           confettiContainer.classList.remove('confetti-container');
-          confettiContainer.classList.add('hidden', 'h-0');
+          confettiContainer.classList.add('invisible', 'h-0');
           confettiContainer.innerHTML = '';
         }, 3000);
       }
