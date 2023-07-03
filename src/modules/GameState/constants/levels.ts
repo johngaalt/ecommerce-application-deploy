@@ -108,7 +108,7 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     editorMarkup:
       '<apple/>\n  <apple class="small"/>\n  <bento>\n    <orange class="small"/>\n  </bento>\n  <plate>\n    <orange/>\n  </plate>\n  <plate>\n    <orange class="small"/>\n  </plate>',
     htmlMarkup:
-      '\n    <apple/>\n    <apple class="small"/>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    <plate>\n      <orange/>\n    </plate>\n    <plate>\n      <orange class="small"/>\n    </plate>',
+      '\n    <apple></apple>\n    <apple class="small"></apple>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    <plate>\n      <orange/>\n    </plate>\n    <plate>\n      <orange class="small"/>\n    </plate>',
   },
   {
     id: 8,
@@ -120,7 +120,7 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     editorMarkup:
       '<bento>\n    <orange/>\n  </bento>\n  <orange class="small"/>\n  <bento>\n    <orange class="small"/>\n  </bento>\n  <bento>\n    <apple class="small"/>\n  </bento>\n  <bento>\n    <orange class="small"/>\n  </bento>\n    ',
     htmlMarkup:
-      '\n    <bento>\n      <orange/>\n    </bento>\n    <orange class="small"/>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    <bento>\n      <apple class="small"/>\n    </bento>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    ',
+      '\n    <bento>\n      <orange/>\n    </bento>\n    <orange class="small"></orange>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    <bento>\n      <apple class="small"/>\n    </bento>\n    <bento>\n      <orange class="small"/>\n    </bento>\n    ',
   },
   {
     id: 9,
@@ -137,7 +137,7 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     editorMarkup:
       '<pickle class="small"/>\n  <pickle/>\n  <plate>\n    <pickle/>\n  </plate>\n  <bento>\n    <pickle/>\n  </bento>\n  <plate>\n    <pickle/>\n  </plate>\n  <pickle/>\n  <pickle class="small"/>',
     htmlMarkup:
-      '\n    <pickle class="small"/>\n    <pickle/>\n    <plate>\n      <pickle/>\n    </plate>\n    <bento>\n      <pickle/>\n    </bento>\n    <plate>\n      <pickle/>\n    </plate>\n    <pickle/>\n    <pickle class="small"/>\n    ',
+      '\n    <pickle class="small"></pickle>\n    <pickle></pickle>\n    <plate>\n      <pickle/>\n    </plate>\n    <bento>\n      <pickle/>\n    </bento>\n    <plate>\n      <pickle/>\n    </plate>\n    <pickle></pickle>\n    <pickle class="small"></pickle>\n    ',
   },
   {
     id: 10,
@@ -153,6 +153,6 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     editorMarkup:
       '<apple/>\n  <plate>\n    <orange class="small" />\n  </plate>\n  <bento/>\n  <bento>\n    <orange/>\n  </bento>\n  <plate id="fancy"/>',
     htmlMarkup:
-      '\n    <apple/>\n    <plate>\n      <orange class="small" />\n    </plate>\n    <bento/>\n    <bento>\n      <orange/>\n    </bento>\n    <plate id="fancy"/>\n    ',
+      '\n    <apple></apple>\n    <plate>\n      <orange class="small" />\n    </plate>\n    <bento></bento>\n    <bento>\n      <orange/>\n    </bento>\n    <plate id="fancy"/>\n    ',
   },
 ]);

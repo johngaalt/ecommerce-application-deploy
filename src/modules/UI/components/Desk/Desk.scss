@@ -6,7 +6,7 @@
   z-index: 9999;
   position: relative;
   margin: 10px auto 0 auto;
-  max-width: 420px;
+  // max-width: 534px;
 
   .desk-surface {
     box-shadow: 0px 40px 10px rgba(0, 0, 0, 0.2);
@@ -31,7 +31,6 @@
   }
 
   .desk-edge {
-    width: 420px;
     margin: 0 auto 10px auto;
     background: #ac741c;
     height: 15px;
@@ -125,6 +124,21 @@
     top: calc(50% - 35px);
   }
 
+  plate > pickle:only-child, bento > pickle:only-child {
+    top: calc(50% - 40px);
+    left: calc(50% - 10px);
+    z-index: 99999;
+    margin: 0;
+    position: absolute;
+}
+
+plate > .small:only-child, bento > .small:only-child {
+  position: absolute;
+  top: calc(50% - 15px);
+  margin: 6px 13px;
+}
+
+
   bento orange,
   bento apple,
   plate orange,
@@ -195,6 +209,13 @@
     background: orange;
     border-color: #bd6e07;
   }
+
+  pickle.small {
+    height: 40px;
+    width: 18px;
+    border-width: 1px 2px 6px 2px;
+    margin: 30px 10px;
+}
 
   // ANIMATION
 
