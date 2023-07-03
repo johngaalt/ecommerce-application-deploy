@@ -6,7 +6,7 @@
   z-index: 9999;
   position: relative;
   margin: 10px auto 0 auto;
-  // max-width: 534px;
+  max-width: fit-content;
 
   .desk-surface {
     box-shadow: 0px 40px 10px rgba(0, 0, 0, 0.2);
@@ -124,20 +124,21 @@
     top: calc(50% - 35px);
   }
 
-  plate > pickle:only-child, bento > pickle:only-child {
+  plate > pickle:only-child,
+  bento > pickle:only-child {
     top: calc(50% - 40px);
     left: calc(50% - 10px);
     z-index: 99999;
     margin: 0;
     position: absolute;
-}
+  }
 
-plate > .small:only-child, bento > .small:only-child {
-  position: absolute;
-  top: calc(50% - 15px);
-  margin: 6px 13px;
-}
-
+  plate > .small:only-child,
+  bento > .small:only-child {
+    position: absolute;
+    top: calc(50% - 15px);
+    margin: 6px 13px;
+  }
 
   bento orange,
   bento apple,
@@ -215,13 +216,13 @@ plate > .small:only-child, bento > .small:only-child {
     width: 18px;
     border-width: 1px 2px 6px 2px;
     margin: 30px 10px;
-}
+  }
 
   // ANIMATION
 
   .strobe {
     transform-origin: bottom;
-    animation: strobeStart 0.5s ease-out, strobe 1s infinite;
+    animation: strobe 1s infinite;
     animation-delay: 0s, 0.5s;
     animation-direction: reverse;
   }
@@ -234,36 +235,15 @@ plate > .small:only-child, bento > .small:only-child {
     margin: 30px 10px;
   }
 
-  @keyframes strobeStart {
-    0% {
-      transform: skew(0deg, 0deg) scaleY(1);
-      animation-timing-function: ease-in;
-    }
-    40% {
-      transform: skew(0deg, 0deg) scaleY(0.8);
-      animation-timing-function: ease-out;
-    }
-    100% {
-      transform: skew(4deg, 0deg) scaleX(1);
-    }
-  }
-
   @keyframes strobe {
     0% {
-      transform: skew(5deg, 0deg) scaleX(1);
-    }
-    10% {
-      transform: skew(10deg, 0deg) scaleY(0.8);
+      transform: scale(1);
     }
     50% {
-      transform: skew(-10deg, 0deg) scaleX(1);
-    }
-    60% {
-      transform: skew(-5deg, 0deg) scaleY(0.8);
+      transform: scale(1.1);
     }
     100% {
-      transform: skew(5deg, 0deg) scaleX(1);
+      transform: scale(1);
     }
   }
-  
 }
