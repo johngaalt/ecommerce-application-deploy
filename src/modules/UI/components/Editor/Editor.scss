@@ -2,6 +2,10 @@
   animation: jump 0.1s 5;
 }
 
+#html-editor {
+  margin: 37px 0;
+}
+
 @keyframes jump {
   0% {
     transform: translateY(0);

@@ -153,6 +153,6 @@ export const LEVELS: Readonly<ILevel[]> = Object.freeze([
     editorMarkup:
       '<apple/>\n  <plate>\n    <orange class="small" />\n  </plate>\n  <bento/>\n  <bento>\n    <orange/>\n  </bento>\n  <plate id="fancy"/>',
     htmlMarkup:
-      '\n    <apple></apple>\n    <plate>\n      <orange class="small" />\n    </plate>\n    <bento></bento>\n    <bento>\n      <orange/>\n    </bento>\n    <plate id="fancy"/>\n    ',
+      '\n    <apple></apple>\n    <plate>\n      <orange class="small" />\n    </plate>\n    <bento><bento>\n    <bento>\n      <orange/>\n    </bento>\n    <plate id="fancy"/>\n    ',
   },
 ]);

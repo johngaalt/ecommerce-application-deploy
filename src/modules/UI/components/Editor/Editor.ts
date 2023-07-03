@@ -98,7 +98,7 @@ export class Editor {
     if (codeEditor) {
       codeEditor.innerHTML = `<pre class="line-numbers language-css"><code>{
 /* Styles would go here. */
-}
+}\n\n\n\n\n\n\n\n\n\n\n\n\n
 </code></pre>`;
       Prism.highlightAllUnder(codeEditor);
     }

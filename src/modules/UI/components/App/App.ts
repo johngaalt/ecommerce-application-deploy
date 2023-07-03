@@ -4,6 +4,7 @@ import { Header } from '../Header/Header';
 import { LevelDescription } from '../LevelDescription/LevelDescription';
 import { Sidebar } from '../Sidebar/Sidebar';
 import app from './App.html';
+import './App.scss';
 import { Footer } from 'components/Footer/Footer';
 import { LevelList } from 'components/LevelList/LevelList';
 import { Victory } from 'components/Victory/Victory';
