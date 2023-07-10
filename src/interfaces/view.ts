@@ -4,7 +4,10 @@ interface ElementOptions {
 }
 
 export class View {
-  createElement(tag: string, { id, classes }: ElementOptions = {}) {
+  createElement<T extends HTMLElement>(
+    tag: string,
+    { id, classes }: ElementOptions = {},
+  ): T {
     const element = document.createElement(tag);
 
     if (id) {
@@ -15,10 +18,17 @@ export class View {
       element.classList.add(...classes);
     }
 
-    return element;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return element as any;
   }
 
   getElement(selector: string) {
     return document.querySelector(selector);
+  }
+
+  createIcon(name: string) {
+    return this.createElement('i', {
+      classes: ['bi', name],
+    });
   }
 }

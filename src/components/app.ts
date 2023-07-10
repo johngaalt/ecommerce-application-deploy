@@ -13,6 +13,7 @@ export class App extends View {
       classes: ['vh-100', 'bg-dark', 'bg-gradient'],
     });
     document.body.appendChild(root);
+    document.body.dataset.bsTheme = 'dark';
 
     this.headerController = new HeaderController(
       new HeaderModel(),
