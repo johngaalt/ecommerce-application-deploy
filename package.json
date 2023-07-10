@@ -27,7 +27,6 @@
     "eslint-plugin-prettier": "^5.0.0-alpha.2",
     "eslint-plugin-sort-class-members": "^1.18.0",
     "eslint-webpack-plugin": "^4.0.1",
-    "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
     "prettier": "^3.0.0",
     "sass": "^1.63.4",
