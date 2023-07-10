@@ -1,6 +1,5 @@
-import { HeaderModel } from "./header.model";
-import { HeaderView } from "./header.view";
-
+import { HeaderModel } from './header.model';
+import { HeaderView } from './header.view';
 
 export class HeaderController {
   model: HeaderModel;
@@ -10,4 +9,4 @@ export class HeaderController {
     this.model = model;
     this.view = view;
   }
-} 
+}
