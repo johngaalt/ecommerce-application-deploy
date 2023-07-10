@@ -10,6 +10,7 @@ export class App extends View {
     super();
     const root = this.createElement('div', {
       id: 'root',
+      classes: ['vh-100', 'bg-dark', 'bg-gradient'],
     });
     document.body.appendChild(root);
 
