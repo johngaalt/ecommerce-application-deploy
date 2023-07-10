@@ -14,7 +14,8 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "components/*": ["components/*"]
+      "components/*": ["components/*"],
+      "interfaces/*": ["interfaces/*"]
     }
   },
   "include": ["src"],

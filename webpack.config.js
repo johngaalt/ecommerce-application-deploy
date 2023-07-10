@@ -37,6 +37,7 @@ const config = {
     extensions: ['.tsx', '.ts', '.js', '.html'],
     alias: {
       components: path.resolve(__dirname, 'src/components'),
+      interfaces: path.resolve(__dirname, 'src/interfaces'),
     },
   },
   devtool: 'inline-source-map',
