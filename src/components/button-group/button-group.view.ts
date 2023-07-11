@@ -5,7 +5,7 @@ export class ButtonGroupView extends View {
     super();
 
     const buttonGroup = this.createElement('div', {
-      classes: ['btn-group'],
+      classes: ['btn-group', 'mt-1'],
     });
 
     const button1 = this.createElement<HTMLButtonElement>('button', {

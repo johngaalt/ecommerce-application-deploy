@@ -1,11 +1,11 @@
 import { View } from 'interfaces/view';
 
 export class InputGroupView extends View {
-  constructor() {
+  constructor(type: 'create' | 'update') {
     super();
 
     const inputGroup = this.createElement('div', {
-      classes: ['input-group'],
+      classes: ['input-group', 'mt-1'],
     });
 
     const input = this.createElement<HTMLInputElement>('input', {
@@ -26,7 +26,7 @@ export class InputGroupView extends View {
       classes: ['btn', 'btn-success'],
     });
     button2.type = 'button';
-    button2.textContent = 'CREATE';
+    button2.textContent = type === 'create' ? 'CREATE' : 'UPDATE';
     inputGroup.appendChild(button2);
 
     const parent = this.getElement('#control');
