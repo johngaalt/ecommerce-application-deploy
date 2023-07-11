@@ -1,7 +1,11 @@
+import { InputGroupController } from 'components/input-group/input-group.controller';
+import { InputGroupModel } from 'components/input-group/input-group.model';
+import { InputGroupView } from 'components/input-group/input-group.view';
 import { View } from 'interfaces/view';
 
 export class GarageView extends View {
   CONTROL_ID = 'control';
+  inputGroupController: InputGroupController;
 
   constructor() {
     super();
@@ -17,6 +21,11 @@ export class GarageView extends View {
     if (parent) {
       parent.appendChild(main);
     }
+
+    this.inputGroupController = new InputGroupController(
+      new InputGroupModel(),
+      new InputGroupView(),
+    );
   }
 
   private controlMenu() {
@@ -24,40 +33,11 @@ export class GarageView extends View {
       id: this.CONTROL_ID,
       classes: ['container'],
     });
-    const inputGroup = this.createInputGroup();
-    const buttonGroup = this.createButtonGroup();
-    controlContainer.append(inputGroup, buttonGroup);
+    // const inputGroup = this.createInputGrou();
+    // const buttonGroup = this.createButtonGroup();
+    // controlContainer.append(inputGroup, buttonGroup);
 
     return controlContainer;
-  }
-
-  createInputGroup() {
-    const inputGroup = this.createElement('div', {
-      classes: ['input-group', 'mb-3'],
-    });
-
-    const input = this.createElement<HTMLInputElement>('input', {
-      classes: ['form-control', 'form-control-sm'],
-    });
-    input.placeholder = 'TYPE CARS NAME';
-    input.type = 'text';
-    inputGroup.appendChild(input);
-
-    const button1 = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-success'],
-    });
-    button1.type = 'button';
-    button1.textContent = 'COLOR';
-    inputGroup.appendChild(button1);
-
-    const button2 = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-success'],
-    });
-    button2.type = 'button';
-    button2.textContent = 'CREATE';
-    inputGroup.appendChild(button2);
-
-    return inputGroup;
   }
 
   createButtonGroup() {
