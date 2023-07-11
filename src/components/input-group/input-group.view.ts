@@ -15,19 +15,18 @@ export class InputGroupView extends View {
     input.type = 'text';
     inputGroup.appendChild(input);
 
-    const button1 = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-success'],
+    const colorPicker = this.createElement<HTMLInputElement>('input', {
+      classes: ['form-control', 'form-control-color'],
     });
-    button1.type = 'button';
-    button1.textContent = 'COLOR';
-    inputGroup.appendChild(button1);
+    colorPicker.type = 'color';
+    inputGroup.appendChild(colorPicker);
 
-    const button2 = this.createElement<HTMLButtonElement>('button', {
+    const button = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-success'],
     });
-    button2.type = 'button';
-    button2.textContent = type === 'create' ? 'CREATE' : 'UPDATE';
-    inputGroup.appendChild(button2);
+    button.type = 'button';
+    button.textContent = type === 'create' ? 'CREATE' : 'UPDATE';
+    inputGroup.appendChild(button);
 
     const parent = this.getElement('#control');
     parent?.appendChild(inputGroup);

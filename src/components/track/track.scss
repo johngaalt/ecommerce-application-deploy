@@ -1,5 +1,15 @@
 .wrapper {
   position: relative;
+  & i {
+    font-size: 2rem;
+  }
+
+  .bi-flag-fill {
+    position: absolute;
+    color: red;
+    font-style: italic;
+    right: 10%;
+  }
 }
 
 .airplane-wrapper {
@@ -8,8 +18,4 @@
   top: 0;
   left: 0;
   z-index: 10;
-
-  & i {
-    font-size: 2rem;
-  }
 }

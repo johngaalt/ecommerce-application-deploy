@@ -52,8 +52,9 @@ export class TrackView extends View {
       classes: ['airplane-wrapper'],
     });
     const airplane = this.createIcon('bi-airplane-fill');
+    const flag = this.createIcon('bi-flag-fill');
     airplaneWrapper.appendChild(airplane);
-    wrapper.appendChild(airplaneWrapper);
+    wrapper.append(airplaneWrapper, flag);
 
     trackContainer.append(buttonStart, buttonStop, wrapper);
 
