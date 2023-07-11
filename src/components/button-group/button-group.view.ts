@@ -11,14 +11,14 @@ export class ButtonGroupView extends View {
     const button1 = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-success', 'me-2'],
     });
-    button1.textContent = 'RACE';
+    button1.textContent = 'Race';
     button1.type = 'button';
     buttonGroup.appendChild(button1);
 
     const button2 = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-success', 'me-2'],
     });
-    button2.textContent = 'RESET';
+    button2.textContent = 'Reset';
     button2.type = 'button';
 
     buttonGroup.appendChild(button2);
@@ -26,7 +26,7 @@ export class ButtonGroupView extends View {
     const button3 = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-success'],
     });
-    button3.textContent = 'GENERATE CARS';
+    button3.textContent = 'Generate airplanes';
     button3.type = 'button';
 
     buttonGroup.appendChild(button3);

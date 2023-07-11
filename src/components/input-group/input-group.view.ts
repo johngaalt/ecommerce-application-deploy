@@ -4,6 +4,7 @@ export class InputGroupView extends View {
   constructor(type: 'create' | 'update') {
     super();
 
+    const isCreateMode = type === 'create';
     const inputGroup = this.createElement('div', {
       classes: ['input-group', 'mt-1'],
     });
@@ -11,7 +12,9 @@ export class InputGroupView extends View {
     const input = this.createElement<HTMLInputElement>('input', {
       classes: ['form-control', 'form-control-sm'],
     });
-    input.placeholder = 'TYPE CARS NAME';
+    input.placeholder = isCreateMode
+      ? 'Type airplane name'
+      : 'Select an airplane';
     input.type = 'text';
     inputGroup.appendChild(input);
 
@@ -25,7 +28,7 @@ export class InputGroupView extends View {
       classes: ['btn', 'btn-success'],
     });
     button.type = 'button';
-    button.textContent = type === 'create' ? 'CREATE' : 'UPDATE';
+    button.textContent = isCreateMode ? 'Create' : 'Update';
     inputGroup.appendChild(button);
 
     const parent = this.getElement('#control');

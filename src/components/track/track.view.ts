@@ -12,13 +12,13 @@ export class TrackView extends View {
     const buttonSelect = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-success', 'me-2'],
     });
-    buttonSelect.textContent = 'SELECT';
+    buttonSelect.textContent = 'Select';
     buttonSelect.type = 'button';
 
     const buttonRemove = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-danger', 'me-2'],
     });
-    buttonRemove.textContent = 'REMOVE';
+    buttonRemove.textContent = 'Remove';
     buttonRemove.type = 'button';
 
     const model = this.createElement('span', {
@@ -30,23 +30,32 @@ export class TrackView extends View {
 
     const trackContainer = this.createElement<HTMLElement>('div', {
       id: 'track',
-      classes: ['border-bottom', 'border-5', 'd-flex', 'mt-3', 'pb-3'],
+      classes: ['d-flex', 'mt-3', 'flex-column'],
     });
+
+    const buttonWrapper = this.createElement('div');
 
     const buttonStart = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-primary', 'me-2'],
     });
-    buttonStart.textContent = 'START';
+    buttonStart.textContent = 'Start';
     buttonStart.type = 'button';
 
     const buttonStop = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-danger', 'me-2'],
     });
-    buttonStop.textContent = 'STOP';
+    buttonStop.textContent = 'Stop';
     buttonStop.type = 'button';
 
     const wrapper = this.createElement('div', {
-      classes: ['wrapper', 'flex-grow-1'],
+      classes: [
+        'wrapper',
+        'flex-grow-1',
+        'border-bottom',
+        'border-top',
+        'border-light',
+        'mt-3',
+      ],
     });
     const airplaneWrapper = this.createElement('div', {
       classes: ['airplane-wrapper'],
@@ -56,7 +65,8 @@ export class TrackView extends View {
     airplaneWrapper.appendChild(airplane);
     wrapper.append(airplaneWrapper, flag);
 
-    trackContainer.append(buttonStart, buttonStop, wrapper);
+    buttonWrapper.append(buttonStart, buttonStop);
+    trackContainer.append(buttonWrapper, wrapper);
 
     const parent = this.getElement('#race');
     if (parent) {

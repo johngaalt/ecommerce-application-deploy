@@ -1,3 +1,4 @@
+import './header.scss';
 import { View } from 'interfaces/view';
 
 export class HeaderView extends View {
@@ -39,13 +40,17 @@ export class HeaderView extends View {
   }
 
   private createNavigationItem(text: string) {
+    const icon = this.createIcon(
+      text.match(/garage/i) ? 'bi-airplane' : 'bi-trophy',
+    );
     const li = this.createElement('li', { classes: ['nav-item'] });
     const a = this.createElement<HTMLLinkElement>('a', {
-      classes: ['nav-link'],
+      classes: ['nav-link', 'icon-link'],
     });
 
     a.href = '#';
     a.textContent = text;
+    a.prepend(icon);
 
     li.appendChild(a);
     return li;
