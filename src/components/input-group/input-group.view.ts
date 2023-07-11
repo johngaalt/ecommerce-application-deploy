@@ -5,7 +5,7 @@ export class InputGroupView extends View {
     super();
 
     const inputGroup = this.createElement('div', {
-      classes: ['input-group', 'mb-3'],
+      classes: ['input-group'],
     });
 
     const input = this.createElement<HTMLInputElement>('input', {
