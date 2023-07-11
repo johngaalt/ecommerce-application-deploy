@@ -52,7 +52,7 @@ export class GarageView extends View {
   private controlMenu() {
     const controlContainer = this.createElement('div', {
       id: this.CONTROL_ID,
-      classes: ['w-50'],
+      classes: ['w-50', 'mt-3'],
     });
 
     return controlContainer;

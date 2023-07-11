@@ -5,18 +5,18 @@ export class ButtonGroupView extends View {
     super();
 
     const buttonGroup = this.createElement('div', {
-      classes: ['btn-group', 'mt-1'],
+      classes: ['mt-1'],
     });
 
     const button1 = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-success'],
+      classes: ['btn', 'btn-success', 'me-2'],
     });
     button1.textContent = 'RACE';
     button1.type = 'button';
     buttonGroup.appendChild(button1);
 
     const button2 = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-success'],
+      classes: ['btn', 'btn-success', 'me-2'],
     });
     button2.textContent = 'RESET';
     button2.type = 'button';
