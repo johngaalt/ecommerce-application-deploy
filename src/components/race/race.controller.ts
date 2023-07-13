@@ -34,7 +34,7 @@ export class RaceController {
 
     this.model.airplanes.map(
       (airplane) =>
-        new TrackController(new TrackModel(), new TrackView(airplane)),
+        new TrackController(new TrackModel(airplane), new TrackView(airplane)),
     );
   }
 }

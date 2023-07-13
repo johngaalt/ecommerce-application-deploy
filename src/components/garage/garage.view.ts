@@ -32,12 +32,12 @@ export class GarageView extends View {
     }
 
     this.carCreateController = new InputGroupController(
-      new InputGroupModel(),
+      new InputGroupModel('create'),
       new InputGroupView('create'),
     );
 
     this.carUpdateController = new InputGroupController(
-      new InputGroupModel(),
+      new InputGroupModel('update'),
       new InputGroupView('update'),
     );
 

@@ -3,6 +3,11 @@ import './track.scss';
 import { Airplane } from 'types/airplane.type';
 
 export class TrackView extends View {
+  selectBtn: HTMLButtonElement;
+  removeBtn: HTMLButtonElement;
+  startBtn: HTMLButtonElement;
+  stopBtn: HTMLButtonElement;
+
   constructor(item: Airplane) {
     super();
     const editContainer = this.createElement('div', {
@@ -10,17 +15,17 @@ export class TrackView extends View {
     });
     const buttonWrapper2 = this.createElement('div');
 
-    const buttonSelect = this.createElement<HTMLButtonElement>('button', {
+    this.selectBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-secondary', 'me-2', 'btn-sm'],
     });
-    buttonSelect.textContent = 'Select';
-    buttonSelect.type = 'button';
+    this.selectBtn.textContent = 'Select';
+    this.selectBtn.type = 'button';
 
-    const buttonRemove = this.createElement<HTMLButtonElement>('button', {
+    this.removeBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-danger', 'me-2', 'btn-sm'],
     });
-    buttonRemove.textContent = 'Remove';
-    buttonRemove.type = 'button';
+    this.removeBtn.textContent = 'Remove';
+    this.removeBtn.type = 'button';
 
     const model = this.createElement('span', {
       id: String(item.id),
@@ -34,17 +39,17 @@ export class TrackView extends View {
 
     const buttonWrapper1 = this.createElement('div');
 
-    const buttonStart = this.createElement<HTMLButtonElement>('button', {
+    this.startBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-primary', 'me-2', 'btn-sm'],
     });
-    buttonStart.textContent = 'Start';
-    buttonStart.type = 'button';
+    this.startBtn.textContent = 'Start';
+    this.startBtn.type = 'button';
 
-    const buttonStop = this.createElement<HTMLButtonElement>('button', {
+    this.stopBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-danger', 'me-2', 'btn-sm'],
     });
-    buttonStop.textContent = 'Stop';
-    buttonStop.type = 'button';
+    this.stopBtn.textContent = 'Stop';
+    this.stopBtn.type = 'button';
 
     const wrapper = this.createElement('div', {
       classes: [
@@ -67,8 +72,8 @@ export class TrackView extends View {
 
     airplaneWrapper.appendChild(airplane);
     wrapper.append(airplaneWrapper, flag);
-    buttonWrapper1.append(buttonSelect, buttonRemove, model);
-    buttonWrapper2.append(buttonStart, buttonStop);
+    buttonWrapper1.append(this.selectBtn, this.removeBtn, model);
+    buttonWrapper2.append(this.startBtn, this.stopBtn);
     editContainer.append(buttonWrapper1, buttonWrapper2);
     trackContainer.append(wrapper);
 
@@ -76,5 +81,9 @@ export class TrackView extends View {
     if (parent) {
       parent.append(editContainer, trackContainer);
     }
+  }
+
+  selectButtonClickListener(cb: () => void) {
+    this.selectBtn.addEventListener('click', () => cb());
   }
 }

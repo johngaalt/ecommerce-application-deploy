@@ -1,14 +1,17 @@
 import { View } from 'interfaces/view';
+import { Airplane } from 'types/airplane.type';
 
 export class InputGroupView extends View {
   button: HTMLButtonElement;
   inputName: HTMLInputElement;
   inputColor: HTMLInputElement;
+  inputId: HTMLInputElement;
+  isCreateMode: boolean;
 
   constructor(type: 'create' | 'update') {
     super();
 
-    const isCreateMode = type === 'create';
+    this.isCreateMode = type === 'create';
     const inputGroup = this.createElement('div', {
       classes: ['input-group', 'mt-1'],
     });
@@ -16,7 +19,7 @@ export class InputGroupView extends View {
     const input = this.createElement<HTMLInputElement>('input', {
       classes: ['form-control', 'form-control-sm'],
     });
-    input.placeholder = isCreateMode
+    input.placeholder = this.isCreateMode
       ? 'Type airplane name'
       : 'Select an airplane';
     input.type = 'text';
@@ -30,11 +33,15 @@ export class InputGroupView extends View {
     this.inputColor = colorPicker;
     inputGroup.appendChild(colorPicker);
 
+    this.inputId = this.createElement<HTMLInputElement>('input');
+    this.inputId.type = 'hidden';
+    inputGroup.appendChild(this.inputId);
+
     const button = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-secondary'],
     });
     button.type = 'button';
-    button.textContent = isCreateMode ? 'Create' : 'Update';
+    button.textContent = this.isCreateMode ? 'Create' : 'Update';
     this.button = button;
     inputGroup.appendChild(button);
 
@@ -42,13 +49,22 @@ export class InputGroupView extends View {
     parent?.appendChild(inputGroup);
   }
 
-  buttonClickListener(cb: (name: string, color: string) => void) {
+  buttonClickListener(cb: (name: string, color: string, id?: number) => void) {
     this.button.addEventListener('click', this.getData.bind(this, cb));
   }
 
-  getData(cb: (name: string, color: string) => void) {
+  getData(cb: (name: string, color: string, id?: number) => void) {
     const name = this.inputName.value;
     const color = this.inputColor.value;
-    cb(name, color);
+    const id = this.inputId.value;
+    cb(name, color, Number(id));
+  }
+
+  setData(airplane: Airplane) {
+    if (!this.isCreateMode) {
+      this.inputName.value = airplane.name;
+      this.inputColor.value = airplane.color;
+      this.inputId.value = String(airplane.id);
+    }
   }
 }
