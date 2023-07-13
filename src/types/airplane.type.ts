@@ -3,3 +3,8 @@ export interface Airplane {
   color: string;
   id: number;
 }
+
+export interface AirplaneResponse {
+  items: Airplane[];
+  count: number;
+}
