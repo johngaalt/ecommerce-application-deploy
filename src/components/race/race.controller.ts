@@ -29,7 +29,7 @@ export class RaceController {
     this.model.airplanes = response.items;
     this.model.count = response.count;
 
-    this.view.clearAirplanesList();
+    this.view.clear();
     this.view.renderHeadings(this.model.count, 1);
 
     this.model.airplanes.map(

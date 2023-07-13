@@ -3,6 +3,8 @@ import { View } from 'interfaces/view';
 export class RaceView extends View {
   list: HTMLDivElement;
   container: HTMLDivElement;
+  title: HTMLHeadingElement;
+  subTitle: HTMLHeadingElement;
 
   constructor() {
     super();
@@ -20,25 +22,27 @@ export class RaceView extends View {
 
     this.container.append(airplanesList);
 
+    this.title = this.createElement<HTMLHeadingElement>('h1', {
+      classes: ['h1'],
+    });
+    this.subTitle = this.createElement<HTMLHeadingElement>('h3', {
+      classes: ['h3'],
+    });
+
     if (parent) {
       parent.appendChild(this.container);
     }
   }
 
   renderHeadings(count: number, pageNumber: number) {
-    const title = this.createElement<HTMLHeadingElement>('h1', {
-      classes: ['h1'],
-    });
-    title.textContent = `Garage (${count})`;
-
-    const titleSecondary = this.createElement<HTMLHeadingElement>('h3', {
-      classes: ['h3'],
-    });
-    titleSecondary.textContent = `Page #${pageNumber}`;
-    this.container.prepend(title, titleSecondary);
+    this.title.textContent = `Garage (${count})`;
+    this.subTitle.textContent = `Page #${pageNumber}`;
+    this.container.prepend(this.title, this.subTitle);
   }
 
-  clearAirplanesList() {
+  clear() {
     this.list.innerHTML = '';
+    this.title.innerHTML = '';
+    this.subTitle.innerHTML = '';
   }
 }
