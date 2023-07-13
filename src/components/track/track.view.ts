@@ -6,9 +6,9 @@ export class TrackView extends View {
   constructor(item: Airplane) {
     super();
     const editContainer = this.createElement('div', {
-      id: 'edit-container',
-      classes: ['mt-3'],
+      classes: ['mt-3', 'd-flex', 'justify-content-between'],
     });
+    const buttonWrapper2 = this.createElement('div');
 
     const buttonSelect = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-success', 'me-2'],
@@ -27,14 +27,11 @@ export class TrackView extends View {
     });
     model.textContent = item.name;
 
-    editContainer.append(buttonSelect, buttonRemove, model);
-
     const trackContainer = this.createElement<HTMLElement>('div', {
-      id: 'track',
       classes: ['d-flex', 'mt-3', 'flex-column'],
     });
 
-    const buttonWrapper = this.createElement('div');
+    const buttonWrapper1 = this.createElement('div');
 
     const buttonStart = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-primary', 'me-2'],
@@ -56,6 +53,7 @@ export class TrackView extends View {
         'border-top',
         'border-light',
         'mt-3',
+        'mb-5',
       ],
     });
     const airplaneWrapper = this.createElement('div', {
@@ -63,12 +61,15 @@ export class TrackView extends View {
     });
     const airplane = this.createIcon('bi-airplane-fill');
     airplane.style.color = item.color;
+
     const flag = this.createIcon('bi-flag-fill');
+
     airplaneWrapper.appendChild(airplane);
     wrapper.append(airplaneWrapper, flag);
-
-    buttonWrapper.append(buttonStart, buttonStop);
-    trackContainer.append(buttonWrapper, wrapper);
+    buttonWrapper1.append(buttonSelect, buttonRemove, model);
+    buttonWrapper2.append(buttonStart, buttonStop);
+    editContainer.append(buttonWrapper1, buttonWrapper2);
+    trackContainer.append(wrapper);
 
     const parent = this.getElement('#race');
     if (parent) {
