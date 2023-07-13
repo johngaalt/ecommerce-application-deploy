@@ -11,19 +11,20 @@ export class TrackView extends View {
     const buttonWrapper2 = this.createElement('div');
 
     const buttonSelect = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-success', 'me-2'],
+      classes: ['btn', 'btn-secondary', 'me-2', 'btn-sm'],
     });
     buttonSelect.textContent = 'Select';
     buttonSelect.type = 'button';
 
     const buttonRemove = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-danger', 'me-2'],
+      classes: ['btn', 'btn-danger', 'me-2', 'btn-sm'],
     });
     buttonRemove.textContent = 'Remove';
     buttonRemove.type = 'button';
 
     const model = this.createElement('span', {
       id: String(item.id),
+      classes: ['fw-bold', 'text-light'],
     });
     model.textContent = item.name;
 
@@ -34,13 +35,13 @@ export class TrackView extends View {
     const buttonWrapper1 = this.createElement('div');
 
     const buttonStart = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-primary', 'me-2'],
+      classes: ['btn', 'btn-primary', 'me-2', 'btn-sm'],
     });
     buttonStart.textContent = 'Start';
     buttonStart.type = 'button';
 
     const buttonStop = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-danger', 'me-2'],
+      classes: ['btn', 'btn-danger', 'me-2', 'btn-sm'],
     });
     buttonStop.textContent = 'Stop';
     buttonStop.type = 'button';

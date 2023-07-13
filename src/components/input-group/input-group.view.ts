@@ -25,7 +25,7 @@ export class InputGroupView extends View {
     inputGroup.appendChild(colorPicker);
 
     const button = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-success'],
+      classes: ['btn', 'btn-secondary'],
     });
     button.type = 'button';
     button.textContent = isCreateMode ? 'Create' : 'Update';
