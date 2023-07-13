@@ -72,7 +72,7 @@ export class TrackView extends View {
     editContainer.append(buttonWrapper1, buttonWrapper2);
     trackContainer.append(wrapper);
 
-    const parent = this.getElement('#race');
+    const parent = this.getElement('#list');
     if (parent) {
       parent.append(editContainer, trackContainer);
     }

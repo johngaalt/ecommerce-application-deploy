@@ -1,6 +1,8 @@
 import { RaceService } from 'services/race.service';
 import { InputGroupModel } from './input-group.model';
 import { InputGroupView } from './input-group.view';
+import eventBus from 'services/event.service';
+import { EventTypes } from 'types/event.enum';
 
 export class InputGroupController {
   model: InputGroupModel;
@@ -15,12 +17,13 @@ export class InputGroupController {
     this.view.buttonClickListener(this.buttonClickHandler.bind(this));
   }
 
-  buttonClickHandler(name: string, color: string) {
+  async buttonClickHandler(name: string, color: string) {
     if (name) {
-      this.raceService.createAirplane({
+      await this.raceService.createAirplane({
         name,
         color,
       });
+      eventBus.publish(EventTypes.fetchAirplanes);
     } else {
       alert('Please type an airplane name');
     }

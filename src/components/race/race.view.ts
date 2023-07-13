@@ -1,6 +1,7 @@
 import { View } from 'interfaces/view';
 
 export class RaceView extends View {
+  list: HTMLDivElement;
   constructor() {
     super();
 
@@ -17,10 +18,20 @@ export class RaceView extends View {
     });
     title.textContent = `Garage (#TOTALPAGES#)`;
     titleSecondary.textContent = `Page #1`;
-    raceContainer.append(title, titleSecondary);
+
+    const airplanesList = this.createElement<HTMLDivElement>('div', {
+      id: 'list',
+    });
+    this.list = airplanesList;
+
+    raceContainer.append(title, titleSecondary, airplanesList);
 
     if (parent) {
       parent.appendChild(raceContainer);
     }
+  }
+
+  clearAirplanesList() {
+    this.list.innerHTML = '';
   }
 }
