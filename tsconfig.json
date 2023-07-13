@@ -15,7 +15,9 @@
     "baseUrl": "./src",
     "paths": {
       "components/*": ["components/*"],
-      "interfaces/*": ["interfaces/*"]
+      "interfaces/*": ["interfaces/*"],
+      "services/*": ["services/*"],
+      "types/*": ["types/*"]
     }
   },
   "include": ["src"],

@@ -1,11 +1,6 @@
-import { TrackController } from 'components/track/track.controller';
-import { TrackModel } from 'components/track/track.model';
-import { TrackView } from 'components/track/track.view';
 import { View } from 'interfaces/view';
 
 export class RaceView extends View {
-  trackController: TrackController;
-
   constructor() {
     super();
 
@@ -27,10 +22,5 @@ export class RaceView extends View {
     if (parent) {
       parent.appendChild(raceContainer);
     }
-
-    this.trackController = new TrackController(
-      new TrackModel(),
-      new TrackView('name', 'id'),
-    );
   }
 }

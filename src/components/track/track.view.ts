@@ -2,7 +2,7 @@ import { View } from 'interfaces/view';
 import './track.scss';
 
 export class TrackView extends View {
-  constructor(name: string, id: string) {
+  constructor(name: string, id: number) {
     super();
     const editContainer = this.createElement('div', {
       id: 'edit-container',
@@ -22,7 +22,7 @@ export class TrackView extends View {
     buttonRemove.type = 'button';
 
     const model = this.createElement('span', {
-      id: id,
+      id: String(id),
     });
     model.textContent = name;
 

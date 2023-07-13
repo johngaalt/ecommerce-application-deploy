@@ -34,6 +34,8 @@ const config = {
     alias: {
       components: path.resolve(__dirname, 'src/components'),
       interfaces: path.resolve(__dirname, 'src/interfaces'),
+      services: path.resolve(__dirname, 'src/services'),
+      types: path.resolve(__dirname, 'src/types'),
     },
   },
   devtool: 'inline-source-map',
