@@ -24,10 +24,7 @@ export class RaceController {
     const airplanes = await this.raceService.getAirplanes();
     airplanes.map(
       (airplane) =>
-        new TrackController(
-          new TrackModel(),
-          new TrackView(airplane.name, airplane.id),
-        ),
+        new TrackController(new TrackModel(), new TrackView(airplane)),
     );
   }
 }

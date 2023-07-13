@@ -1,8 +1,9 @@
 import { View } from 'interfaces/view';
 import './track.scss';
+import { Airplane } from 'types/airplane.type';
 
 export class TrackView extends View {
-  constructor(name: string, id: number) {
+  constructor(item: Airplane) {
     super();
     const editContainer = this.createElement('div', {
       id: 'edit-container',
@@ -22,9 +23,9 @@ export class TrackView extends View {
     buttonRemove.type = 'button';
 
     const model = this.createElement('span', {
-      id: String(id),
+      id: String(item.id),
     });
-    model.textContent = name;
+    model.textContent = item.name;
 
     editContainer.append(buttonSelect, buttonRemove, model);
 
@@ -61,6 +62,7 @@ export class TrackView extends View {
       classes: ['airplane-wrapper'],
     });
     const airplane = this.createIcon('bi-airplane-fill');
+    airplane.style.color = item.color;
     const flag = this.createIcon('bi-flag-fill');
     airplaneWrapper.appendChild(airplane);
     wrapper.append(airplaneWrapper, flag);
