@@ -1,6 +1,10 @@
 import { View } from 'interfaces/view';
 
 export class ButtonGroupView extends View {
+  raceBtn: HTMLButtonElement;
+  resetBtn: HTMLButtonElement;
+  generateBtn: HTMLButtonElement;
+
   constructor() {
     super();
 
@@ -8,30 +12,34 @@ export class ButtonGroupView extends View {
       classes: ['mt-1'],
     });
 
-    const button1 = this.createElement<HTMLButtonElement>('button', {
+    this.raceBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-secondary', 'me-2'],
     });
-    button1.textContent = 'Race';
-    button1.type = 'button';
-    buttonGroup.appendChild(button1);
+    this.raceBtn.textContent = 'Race';
+    this.raceBtn.type = 'button';
+    buttonGroup.appendChild(this.raceBtn);
 
-    const button2 = this.createElement<HTMLButtonElement>('button', {
+    this.resetBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-secondary', 'me-2'],
     });
-    button2.textContent = 'Reset';
-    button2.type = 'button';
+    this.resetBtn.textContent = 'Reset';
+    this.resetBtn.type = 'button';
 
-    buttonGroup.appendChild(button2);
+    buttonGroup.appendChild(this.resetBtn);
 
-    const button3 = this.createElement<HTMLButtonElement>('button', {
+    this.generateBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-secondary'],
     });
-    button3.textContent = 'Generate airplanes';
-    button3.type = 'button';
+    this.generateBtn.textContent = 'Generate airplanes';
+    this.generateBtn.type = 'button';
 
-    buttonGroup.appendChild(button3);
+    buttonGroup.appendChild(this.generateBtn);
 
     const parent = this.getElement('#control');
     parent?.appendChild(buttonGroup);
+  }
+
+  generateButtonClickListener(cb: () => void) {
+    this.generateBtn.addEventListener('click', () => cb());
   }
 }

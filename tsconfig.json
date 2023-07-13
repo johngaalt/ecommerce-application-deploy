@@ -17,7 +17,8 @@
       "components/*": ["components/*"],
       "interfaces/*": ["interfaces/*"],
       "services/*": ["services/*"],
-      "types/*": ["types/*"]
+      "types/*": ["types/*"],
+      "constants/*": ["constants/*"]
     }
   },
   "include": ["src"],
