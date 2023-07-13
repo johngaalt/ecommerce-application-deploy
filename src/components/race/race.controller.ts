@@ -26,8 +26,8 @@ export class RaceController {
 
   async fetchAirplanes() {
     this.view.clearAirplanesList();
-    const airplanes = await this.raceService.getAirplanes();
-    airplanes.map(
+    this.model.airplanes = await this.raceService.getAirplanes();
+    this.model.airplanes.map(
       (airplane) =>
         new TrackController(new TrackModel(), new TrackView(airplane)),
     );
