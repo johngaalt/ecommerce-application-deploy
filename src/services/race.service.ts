@@ -37,4 +37,11 @@ export class RaceService {
     });
     return await response.json();
   }
+
+  async removeAirplane(id: number): Promise<void> {
+    const response = await fetch(`http://localhost:3000/garage/${id}`, {
+      method: 'DELETE',
+    });
+    return await response.json();
+  }
 }

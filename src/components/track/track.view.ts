@@ -86,4 +86,8 @@ export class TrackView extends View {
   selectButtonClickListener(cb: () => void) {
     this.selectBtn.addEventListener('click', () => cb());
   }
+
+  removeButtonClickListener(cb: () => void) {
+    this.removeBtn.addEventListener('click', () => cb());
+  }
 }
