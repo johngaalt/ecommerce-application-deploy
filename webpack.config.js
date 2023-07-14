@@ -37,6 +37,7 @@ const config = {
       services: path.resolve(__dirname, 'src/services'),
       types: path.resolve(__dirname, 'src/types'),
       constants: path.resolve(__dirname, 'src/constants'),
+      utils: path.resolve(__dirname, 'src/utils'),
     },
   },
   devtool: 'inline-source-map',

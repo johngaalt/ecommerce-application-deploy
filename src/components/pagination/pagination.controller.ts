@@ -1,5 +1,8 @@
+import { Pagination } from 'types/pagination.enum';
 import { PaginationModel } from './pagination.model';
 import { PaginationView } from './pagination.view';
+import eventBus from 'services/event.service';
+import { EventTypes } from 'types/event.enum';
 
 export class PaginationController {
   model: PaginationModel;
@@ -8,7 +11,13 @@ export class PaginationController {
   constructor(model: PaginationModel, view: PaginationView) {
     this.model = model;
     this.view = view;
+
+    this.view.paginationPageClickListener(
+      this.paginationPageClickHandler.bind(this),
+    );
   }
 
-  // paginationPageClickHandler() {}
+  paginationPageClickHandler(text: string) {
+    eventBus.publish(EventTypes.fetchAirplanes, text);
+  }
 }

@@ -1,4 +1,6 @@
 import { View } from 'interfaces/view';
+import { Pagination } from 'types/pagination.enum';
+import { DOMGuards } from 'utils/guards';
 
 export class PaginationView extends View {
   nav: HTMLElement;
@@ -13,7 +15,7 @@ export class PaginationView extends View {
       classes: ['pagination'],
     });
 
-    const items = Array.from(['Previous', 'Next'], (item) => {
+    const items = Array.from([Pagination.Previous, Pagination.Next], (item) => {
       return this.createPaginationItem(item);
     });
     this.ul.append(...items);
@@ -40,9 +42,14 @@ export class PaginationView extends View {
     return li;
   }
 
-  // paginationPageClickListener() {
-  //   this.ul?.addEventListener('click', () => {
-
-  //   });
-  // }
+  paginationPageClickListener(cb: (text: string) => void) {
+    this.ul?.addEventListener('click', (event) => {
+      if (DOMGuards.isHTMLElement(event.target)) {
+        const target = event.target.closest('.page-item');
+        if (target && target.textContent) {
+          cb(target.textContent);
+        }
+      }
+    });
+  }
 }

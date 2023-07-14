@@ -18,7 +18,8 @@
       "interfaces/*": ["interfaces/*"],
       "services/*": ["services/*"],
       "types/*": ["types/*"],
-      "constants/*": ["constants/*"]
+      "constants/*": ["constants/*"],
+      "utils/*": ["utils/*"]
     }
   },
   "include": ["src"],

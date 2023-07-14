@@ -9,6 +9,7 @@ import { EventTypes } from 'types/event.enum';
 import { PaginationController } from 'components/pagination/pagination.controller';
 import { PaginationModel } from 'components/pagination/pagination.model';
 import { PaginationView } from 'components/pagination/pagination.view';
+import { Pagination } from 'types/pagination.enum';
 
 export class RaceController {
   model: RaceModel;
@@ -29,16 +30,17 @@ export class RaceController {
     );
   }
 
-  async fetchAirplanes() {
+  async fetchAirplanes(data?: unknown) {
+    this.rewritePage(data);
     const response = await this.raceService.getAirplanes(
-      this.model.page,
+      this.model.currentPage,
       this.model.limit,
     );
     this.model.airplanes = response.items;
     this.model.count = response.count;
 
     this.view.clear();
-    this.view.renderHeadings(this.model.count, this.model.page);
+    this.view.renderHeadings(this.model.count, this.model.currentPage);
 
     this.paginationController = new PaginationController(
       new PaginationModel(),
@@ -48,5 +50,17 @@ export class RaceController {
       (airplane) =>
         new TrackController(new TrackModel(airplane), new TrackView(airplane)),
     );
+  }
+
+  rewritePage(data: unknown) {
+    if (typeof data === 'string') {
+      if (data === Pagination.Previous) {
+        this.model.currentPage = this.model.currentPage - 1;
+      }
+
+      if (data === Pagination.Next) {
+        this.model.currentPage = this.model.currentPage + 1;
+      }
+    }
   }
 }
