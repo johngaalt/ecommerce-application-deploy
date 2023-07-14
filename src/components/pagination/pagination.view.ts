@@ -16,8 +16,15 @@ export class PaginationView extends View {
       classes: ['pagination'],
     });
 
-    const items = Array.from([Pagination.Previous, Pagination.Next], (item) => {
-      return this.createPaginationItem(item);
+    const elements = [Pagination.Previous, Pagination.Next];
+
+    const items = Array.from(elements, (item) => {
+      const isFirstPage = item === Pagination.Previous && currentPage === 1;
+      const isLastPage = item === Pagination.Next && currentPage === pageCount;
+      const isOnlyPage = pageCount <= 1;
+
+      const isDisabled = isFirstPage || isLastPage || isOnlyPage;
+      return this.createPaginationItem(item, isDisabled);
     });
     this.ul.append(...items);
     this.nav.appendChild(this.ul);
@@ -28,9 +35,9 @@ export class PaginationView extends View {
     }
   }
 
-  createPaginationItem(linkText: string) {
+  createPaginationItem(linkText: string, isDisabled: boolean) {
     const li = this.createElement('li', {
-      classes: ['page-item'],
+      classes: ['page-item', isDisabled ? 'disabled' : 'enabled'],
     });
 
     const link = this.createElement<HTMLLinkElement>('a', {
@@ -47,7 +54,11 @@ export class PaginationView extends View {
     this.ul?.addEventListener('click', (event) => {
       if (DOMGuards.isHTMLElement(event.target)) {
         const target = event.target.closest('.page-item');
-        if (target && target.textContent) {
+        if (
+          target &&
+          target.textContent &&
+          target.classList.contains('enabled')
+        ) {
           cb(target.textContent);
         }
       }

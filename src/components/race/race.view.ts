@@ -35,9 +35,11 @@ export class RaceView extends View {
     }
   }
 
-  renderHeadings(count: number, pageNumber: number) {
+  renderHeadings(count: number, pageNumber: number, limit: number) {
     this.title.textContent = `Garage (${count})`;
-    this.subTitle.textContent = `Page #${pageNumber}`;
+    this.subTitle.textContent = `Page #${pageNumber} from ${Math.ceil(
+      count / limit,
+    )}`;
     this.container.prepend(this.title, this.subTitle);
   }
 

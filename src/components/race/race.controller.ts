@@ -44,7 +44,11 @@ export class RaceController {
     this.model.count = response.count;
 
     this.view.clear();
-    this.view.renderHeadings(this.model.count, this.model.currentPage);
+    this.view.renderHeadings(
+      this.model.count,
+      this.model.currentPage,
+      this.model.limit,
+    );
 
     this.initPagination();
     this.model.airplanes.map(

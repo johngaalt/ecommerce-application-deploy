@@ -11,10 +11,6 @@ export class PaginationController {
   constructor(model: PaginationModel, view: PaginationView) {
     this.model = model;
     this.view = view;
-
-    this.view.paginationPageClickListener(
-      this.paginationPageClickHandler.bind(this),
-    );
   }
 
   paginationPageClickHandler(text: string) {
@@ -23,5 +19,8 @@ export class PaginationController {
 
   initView() {
     this.view.render(this.model.pageCount, this.model.currentPage);
+    this.view.paginationPageClickListener(
+      this.paginationPageClickHandler.bind(this),
+    );
   }
 }
