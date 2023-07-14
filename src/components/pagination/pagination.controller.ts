@@ -10,7 +10,5 @@ export class PaginationController {
     this.view = view;
   }
 
-  initView() {
-    this.view.render(this.model.pageCount, this.model.currentPage);
-  }
+  // paginationPageClickHandler() {}
 }
