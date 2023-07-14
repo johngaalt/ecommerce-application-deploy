@@ -20,4 +20,8 @@ export class PaginationController {
   paginationPageClickHandler(text: string) {
     eventBus.publish(EventTypes.fetchAirplanes, text);
   }
+
+  initView() {
+    this.view.render(this.model.pageCount, this.model.currentPage);
+  }
 }

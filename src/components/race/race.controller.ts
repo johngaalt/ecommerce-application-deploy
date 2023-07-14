@@ -15,13 +15,17 @@ export class RaceController {
   model: RaceModel;
   view: RaceView;
   raceService: RaceService;
-  paginationController?: PaginationController;
+  paginationController: PaginationController;
 
   constructor(model: RaceModel, view: RaceView) {
     this.model = model;
     this.view = view;
 
     this.raceService = new RaceService();
+    this.paginationController = new PaginationController(
+      new PaginationModel(),
+      new PaginationView(),
+    );
 
     this.fetchAirplanes();
     eventBus.subscribe(
@@ -42,10 +46,7 @@ export class RaceController {
     this.view.clear();
     this.view.renderHeadings(this.model.count, this.model.currentPage);
 
-    this.paginationController = new PaginationController(
-      new PaginationModel(),
-      new PaginationView(),
-    );
+    this.initPagination();
     this.model.airplanes.map(
       (airplane) =>
         new TrackController(new TrackModel(airplane), new TrackView(airplane)),
@@ -62,5 +63,14 @@ export class RaceController {
         this.model.currentPage = this.model.currentPage + 1;
       }
     }
+  }
+
+  initPagination() {
+    this.paginationController.model.init(
+      this.model.count,
+      this.model.limit,
+      this.model.currentPage,
+    );
+    this.paginationController.initView();
   }
 }

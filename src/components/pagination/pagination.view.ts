@@ -3,15 +3,16 @@ import { Pagination } from 'types/pagination.enum';
 import { DOMGuards } from 'utils/guards';
 
 export class PaginationView extends View {
-  nav: HTMLElement;
-  ul: HTMLElement;
+  nav?: HTMLElement;
+  ul?: HTMLElement;
 
   constructor() {
     super();
+  }
 
+  render(pageCount: number, currentPage: number) {
     this.nav = this.createElement<HTMLElement>('nav');
     this.ul = this.createElement<HTMLElement>('ul', {
-      id: 'pagination-parent',
       classes: ['pagination'],
     });
 
