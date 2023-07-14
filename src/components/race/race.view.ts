@@ -26,7 +26,8 @@ export class RaceView extends View {
       classes: ['h1'],
     });
     this.subTitle = this.createElement<HTMLHeadingElement>('h3', {
-      classes: ['h3'],
+      id: 'subtitle',
+      classes: ['h3', 'd-flex', 'justify-content-between'],
     });
 
     if (parent) {
