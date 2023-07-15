@@ -115,4 +115,13 @@ export class TrackView extends View {
     this.airplaneWrapper.classList.add('animated');
     this.airplaneWrapper.style.transitionDuration = time;
   }
+
+  stopAnimation(success: boolean) {
+    if (!success) {
+      const { left } = this.airplaneWrapper.getBoundingClientRect();
+      this.airplaneWrapper.classList.remove('animated');
+      this.airplaneWrapper.style.transition = 'none';
+      this.airplaneWrapper.style.left = `${left}px`;
+    }
+  }
 }

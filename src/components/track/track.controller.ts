@@ -42,5 +42,7 @@ export class TrackController {
     const time = `${(distance / velocity / 1000).toFixed(2)}s`;
     this.view.hideSpinner();
     this.view.startAnimation(time);
+    const { success } = await this.raceService.driveAirplane(this.model.id);
+    this.view.stopAnimation(success);
   }
 }

@@ -1,5 +1,5 @@
 import { Airplane, AirplaneResponse } from 'types/airplane.type';
-import { StartAirplaneResponse } from 'types/race.types';
+import { DriveAirplaneResponse, StartAirplaneResponse } from 'types/race.types';
 
 export class RaceService {
   async getAirplanes(page = 1, limits = 7): Promise<AirplaneResponse> {
@@ -56,13 +56,22 @@ export class RaceService {
     return await response.json();
   }
 
-  async driveAirplane(id: number): Promise<void> {
+  async driveAirplane(id: number): Promise<DriveAirplaneResponse> {
     const response = await fetch(
       `http://localhost:3000/engine?id=${id}&status=drive`,
       {
         method: 'PATCH',
       },
     );
+
+    if (!response.ok) {
+      if (response.status === 500) {
+        return {
+          success: false,
+        };
+      }
+    }
+
     return await response.json();
   }
 }
