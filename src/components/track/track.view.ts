@@ -7,6 +7,8 @@ export class TrackView extends View {
   removeBtn: HTMLButtonElement;
   startBtn: HTMLButtonElement;
   stopBtn: HTMLButtonElement;
+  airplaneWrapper: HTMLDivElement;
+  startSpinner: HTMLSpanElement;
 
   constructor(item: Airplane) {
     super();
@@ -39,11 +41,16 @@ export class TrackView extends View {
 
     const buttonWrapper1 = this.createElement('div');
 
+    this.startSpinner = this.createElement('span', {
+      classes: ['d-none', 'spinner-border', 'spinner-border-sm', 'me-1'],
+    });
+
     this.startBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-primary', 'me-2', 'btn-sm'],
     });
     this.startBtn.textContent = 'Start';
     this.startBtn.type = 'button';
+    this.startBtn.prepend(this.startSpinner);
 
     this.stopBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-danger', 'me-2', 'btn-sm'],
@@ -62,7 +69,7 @@ export class TrackView extends View {
         'mb-5',
       ],
     });
-    const airplaneWrapper = this.createElement('div', {
+    this.airplaneWrapper = this.createElement('div', {
       classes: ['airplane-wrapper'],
     });
     const airplane = this.createIcon('bi-airplane-fill');
@@ -70,8 +77,8 @@ export class TrackView extends View {
 
     const flag = this.createIcon('bi-flag-fill');
 
-    airplaneWrapper.appendChild(airplane);
-    wrapper.append(airplaneWrapper, flag);
+    this.airplaneWrapper.appendChild(airplane);
+    wrapper.append(this.airplaneWrapper, flag);
     buttonWrapper1.append(this.selectBtn, this.removeBtn, model);
     buttonWrapper2.append(this.startBtn, this.stopBtn);
     editContainer.append(buttonWrapper1, buttonWrapper2);
@@ -89,5 +96,23 @@ export class TrackView extends View {
 
   removeButtonClickListener(cb: () => void) {
     this.removeBtn.addEventListener('click', () => cb());
+  }
+
+  startButtonClickListener(cb: () => void) {
+    this.startBtn.addEventListener('click', () => cb());
+  }
+
+  disableStartButton() {
+    this.startBtn.disabled = true;
+    this.startSpinner.classList.remove('d-none');
+  }
+
+  hideSpinner() {
+    this.startSpinner.classList.add('d-none');
+  }
+
+  startAnimation(time: string) {
+    this.airplaneWrapper.classList.add('animated');
+    this.airplaneWrapper.style.transitionDuration = time;
   }
 }

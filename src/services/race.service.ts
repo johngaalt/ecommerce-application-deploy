@@ -1,4 +1,5 @@
 import { Airplane, AirplaneResponse } from 'types/airplane.type';
+import { StartAirplaneResponse } from 'types/race.types';
 
 export class RaceService {
   async getAirplanes(page = 1, limits = 7): Promise<AirplaneResponse> {
@@ -42,6 +43,26 @@ export class RaceService {
     const response = await fetch(`http://localhost:3000/garage/${id}`, {
       method: 'DELETE',
     });
+    return await response.json();
+  }
+
+  async startAirplane(id: number): Promise<StartAirplaneResponse> {
+    const response = await fetch(
+      `http://localhost:3000/engine?id=${id}&status=started`,
+      {
+        method: 'PATCH',
+      },
+    );
+    return await response.json();
+  }
+
+  async driveAirplane(id: number): Promise<void> {
+    const response = await fetch(
+      `http://localhost:3000/engine?id=${id}&status=drive`,
+      {
+        method: 'PATCH',
+      },
+    );
     return await response.json();
   }
 }

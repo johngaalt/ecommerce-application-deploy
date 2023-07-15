@@ -20,4 +20,10 @@
   top: 0;
   left: 0;
   z-index: 10;
+  transition-property: left;
+  transition-timing-function: linear;
+
+  &.animated {
+    left: calc(90% + 10px);
+  }
 }
