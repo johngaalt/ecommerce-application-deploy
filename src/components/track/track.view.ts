@@ -140,6 +140,7 @@ export class TrackView extends View {
   stopAirplane() {
     this.airplaneWrapper.style.left = '0';
     this.startBtn.disabled = false;
+    this.stopBtn.disabled = true;
     this.stopSpinner.classList.add('d-none');
     this.airplaneWrapper.classList.remove('animated');
     this.airplaneWrapper.style.transition = 'none';
