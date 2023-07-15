@@ -74,4 +74,14 @@ export class RaceService {
 
     return await response.json();
   }
+
+  async stopAirplane(id: number): Promise<StartAirplaneResponse> {
+    const response = await fetch(
+      `http://localhost:3000/engine?id=${id}&status=stopped`,
+      {
+        method: 'PATCH',
+      },
+    );
+    return await response.json();
+  }
 }

@@ -23,6 +23,7 @@ export class TrackController {
     );
 
     this.view.startButtonClickListener(this.startButtonClickHandler.bind(this));
+    this.view.stopButtonClickListener(this.stopButtonClickHandler.bind(this));
   }
 
   selectButtonClickHandler() {
@@ -40,9 +41,15 @@ export class TrackController {
       this.model.id,
     );
     const time = `${(distance / velocity / 1000).toFixed(2)}s`;
-    this.view.hideSpinner();
+    this.view.hideStartSpinner();
     this.view.startAnimation(time);
     const { success } = await this.raceService.driveAirplane(this.model.id);
     this.view.stopAnimation(success);
+  }
+
+  async stopButtonClickHandler() {
+    this.view.showStopSpinner();
+    await this.raceService.stopAirplane(this.model.id);
+    this.view.stopAirplane();
   }
 }

@@ -9,6 +9,7 @@ export class TrackView extends View {
   stopBtn: HTMLButtonElement;
   airplaneWrapper: HTMLDivElement;
   startSpinner: HTMLSpanElement;
+  stopSpinner: HTMLSpanElement;
 
   constructor(item: Airplane) {
     super();
@@ -52,11 +53,17 @@ export class TrackView extends View {
     this.startBtn.type = 'button';
     this.startBtn.prepend(this.startSpinner);
 
+    this.stopSpinner = this.createElement('span', {
+      classes: ['d-none', 'spinner-border', 'spinner-border-sm', 'me-1'],
+    });
+
     this.stopBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-danger', 'me-2', 'btn-sm'],
     });
+    this.stopBtn.disabled = true;
     this.stopBtn.textContent = 'Stop';
     this.stopBtn.type = 'button';
+    this.stopBtn.prepend(this.stopSpinner);
 
     const wrapper = this.createElement('div', {
       classes: [
@@ -102,12 +109,17 @@ export class TrackView extends View {
     this.startBtn.addEventListener('click', () => cb());
   }
 
+  stopButtonClickListener(cb: () => void) {
+    this.stopBtn.addEventListener('click', () => cb());
+  }
+
   disableStartButton() {
     this.startBtn.disabled = true;
+    this.stopBtn.disabled = false;
     this.startSpinner.classList.remove('d-none');
   }
 
-  hideSpinner() {
+  hideStartSpinner() {
     this.startSpinner.classList.add('d-none');
   }
 
@@ -123,5 +135,18 @@ export class TrackView extends View {
       this.airplaneWrapper.style.transition = 'none';
       this.airplaneWrapper.style.left = `${left}px`;
     }
+  }
+
+  stopAirplane() {
+    this.airplaneWrapper.style.left = '0';
+    this.startBtn.disabled = false;
+    this.stopSpinner.classList.add('d-none');
+    this.airplaneWrapper.classList.remove('animated');
+    this.airplaneWrapper.style.transition = 'none';
+  }
+
+  showStopSpinner() {
+    this.startBtn.disabled = true;
+    this.stopSpinner.classList.remove('d-none');
   }
 }
