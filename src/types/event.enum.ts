@@ -3,4 +3,5 @@ export enum EventTypes {
   selectAirplane = 'selectAirplane',
   removeAirplane = 'removeAirplane',
   startRace = 'startRace',
+  resetRace = 'resetRace',
 }

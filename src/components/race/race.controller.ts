@@ -35,6 +35,7 @@ export class RaceController {
       this.fetchAirplanes.bind(this),
     );
     eventBus.subscribe(EventTypes.startRace, this.startRace.bind(this));
+    eventBus.subscribe(EventTypes.resetRace, this.resetRace.bind(this));
   }
 
   async fetchAirplanes(data?: unknown) {
@@ -98,6 +99,15 @@ export class RaceController {
         });
 
       this.view.showWinner(winnerTrack.name, winnerTrack.time);
+    }
+  }
+
+  async resetRace() {
+    if (this.tracks?.length) {
+      const tracksHandlerPromises = this.tracks.map((track) =>
+        track.stopButtonClickHandler(),
+      );
+      await Promise.all(tracksHandlerPromises);
     }
   }
 }

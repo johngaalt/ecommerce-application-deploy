@@ -20,6 +20,7 @@ export class ButtonGroupController {
     );
 
     this.view.raceButtonClickListener(this.raceButtonClickHandler.bind(this));
+    this.view.resetButtonClickListener(this.resetButtonClickHandler.bind(this));
   }
 
   async generateButtonClickHandler() {
@@ -34,6 +35,10 @@ export class ButtonGroupController {
 
   raceButtonClickHandler() {
     eventBus.publish(EventTypes.startRace);
+  }
+
+  resetButtonClickHandler() {
+    eventBus.publish(EventTypes.resetRace);
   }
 
   generateRandomAirplane() {

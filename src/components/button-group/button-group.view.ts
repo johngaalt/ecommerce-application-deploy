@@ -46,4 +46,8 @@ export class ButtonGroupView extends View {
   raceButtonClickListener(cb: () => void) {
     this.raceBtn.addEventListener('click', () => cb());
   }
+
+  resetButtonClickListener(cb: () => void) {
+    this.resetBtn.addEventListener('click', () => cb());
+  }
 }
