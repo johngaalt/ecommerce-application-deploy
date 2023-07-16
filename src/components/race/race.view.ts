@@ -1,5 +1,4 @@
 import { View } from 'interfaces/view';
-import { Airplane } from 'types/airplane.type';
 
 export class RaceView extends View {
   list: HTMLDivElement;

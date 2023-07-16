@@ -86,7 +86,7 @@ export class RaceController {
       const tracksHandlerPromises = this.tracks.map((track) =>
         track.startButtonClickHandler(),
       );
-      await Promise.all(tracksHandlerPromises);
+      await Promise.race(tracksHandlerPromises);
 
       const winnerTrack = this.tracks
         .map((track) => track.model)
