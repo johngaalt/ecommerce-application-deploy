@@ -128,13 +128,11 @@ export class TrackView extends View {
     this.airplaneWrapper.style.transitionDuration = time;
   }
 
-  stopAnimation(success: boolean) {
-    if (!success) {
-      const { left } = this.airplaneWrapper.getBoundingClientRect();
-      this.airplaneWrapper.classList.remove('animated');
-      this.airplaneWrapper.style.transition = 'none';
-      this.airplaneWrapper.style.left = `${left}px`;
-    }
+  stopAnimation() {
+    const { left } = this.airplaneWrapper.getBoundingClientRect();
+    this.airplaneWrapper.classList.remove('animated');
+    this.airplaneWrapper.style.transition = 'none';
+    this.airplaneWrapper.style.left = `${left}px`;
   }
 
   stopAirplane() {

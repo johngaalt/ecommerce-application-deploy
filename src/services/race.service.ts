@@ -64,13 +64,13 @@ export class RaceService {
       },
     );
 
-    if (!response.ok) {
-      if (response.status === 500) {
-        return {
-          success: false,
-        };
-      }
-    }
+    // if (!response.ok) {
+    //   if (response.status === 500) {
+    //     return {
+    //       success: false,
+    //     };
+    //   }
+    // }
 
     return await response.json();
   }

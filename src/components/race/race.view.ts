@@ -66,4 +66,10 @@ export class RaceView extends View {
       document.body.appendChild(this.winner);
     }
   }
+
+  hideWinner() {
+    if (this.winner) {
+      document.body.removeChild(this.winner);
+    }
+  }
 }

@@ -87,23 +87,21 @@ export class RaceController {
       const tracksHandlerPromises = this.tracks.map((track) =>
         track.startButtonClickHandler(),
       );
-      await Promise.race(tracksHandlerPromises);
 
-      const winnerTrack = this.tracks
-        .map((track) => track.model)
-        .filter((model) => model.isFinished)
-        .map((model) => ({ time: model.time, name: model.name }))
-        .reduce((acc, curr) => (curr.time < acc.time ? curr : acc), {
-          time: Infinity,
-          name: '',
-        });
+      try {
+        const { name, time } = await Promise.any(tracksHandlerPromises);
+        this.view.showWinner(name, time);
 
-      this.view.showWinner(winnerTrack.name, winnerTrack.time);
+        // TODO: save winner
+      } catch (error) {
+        global.console.error(error);
+      }
     }
   }
 
   async resetRace() {
     if (this.tracks?.length) {
+      this.view.hideWinner();
       const tracksHandlerPromises = this.tracks.map((track) =>
         track.stopButtonClickHandler(),
       );

@@ -44,9 +44,15 @@ export class TrackController {
     const timeInSeconds = `${this.model.time}s`;
     this.view.hideStartSpinner();
     this.view.startAnimation(timeInSeconds);
-    const { success } = await this.raceService.driveAirplane(this.model.id);
-    this.model.isFinished = success;
-    this.view.stopAnimation(success);
+
+    try {
+      const { success } = await this.raceService.driveAirplane(this.model.id);
+      this.model.isFinished = success;
+      return this.model;
+    } catch (error) {
+      this.view.stopAnimation();
+      throw error;
+    }
   }
 
   async stopButtonClickHandler() {
