@@ -25,10 +25,10 @@ export class HeaderView extends View {
       classes: ['navbar', 'navbar-expand', 'bg-body-tertiary'],
     });
     const container = this.createElement('div', {
-      classes: ['container'],
+      classes: ['container', 'justify-content-center'],
     });
     const ul = this.createElement('ul', {
-      classes: ['navbar-nav'],
+      classes: ['nav', 'nav-pills'],
     });
     const navItems = this.links.map((link) => this.createNavigationItem(link));
 
@@ -40,12 +40,12 @@ export class HeaderView extends View {
   }
 
   private createNavigationItem(text: string) {
-    const icon = this.createIcon(
-      text.match(/garage/i) ? 'bi-airplane' : 'bi-trophy',
-    );
+    // TODO: refactor to router logic to get active page
+    const isGaragePage = text.match(/garage/i);
+    const icon = this.createIcon(isGaragePage ? 'bi-airplane' : 'bi-trophy');
     const li = this.createElement('li', { classes: ['nav-item'] });
     const a = this.createElement<HTMLLinkElement>('a', {
-      classes: ['nav-link', 'icon-link'],
+      classes: ['nav-link', 'icon-link', isGaragePage ? 'active' : 'f'],
     });
 
     a.href = '#';
