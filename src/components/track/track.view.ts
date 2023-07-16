@@ -131,6 +131,7 @@ export class TrackView extends View {
   stopAnimation() {
     const { left } = this.airplaneWrapper.getBoundingClientRect();
     this.airplaneWrapper.classList.remove('animated');
+    // TODO: fix transition reset to properly restart animation
     this.airplaneWrapper.style.transition = 'none';
     this.airplaneWrapper.style.left = `${left}px`;
   }
@@ -141,6 +142,7 @@ export class TrackView extends View {
     this.stopBtn.disabled = true;
     this.stopSpinner.classList.add('d-none');
     this.airplaneWrapper.classList.remove('animated');
+    // TODO: fix transition reset to properly restart animation
     this.airplaneWrapper.style.transition = 'none';
   }
 
