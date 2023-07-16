@@ -16,6 +16,7 @@ export class RaceController {
   view: RaceView;
   raceService: RaceService;
   paginationController: PaginationController;
+  tracks?: TrackController[];
 
   constructor(model: RaceModel, view: RaceView) {
     this.model = model;
@@ -28,10 +29,12 @@ export class RaceController {
     );
 
     this.fetchAirplanes();
+
     eventBus.subscribe(
       EventTypes.fetchAirplanes,
       this.fetchAirplanes.bind(this),
     );
+    eventBus.subscribe(EventTypes.startRace, this.startRace.bind(this));
   }
 
   async fetchAirplanes(data?: unknown) {
@@ -51,7 +54,7 @@ export class RaceController {
     );
 
     this.initPagination();
-    this.model.airplanes.map(
+    this.tracks = this.model.airplanes.map(
       (airplane) =>
         new TrackController(new TrackModel(airplane), new TrackView(airplane)),
     );
@@ -76,5 +79,25 @@ export class RaceController {
       this.model.currentPage,
     );
     this.paginationController.initView();
+  }
+
+  async startRace() {
+    if (this.tracks?.length) {
+      const tracksHandlerPromises = this.tracks.map((track) =>
+        track.startButtonClickHandler(),
+      );
+      await Promise.all(tracksHandlerPromises);
+
+      const winnerTrack = this.tracks
+        .map((track) => track.model)
+        .filter((model) => model.isFinished)
+        .map((model) => ({ time: model.time, name: model.name }))
+        .reduce((acc, curr) => (curr.time < acc.time ? curr : acc), {
+          time: Infinity,
+          name: '',
+        });
+
+      this.view.showWinner(winnerTrack.name, winnerTrack.time);
+    }
   }
 }

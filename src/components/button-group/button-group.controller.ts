@@ -18,6 +18,8 @@ export class ButtonGroupController {
     this.view.generateButtonClickListener(
       this.generateButtonClickHandler.bind(this),
     );
+
+    this.view.raceButtonClickListener(this.raceButtonClickHandler.bind(this));
   }
 
   async generateButtonClickHandler() {
@@ -28,6 +30,10 @@ export class ButtonGroupController {
 
     await Promise.all(airplanesPromises);
     eventBus.publish(EventTypes.fetchAirplanes);
+  }
+
+  raceButtonClickHandler() {
+    eventBus.publish(EventTypes.startRace);
   }
 
   generateRandomAirplane() {

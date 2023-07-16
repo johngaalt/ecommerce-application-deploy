@@ -1,10 +1,12 @@
 import { View } from 'interfaces/view';
+import { Airplane } from 'types/airplane.type';
 
 export class RaceView extends View {
   list: HTMLDivElement;
   container: HTMLDivElement;
   title: HTMLHeadingElement;
   subTitle: HTMLHeadingElement;
+  winner?: HTMLDivElement;
 
   constructor() {
     super();
@@ -47,5 +49,22 @@ export class RaceView extends View {
     this.list.innerHTML = '';
     this.title.innerHTML = '';
     this.subTitle.innerHTML = '';
+  }
+
+  showWinner(name: string, time: number) {
+    if (name) {
+      this.winner = this.createElement('div', {
+        classes: [
+          'position-fixed',
+          'alert',
+          'alert-success',
+          'start-50',
+          'top-50',
+          'translate-middle',
+        ],
+      });
+      this.winner.textContent = `The winner is ${name} with ${time}s`;
+      document.body.appendChild(this.winner);
+    }
   }
 }

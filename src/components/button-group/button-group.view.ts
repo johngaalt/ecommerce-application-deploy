@@ -42,4 +42,8 @@ export class ButtonGroupView extends View {
   generateButtonClickListener(cb: () => void) {
     this.generateBtn.addEventListener('click', () => cb());
   }
+
+  raceButtonClickListener(cb: () => void) {
+    this.raceBtn.addEventListener('click', () => cb());
+  }
 }

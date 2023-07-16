@@ -40,10 +40,12 @@ export class TrackController {
     const { velocity, distance } = await this.raceService.startAirplane(
       this.model.id,
     );
-    const time = `${(distance / velocity / 1000).toFixed(2)}s`;
+    this.model.time = parseFloat((distance / velocity / 1000).toFixed(2));
+    const timeInSeconds = `${this.model.time}s`;
     this.view.hideStartSpinner();
-    this.view.startAnimation(time);
+    this.view.startAnimation(timeInSeconds);
     const { success } = await this.raceService.driveAirplane(this.model.id);
+    this.model.isFinished = success;
     this.view.stopAnimation(success);
   }
 
