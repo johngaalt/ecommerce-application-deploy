@@ -3,19 +3,21 @@ import { Route } from 'types/route.type';
 export class Router {
   private routes: Record<string, Route>;
   private currentPath: string;
+  private container: HTMLDivElement;
 
-  constructor(routes: Record<string, Route>) {
+  constructor(container: HTMLDivElement, routes: Record<string, Route>) {
+    this.container = container;
     this.routes = routes;
     this.currentPath = '';
     window.addEventListener('popstate', this.onPopStateChange.bind(this));
   }
 
   private onPopStateChange() {
-    console.log(window.location.pathname);
     this.navigateTo(window.location.pathname, false);
   }
 
   navigateTo(path: string, addHistory = true) {
+    this.container.innerHTML = '';
     const route = this.routes[path];
 
     if (route) {

@@ -10,17 +10,19 @@ import { Router } from 'services/router.service';
 export class App extends View {
   headerController: HeaderController;
   router: Router;
+  root: HTMLDivElement;
 
   constructor() {
     super();
-    const root = this.createElement('div', {
+    const header = this.createElement('header');
+    this.root = this.createElement('div', {
       id: 'root',
-      classes: ['vh-100', 'bg-dark', 'bg-gradient'],
     });
-    document.body.appendChild(root);
+    document.body.classList.add('vh-100', 'bg-dark', 'bg-gradient');
+    document.body.append(header, this.root);
     document.body.dataset.bsTheme = 'dark';
 
-    this.router = new Router({
+    this.router = new Router(this.root, {
       '/': new GarageController(new GarageModel(), new GarageView()),
       '/winners': new GarageController(new GarageModel(), new GarageView()),
     });

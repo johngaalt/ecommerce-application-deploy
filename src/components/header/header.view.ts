@@ -12,17 +12,14 @@ export class HeaderView extends View {
 
   constructor() {
     super();
-    const header = this.createElement('header');
     const nav = this.createNavigation();
-    const parent = this.getElement('#root');
-
-    header.appendChild(nav);
+    const parent = this.getElement('header');
 
     if (parent) {
-      parent.prepend(header);
+      parent.prepend(nav);
     }
 
-    this.element = header;
+    this.element = nav;
   }
 
   createNavigation() {
