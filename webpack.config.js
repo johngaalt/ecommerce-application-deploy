@@ -60,6 +60,7 @@ const config = {
     host: 'localhost',
     hot: true,
     watchFiles: ['src/**/*.html'],
+    historyApiFallback: true,
   },
 };
 
