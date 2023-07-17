@@ -1,4 +1,6 @@
 import { Route } from 'types/route.type';
+import eventBus from './event.service';
+import { EventTypes } from 'types/event.enum';
 
 export class Router {
   private routes: Record<string, Route>;
@@ -27,6 +29,7 @@ export class Router {
 
       this.currentPath = path;
       route.init();
+      eventBus.publish(EventTypes.urlChanged, path);
     } else {
       console.error(`Path '${path}' is not registered in router`);
     }

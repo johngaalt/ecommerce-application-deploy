@@ -5,9 +5,10 @@ import { View } from 'interfaces/view';
 export class HeaderView extends View {
   element: HTMLElement | null = null;
   ul!: HTMLUListElement;
+  navItems!: HTMLLIElement[];
   links = [
-    { name: 'Garage', link: '/' },
-    { name: 'Winners', link: '/winners' },
+    { name: 'Garage', link: '/', icon: 'bi-airplane' },
+    { name: 'Winners', link: '/winners', icon: 'bi-trophy' },
   ];
 
   constructor() {
@@ -20,6 +21,21 @@ export class HeaderView extends View {
     }
 
     this.element = nav;
+    this.setActiveLink(window.location.pathname);
+  }
+
+  setActiveLink(path: string) {
+    const links = this.navItems.map((li) => li.querySelector('a'));
+
+    links?.forEach((link) => {
+      if (link) {
+        link.classList.remove('active');
+
+        if (link.getAttribute('href') === path) {
+          link.classList.add('active');
+        }
+      }
+    });
   }
 
   createNavigation() {
@@ -33,24 +49,28 @@ export class HeaderView extends View {
       classes: ['nav', 'nav-pills'],
     });
 
-    const navItems = this.links.map((link) =>
-      this.createNavigationItem(link.name, link.link),
+    this.navItems = this.links.map(({ name, link, icon }) =>
+      this.createNavigationItem(name, link, icon),
     );
 
-    this.ul.append(...navItems);
+    this.ul.append(...this.navItems);
     container.appendChild(this.ul);
     nav.appendChild(container);
 
     return nav;
   }
 
-  private createNavigationItem(text: string, link: string) {
-    // TODO: refactor to router logic to get active page
-    const isGaragePage = text.match(/garage/i);
-    const icon = this.createIcon(isGaragePage ? 'bi-airplane' : 'bi-trophy');
-    const li = this.createElement('li', { classes: ['nav-item'] });
+  private createNavigationItem(
+    text: string,
+    link: string,
+    iconStr: string,
+  ): HTMLLIElement {
+    const icon = this.createIcon(iconStr);
+    const li = this.createElement<HTMLLIElement>('li', {
+      classes: ['nav-item'],
+    });
     const a = this.createElement<HTMLLinkElement>('a', {
-      classes: ['nav-link', 'icon-link', isGaragePage ? 'active' : 'f'],
+      classes: ['nav-link', 'icon-link'],
     });
 
     a.href = link;

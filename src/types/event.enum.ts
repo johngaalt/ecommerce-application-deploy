@@ -4,4 +4,5 @@ export enum EventTypes {
   removeAirplane = 'removeAirplane',
   startRace = 'startRace',
   resetRace = 'resetRace',
+  urlChanged = 'urlChanged',
 }

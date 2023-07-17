@@ -18,7 +18,7 @@ export class App extends View {
     this.root = this.createElement('div', {
       id: 'root',
     });
-    document.body.classList.add('vh-100', 'bg-dark', 'bg-gradient');
+    document.body.classList.add('min-vh-100', 'bg-dark', 'bg-gradient');
     document.body.append(header, this.root);
     document.body.dataset.bsTheme = 'dark';
 
