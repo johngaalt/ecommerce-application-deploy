@@ -11,14 +11,12 @@ import { View } from 'interfaces/view';
 
 export class GarageView extends View {
   CONTROL_ID = 'control';
-  carCreateController: InputGroupController;
-  carUpdateController: InputGroupController;
-  buttonGroupController: ButtonGroupController;
-  raceController: RaceController;
+  carCreateController!: InputGroupController;
+  carUpdateController!: InputGroupController;
+  buttonGroupController!: ButtonGroupController;
+  raceController!: RaceController;
 
-  constructor() {
-    super();
-
+  init() {
     const main = this.createElement('main', {
       id: 'garage',
       classes: ['container'],

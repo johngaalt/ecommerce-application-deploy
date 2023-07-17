@@ -1,9 +1,14 @@
+import { DOMGuards } from 'utils/guards';
 import './header.scss';
 import { View } from 'interfaces/view';
 
 export class HeaderView extends View {
   element: HTMLElement | null = null;
-  links = ['Garage', 'Winners'];
+  ul!: HTMLUListElement;
+  links = [
+    { name: 'Garage', link: '/' },
+    { name: 'Winners', link: '/winners' },
+  ];
 
   constructor() {
     super();
@@ -14,7 +19,7 @@ export class HeaderView extends View {
     header.appendChild(nav);
 
     if (parent) {
-      parent.appendChild(header);
+      parent.prepend(header);
     }
 
     this.element = header;
@@ -27,19 +32,22 @@ export class HeaderView extends View {
     const container = this.createElement('div', {
       classes: ['container', 'justify-content-center'],
     });
-    const ul = this.createElement('ul', {
+    this.ul = this.createElement('ul', {
       classes: ['nav', 'nav-pills'],
     });
-    const navItems = this.links.map((link) => this.createNavigationItem(link));
 
-    ul.append(...navItems);
-    container.appendChild(ul);
+    const navItems = this.links.map((link) =>
+      this.createNavigationItem(link.name, link.link),
+    );
+
+    this.ul.append(...navItems);
+    container.appendChild(this.ul);
     nav.appendChild(container);
 
     return nav;
   }
 
-  private createNavigationItem(text: string) {
+  private createNavigationItem(text: string, link: string) {
     // TODO: refactor to router logic to get active page
     const isGaragePage = text.match(/garage/i);
     const icon = this.createIcon(isGaragePage ? 'bi-airplane' : 'bi-trophy');
@@ -48,11 +56,24 @@ export class HeaderView extends View {
       classes: ['nav-link', 'icon-link', isGaragePage ? 'active' : 'f'],
     });
 
-    a.href = '#';
+    a.href = link;
     a.textContent = text;
     a.prepend(icon);
 
     li.appendChild(a);
     return li;
+  }
+
+  ulClickListener(cb: (path: string) => void) {
+    this.ul.addEventListener('click', (event) => {
+      if (DOMGuards.isHTMLElement(event.target)) {
+        const link = event.target.closest<HTMLLinkElement>('.nav-link');
+        if (link) {
+          event.preventDefault();
+          const path = link.href.split('/').at(-1) || '';
+          cb(`/${path}`);
+        }
+      }
+    });
   }
 }

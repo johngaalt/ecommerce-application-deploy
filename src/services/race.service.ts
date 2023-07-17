@@ -1,5 +1,5 @@
 import { Airplane, AirplaneResponse } from 'types/airplane.type';
-import { DriveAirplaneResponse, StartAirplaneResponse } from 'types/race.types';
+import { DriveAirplaneResponse, StartAirplaneResponse } from 'types/race.type';
 
 export class RaceService {
   async getAirplanes(page = 1, limits = 7): Promise<AirplaneResponse> {

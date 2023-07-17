@@ -5,10 +5,11 @@ import { HeaderView } from './header/header.view';
 import { GarageController } from './garage/garage.controller';
 import { GarageView } from './garage/garage.view';
 import { GarageModel } from './garage/garage.model';
+import { Router } from 'services/router.service';
 
 export class App extends View {
   headerController: HeaderController;
-  garageController: GarageController;
+  router: Router;
 
   constructor() {
     super();
@@ -19,16 +20,17 @@ export class App extends View {
     document.body.appendChild(root);
     document.body.dataset.bsTheme = 'dark';
 
+    this.router = new Router({
+      '/': new GarageController(new GarageModel(), new GarageView()),
+      '/winners': new GarageController(new GarageModel(), new GarageView()),
+    });
+
+    this.router.navigateTo('/');
+
     this.headerController = new HeaderController(
       new HeaderModel(),
       new HeaderView(),
+      this.router,
     );
-
-    this.garageController = new GarageController(
-      new GarageModel(),
-      new GarageView(),
-    );
-
-    // Create GarageView, GarageModel, GarageController in components/garage/*.view,*.model,*.controller.ts
   }
 }
