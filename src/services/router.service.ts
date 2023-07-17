@@ -31,7 +31,7 @@ export class Router {
       route.init();
       eventBus.publish(EventTypes.urlChanged, path);
     } else {
-      console.error(`Path '${path}' is not registered in router`);
+      global.console.error(`Path '${path}' is not registered in router`);
     }
   }
 }
