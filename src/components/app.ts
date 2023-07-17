@@ -6,6 +6,9 @@ import { GarageController } from './garage/garage.controller';
 import { GarageView } from './garage/garage.view';
 import { GarageModel } from './garage/garage.model';
 import { Router } from 'services/router.service';
+import { WinnersController } from './winners/winners.controller';
+import { WinnersModel } from './winners/winners.model';
+import { WinnersView } from './winners/winners.view';
 
 export class App extends View {
   headerController: HeaderController;
@@ -24,7 +27,7 @@ export class App extends View {
 
     this.router = new Router(this.root, {
       '/': new GarageController(new GarageModel(), new GarageView()),
-      '/winners': new GarageController(new GarageModel(), new GarageView()),
+      '/winners': new WinnersController(new WinnersModel(), new WinnersView()),
     });
 
     this.router.navigateTo('/');
