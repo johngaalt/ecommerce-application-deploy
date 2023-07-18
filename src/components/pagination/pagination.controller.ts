@@ -1,4 +1,3 @@
-import { Pagination } from 'types/pagination.enum';
 import { PaginationModel } from './pagination.model';
 import { PaginationView } from './pagination.view';
 import eventBus from 'services/event.service';

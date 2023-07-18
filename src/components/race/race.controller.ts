@@ -27,13 +27,13 @@ export class RaceController {
     this.view = view;
 
     this.raceService = new RaceService();
-    this.paginationController = new PaginationController(
-      new PaginationModel(),
-      new PaginationView(),
-    );
     this.headingsController = new HeadingsController(
       new HeadingsModel(),
       new HeadingsView(),
+    );
+    this.paginationController = new PaginationController(
+      new PaginationModel(),
+      new PaginationView(),
     );
 
     this.fetchAirplanes();
@@ -56,7 +56,8 @@ export class RaceController {
     this.model.count = response.count;
 
     this.view.clear();
-    this.headingsController.render(
+    this.headingsController.view.clear();
+    this.headingsController.view.renderHeadings(
       this.model.title,
       this.model.count,
       this.model.currentPage,

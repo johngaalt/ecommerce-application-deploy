@@ -2,7 +2,7 @@ import { View } from 'interfaces/view';
 
 export class HeadingsView extends View {
   title: HTMLHeadingElement;
-  subTitle: HTMLHeadingElement;
+  subtitle: HTMLHeadingElement;
   container: HTMLDivElement;
 
   constructor() {
@@ -12,7 +12,7 @@ export class HeadingsView extends View {
     this.title = this.createElement<HTMLHeadingElement>('h1', {
       classes: ['h1'],
     });
-    this.subTitle = this.createElement<HTMLHeadingElement>('h3', {
+    this.subtitle = this.createElement<HTMLHeadingElement>('h3', {
       id: 'subtitle',
       classes: ['h3', 'd-flex', 'justify-content-between'],
     });
@@ -25,16 +25,15 @@ export class HeadingsView extends View {
     limit: number,
   ) {
     this.title.textContent = `${title} (${count})`;
-    this.subTitle.textContent = `Page #${pageNumber} from ${Math.ceil(
+    this.subtitle.textContent = `Page #${pageNumber} from ${Math.ceil(
       count / limit,
     )}`;
-    this.container.prepend(this.title, this.subTitle);
+    this.container.prepend(this.title, this.subtitle);
     const parent = this.getElement('#race');
     parent?.prepend(this.container);
   }
 
   clear() {
-    this.title.innerHTML = '';
-    this.subTitle.innerHTML = '';
+    this.container.innerHTML = '';
   }
 }
