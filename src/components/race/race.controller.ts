@@ -10,12 +10,16 @@ import { PaginationController } from 'components/pagination/pagination.controlle
 import { PaginationModel } from 'components/pagination/pagination.model';
 import { PaginationView } from 'components/pagination/pagination.view';
 import { Pagination } from 'types/pagination.enum';
+import { HeadingsController } from 'components/headings/headings.controller';
+import { HeadingsModel } from 'components/headings/headings.model';
+import { HeadingsView } from 'components/headings/headings.view';
 
 export class RaceController {
   model: RaceModel;
   view: RaceView;
   raceService: RaceService;
   paginationController: PaginationController;
+  headingsController: HeadingsController;
   tracks?: TrackController[];
 
   constructor(model: RaceModel, view: RaceView) {
@@ -26,6 +30,10 @@ export class RaceController {
     this.paginationController = new PaginationController(
       new PaginationModel(),
       new PaginationView(),
+    );
+    this.headingsController = new HeadingsController(
+      new HeadingsModel(),
+      new HeadingsView(),
     );
 
     this.fetchAirplanes();
@@ -48,7 +56,8 @@ export class RaceController {
     this.model.count = response.count;
 
     this.view.clear();
-    this.view.renderHeadings(
+    this.headingsController.render(
+      this.model.title,
       this.model.count,
       this.model.currentPage,
       this.model.limit,

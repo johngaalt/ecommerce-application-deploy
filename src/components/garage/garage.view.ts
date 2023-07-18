@@ -29,6 +29,7 @@ export class GarageView extends View {
       parent.appendChild(main);
     }
 
+    // TODO refactor move to controller
     this.carCreateController = new InputGroupController(
       new InputGroupModel('create'),
       new InputGroupView('create'),
