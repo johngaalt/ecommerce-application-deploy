@@ -57,7 +57,7 @@ export class RaceController {
 
     this.view.clear();
     this.headingsController.view.clear();
-    this.headingsController.view.renderHeadings(
+    this.headingsController.view.render(
       this.model.title,
       this.model.count,
       this.model.currentPage,
