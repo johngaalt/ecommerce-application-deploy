@@ -7,7 +7,9 @@ export class HeadingsView extends View {
 
   constructor() {
     super();
-    this.container = this.createElement('div', {});
+    this.container = this.createElement('div', {
+      classes: ['container', 'mt-4'],
+    });
 
     this.title = this.createElement<HTMLHeadingElement>('h1', {
       classes: ['h1'],
@@ -23,13 +25,14 @@ export class HeadingsView extends View {
     count: number,
     pageNumber: number,
     limit: number,
+    parentId: string,
   ) {
     this.title.textContent = `${title} (${count})`;
     this.subtitle.textContent = `Page #${pageNumber} from ${Math.ceil(
       count / limit,
     )}`;
     this.container.prepend(this.title, this.subtitle);
-    const parent = this.getElement('#race');
+    const parent = this.getElement(parentId);
     parent?.prepend(this.container);
   }
 

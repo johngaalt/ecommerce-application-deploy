@@ -62,6 +62,7 @@ export class RaceController {
       this.model.count,
       this.model.currentPage,
       this.model.limit,
+      '#race',
     );
 
     this.initPagination();

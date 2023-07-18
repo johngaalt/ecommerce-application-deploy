@@ -30,7 +30,7 @@ export class App extends View {
       '/winners': new WinnersController(new WinnersModel(), new WinnersView()),
     });
 
-    this.router.navigateTo('/');
+    this.router.navigateTo('/winners');
 
     this.headerController = new HeaderController(
       new HeaderModel(),
