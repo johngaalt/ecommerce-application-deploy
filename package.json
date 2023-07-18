@@ -7,7 +7,7 @@
     "build": "webpack --mode=production",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint . --ext .ts",
-    "fix": "eslint --fix",
+    "fix": "eslint --fix . --ext .ts",
     "watch": "webpack --watch",
     "serve": "webpack serve",
     "deploy": "gh-pages -d dist -e rs-css",
