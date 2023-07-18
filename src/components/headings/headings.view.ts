@@ -8,6 +8,7 @@ export class HeadingsView extends View {
   constructor() {
     super();
     this.container = this.createElement('div', {
+      id: 'headings',
       classes: ['container', 'mt-4'],
     });
 
@@ -20,7 +21,7 @@ export class HeadingsView extends View {
     });
   }
 
-  renderHeadings(
+  render(
     title: string,
     count: number,
     pageNumber: number,
@@ -37,6 +38,9 @@ export class HeadingsView extends View {
   }
 
   clear() {
-    this.container.innerHTML = '';
+    const container = this.getElement('#headings');
+    if (container) {
+      container.innerHTML = '';
+    }
   }
 }
