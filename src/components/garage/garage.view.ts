@@ -3,29 +3,29 @@ import { View } from 'interfaces/view';
 
 export class GarageView extends ElementBuilder implements View {
   CONTROL_ID = 'control';
+  main: HTMLElement;
+  controlContainer: HTMLDivElement;
 
   constructor() {
     super();
 
-    const main = this.createElement('main', {
+    this.main = this.createElement('main', {
       id: 'garage',
       classes: ['container'],
     });
-    const parent = this.getElement('#root');
-    const controlContainer = this.controlMenu();
-    main.appendChild(controlContainer);
 
-    if (parent) {
-      parent.appendChild(main);
-    }
-  }
-
-  private controlMenu() {
-    const controlContainer = this.createElement('div', {
+    this.controlContainer = this.createElement('div', {
       id: this.CONTROL_ID,
       classes: ['w-50', 'mt-3'],
     });
+  }
 
-    return controlContainer;
+  render() {
+    const parent = this.getElement('#root');
+    this.main.appendChild(this.controlContainer);
+
+    if (parent) {
+      parent.appendChild(this.main);
+    }
   }
 }

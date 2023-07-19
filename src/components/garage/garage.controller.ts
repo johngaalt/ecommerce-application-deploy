@@ -9,10 +9,9 @@ import { RaceModel } from 'components/race/race.model';
 import { RaceView } from 'components/race/race.view';
 import { GarageModel } from './garage.model';
 import { GarageView } from './garage.view';
-import { Route } from 'types/route.type';
 import { Controller } from 'interfaces/controller';
 
-export class GarageController implements Route, Controller {
+export class GarageController implements Controller {
   model: GarageModel;
   view: GarageView;
   airplaneCreateController!: InputGroupController;
@@ -47,6 +46,6 @@ export class GarageController implements Route, Controller {
 
   init() {
     this.view.render();
-    this.airplaneCreateController.view.render();
+    this.airplaneCreateController.init();
   }
 }
