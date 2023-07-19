@@ -5,11 +5,12 @@ export class ButtonGroupView extends ElementBuilder implements View {
   raceBtn: HTMLButtonElement;
   resetBtn: HTMLButtonElement;
   generateBtn: HTMLButtonElement;
+  buttonGroup: HTMLDivElement;
 
   constructor() {
     super();
 
-    const buttonGroup = this.createElement('div', {
+    this.buttonGroup = this.createElement('div', {
       classes: ['mt-1'],
     });
 
@@ -18,7 +19,6 @@ export class ButtonGroupView extends ElementBuilder implements View {
     });
     this.raceBtn.textContent = 'Race';
     this.raceBtn.type = 'button';
-    buttonGroup.appendChild(this.raceBtn);
 
     this.resetBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-secondary', 'me-2'],
@@ -26,18 +26,11 @@ export class ButtonGroupView extends ElementBuilder implements View {
     this.resetBtn.textContent = 'Reset';
     this.resetBtn.type = 'button';
 
-    buttonGroup.appendChild(this.resetBtn);
-
     this.generateBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-secondary'],
     });
     this.generateBtn.textContent = 'Generate airplanes';
     this.generateBtn.type = 'button';
-
-    buttonGroup.appendChild(this.generateBtn);
-
-    const parent = this.getElement('#control');
-    parent?.appendChild(buttonGroup);
   }
 
   generateButtonClickListener(cb: () => void) {
@@ -50,5 +43,14 @@ export class ButtonGroupView extends ElementBuilder implements View {
 
   resetButtonClickListener(cb: () => void) {
     this.resetBtn.addEventListener('click', () => cb());
+  }
+
+  render() {
+    this.buttonGroup.appendChild(this.raceBtn);
+    this.buttonGroup.appendChild(this.resetBtn);
+    this.buttonGroup.appendChild(this.generateBtn);
+
+    const parent = this.getElement('#control');
+    parent?.appendChild(this.buttonGroup);
   }
 }

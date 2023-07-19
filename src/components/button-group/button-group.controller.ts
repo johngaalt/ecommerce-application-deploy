@@ -57,4 +57,8 @@ export class ButtonGroupController implements Controller {
     }
     return color;
   }
+
+  init() {
+    this.view.render();
+  }
 }

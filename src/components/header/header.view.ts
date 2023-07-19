@@ -4,25 +4,17 @@ import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 
 export class HeaderView extends ElementBuilder implements View {
-  element: HTMLElement | null = null;
   ul!: HTMLUListElement;
   navItems!: HTMLLIElement[];
   links = [
     { name: 'Garage', link: '/', icon: 'bi-airplane' },
     { name: 'Winners', link: '/winners', icon: 'bi-trophy' },
   ];
+  nav: HTMLElement;
 
   constructor() {
     super();
-    const nav = this.createNavigation();
-    const parent = this.getElement('header');
-
-    if (parent) {
-      parent.prepend(nav);
-    }
-
-    this.element = nav;
-    this.setActiveLink(window.location.pathname);
+    this.nav = this.createNavigation();
   }
 
   setActiveLink(path: string) {
@@ -93,5 +85,15 @@ export class HeaderView extends ElementBuilder implements View {
         }
       }
     });
+  }
+
+  render() {
+    const parent = this.getElement('header');
+
+    if (parent) {
+      parent.prepend(this.nav);
+    }
+
+    this.setActiveLink(window.location.pathname);
   }
 }

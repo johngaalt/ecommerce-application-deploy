@@ -28,4 +28,8 @@ export class HeaderController implements Controller {
       this.view.setActiveLink(data);
     }
   }
+
+  init() {
+    this.view.render();
+  }
 }
