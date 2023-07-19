@@ -33,5 +33,6 @@ export class AppController {
       new HeaderView(),
       this.router,
     );
+    this.headerController.init();
   }
 }

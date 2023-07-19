@@ -49,5 +49,6 @@ export class GarageController implements Controller {
     this.airplaneCreateController.init();
     this.airplaneUpdateController.init();
     this.buttonGroupController.init();
+    this.raceController.init();
   }
 }

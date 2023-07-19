@@ -28,6 +28,9 @@ export class RaceController implements Controller {
     this.view = view;
 
     this.raceService = new RaceService();
+
+    this.fetchAirplanes();
+
     this.headingsController = new HeadingsController(
       new HeadingsModel(),
       new HeadingsView(),
@@ -36,8 +39,6 @@ export class RaceController implements Controller {
       new PaginationModel(),
       new PaginationView(),
     );
-
-    this.fetchAirplanes();
 
     eventBus.subscribe(
       EventTypes.fetchAirplanes,
@@ -57,8 +58,7 @@ export class RaceController implements Controller {
     this.model.count = response.count;
 
     this.view.clear();
-    this.headingsController.view.clear();
-    this.headingsController.view.render(
+    this.headingsController.init(
       this.model.title,
       this.model.count,
       this.model.currentPage,
@@ -71,6 +71,7 @@ export class RaceController implements Controller {
       (airplane) =>
         new TrackController(new TrackModel(airplane), new TrackView(airplane)),
     );
+    this.tracks.forEach((track) => track.init());
   }
 
   rewritePage(data: unknown) {
@@ -91,7 +92,7 @@ export class RaceController implements Controller {
       this.model.limit,
       this.model.currentPage,
     );
-    this.paginationController.initView();
+    this.paginationController.init();
   }
 
   async startRace() {

@@ -17,7 +17,7 @@ export class PaginationController implements Controller {
     eventBus.publish(EventTypes.fetchAirplanes, text);
   }
 
-  initView() {
+  init() {
     this.view.render(this.model.pageCount, this.model.currentPage);
     this.view.paginationPageClickListener(
       this.paginationPageClickHandler.bind(this),

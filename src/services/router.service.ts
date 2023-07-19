@@ -19,7 +19,7 @@ export class Router {
   }
 
   navigateTo(path: string, addHistory = true) {
-    // this.container.innerHTML = '';
+    this.container.innerHTML = '';
     const route = this.routes[path];
 
     if (route) {
