@@ -1,7 +1,8 @@
+import { Controller } from 'interfaces/controller';
 import { WinnersTableModel } from './winners-table.model';
 import { WinnersTableView } from './winners-table.view';
 
-export class WinnersTableController {
+export class WinnersTableController implements Controller {
   model: WinnersTableModel;
   view: WinnersTableView;
 

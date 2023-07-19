@@ -1,8 +1,9 @@
+import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 import { Pagination } from 'types/pagination.enum';
 import { DOMGuards } from 'utils/guards';
 
-export class PaginationView extends View {
+export class PaginationView extends ElementBuilder implements View {
   nav?: HTMLElement;
   ul?: HTMLElement;
 

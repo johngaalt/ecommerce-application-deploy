@@ -1,6 +1,7 @@
+import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 
-export class WinnersView extends View {
+export class WinnersView extends ElementBuilder implements View {
   WINNERS_ID = 'winners';
 
   init() {

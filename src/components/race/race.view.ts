@@ -1,6 +1,7 @@
+import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 
-export class RaceView extends View {
+export class RaceView extends ElementBuilder implements View {
   list: HTMLDivElement;
   container: HTMLDivElement;
   winner?: HTMLDivElement;

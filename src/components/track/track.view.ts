@@ -1,8 +1,9 @@
-import { View } from 'interfaces/view';
+import { ElementBuilder } from 'interfaces/element-builder';
 import './track.scss';
 import { Airplane } from 'types/airplane.type';
+import { View } from 'interfaces/view';
 
-export class TrackView extends View {
+export class TrackView extends ElementBuilder implements View {
   selectBtn: HTMLButtonElement;
   removeBtn: HTMLButtonElement;
   startBtn: HTMLButtonElement;

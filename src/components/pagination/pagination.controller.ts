@@ -1,9 +1,10 @@
+import { Controller } from 'interfaces/controller';
 import { PaginationModel } from './pagination.model';
 import { PaginationView } from './pagination.view';
 import eventBus from 'services/event.service';
 import { EventTypes } from 'types/event.enum';
 
-export class PaginationController {
+export class PaginationController implements Controller {
   model: PaginationModel;
   view: PaginationView;
 

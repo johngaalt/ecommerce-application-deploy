@@ -1,6 +1,7 @@
+import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 
-export class ButtonGroupView extends View {
+export class ButtonGroupView extends ElementBuilder implements View {
   raceBtn: HTMLButtonElement;
   resetBtn: HTMLButtonElement;
   generateBtn: HTMLButtonElement;

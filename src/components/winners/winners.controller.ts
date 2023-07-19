@@ -7,8 +7,9 @@ import { HeadingsView } from 'components/headings/headings.view';
 import { WinnersTableController } from 'components/winners-table/winners-table.controller';
 import { WinnersTableModel } from 'components/winners-table/winners-table.model';
 import { WinnersTableView } from 'components/winners-table/winners-table.view';
+import { Controller } from 'interfaces/controller';
 
-export class WinnersController implements Route {
+export class WinnersController implements Route, Controller {
   model: WinnersModel;
   view: WinnersView;
   name = 'Winners';

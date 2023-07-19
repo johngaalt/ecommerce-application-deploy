@@ -3,8 +3,9 @@ import { TrackModel } from './track.model';
 import { TrackView } from './track.view';
 import { EventTypes } from 'types/event.enum';
 import { RaceService } from 'services/race.service';
+import { Controller } from 'interfaces/controller';
 
-export class TrackController {
+export class TrackController implements Controller {
   model: TrackModel;
   view: TrackView;
   raceService: RaceService;

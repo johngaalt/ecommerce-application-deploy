@@ -13,8 +13,9 @@ import { Pagination } from 'types/pagination.enum';
 import { HeadingsController } from 'components/headings/headings.controller';
 import { HeadingsModel } from 'components/headings/headings.model';
 import { HeadingsView } from 'components/headings/headings.view';
+import { Controller } from 'interfaces/controller';
 
-export class RaceController {
+export class RaceController implements Controller {
   model: RaceModel;
   view: RaceView;
   raceService: RaceService;

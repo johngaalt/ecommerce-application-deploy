@@ -1,6 +1,7 @@
+import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 
-export class WinnersTableView extends View {
+export class WinnersTableView extends ElementBuilder implements View {
   table: HTMLTableElement;
 
   constructor() {

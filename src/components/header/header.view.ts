@@ -1,8 +1,9 @@
 import { DOMGuards } from 'utils/guards';
 import './header.scss';
+import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 
-export class HeaderView extends View {
+export class HeaderView extends ElementBuilder implements View {
   element: HTMLElement | null = null;
   ul!: HTMLUListElement;
   navItems!: HTMLLIElement[];

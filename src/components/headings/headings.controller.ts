@@ -1,7 +1,8 @@
+import { Controller } from 'interfaces/controller';
 import { HeadingsModel } from './headings.model';
 import { HeadingsView } from './headings.view';
 
-export class HeadingsController {
+export class HeadingsController implements Controller {
   model: HeadingsModel;
   view: HeadingsView;
 

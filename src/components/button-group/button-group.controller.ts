@@ -4,8 +4,9 @@ import { ButtonGroupView } from './button-group.view';
 import { MODELS, SERIES } from 'constants/models';
 import eventBus from 'services/event.service';
 import { EventTypes } from 'types/event.enum';
+import { Controller } from 'interfaces/controller';
 
-export class ButtonGroupController {
+export class ButtonGroupController implements Controller {
   model: ButtonGroupModel;
   view: ButtonGroupView;
   raceService: RaceService;

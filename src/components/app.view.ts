@@ -1,4 +1,4 @@
-import { View } from 'interfaces/view';
+import { ElementBuilder } from 'interfaces/element-builder';
 import { HeaderController } from './header/header.controller';
 import { HeaderModel } from './header/header.model';
 import { HeaderView } from './header/header.view';
@@ -10,7 +10,7 @@ import { WinnersController } from './winners/winners.controller';
 import { WinnersModel } from './winners/winners.model';
 import { WinnersView } from './winners/winners.view';
 
-export class App extends View {
+export class App extends ElementBuilder {
   headerController: HeaderController;
   router: Router;
   root: HTMLDivElement;
@@ -30,7 +30,7 @@ export class App extends View {
       '/winners': new WinnersController(new WinnersModel(), new WinnersView()),
     });
 
-    this.router.navigateTo('/winners');
+    this.router.navigateTo('/');
 
     this.headerController = new HeaderController(
       new HeaderModel(),

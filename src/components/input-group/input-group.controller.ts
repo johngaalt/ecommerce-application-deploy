@@ -4,8 +4,9 @@ import { InputGroupView } from './input-group.view';
 import eventBus from 'services/event.service';
 import { EventTypes } from 'types/event.enum';
 import { Airplane } from 'types/airplane.type';
+import { Controller } from 'interfaces/controller';
 
-export class InputGroupController {
+export class InputGroupController implements Controller {
   model: InputGroupModel;
   view: InputGroupView;
   raceService: RaceService;

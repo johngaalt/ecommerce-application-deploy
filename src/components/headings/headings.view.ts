@@ -1,6 +1,7 @@
+import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 
-export class HeadingsView extends View {
+export class HeadingsView extends ElementBuilder implements View {
   title: HTMLHeadingElement;
   subtitle: HTMLHeadingElement;
   container: HTMLDivElement;

@@ -19,7 +19,7 @@ export class Router {
   }
 
   navigateTo(path: string, addHistory = true) {
-    this.container.innerHTML = '';
+    // this.container.innerHTML = '';
     const route = this.routes[path];
 
     if (route) {
@@ -28,7 +28,7 @@ export class Router {
       }
 
       this.currentPath = path;
-      route.init();
+      // route.init();
       eventBus.publish(EventTypes.urlChanged, path);
     } else {
       global.console.error(`Path '${path}' is not registered in router`);
