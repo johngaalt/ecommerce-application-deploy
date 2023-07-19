@@ -48,4 +48,8 @@ export class InputGroupController implements Controller {
   displaySelectedAirplane(data: unknown) {
     this.view.setData(data as Airplane);
   }
+
+  init() {
+    this.view.render();
+  }
 }

@@ -47,5 +47,6 @@ export class GarageController implements Controller {
   init() {
     this.view.render();
     this.airplaneCreateController.init();
+    this.airplaneUpdateController.init();
   }
 }

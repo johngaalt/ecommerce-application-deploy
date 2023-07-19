@@ -8,46 +8,41 @@ export class InputGroupView extends ElementBuilder implements View {
   inputColor: HTMLInputElement;
   inputId: HTMLInputElement;
   isCreateMode: boolean;
+  inputGroup: HTMLDivElement;
+  input: HTMLInputElement;
+  colorPicker: HTMLInputElement;
 
   constructor(type: 'create' | 'update') {
     super();
 
     this.isCreateMode = type === 'create';
-    const inputGroup = this.createElement('div', {
+    this.inputGroup = this.createElement('div', {
       classes: ['input-group', 'mt-1'],
     });
 
-    const input = this.createElement<HTMLInputElement>('input', {
+    this.input = this.createElement<HTMLInputElement>('input', {
       classes: ['form-control', 'form-control-sm'],
     });
-    input.placeholder = this.isCreateMode
+    this.input.placeholder = this.isCreateMode
       ? 'Type airplane name'
       : 'Select an airplane';
-    input.type = 'text';
-    this.inputName = input;
-    inputGroup.appendChild(input);
+    this.input.type = 'text';
+    this.inputName = this.input;
 
-    const colorPicker = this.createElement<HTMLInputElement>('input', {
+    this.colorPicker = this.createElement<HTMLInputElement>('input', {
       classes: ['form-control', 'form-control-color'],
     });
-    colorPicker.type = 'color';
-    this.inputColor = colorPicker;
-    inputGroup.appendChild(colorPicker);
+    this.colorPicker.type = 'color';
+    this.inputColor = this.colorPicker;
 
     this.inputId = this.createElement<HTMLInputElement>('input');
     this.inputId.type = 'hidden';
-    inputGroup.appendChild(this.inputId);
 
-    const button = this.createElement<HTMLButtonElement>('button', {
+    this.button = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-secondary'],
     });
-    button.type = 'button';
-    button.textContent = this.isCreateMode ? 'Create' : 'Update';
-    this.button = button;
-    inputGroup.appendChild(button);
-
-    const parent = this.getElement('#control');
-    parent?.appendChild(inputGroup);
+    this.button.type = 'button';
+    this.button.textContent = this.isCreateMode ? 'Create' : 'Update';
   }
 
   buttonClickListener(cb: (name: string, color: string, id?: number) => void) {
@@ -67,5 +62,15 @@ export class InputGroupView extends ElementBuilder implements View {
       this.inputColor.value = airplane.color;
       this.inputId.value = String(airplane.id);
     }
+  }
+
+  render() {
+    this.inputGroup.appendChild(this.input);
+    this.inputGroup.appendChild(this.colorPicker);
+    this.inputGroup.appendChild(this.inputId);
+    this.inputGroup.appendChild(this.button);
+
+    const parent = this.getElement('#control');
+    parent?.appendChild(this.inputGroup);
   }
 }
