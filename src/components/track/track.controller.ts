@@ -61,4 +61,8 @@ export class TrackController implements Controller {
     await this.raceService.stopAirplane(this.model.id);
     this.view.stopAirplane();
   }
+
+  init() {
+    this.view.render();
+  }
 }

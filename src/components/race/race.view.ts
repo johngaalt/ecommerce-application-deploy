@@ -5,6 +5,7 @@ export class RaceView extends ElementBuilder implements View {
   list: HTMLDivElement;
   container: HTMLDivElement;
   winner?: HTMLDivElement;
+  airplanesList: HTMLDivElement;
 
   constructor() {
     super();
@@ -13,18 +14,11 @@ export class RaceView extends ElementBuilder implements View {
       id: 'race',
       classes: ['mt-5'],
     });
-    const parent = this.getElement('#garage');
 
-    const airplanesList = this.createElement<HTMLDivElement>('div', {
+    this.airplanesList = this.createElement<HTMLDivElement>('div', {
       id: 'list',
     });
-    this.list = airplanesList;
-
-    this.container.append(airplanesList);
-
-    if (parent) {
-      parent.appendChild(this.container);
-    }
+    this.list = this.airplanesList;
   }
 
   clear() {
@@ -51,6 +45,15 @@ export class RaceView extends ElementBuilder implements View {
   hideWinner() {
     if (this.winner) {
       document.body.removeChild(this.winner);
+    }
+  }
+
+  render() {
+    const parent = this.getElement('#garage');
+    this.container.append(this.airplanesList);
+
+    if (parent) {
+      parent.appendChild(this.container);
     }
   }
 }

@@ -1,4 +1,3 @@
-import { Route } from 'types/route.type';
 import { WinnersModel } from './winners.model';
 import { WinnersView } from './winners.view';
 import { HeadingsController } from 'components/headings/headings.controller';
@@ -9,7 +8,7 @@ import { WinnersTableModel } from 'components/winners-table/winners-table.model'
 import { WinnersTableView } from 'components/winners-table/winners-table.view';
 import { Controller } from 'interfaces/controller';
 
-export class WinnersController implements Route, Controller {
+export class WinnersController implements Controller {
   model: WinnersModel;
   view: WinnersView;
   name = 'Winners';
@@ -33,7 +32,7 @@ export class WinnersController implements Route, Controller {
   }
 
   init() {
-    this.view.init();
-    this.headingsController.view.render('Winners', 10, 1, 7, '#winners');
+    this.view.render();
+    this.headingsController.init('Winners', 10, 1, 7, '#winners');
   }
 }

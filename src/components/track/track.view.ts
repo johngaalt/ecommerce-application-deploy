@@ -11,13 +11,21 @@ export class TrackView extends ElementBuilder implements View {
   airplaneWrapper: HTMLDivElement;
   startSpinner: HTMLSpanElement;
   stopSpinner: HTMLSpanElement;
+  editContainer: HTMLDivElement;
+  buttonWrapper2: HTMLDivElement;
+  model: HTMLSpanElement;
+  buttonWrapper1: HTMLDivElement;
+  wrapper: HTMLDivElement;
+  airplane: HTMLElement;
+  flag: HTMLElement;
+  trackContainer: HTMLDivElement;
 
   constructor(item: Airplane) {
     super();
-    const editContainer = this.createElement('div', {
+    this.editContainer = this.createElement('div', {
       classes: ['mt-3', 'd-flex', 'justify-content-between'],
     });
-    const buttonWrapper2 = this.createElement('div');
+    this.buttonWrapper2 = this.createElement<HTMLDivElement>('div');
 
     this.selectBtn = this.createElement<HTMLButtonElement>('button', {
       classes: ['btn', 'btn-secondary', 'me-2', 'btn-sm'],
@@ -31,17 +39,17 @@ export class TrackView extends ElementBuilder implements View {
     this.removeBtn.textContent = 'Remove';
     this.removeBtn.type = 'button';
 
-    const model = this.createElement('span', {
+    this.model = this.createElement('span', {
       id: String(item.id),
       classes: ['fw-bold', 'text-light'],
     });
-    model.textContent = item.name;
+    this.model.textContent = item.name;
 
-    const trackContainer = this.createElement<HTMLElement>('div', {
+    this.trackContainer = this.createElement<HTMLDivElement>('div', {
       classes: ['d-flex', 'mt-3', 'flex-column'],
     });
 
-    const buttonWrapper1 = this.createElement('div');
+    this.buttonWrapper1 = this.createElement('div');
 
     this.startSpinner = this.createElement('span', {
       classes: ['d-none', 'spinner-border', 'spinner-border-sm', 'me-1'],
@@ -52,7 +60,6 @@ export class TrackView extends ElementBuilder implements View {
     });
     this.startBtn.textContent = 'Start';
     this.startBtn.type = 'button';
-    this.startBtn.prepend(this.startSpinner);
 
     this.stopSpinner = this.createElement('span', {
       classes: ['d-none', 'spinner-border', 'spinner-border-sm', 'me-1'],
@@ -64,9 +71,8 @@ export class TrackView extends ElementBuilder implements View {
     this.stopBtn.disabled = true;
     this.stopBtn.textContent = 'Stop';
     this.stopBtn.type = 'button';
-    this.stopBtn.prepend(this.stopSpinner);
 
-    const wrapper = this.createElement('div', {
+    this.wrapper = this.createElement<HTMLDivElement>('div', {
       classes: [
         'wrapper',
         'flex-grow-1',
@@ -80,22 +86,10 @@ export class TrackView extends ElementBuilder implements View {
     this.airplaneWrapper = this.createElement('div', {
       classes: ['airplane-wrapper'],
     });
-    const airplane = this.createIcon('bi-airplane-fill');
-    airplane.style.color = item.color;
+    this.airplane = this.createIcon('bi-airplane-fill');
+    this.airplane.style.color = item.color;
 
-    const flag = this.createIcon('bi-flag-fill');
-
-    this.airplaneWrapper.appendChild(airplane);
-    wrapper.append(this.airplaneWrapper, flag);
-    buttonWrapper1.append(this.selectBtn, this.removeBtn, model);
-    buttonWrapper2.append(this.startBtn, this.stopBtn);
-    editContainer.append(buttonWrapper1, buttonWrapper2);
-    trackContainer.append(wrapper);
-
-    const parent = this.getElement('#list');
-    if (parent) {
-      parent.append(editContainer, trackContainer);
-    }
+    this.flag = this.createIcon('bi-flag-fill');
   }
 
   selectButtonClickListener(cb: () => void) {
@@ -150,5 +144,21 @@ export class TrackView extends ElementBuilder implements View {
   showStopSpinner() {
     this.startBtn.disabled = true;
     this.stopSpinner.classList.remove('d-none');
+  }
+
+  render() {
+    this.startBtn.prepend(this.startSpinner);
+    this.stopBtn.prepend(this.stopSpinner);
+    this.airplaneWrapper.appendChild(this.airplane);
+    this.wrapper.append(this.airplaneWrapper, this.flag);
+    this.buttonWrapper1.append(this.selectBtn, this.removeBtn, this.model);
+    this.buttonWrapper2.append(this.startBtn, this.stopBtn);
+    this.editContainer.append(this.buttonWrapper1, this.buttonWrapper2);
+    this.trackContainer.append(this.wrapper);
+
+    const parent = this.getElement('#list');
+    if (parent) {
+      parent.append(this.editContainer, this.trackContainer);
+    }
   }
 }

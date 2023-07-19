@@ -10,4 +10,8 @@ export class WinnersTableController implements Controller {
     this.model = model;
     this.view = view;
   }
+
+  init() {
+    this.view.render();
+  }
 }

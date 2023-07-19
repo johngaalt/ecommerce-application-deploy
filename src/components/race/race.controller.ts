@@ -120,4 +120,8 @@ export class RaceController implements Controller {
       await Promise.all(tracksHandlerPromises);
     }
   }
+
+  init() {
+    this.view.render();
+  }
 }

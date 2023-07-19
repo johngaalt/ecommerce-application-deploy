@@ -3,16 +3,20 @@ import { View } from 'interfaces/view';
 
 export class WinnersView extends ElementBuilder implements View {
   WINNERS_ID = 'winners';
+  main: HTMLElement;
 
-  init() {
-    const main = this.createElement('main', {
+  constructor() {
+    super();
+    this.main = this.createElement('main', {
       id: this.WINNERS_ID,
       classes: ['container'],
     });
+  }
+  render() {
     const parent = this.getElement('#root');
 
     if (parent) {
-      parent.appendChild(main);
+      parent.appendChild(this.main);
     }
   }
 }
