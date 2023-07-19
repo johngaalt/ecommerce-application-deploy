@@ -34,5 +34,6 @@ export class WinnersController implements Controller {
   init() {
     this.view.render();
     this.headingsController.init('Winners', 10, 1, 7, '#winners');
+    this.winnersTable.init();
   }
 }

@@ -11,7 +11,7 @@ export class WinnersTableView extends ElementBuilder implements View {
     super();
 
     this.table = this.createElement<HTMLTableElement>('table', {
-      classes: ['table-info', 'w-50'],
+      classes: ['table', 'w-50', 'mt-5'],
     });
 
     this.createTableHeader();
@@ -26,7 +26,10 @@ export class WinnersTableView extends ElementBuilder implements View {
       const th = this.createElement('th', {});
       th.textContent = `Header ${i + 1}`;
       this.headerRow.appendChild(th);
+      this.thead.appendChild(this.headerRow);
     }
+
+    this.table.appendChild(this.thead);
   }
 
   private createTableBody() {

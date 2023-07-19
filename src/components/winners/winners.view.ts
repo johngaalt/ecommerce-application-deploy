@@ -12,6 +12,7 @@ export class WinnersView extends ElementBuilder implements View {
       classes: ['container'],
     });
   }
+
   render() {
     const parent = this.getElement('#root');
 

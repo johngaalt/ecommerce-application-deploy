@@ -10,7 +10,7 @@ export class HeadingsView extends ElementBuilder implements View {
     super();
     this.container = this.createElement('div', {
       id: 'headings',
-      classes: ['container', 'mt-4'],
+      classes: ['mt-4'],
     });
 
     this.title = this.createElement<HTMLHeadingElement>('h1', {
