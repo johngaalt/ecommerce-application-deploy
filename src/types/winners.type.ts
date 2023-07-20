@@ -1,8 +1,10 @@
+import { Airplane } from './airplane.type';
+
 export interface GetWinnersParams {
-  _page?: number;
-  _limit?: number;
-  _sort?: SortOptions;
-  _order?: OrderOptions;
+  page?: number;
+  limit?: number;
+  sort?: SortOptions;
+  order?: OrderOptions;
 }
 
 type SortOptions = 'id' | 'wins' | 'time';
@@ -13,9 +15,12 @@ export interface Winner {
   wins: number;
   time: number;
 }
+
+export type WinnerAirplane = Winner & Airplane;
+
 export interface WinnersResponse {
   items: Winner[];
-  count: string | null;
+  count: number;
 }
 
 export interface UpdateWinnerParams {

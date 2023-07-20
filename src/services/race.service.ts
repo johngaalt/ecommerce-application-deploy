@@ -64,14 +64,6 @@ export class RaceService {
       },
     );
 
-    // if (!response.ok) {
-    //   if (response.status === 500) {
-    //     return {
-    //       success: false,
-    //     };
-    //   }
-    // }
-
     return await response.json();
   }
 
@@ -82,6 +74,17 @@ export class RaceService {
         method: 'PATCH',
       },
     );
+    return await response.json();
+  }
+
+  async getAirplane(id: number): Promise<Airplane> {
+    const response = await fetch(`http://localhost:3000/garage/${id}`, {
+      method: 'GET',
+    });
+
+    if (!response.ok) {
+      global.console.error(`HTTP error! status: ${response.status}`);
+    }
     return await response.json();
   }
 }

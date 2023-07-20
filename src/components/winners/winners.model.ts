@@ -1,7 +1,7 @@
-import { Winner } from 'types/winners.type';
+import { WinnerAirplane } from 'types/winners.type';
 
 export class WinnersModel {
-  winners: Winner[] = [];
+  winners: WinnerAirplane[] = [];
   title = 'Winners';
   count = 0;
   currentPage = 1;

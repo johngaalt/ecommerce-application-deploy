@@ -6,15 +6,15 @@ import {
 } from 'types/winners.type';
 
 export class WinnersService {
-  async getWinners(params?: GetWinnersParams): Promise<WinnersResponse> {
-    let url = `http://localhost:3000/winners?_page=${params?._page}&_limit=${params?._limit}`;
+  async getWinners(params: GetWinnersParams): Promise<WinnersResponse> {
+    let url = `http://localhost:3000/winners?_page=${params?.page}&_limit=${params?.limit}`;
 
-    if (params?._sort) {
-      url += `&_sort=${params._sort}`;
+    if (params?.sort) {
+      url += `&_sort=${params.sort}`;
     }
 
-    if (params?._order) {
-      url += `&_order=${params._order}`;
+    if (params?.order) {
+      url += `&_order=${params.order}`;
     }
     const response = await fetch(url, {
       method: 'GET',
@@ -22,7 +22,7 @@ export class WinnersService {
     const winners: Winner[] = await response.json();
     const totalWinnersCount: string | null =
       response.headers.get('X-Total-Count');
-    return { items: winners, count: totalWinnersCount };
+    return { items: winners, count: Number(totalWinnersCount) };
   }
 
   async getWinner(id: number): Promise<Winner> {
