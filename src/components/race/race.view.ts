@@ -35,6 +35,7 @@ export class RaceView extends ElementBuilder implements View {
           'start-50',
           'top-50',
           'translate-middle',
+          'z-3',
         ],
       });
       this.winner.textContent = `The winner is ${name} with ${time}s`;

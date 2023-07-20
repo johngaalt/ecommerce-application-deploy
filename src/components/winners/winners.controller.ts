@@ -10,9 +10,7 @@ import { Controller } from 'interfaces/controller';
 import eventBus from 'services/event.service';
 import { RaceService } from 'services/race.service';
 import { WinnersService } from 'services/winners.service';
-import { Airplane } from 'types/airplane.type';
 import { EventTypes } from 'types/event.enum';
-import { WinnerAirplane } from 'types/winners.type';
 
 export class WinnersController implements Controller {
   model: WinnersModel;
@@ -58,7 +56,7 @@ export class WinnersController implements Controller {
         this.model.limit,
         '#winners',
       );
-      this.winnersTable.init();
+      this.winnersTable.init(this.model.winners);
     }
   }
 

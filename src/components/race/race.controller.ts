@@ -14,6 +14,7 @@ import { HeadingsController } from 'components/headings/headings.controller';
 import { HeadingsModel } from 'components/headings/headings.model';
 import { HeadingsView } from 'components/headings/headings.view';
 import { Controller } from 'interfaces/controller';
+import { WinnersService } from 'services/winners.service';
 
 export class RaceController implements Controller {
   model: RaceModel;
@@ -22,12 +23,14 @@ export class RaceController implements Controller {
   paginationController: PaginationController;
   headingsController: HeadingsController;
   tracks?: TrackController[];
+  winnersService: WinnersService;
 
   constructor(model: RaceModel, view: RaceView) {
     this.model = model;
     this.view = view;
 
     this.raceService = new RaceService();
+    this.winnersService = new WinnersService();
 
     this.fetchAirplanes();
 
@@ -102,8 +105,13 @@ export class RaceController implements Controller {
       );
 
       try {
-        const { name, time } = await Promise.any(tracksHandlerPromises);
+        const { id, name, time } = await Promise.any(tracksHandlerPromises);
         this.view.showWinner(name, time);
+        await this.winnersService.createWinner({
+          id,
+          time,
+          wins: 1,
+        });
 
         // TODO: save winner
       } catch (error) {
