@@ -7,6 +7,9 @@ import { WinnersTableController } from 'components/winners-table/winners-table.c
 import { WinnersTableModel } from 'components/winners-table/winners-table.model';
 import { WinnersTableView } from 'components/winners-table/winners-table.view';
 import { Controller } from 'interfaces/controller';
+import eventBus from 'services/event.service';
+import { WinnersService } from 'services/winners.service';
+import { EventTypes } from 'types/event.enum';
 
 export class WinnersController implements Controller {
   model: WinnersModel;
@@ -15,6 +18,7 @@ export class WinnersController implements Controller {
   pageNumber = 1;
   headingsController: HeadingsController;
   winnersTable: WinnersTableController;
+  winnersService!: WinnersService;
 
   constructor(model: WinnersModel, view: WinnersView) {
     this.model = model;
@@ -29,11 +33,19 @@ export class WinnersController implements Controller {
       new WinnersTableModel(),
       new WinnersTableView(),
     );
+
+    eventBus.subscribe(EventTypes.urlChanged, this.fetchWinners.bind(this));
   }
 
   init() {
     this.view.render();
     this.headingsController.init('Winners', 10, 1, 7, '#winners');
     this.winnersTable.init();
+  }
+
+  async fetchWinners(data: unknown) {
+    if (typeof data === 'string' && data.includes('winners')) {
+      await this.winnersService.getWinners();
+    }
   }
 }
