@@ -107,16 +107,28 @@ export class RaceController implements Controller {
       try {
         const { id, name, time } = await Promise.any(tracksHandlerPromises);
         this.view.showWinner(name, time);
-        await this.winnersService.createWinner({
-          id,
-          time,
-          wins: 1,
-        });
+        await this.saveResult(id, time);
 
         // TODO: save winner
       } catch (error) {
         global.console.error(error);
       }
+    }
+  }
+
+  private async saveResult(id: number, time: number) {
+    const winner = await this.winnersService.getWinner(id);
+
+    const data = {
+      id,
+      time: Math.min(time, winner?.time || Number.MAX_SAFE_INTEGER),
+      wins: (winner?.wins || 0) + 1,
+    };
+
+    if (Object.keys(winner)?.length) {
+      await this.winnersService.updateWinner(id, data);
+    } else {
+      await this.winnersService.createWinner(data);
     }
   }
 

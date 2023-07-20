@@ -29,12 +29,7 @@ export class WinnersService {
     const url = `http://localhost:3000/winners/${id}`;
     const response = await fetch(url, { method: 'GET' });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const winner: Winner = await response.json();
-    return winner;
+    return await response.json();
   }
 
   async createWinner(winner: Winner): Promise<Winner> {
