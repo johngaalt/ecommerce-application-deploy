@@ -75,7 +75,11 @@ export class WinnersController implements Controller {
       '#winners',
     );
     this.initPagination();
-    this.winnersTable.init(this.model.winners);
+    this.winnersTable.init(
+      this.model.winners,
+      this.model.currentPage,
+      this.model.limit,
+    );
   }
 
   async fetchWinnerAirplanes(): Promise<void> {

@@ -12,8 +12,10 @@ export class WinnersTableController implements Controller {
     this.view = view;
   }
 
-  init(winners: WinnerAirplane[]) {
+  init(winners: WinnerAirplane[], currentPage: number, limit: number) {
     this.model.winners = winners;
-    this.view.render(this.model.winners);
+    this.model.currentPage = currentPage;
+    this.model.limit = limit;
+    this.view.render(this.model);
   }
 }

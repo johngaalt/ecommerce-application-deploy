@@ -1,6 +1,7 @@
 import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 import { WinnerAirplane } from 'types/winners.type';
+import { WinnersTableModel } from './winners-table.model';
 
 export class WinnersTableView extends ElementBuilder implements View {
   table: HTMLTableElement;
@@ -34,14 +35,15 @@ export class WinnersTableView extends ElementBuilder implements View {
     this.table.appendChild(this.thead);
   }
 
-  populateTable(winners: WinnerAirplane[]) {
+  populateTable({ winners, currentPage, limit }: WinnersTableModel) {
     this.tbody.innerHTML = '';
 
     winners.forEach((winner, index) => {
       const row = this.createElement('tr');
 
-      const numberCell = this.createElement('td');
-      numberCell.textContent = String(index + 1);
+      const numberCell = this.createElement<HTMLTableCellElement>('td');
+      const airplaneNumber = String((currentPage - 1) * limit + (index + 1));
+      numberCell.textContent = airplaneNumber;
       row.appendChild(numberCell);
 
       const airplaneCell = this.createElement('td');
@@ -68,8 +70,8 @@ export class WinnersTableView extends ElementBuilder implements View {
     this.table.appendChild(this.tbody);
   }
 
-  render(winners: WinnerAirplane[]) {
-    this.populateTable(winners);
+  render(data: WinnersTableModel) {
+    this.populateTable(data);
     const parent = this.getElement('#winners');
     if (parent) {
       parent.appendChild(this.table);
