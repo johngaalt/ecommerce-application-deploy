@@ -22,12 +22,20 @@ export class WinnersService {
     const winners: Winner[] = await response.json();
     const totalWinnersCount: string | null =
       response.headers.get('X-Total-Count');
+
+    if (!response.ok) {
+      global.console.error(`HTTP error! status: ${response.status}`);
+    }
     return { items: winners, count: Number(totalWinnersCount) };
   }
 
   async getWinner(id: number): Promise<Winner> {
     const url = `http://localhost:3000/winners/${id}`;
     const response = await fetch(url, { method: 'GET' });
+
+    if (!response.ok) {
+      global.console.error(`HTTP error! status: ${response.status}`);
+    }
 
     return await response.json();
   }
@@ -44,20 +52,20 @@ export class WinnersService {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      global.console.error(`HTTP error! status: ${response.status}`);
     }
 
     const newWinner: Winner = await response.json();
     return newWinner;
   }
 
-  async deleteWinner(id: number): Promise<void> {
+  async removeWinner(id: number): Promise<void> {
     const url = `http://localhost:3000/winners/${id}`;
 
     const response = await fetch(url, { method: 'DELETE' });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      global.console.error(`HTTP error! status: ${response.status}`);
     }
   }
 

@@ -4,16 +4,19 @@ import { TrackView } from './track.view';
 import { EventTypes } from 'types/event.enum';
 import { RaceService } from 'services/race.service';
 import { Controller } from 'interfaces/controller';
+import { WinnersService } from 'services/winners.service';
 
 export class TrackController implements Controller {
   model: TrackModel;
   view: TrackView;
   raceService: RaceService;
+  winnerService: WinnersService;
 
   constructor(model: TrackModel, view: TrackView) {
     this.model = model;
     this.view = view;
     this.raceService = new RaceService();
+    this.winnerService = new WinnersService();
 
     this.view.selectButtonClickListener(
       this.selectButtonClickHandler.bind(this),
@@ -33,6 +36,7 @@ export class TrackController implements Controller {
 
   async removeButtonClickHandler() {
     await this.raceService.removeAirplane(this.model.id);
+    await this.winnerService.removeWinner(this.model.id);
     eventBus.publish(EventTypes.fetchAirplanes);
   }
 
