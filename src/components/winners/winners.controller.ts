@@ -40,6 +40,7 @@ export class WinnersController implements Controller {
     this.paginationController = new PaginationController(
       new PaginationModel(),
       new PaginationView(),
+      EventTypes.fetchWinners,
     );
 
     this.winnersTable = new WinnersTableController(
@@ -47,27 +48,34 @@ export class WinnersController implements Controller {
       new WinnersTableView(),
     );
 
-    eventBus.subscribe(EventTypes.urlChanged, this.fetchWinners.bind(this));
+    eventBus.subscribe(EventTypes.urlChanged, this.triggerFetch.bind(this));
+    eventBus.subscribe(EventTypes.fetchWinners, this.fetchWinners.bind(this));
   }
 
   init() {
     this.view.render();
   }
 
-  async fetchWinners(data: unknown) {
-    if (typeof data === 'string' && data.includes('winners')) {
-      await this.getWinners();
-
-      this.headingsController.init(
-        this.model.title,
-        this.model.count,
-        this.model.currentPage,
-        this.model.limit,
-        '#winners',
-      );
-      this.winnersTable.init(this.model.winners);
-      this.initPagination();
+  triggerFetch(url: unknown) {
+    if (typeof url === 'string' && url.includes('winners')) {
+      eventBus.publish(EventTypes.fetchWinners);
     }
+  }
+
+  async fetchWinners(paginationText: unknown) {
+    // if (typeof paginationText === 'string') {
+    await this.getWinners();
+
+    this.headingsController.init(
+      this.model.title,
+      this.model.count,
+      this.model.currentPage,
+      this.model.limit,
+      '#winners',
+    );
+    this.winnersTable.init(this.model.winners);
+    this.initPagination();
+    // }
   }
 
   async getWinners(): Promise<void> {

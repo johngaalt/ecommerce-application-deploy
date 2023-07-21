@@ -5,4 +5,5 @@ export enum EventTypes {
   startRace = 'startRace',
   resetRace = 'resetRace',
   urlChanged = 'urlChanged',
+  fetchWinners = 'fetchWinners',
 }

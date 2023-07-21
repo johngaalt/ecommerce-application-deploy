@@ -42,6 +42,7 @@ export class RaceController implements Controller {
     this.paginationController = new PaginationController(
       new PaginationModel(),
       new PaginationView(),
+      EventTypes.fetchAirplanes,
     );
 
     eventBus.subscribe(
