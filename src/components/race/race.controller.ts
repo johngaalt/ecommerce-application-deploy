@@ -53,8 +53,8 @@ export class RaceController implements Controller {
     eventBus.subscribe(EventTypes.resetRace, this.resetRace.bind(this));
   }
 
-  async fetchAirplanes(data?: unknown) {
-    this.rewritePage(data);
+  async fetchAirplanes(paginationText?: unknown) {
+    this.rewritePage(paginationText);
     const response = await this.raceService.getAirplanes(
       this.model.currentPage,
       this.model.limit,
@@ -79,13 +79,13 @@ export class RaceController implements Controller {
     this.tracks.forEach((track) => track.init());
   }
 
-  rewritePage(data: unknown) {
-    if (typeof data === 'string') {
-      if (data === Pagination.Previous) {
+  rewritePage(paginationText: unknown) {
+    if (typeof paginationText === 'string') {
+      if (paginationText === Pagination.Previous) {
         this.model.currentPage = this.model.currentPage - 1;
       }
 
-      if (data === Pagination.Next) {
+      if (paginationText === Pagination.Next) {
         this.model.currentPage = this.model.currentPage + 1;
       }
     }

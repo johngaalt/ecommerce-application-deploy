@@ -13,7 +13,7 @@ export class WinnersTableView extends ElementBuilder implements View {
     super();
 
     this.table = this.createElement<HTMLTableElement>('table', {
-      classes: ['table', 'w-50', 'mt-5'],
+      classes: ['table', 'mt-5'],
     });
 
     this.createTableHeader();

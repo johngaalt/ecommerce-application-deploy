@@ -36,18 +36,17 @@ export class PaginationView extends ElementBuilder implements View {
     }
   }
 
-  createPaginationItem(linkText: string, isDisabled: boolean) {
+  createPaginationItem(text: string, isDisabled: boolean) {
     const li = this.createElement('li', {
       classes: ['page-item', isDisabled ? 'disabled' : 'enabled'],
     });
 
-    const link = this.createElement<HTMLLinkElement>('a', {
+    const btn = this.createElement<HTMLButtonElement>('button', {
       classes: ['page-link'],
     });
-    link.textContent = linkText;
-    link.href = '#';
+    btn.textContent = text;
 
-    li.appendChild(link);
+    li.appendChild(btn);
     return li;
   }
 

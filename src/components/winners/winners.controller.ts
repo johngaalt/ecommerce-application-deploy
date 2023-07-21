@@ -14,6 +14,7 @@ import eventBus from 'services/event.service';
 import { RaceService } from 'services/race.service';
 import { WinnersService } from 'services/winners.service';
 import { EventTypes } from 'types/event.enum';
+import { Pagination } from 'types/pagination.enum';
 
 export class WinnersController implements Controller {
   model: WinnersModel;
@@ -49,7 +50,7 @@ export class WinnersController implements Controller {
     );
 
     eventBus.subscribe(EventTypes.urlChanged, this.triggerFetch.bind(this));
-    eventBus.subscribe(EventTypes.fetchWinners, this.fetchWinners.bind(this));
+    eventBus.subscribe(EventTypes.fetchWinners, this.initPageData.bind(this));
   }
 
   init() {
@@ -62,9 +63,9 @@ export class WinnersController implements Controller {
     }
   }
 
-  async fetchWinners(paginationText: unknown) {
-    // if (typeof paginationText === 'string') {
-    await this.getWinners();
+  async initPageData(paginationText?: unknown) {
+    this.rewritePage(paginationText);
+    await this.fetchWinnerAirplanes();
 
     this.headingsController.init(
       this.model.title,
@@ -73,12 +74,11 @@ export class WinnersController implements Controller {
       this.model.limit,
       '#winners',
     );
-    this.winnersTable.init(this.model.winners);
     this.initPagination();
-    // }
+    this.winnersTable.init(this.model.winners);
   }
 
-  async getWinners(): Promise<void> {
+  async fetchWinnerAirplanes(): Promise<void> {
     this.model.winners = [];
     const { items, count } = await this.winnersService.getWinners({
       page: this.model.currentPage,
@@ -113,5 +113,17 @@ export class WinnersController implements Controller {
       this.model.currentPage,
     );
     this.paginationController.init();
+  }
+
+  rewritePage(paginationText: unknown) {
+    if (typeof paginationText === 'string') {
+      if (paginationText === Pagination.Previous) {
+        this.model.currentPage = this.model.currentPage - 1;
+      }
+
+      if (paginationText === Pagination.Next) {
+        this.model.currentPage = this.model.currentPage + 1;
+      }
+    }
   }
 }
