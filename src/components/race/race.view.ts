@@ -40,6 +40,10 @@ export class RaceView extends ElementBuilder implements View {
       });
       this.winner.textContent = `The winner is ${name} with ${time}s`;
       document.body.appendChild(this.winner);
+
+      setTimeout(() => {
+        this.hideWinner();
+      }, 3000);
     }
   }
 
