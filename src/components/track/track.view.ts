@@ -28,13 +28,13 @@ export class TrackView extends ElementBuilder implements View {
     this.buttonWrapper2 = this.createElement<HTMLDivElement>('div');
 
     this.selectBtn = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-secondary', 'me-2', 'btn-sm'],
+      classes: ['btn', 'btn-outline-light', 'me-2', 'btn-sm'],
     });
     this.selectBtn.textContent = 'Select';
     this.selectBtn.type = 'button';
 
     this.removeBtn = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-danger', 'me-2', 'btn-sm'],
+      classes: ['btn', 'btn-outline-danger', 'me-2', 'btn-sm'],
     });
     this.removeBtn.textContent = 'Remove';
     this.removeBtn.type = 'button';
@@ -56,7 +56,7 @@ export class TrackView extends ElementBuilder implements View {
     });
 
     this.startBtn = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-primary', 'me-2', 'btn-sm'],
+      classes: ['btn', 'btn-outline-light', 'me-2', 'btn-sm'],
     });
     this.startBtn.textContent = 'Start';
     this.startBtn.type = 'button';
@@ -66,7 +66,7 @@ export class TrackView extends ElementBuilder implements View {
     });
 
     this.stopBtn = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-danger', 'me-2', 'btn-sm'],
+      classes: ['btn', 'btn-outline-danger', 'me-2', 'btn-sm'],
     });
     this.stopBtn.disabled = true;
     this.stopBtn.textContent = 'Stop';
@@ -90,6 +90,7 @@ export class TrackView extends ElementBuilder implements View {
     this.airplane.style.color = item.color;
 
     this.flag = this.createIcon('bi-flag-fill');
+    this.flag.classList.add('text-danger');
   }
 
   selectButtonClickListener(cb: () => void) {

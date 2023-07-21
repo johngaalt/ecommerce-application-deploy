@@ -39,7 +39,7 @@ export class InputGroupView extends ElementBuilder implements View {
     this.inputId.type = 'hidden';
 
     this.button = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-secondary'],
+      classes: ['btn', 'btn-outline-light'],
     });
     this.button.type = 'button';
     this.button.textContent = this.isCreateMode ? 'Create' : 'Update';

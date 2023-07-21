@@ -15,19 +15,19 @@ export class ButtonGroupView extends ElementBuilder implements View {
     });
 
     this.raceBtn = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-secondary', 'me-2'],
+      classes: ['btn', 'btn-primary', 'me-2'],
     });
     this.raceBtn.textContent = 'Race';
     this.raceBtn.type = 'button';
 
     this.resetBtn = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-secondary', 'me-2'],
+      classes: ['btn', 'btn-outline-light', 'me-2'],
     });
     this.resetBtn.textContent = 'Reset';
     this.resetBtn.type = 'button';
 
     this.generateBtn = this.createElement<HTMLButtonElement>('button', {
-      classes: ['btn', 'btn-secondary'],
+      classes: ['btn', 'btn-outline-light'],
     });
     this.generateBtn.textContent = 'Generate airplanes';
     this.generateBtn.type = 'button';
