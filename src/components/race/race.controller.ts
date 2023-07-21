@@ -38,6 +38,7 @@ export class RaceController implements Controller {
       new HeadingsModel(),
       new HeadingsView(),
     );
+
     this.paginationController = new PaginationController(
       new PaginationModel(),
       new PaginationView(),

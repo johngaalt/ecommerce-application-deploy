@@ -3,6 +3,9 @@ import { WinnersView } from './winners.view';
 import { HeadingsController } from 'components/headings/headings.controller';
 import { HeadingsModel } from 'components/headings/headings.model';
 import { HeadingsView } from 'components/headings/headings.view';
+import { PaginationController } from 'components/pagination/pagination.controller';
+import { PaginationModel } from 'components/pagination/pagination.model';
+import { PaginationView } from 'components/pagination/pagination.view';
 import { WinnersTableController } from 'components/winners-table/winners-table.controller';
 import { WinnersTableModel } from 'components/winners-table/winners-table.model';
 import { WinnersTableView } from 'components/winners-table/winners-table.view';
@@ -21,6 +24,7 @@ export class WinnersController implements Controller {
   winnersTable: WinnersTableController;
   winnersService: WinnersService;
   raceService: RaceService;
+  paginationController: PaginationController;
 
   constructor(model: WinnersModel, view: WinnersView) {
     this.model = model;
@@ -31,6 +35,11 @@ export class WinnersController implements Controller {
     this.headingsController = new HeadingsController(
       new HeadingsModel(),
       new HeadingsView(),
+    );
+
+    this.paginationController = new PaginationController(
+      new PaginationModel(),
+      new PaginationView(),
     );
 
     this.winnersTable = new WinnersTableController(
@@ -57,6 +66,7 @@ export class WinnersController implements Controller {
         '#winners',
       );
       this.winnersTable.init(this.model.winners);
+      this.initPagination();
     }
   }
 
@@ -86,5 +96,14 @@ export class WinnersController implements Controller {
         });
       }
     }
+  }
+
+  initPagination() {
+    this.paginationController.model.init(
+      this.model.count,
+      this.model.limit,
+      this.model.currentPage,
+    );
+    this.paginationController.init();
   }
 }
