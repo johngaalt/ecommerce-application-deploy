@@ -61,6 +61,7 @@ export class WinnersController implements Controller {
   }
 
   async getWinners(): Promise<void> {
+    this.model.winners = [];
     const { items, count } = await this.winnersService.getWinners({
       page: this.model.currentPage,
       limit: this.model.limit,
