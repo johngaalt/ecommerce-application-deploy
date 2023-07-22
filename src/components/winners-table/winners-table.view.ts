@@ -1,7 +1,8 @@
 import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
-import { WinnerAirplane } from 'types/winners.type';
 import { WinnersTableModel } from './winners-table.model';
+import { DOMGuards } from 'utils/guards';
+import { SortOptions } from 'types/winners.type';
 
 export class WinnersTableView extends ElementBuilder implements View {
   table: HTMLTableElement;
@@ -26,7 +27,9 @@ export class WinnersTableView extends ElementBuilder implements View {
     this.headerRow = this.createElement('tr');
 
     for (let i = 0; i < 5; i++) {
-      const th = this.createElement('th', {});
+      const th = this.createElement('th', {
+        dataset: [{ column: this.headers[i] }],
+      });
       th.textContent = this.headers[i];
       this.headerRow.appendChild(th);
       this.thead.appendChild(this.headerRow);
@@ -68,6 +71,22 @@ export class WinnersTableView extends ElementBuilder implements View {
     });
 
     this.table.appendChild(this.tbody);
+  }
+
+  tableHeaderClickListener(cb: (sort: SortOptions) => void) {
+    this.thead.addEventListener('click', (event) => {
+      const target = event.target;
+
+      if (DOMGuards.isHTMLElement(target)) {
+        const column = target.closest('[data-column]');
+
+        if (!DOMGuards.isHTMLElement(column)) return;
+
+        if (column?.dataset.column === 'Wins') {
+          cb('wins');
+        }
+      }
+    });
   }
 
   render(data: WinnersTableModel) {

@@ -110,8 +110,6 @@ export class RaceController implements Controller {
         const { id, name, time } = await Promise.any(tracksHandlerPromises);
         this.view.showWinner(name, time);
         await this.saveResult(id, time);
-
-        // TODO: save winner
       } catch (error) {
         global.console.error(error);
       }
@@ -136,7 +134,7 @@ export class RaceController implements Controller {
 
   async resetRace() {
     if (this.tracks?.length) {
-      this.view.hideWinner();
+      // this.view.hideWinner();
       const tracksHandlerPromises = this.tracks.map((track) =>
         track.stopButtonClickHandler(),
       );

@@ -15,6 +15,7 @@ import { RaceService } from 'services/race.service';
 import { WinnersService } from 'services/winners.service';
 import { EventTypes } from 'types/event.enum';
 import { Pagination } from 'types/pagination.enum';
+import { OrderOptions, SortOptions } from 'types/winners.type';
 
 export class WinnersController implements Controller {
   model: WinnersModel;
@@ -63,8 +64,10 @@ export class WinnersController implements Controller {
     }
   }
 
-  async initPageData(paginationText?: unknown) {
-    this.rewritePage(paginationText);
+  async initPageData(data?: unknown) {
+    this.setOrderOptions(data);
+    this.rewritePage(data);
+
     await this.fetchWinnerAirplanes();
 
     this.headingsController.init(
@@ -82,11 +85,20 @@ export class WinnersController implements Controller {
     );
   }
 
+  private setOrderOptions(data: unknown) {
+    if (data && typeof data === 'object' && 'sort' in data && 'order' in data) {
+      this.model.sort = data.sort as SortOptions;
+      this.model.order = data.order as OrderOptions;
+    }
+  }
+
   async fetchWinnerAirplanes(): Promise<void> {
     this.model.winners = [];
     const { items, count } = await this.winnersService.getWinners({
       page: this.model.currentPage,
       limit: this.model.limit,
+      sort: this.model.sort,
+      order: this.model.order,
     });
     this.model.count = count;
 

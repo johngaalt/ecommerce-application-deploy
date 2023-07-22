@@ -1,12 +1,13 @@
 interface ElementOptions {
   id?: string;
   classes?: string[];
+  dataset?: Record<string, string>[];
 }
 
 export class ElementBuilder {
   createElement<T extends HTMLElement>(
     tag: string,
-    { id, classes }: ElementOptions = {},
+    { id, classes, dataset }: ElementOptions = {},
   ): T {
     const element = document.createElement(tag);
 
@@ -16,6 +17,16 @@ export class ElementBuilder {
 
     if (classes?.length) {
       element.classList.add(...classes);
+    }
+
+    if (dataset) {
+      for (const data of dataset) {
+        for (const key in data) {
+          if (Object.prototype.hasOwnProperty.call(data, key)) {
+            element.dataset[key] = data[key];
+          }
+        }
+      }
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

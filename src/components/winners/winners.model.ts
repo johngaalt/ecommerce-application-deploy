@@ -1,4 +1,4 @@
-import { WinnerAirplane } from 'types/winners.type';
+import { OrderOptions, SortOptions, WinnerAirplane } from 'types/winners.type';
 
 export class WinnersModel {
   winners: WinnerAirplane[] = [];
@@ -6,4 +6,6 @@ export class WinnersModel {
   count = 0;
   currentPage = 1;
   limit = 10;
+  order?: OrderOptions;
+  sort?: SortOptions;
 }

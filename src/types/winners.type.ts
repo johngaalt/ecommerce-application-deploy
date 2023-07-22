@@ -7,8 +7,8 @@ export interface GetWinnersParams {
   order?: OrderOptions;
 }
 
-type SortOptions = 'id' | 'wins' | 'time';
-type OrderOptions = 'ASC' | 'DESC';
+export type SortOptions = 'id' | 'wins' | 'time';
+export type OrderOptions = 'ASC' | 'DESC';
 
 export interface Winner {
   id: number;
