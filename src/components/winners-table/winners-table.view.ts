@@ -86,32 +86,44 @@ export class WinnersTableView extends ElementBuilder implements View {
         if (!DOMGuards.isHTMLElement(column)) return;
 
         if (column?.dataset.column === 'Wins') {
-          const order = column.dataset.order;
-          if (!order) {
-            cb('wins', 'ASC');
-            column.dataset.order = 'ASC' as OrderOptions;
-            this.icon = this.createIcon('bi-sort-down-alt');
-            this.icon.classList.add('ms-2');
-            column.appendChild(this.icon);
-          }
+          this.sortBy('wins', column, cb);
+        }
 
-          if (order === 'ASC') {
-            cb('wins', 'DESC');
-            column.dataset.order = 'DESC' as OrderOptions;
-            column.removeChild(this.icon);
-            this.icon = this.createIcon('bi-sort-down');
-            this.icon.classList.add('ms-2');
-            column.appendChild(this.icon);
-          }
-
-          if (order === 'DESC') {
-            column.removeChild(this.icon);
-            delete column.dataset.order;
-            cb();
-          }
+        if (column?.dataset.column === 'Best time') {
+          this.sortBy('time', column, cb);
         }
       }
     });
+  }
+
+  private sortBy(
+    sortType: SortOptions,
+    column: HTMLElement,
+    cb: (sort?: SortOptions, order?: OrderOptions) => void,
+  ) {
+    this.icon?.remove();
+
+    const order = column.dataset.order;
+    if (!order) {
+      cb(sortType, 'ASC');
+      column.dataset.order = 'ASC' as OrderOptions;
+      this.icon = this.createIcon('bi-sort-down-alt');
+      this.icon.classList.add('ms-2');
+      column.appendChild(this.icon);
+    }
+
+    if (order === 'ASC') {
+      cb(sortType, 'DESC');
+      column.dataset.order = 'DESC' as OrderOptions;
+      this.icon = this.createIcon('bi-sort-down');
+      this.icon.classList.add('ms-2');
+      column.appendChild(this.icon);
+    }
+
+    if (order === 'DESC') {
+      cb();
+      delete column.dataset.order;
+    }
   }
 
   render(data: WinnersTableModel) {
