@@ -26,10 +26,7 @@ export class WinnersTableController implements Controller {
     this.view.render(this.model);
   }
 
-  async tableHeaderClickHandler(
-    sort: SortOptions,
-    order: OrderOptions = 'ASC',
-  ) {
+  async tableHeaderClickHandler(sort?: SortOptions, order?: OrderOptions) {
     eventBus.publish(EventTypes.fetchWinners, { sort, order });
   }
 }

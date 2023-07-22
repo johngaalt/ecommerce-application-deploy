@@ -2,13 +2,14 @@ import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
 import { WinnersTableModel } from './winners-table.model';
 import { DOMGuards } from 'utils/guards';
-import { SortOptions } from 'types/winners.type';
+import { OrderOptions, SortOptions } from 'types/winners.type';
 
 export class WinnersTableView extends ElementBuilder implements View {
   table: HTMLTableElement;
   thead!: HTMLTableElement;
   headerRow!: HTMLTableRowElement;
   tbody!: HTMLTableElement;
+  icon!: HTMLElement;
   headers = ['Number', 'Airplane', 'Name', 'Wins', 'Best time'];
 
   constructor() {
@@ -73,7 +74,9 @@ export class WinnersTableView extends ElementBuilder implements View {
     this.table.appendChild(this.tbody);
   }
 
-  tableHeaderClickListener(cb: (sort: SortOptions) => void) {
+  tableHeaderClickListener(
+    cb: (sort?: SortOptions, order?: OrderOptions) => void,
+  ) {
     this.thead.addEventListener('click', (event) => {
       const target = event.target;
 
@@ -83,7 +86,29 @@ export class WinnersTableView extends ElementBuilder implements View {
         if (!DOMGuards.isHTMLElement(column)) return;
 
         if (column?.dataset.column === 'Wins') {
-          cb('wins');
+          const order = column.dataset.order;
+          if (!order) {
+            cb('wins', 'ASC');
+            column.dataset.order = 'ASC' as OrderOptions;
+            this.icon = this.createIcon('bi-sort-down-alt');
+            this.icon.classList.add('ms-2');
+            column.appendChild(this.icon);
+          }
+
+          if (order === 'ASC') {
+            cb('wins', 'DESC');
+            column.dataset.order = 'DESC' as OrderOptions;
+            column.removeChild(this.icon);
+            this.icon = this.createIcon('bi-sort-down');
+            this.icon.classList.add('ms-2');
+            column.appendChild(this.icon);
+          }
+
+          if (order === 'DESC') {
+            column.removeChild(this.icon);
+            delete column.dataset.order;
+            cb();
+          }
         }
       }
     });
