@@ -10,7 +10,7 @@
     "fix": "eslint --fix . --ext .ts",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "deploy": "gh-pages -d dist -e rs-css",
+    "deploy": "gh-pages -d dist -e async-race",
     "dev": "webpack-dev-server --hot",
     "test": "jest",
     "test:watch": "jest --watch"
