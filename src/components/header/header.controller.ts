@@ -15,18 +15,11 @@ export class HeaderController implements Controller {
     this.view = view;
     this.router = router;
 
-    this.view.ulClickListener(this.ulClickHandler.bind(this));
     eventBus.subscribe(EventTypes.urlChanged, this.urlChanged.bind(this));
   }
 
-  ulClickHandler(path: string) {
-    this.router.navigateTo(path);
-  }
-
-  urlChanged(data: unknown) {
-    if (typeof data === 'string') {
-      this.view.setActiveLink(data);
-    }
+  urlChanged() {
+    this.view.setActiveLink();
   }
 
   init() {

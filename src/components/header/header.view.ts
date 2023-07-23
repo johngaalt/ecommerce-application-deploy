@@ -1,4 +1,3 @@
-import { DOMGuards } from 'utils/guards';
 import './header.scss';
 import { ElementBuilder } from 'interfaces/element-builder';
 import { View } from 'interfaces/view';
@@ -17,11 +16,12 @@ export class HeaderView extends ElementBuilder implements View {
     this.nav = this.createNavigation();
   }
 
-  setActiveLink(path: string) {
+  setActiveLink() {
     const links = this.navItems.map((li) => li.querySelector('a'));
 
     links?.forEach((link) => {
       if (link) {
+        const path = window.location.hash;
         link.classList.remove('active');
 
         if (link.getAttribute('href') === path) {
@@ -74,19 +74,6 @@ export class HeaderView extends ElementBuilder implements View {
     return li;
   }
 
-  ulClickListener(cb: (path: string) => void) {
-    this.ul.addEventListener('click', (event) => {
-      if (DOMGuards.isHTMLElement(event.target)) {
-        const link = event.target.closest<HTMLLinkElement>('.nav-link');
-        if (link) {
-          event.preventDefault();
-          const path = link.href.split('#').at(-1) || '';
-          cb(`#${path}`);
-        }
-      }
-    });
-  }
-
   render() {
     const parent = this.getElement('header');
 
@@ -94,6 +81,6 @@ export class HeaderView extends ElementBuilder implements View {
       parent.prepend(this.nav);
     }
 
-    this.setActiveLink(window.location.pathname);
+    this.setActiveLink();
   }
 }
