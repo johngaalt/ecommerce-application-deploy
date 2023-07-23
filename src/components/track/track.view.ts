@@ -84,7 +84,7 @@ export class TrackView extends ElementBuilder implements View {
       ],
     });
     this.airplaneWrapper = this.createElement('div', {
-      classes: ['airplane-wrapper'],
+      classes: ['airplane-wrapper', 'transitioned'],
     });
     this.airplane = this.createIcon('bi-airplane-fill');
     this.airplane.style.color = item.color;
@@ -120,26 +120,31 @@ export class TrackView extends ElementBuilder implements View {
   }
 
   startAnimation(time: string) {
+    this.airplaneWrapper.style.left = '';
     this.airplaneWrapper.classList.add('animated');
     this.airplaneWrapper.style.transitionDuration = time;
   }
 
   stopAnimation() {
     const { left } = this.airplaneWrapper.getBoundingClientRect();
-    this.airplaneWrapper.classList.remove('animated');
-    // TODO: fix transition reset to properly restart animation
-    this.airplaneWrapper.style.transition = 'none';
+    this.resetAnimation();
     this.airplaneWrapper.style.left = `${left}px`;
   }
 
   stopAirplane() {
+    this.resetAnimation();
     this.airplaneWrapper.style.left = '0';
     this.startBtn.disabled = false;
     this.stopBtn.disabled = true;
     this.stopSpinner.classList.add('d-none');
-    this.airplaneWrapper.classList.remove('animated');
-    // TODO: fix transition reset to properly restart animation
-    this.airplaneWrapper.style.transition = 'none';
+  }
+
+  resetAnimation() {
+    this.airplaneWrapper.classList.remove('animated', 'transitioned');
+    this.airplaneWrapper.style.transitionDuration = '';
+    setTimeout(() => {
+      this.airplaneWrapper.classList.add('transitioned');
+    }, 300);
   }
 
   showStopSpinner() {
