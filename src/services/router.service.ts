@@ -11,11 +11,11 @@ export class Router {
     this.container = container;
     this.routes = routes;
     this.currentPath = '';
-    window.addEventListener('popstate', this.onPopStateChange.bind(this));
+    window.addEventListener('hashchange', this.onHashChange.bind(this));
   }
 
-  private onPopStateChange() {
-    this.navigateTo(window.location.pathname, false);
+  private onHashChange() {
+    this.navigateTo(`#${window.location.hash.slice(1)}`, false);
   }
 
   navigateTo(path: string, addHistory = true) {
@@ -24,7 +24,7 @@ export class Router {
 
     if (route) {
       if (addHistory) {
-        window.history.pushState({}, '', path);
+        window.location.hash = path;
       }
 
       this.currentPath = path;

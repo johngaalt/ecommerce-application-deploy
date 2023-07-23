@@ -7,8 +7,8 @@ export class HeaderView extends ElementBuilder implements View {
   ul!: HTMLUListElement;
   navItems!: HTMLLIElement[];
   links = [
-    { name: 'Garage', link: '/', icon: 'bi-airplane' },
-    { name: 'Winners', link: '/winners', icon: 'bi-trophy' },
+    { name: 'Garage', link: '#garage', icon: 'bi-airplane' },
+    { name: 'Winners', link: '#winners', icon: 'bi-trophy' },
   ];
   nav: HTMLElement;
 
@@ -80,8 +80,8 @@ export class HeaderView extends ElementBuilder implements View {
         const link = event.target.closest<HTMLLinkElement>('.nav-link');
         if (link) {
           event.preventDefault();
-          const path = link.href.split('/').at(-1) || '';
-          cb(`/${path}`);
+          const path = link.href.split('#').at(-1) || '';
+          cb(`#${path}`);
         }
       }
     });

@@ -22,11 +22,11 @@ export class AppController {
     this.view = view;
 
     this.router = new Router(this.view.root, {
-      '/': new GarageController(new GarageModel(), new GarageView()),
-      '/winners': new WinnersController(new WinnersModel(), new WinnersView()),
+      '#garage': new GarageController(new GarageModel(), new GarageView()),
+      '#winners': new WinnersController(new WinnersModel(), new WinnersView()),
     });
 
-    this.router.navigateTo('/');
+    this.router.navigateTo('#garage');
 
     this.headerController = new HeaderController(
       new HeaderModel(),
