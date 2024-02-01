@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "CommonJS",
+    "strict": true,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "paths": {
+      "components/*": ["components/*"],
+      "interfaces/*": ["interfaces/*"],
+      "services/*": ["services/*"],
+      "types/*": ["types/*"],
+      "constants/*": ["constants/*"],
+      "utils/*": ["utils/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

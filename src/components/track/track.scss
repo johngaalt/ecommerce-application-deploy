@@ -1,0 +1,32 @@
+.wrapper {
+  height: 4.25rem;
+  position: relative;
+
+  & i {
+    font-size: 3rem;
+  }
+
+  .bi-flag-fill {
+    position: absolute;
+    font-style: italic;
+    right: 10%;
+  }
+}
+
+.airplane-wrapper {
+  will-change: left;
+  transform: rotate(90deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  &.animated {
+    left: calc(90% + 10px);
+  }
+
+  &.transitioned {
+    transition-property: left;
+    transition-timing-function: linear;
+  }
+}

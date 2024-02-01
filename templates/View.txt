@@ -1,0 +1,7 @@
+import { View } from 'interfaces/view';
+
+export class {{pascalCase name}}View extends View {
+  constructor() {
+    super();
+  }
+}

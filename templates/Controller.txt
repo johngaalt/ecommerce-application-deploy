@@ -1,0 +1,12 @@
+import { {{pascalCase name}}Model } from './{{kebabCase name}}.model';
+import { {{pascalCase name}}View } from './{{kebabCase name}}.view';
+
+export class {{pascalCase name}}Controller {
+  model: {{pascalCase name}}Model;
+  view: {{pascalCase name}}View;
+
+  constructor(model: {{pascalCase name}}Model, view: {{pascalCase name}}View) {
+    this.model = model;
+    this.view = view;
+  }
+}
