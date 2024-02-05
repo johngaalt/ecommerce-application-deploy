@@ -1,1 +1,1 @@
-# ecommerce-application-deploy
+# johngaalt projects deploy
