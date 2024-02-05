@@ -1,6 +1,6 @@
 import { Editor } from 'components/Editor/Editor';
 import { GameWrapper } from '../GameWrapper/GameWrapper';
-import { Header } from '../Header/Header';
+import { Header } from '../header/Header';
 import { LevelDescription } from '../LevelDescription/LevelDescription';
 import { Sidebar } from '../Sidebar/Sidebar';
 import app from './App.html';
