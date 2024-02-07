@@ -1,3 +1,4 @@
+import { HOST } from 'constants/host';
 import {
   GetWinnersParams,
   UpdateWinnerParams,
@@ -7,7 +8,7 @@ import {
 
 export class WinnersService {
   async getWinners(params: GetWinnersParams): Promise<WinnersResponse> {
-    let url = `http://localhost:3000/winners?_page=${params?.page}&_limit=${params?.limit}`;
+    let url = `${HOST}/winners?_page=${params?.page}&_limit=${params?.limit}`;
 
     if (params?.sort) {
       url += `&_sort=${params.sort}`;
@@ -30,7 +31,7 @@ export class WinnersService {
   }
 
   async getWinner(id: number): Promise<Winner> {
-    const url = `http://localhost:3000/winners/${id}`;
+    const url = `${HOST}/winners/${id}`;
     const response = await fetch(url, { method: 'GET' });
 
     if (!response.ok) {
@@ -41,7 +42,7 @@ export class WinnersService {
   }
 
   async createWinner(winner: Winner): Promise<Winner> {
-    const url = `http://localhost:3000/winners`;
+    const url = `${HOST}/winners`;
 
     const response = await fetch(url, {
       method: 'POST',
@@ -60,7 +61,7 @@ export class WinnersService {
   }
 
   async removeWinner(id: number): Promise<void> {
-    const url = `http://localhost:3000/winners/${id}`;
+    const url = `${HOST}/winners/${id}`;
 
     const response = await fetch(url, { method: 'DELETE' });
 
@@ -73,7 +74,7 @@ export class WinnersService {
     id: number,
     updateParams: UpdateWinnerParams,
   ): Promise<Winner> {
-    const url = `http://localhost:3000/winners/${id}`;
+    const url = `${HOST}/winners/${id}`;
 
     const response = await fetch(url, {
       method: 'PUT',
